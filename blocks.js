@@ -2331,4 +2331,34 @@ function nextElement(arr) {
 
 const nextElement = a => (a[1] - a[0]) + a[a.length - 1];
 
-// hello
+// 87. Write a function that finds the sum of the first n natural numbers. Make your function recursive.
+
+// White - sum(5) ➞ 15
+// 1 + 2 + 3 + 4 + 5 = 15
+
+const sum = function(n) {
+	let arr = [];
+	for (let i = 1; i <= n; i++) {
+			arr.push(i);
+	}
+	return arr.reduce((acc, cur) => acc + cur);
+};
+
+const sum = n => n === 1 ? n : n + sum(n-1);
+
+function sum(n) {
+	let result = 0
+	for(let i = 0; i <= n; i++){
+		result += i
+	}
+	return result
+}
+
+function sum(n) {
+	if(n === 0)
+		return 0
+	return(n + sum(n-1))
+}
+
+
+
