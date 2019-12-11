@@ -2403,3 +2403,37 @@ function filterList(l) {
 function filterList(l) {
 	return l.filter(item => typeof item !== 'string');
 }
+
+// 90. A palindrome is a word that is identical forward and backwards.
+
+// Yellow - checkPalindrome("reviver") ➞ true
+
+function checkPalindrome(str) {
+	return str == str.split("").reverse().join("") ? true : false;
+}
+
+const checkPalindrome = (str) => str.split('').reverse().join('').toLowerCase() == str.toLowerCase()
+
+function checkPalindrome(str) {
+	return	[...str].reverse().join("") == str
+}
+
+function checkPalindrome(str) {
+  for (i = 0; i < str.length; i++) {
+		if (str[i] !== str[str.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkPalindrome(str) {
+  let removeChar = str.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+  let checkPalindrome = removeChar.split('').reverse().join('');
+  return (removeChar === checkPalindrome);
+}
+
+
+
+
+
