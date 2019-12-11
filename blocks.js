@@ -2384,3 +2384,22 @@ function existsHigher(arr, n) {
 	return false;
 }
 
+// 89. Create a function which filters out strings from an array and returns a new array containing only integers.
+
+// White - filterList([1, 2, 3, "x", "y", 10]) ➞ [1, 2, 3, 10]
+
+function filterList(l) {
+	return l.filter(x => Number.isInteger(x))
+}
+
+function filterList(l) {
+	return l.filter( c => typeof c === 'number');
+}
+
+function filterList(l) {
+	return l.filter(x => !isNaN(x));
+}
+
+function filterList(l) {
+	return l.filter(item => typeof item !== 'string');
+}
