@@ -2360,5 +2360,27 @@ function sum(n) {
 	return(n + sum(n-1))
 }
 
+// 88. Write a function that returns true if there exists at least one number that is larger than or equal to n.
 
+// White - existsHigher([4, 3, 3, 3, 2, 2, 2], 4) ➞ true
+
+function existsHigher(arr, n) {
+	return Math.max(...arr) >= n;
+}
+
+const existsHigher = (arr, n) => arr.some(num => num >= n);
+
+function existsHigher(arr, n) {
+	return arr.reduce((bool, a) => a >= n ? true : bool, false);
+}
+
+function existsHigher(arr, n) {
+	for (i = 0; i < arr.length; i++){
+		
+	if (arr[i] >= n ) {
+		return true;
+	}
+	}
+	return false;
+}
 
