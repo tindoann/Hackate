@@ -2533,8 +2533,6 @@ function toArray(str) {
 	return str.length > 0 ? str.split(", ") : [];
 }
 
-
-
 function toArray(str) {
 	if(str) {
 		return str.split(", ");
@@ -2580,3 +2578,24 @@ function addEnding(arr, ending) {
 	return arr;
 }
 
+// 95. unlucky13([53, 182, 435, 591, 637]) ➞ [53, 435, 591]
+// 182 and 637 are divisible by 13.
+
+// White - unlucky13([53, 182, 435, 591, 637]) ➞ [53, 435, 591]
+// 182 and 637 are divisible by 13.
+
+function unlucky13(nums) {
+	return nums.filter(x => x % 13 !== 0); 
+}
+
+const unlucky13 = nums => nums.filter(n => n % 13);
+
+function unlucky13(nums) {
+	var newArr = [];
+	for(var i = 0; i < nums.length; i++){
+		if(nums[i] % 13 != 0){
+			newArr.push(nums[i]);
+		}
+	}
+	return newArr;
+}
