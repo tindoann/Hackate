@@ -2599,3 +2599,31 @@ function unlucky13(nums) {
 	}
 	return newArr;
 }
+
+// 96. Given a year you must implement a function that returns true if it's a leap year, or false if it's not.
+// A year must either be divisible by 400 or divisible by 4 and not 100.
+
+// Yellow - isLeap(1800) ➞ false
+// Exactly divided by 4, but is also exactly divided by 100.
+
+const isLeap = year => year % 400 === 0 || year % 4 === 0 && year %100 !== 0;
+
+function isLeap(year) {
+	return year % 4 == 0 &&  year % 100 !== 0 || year % 400 == 0;
+}
+
+function isLeap(year) {
+	if((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)){
+		return true;
+	}else {
+		return false;
+	}
+}
+
+
+
+
+
+
+
+
