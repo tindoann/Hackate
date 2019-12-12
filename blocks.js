@@ -2620,7 +2620,34 @@ function isLeap(year) {
 	}
 }
 
+// 97. Suppose I want to define a function that removes the last element of an array each time I call it, but does not mutate the original array.
 
+// x = [1, 2, 3, 4, 5]
+// minusOne(x) ➞ [1, 2, 3, 4]  // 1st time function is called.
+
+function minusOne(arr) {
+  return arr.slice(0, arr.length - 1); 
+}
+
+function minusOne(arr) {
+  return arr.slice(0, -1)
+}
+
+const minusOne = arr => arr.slice(0, -1);
+
+function minusOne(arr) {
+	arr1=[];
+	for (i=0;i< arr.length-1;i++){
+		arr1.push(arr[i]);
+	}
+  return arr1;
+}
+
+function minusOne(arr) {
+	let newArr = arr.slice();
+	newArr.pop();
+	return newArr;
+}
 
 
 
