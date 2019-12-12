@@ -2526,7 +2526,7 @@ function findEvenNums(num) {
 
 // 93. Write a function that turns a comma-delimited list into an array of strings.
 
-// Yelllow  - toArray("watermelon, raspberry, orange")
+// White  - toArray("watermelon, raspberry, orange")
 // ➞ ["watermelon", "raspberry", "orange"]
 
 function toArray(str) {
@@ -2555,3 +2555,28 @@ function toArray(str) {
 function toArray(str) {
 	return str.length ? str.split(',').map(t => t.trim()) : [];
 }
+
+// 94. Create a function that adds a string ending to each member in an array.
+
+// White - addEnding(["clever", "meek", "hurried", "nice"], "ly")
+// ➞ ["cleverly", "meekly", "hurriedly", "nicely"]
+
+function addEnding(arr, ending) {
+	return arr.map(x => x + ending)
+}
+
+function addEnding(arr, ending) {
+	return arr.map(word => `${word}${ending}`);
+}
+
+function addEnding(arr, ending) {
+	return arr.map(x => x.concat(ending));
+}
+
+function addEnding(arr, ending) {
+	for(var i=0; i < arr.length; i++){
+		arr[i] = arr[i]+ending;
+	}
+	return arr;
+}
+
