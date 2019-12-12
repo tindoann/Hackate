@@ -2471,8 +2471,6 @@ return evenNum
 
 // Yellow - findEvenNums(8) ➞ [2, 4, 6, 8]
 
-
-
 function findEvenNums(num) {
 	let evenNum = []
 	
@@ -2524,4 +2522,36 @@ function findEvenNums(num) {
 		if (i%2==0){even.push(i);}
 	}
 	return even;
+}
+
+// 93. Write a function that turns a comma-delimited list into an array of strings.
+
+// Yelllow  - toArray("watermelon, raspberry, orange")
+// ➞ ["watermelon", "raspberry", "orange"]
+
+function toArray(str) {
+	return str.length > 0 ? str.split(", ") : [];
+}
+
+
+
+function toArray(str) {
+	if(str) {
+		return str.split(", ");
+	} else {
+		return [];
+	}
+}
+
+function toArray(str) {
+	return (str.length == 0) ? [] : str.split(", ");
+}
+
+function toArray(str) {
+	if (str == '') return [];
+	return str.split(/,\s/);
+}
+
+function toArray(str) {
+	return str.length ? str.split(',').map(t => t.trim()) : [];
 }
