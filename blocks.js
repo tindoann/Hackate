@@ -2433,7 +2433,29 @@ function checkPalindrome(str) {
   return (removeChar === checkPalindrome);
 }
 
+// 91. Write a function that returns true if all integers in an array are factors of a number, and false otherwise.
 
+// White - checkFactors([2, 3, 4], 12) ➞ true
+// Since 2, 3, and 4 are all factors of 12.
+
+function checkFactors(factors, num) {
+	return factors.every(x => !(num % x)); 
+}
+
+function checkFactors(factors, num) {
+	return [...factors].every(factor => num % factors === 0)
+}
+
+const checkFactors = (factors, n) => factors.every(x => n % x == 0);
+
+function checkFactors(factors, num) {
+	for (let i = 0; i < factors.length; i++) {
+		if (num % factors[i] !== 0) {
+			return false;
+		}
+	}
+	return true;
+}
 
 
 
