@@ -2457,5 +2457,71 @@ function checkFactors(factors, num) {
 	return true;
 }
 
+findEvenNum = (num) => {
+let evenNum = []
+for (i = 1; i <= num; i++) {
+	evenNum.push(i)
+} 
+evenNum = evenNum.filter(x => x % 2 == 0)
+return evenNum
+}
 
 
+// 92. Create a function that finds all even numbers from 1 to the given number.
+
+// Yellow - findEvenNums(8) ➞ [2, 4, 6, 8]
+
+
+
+function findEvenNums(num) {
+	let evenNum = []
+	
+	for (i = 1; i <= num; i++) {
+		evenNum.push(i)
+	} 
+
+	evenNum = evenNum.filter(x => x % 2 == 0)
+
+	return evenNum
+}
+
+function findEvenNums(num) {
+	let even = [];
+	
+	for (let i = 1; i <= num; i++) {
+		if (i % 2 === 0) {
+			even.push(i);
+		}
+	}
+
+	return even;
+}
+
+const findEvenNums = num => [...Array(num).keys()].map(x => x + 1).filter(x => !(x % 2));
+
+function findEvenNums(num) {
+	var arr = []
+	for(var i = 2; i <= num; i += 2) {
+		arr.push(i)
+	}
+	
+	return arr
+}
+
+function findEvenNums(num) {
+	var res = [];
+	for(var i=1; i <= num; i++) {
+		if (i % 2 === 0) {
+			res.push(i);
+		}
+	}
+	return res;
+}
+
+function findEvenNums(num) {
+	let even =[];
+	for (i = 1 ; i<=num ; i++) {
+		if (i%2==0){even.push(i);}
+	}
+	return even;
+}
