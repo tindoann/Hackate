@@ -2721,7 +2721,64 @@ const getSequence = (low, high) => [...Array(high - low + 1)].map((x, i) => i + 
 
 const getSequence = (low, high) => Array.from(Array(high - low + 1), (x, i) => i + low);
 
+// 101. Write a function that reverses a string. Make your function recursive.
 
+// White - reverse("hello") ➞ "olleh", reverse("") ➞ ""
 
+function reverse(str) {
+	return str.split('').reverse().join(''); 
+}
 
+function reverse(str) {
+  if (!str) return str;
+  return str.slice(-1) + reverse(str.slice(0, -1));
+}
 
+const reverse = str => str === "" ? "" : reverse(str.substr(1)) + str.charAt(0);
+
+function reverse(str) {
+	if (typeof str !== 'string') {
+	  return;
+	}
+	else if (str === '') {
+		return '';
+	} else {
+		return reverse(str.substr(1)) + str[0];
+	}
+}
+
+// 102. Create a function that filters out an array of state names into two categories based on the second parameter.
+
+// Abbreviations abb
+// Full names full
+
+// filterStateNames(["Arizona", "CA", "NY", "Nevada"], "abb")
+// Yellow ➞ ["CA", "NY"]
+
+function filterStateNames(arr, type) {
+	return arr.filter(x => type === 'abb' ? x.length < 3 : x.length > 2);
+}
+
+function filterStateNames(arr, type) {
+	return arr.filter(x => (type === 'abb') ? x.length === 2 : x.length > 2);
+}
+
+function filterStateNames(arr, type) {
+	if(type == 'abb') {
+		return arr.filter(el => el.length <= 2);
+	}else if(type == 'full') {
+		return arr.filter(el => el.length > 2);
+	}
+}
+
+function filterStateNames(arr, type) {
+  var r = [];
+	for (var i in arr) {
+		if (type == 'abb') {
+			if (/^[A-Z]+$/.test(arr[i])) r.push(arr[i]);
+		} else {
+			if (!/^[A-Z]+$/.test(arr[i])) r.push(arr[i]);
+		}
+	}
+	return r;
+}
