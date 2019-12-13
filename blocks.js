@@ -2681,4 +2681,47 @@ function removeFirstLast(str) {
 
 const removeFirstLast = str => str.length > 2 ? str.slice(1, - 1) : str;
 
-// contribution
+// 99. Create a function that takes a string of lowercase characters and returns that string reversed and in upper case.
+
+// White - reverseCapitalize("hellothere") ➞ "EREHTOLLEH"
+
+
+function reverseCapitalize(str) {
+	return str.toUpperCase().split('').reverse().join('')
+}
+
+function reverseCapitalize(str) {
+	return [...str].reverse().join('').toUpperCase()
+}
+
+const reverseCapitalize = string => string.split('').reverse().join('').toUpperCase();
+
+function reverseCapitalize(str) {
+	let reversed = "";
+	for( let i = str.length -1; i >= 0; i--) {
+		reversed += str[i];
+	}
+	return reversed.toUpperCase();
+}
+
+// 100. Implement a function that returns an array containing all the consecutive numbers in ascendant order from the given value low up to the given value high (bounds included).
+
+// White - getSequence(1, 5) ➞ [1, 2, 3, 4, 5]
+
+
+function getSequence(low, high) {
+	arr = [];
+	for (i = low; i <= high; i++) {
+		arr.push(i);
+	}
+	return arr;
+}
+
+const getSequence = (low, high) => [...Array(high - low + 1)].map((x, i) => i + low);
+
+const getSequence = (low, high) => Array.from(Array(high - low + 1), (x, i) => i + low);
+
+
+
+
+
