@@ -2747,3 +2747,38 @@ function reverse(str) {
 	}
 }
 
+// 102. Create a function that filters out an array of state names into two categories based on the second parameter.
+
+// Abbreviations abb
+// Full names full
+
+// filterStateNames(["Arizona", "CA", "NY", "Nevada"], "abb")
+// Yellow ➞ ["CA", "NY"]
+
+function filterStateNames(arr, type) {
+	return arr.filter(x => type === 'abb' ? x.length < 3 : x.length > 2);
+}
+
+function filterStateNames(arr, type) {
+	return arr.filter(x => (type === 'abb') ? x.length === 2 : x.length > 2);
+}
+
+function filterStateNames(arr, type) {
+	if(type == 'abb') {
+		return arr.filter(el => el.length <= 2);
+	}else if(type == 'full') {
+		return arr.filter(el => el.length > 2);
+	}
+}
+
+function filterStateNames(arr, type) {
+  var r = [];
+	for (var i in arr) {
+		if (type == 'abb') {
+			if (/^[A-Z]+$/.test(arr[i])) r.push(arr[i]);
+		} else {
+			if (!/^[A-Z]+$/.test(arr[i])) r.push(arr[i]);
+		}
+	}
+	return r;
+}
