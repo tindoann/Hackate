@@ -2782,3 +2782,33 @@ function filterStateNames(arr, type) {
 	}
 	return r;
 }
+
+// 103. Create a function that takes an array of numbers and returns the smallest number in the set.
+
+// findSmallestNum([34, 15, 88, 2]) ➞ 2
+
+function findSmallestNum(arr) {
+	return Math.min(...arr); 
+}
+
+function findSmallestNum(arr) {
+  var lowest;
+  lowest = arr[0];
+  for (var i in arr){
+    if (arr[i]<lowest){
+      lowest = arr[i];
+    }
+  }
+  return lowest;
+}
+
+function findSmallestNum(arr) {
+  return arr.reduce((prev, item) => Math.min(prev, item))
+}
+
+function findSmallestNum(arr) {
+  arr.sort(function (a,b){
+    return a-b;
+  });
+  return arr[0];
+}
