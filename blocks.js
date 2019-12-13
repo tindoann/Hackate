@@ -2680,3 +2680,5 @@ function removeFirstLast(str) {
 }
 
 const removeFirstLast = str => str.length > 2 ? str.slice(1, - 1) : str;
+
+// contribution
