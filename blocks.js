@@ -2721,7 +2721,29 @@ const getSequence = (low, high) => [...Array(high - low + 1)].map((x, i) => i + 
 
 const getSequence = (low, high) => Array.from(Array(high - low + 1), (x, i) => i + low);
 
+// 101. Write a function that reverses a string. Make your function recursive.
 
+// White - reverse("hello") ➞ "olleh", reverse("") ➞ ""
 
+function reverse(str) {
+	return str.split('').reverse().join(''); 
+}
 
+function reverse(str) {
+  if (!str) return str;
+  return str.slice(-1) + reverse(str.slice(0, -1));
+}
+
+const reverse = str => str === "" ? "" : reverse(str.substr(1)) + str.charAt(0);
+
+function reverse(str) {
+	if (typeof str !== 'string') {
+	  return;
+	}
+	else if (str === '') {
+		return '';
+	} else {
+		return reverse(str.substr(1)) + str[0];
+	}
+}
 
