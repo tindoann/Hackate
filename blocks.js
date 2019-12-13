@@ -2649,8 +2649,34 @@ function minusOne(arr) {
 	return newArr;
 }
 
+// 98. Create a function that removes the first and last characters from a string.
+// If the string is 2 or fewer characters long, return the string itself.
+
+// Yellow- removeFirstLast("benefit") ➞ "enefi"
+// removeFirstLast("a") ➞ "a"
 
 
+function removeFirstLast(str) {
+	if (str.length > 2) {
+	return str.split('').slice(1, str.length - 1).join(''); 
+  } else {
+	return str; 
+	}
+}
 
+function removeFirstLast(str) {
+	if (str.length > 2) {
+		let arr = str.split('')
+		arr.shift()
+		arr.pop()
+		return arr.join('')
+	}
+	return str
+}
 
+function removeFirstLast(str) {
+	if (str.length <= 2) return str;
+	return str.replace(/(^\w|\w$)/g, '');
+}
 
+const removeFirstLast = str => str.length > 2 ? str.slice(1, - 1) : str;
