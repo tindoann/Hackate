@@ -2867,3 +2867,25 @@ function filterDigitLength(arr, num) {
 	});
 	return set
 }
+
+// 106. Write a function that maps files to their extension names.
+
+// Yellow - getExtension(["code.html", "code.css"])
+// ➞ ["html", "css"]
+
+function getExtension(arr) {
+	return arr.map(x => x.split(".").pop())
+}
+
+function getExtension(arr) {
+	return arr.map(x => x.split('.')[1])
+}
+
+const getExtension = arr => arr.map(file => file.split('.').slice(-1)[0]);
+
+function getExtension(arr) {
+	let arr0 = [];
+	for(let i in arr)
+		arr0.push(arr[i].split('.')[1])
+	return arr0;
+}
