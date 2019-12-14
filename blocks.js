@@ -2782,3 +2782,65 @@ function filterStateNames(arr, type) {
 	}
 	return r;
 }
+
+// 103. Create a function that takes an array of numbers and returns the smallest number in the set.
+
+// White - findSmallestNum([34, 15, 88, 2]) ➞ 2
+
+function findSmallestNum(arr) {
+	return Math.min(...arr); 
+}
+
+function findSmallestNum(arr) {
+  var lowest;
+  lowest = arr[0];
+  for (var i in arr){
+    if (arr[i]<lowest){
+      lowest = arr[i];
+    }
+  }
+  return lowest;
+}
+
+function findSmallestNum(arr) {
+  return arr.reduce((prev, item) => Math.min(prev, item))
+}
+
+function findSmallestNum(arr) {
+  arr.sort(function (a,b){
+    return a-b;
+  });
+  return arr[0];
+}
+
+// 104. Create a function that converts two arrays of x- and y- coordinates into an array of (x,y) coordinates.
+
+// White - convertCartesian([1, 5, 3, 3, 4], [5, 8, 9, 1, 0])
+// ➞ [[1, 5], [5, 8], [3, 9], [3, 1], [4, 0]]
+
+function convertCartesian(x, y) {
+	return x.map((v, i) => [v, y[i]])
+}
+
+function convertCartesian(x, y) {
+	return x.map(function(x,i){return [x,y[i]]})
+}
+
+function convertCartesian(x, y) {
+	let coords = [];
+	for (let i=0; i < x.length; i++) {
+		let coord = [];
+		coord.push(x[i], y[i])
+		coords.push(coord);
+	}
+	return coords;
+}
+
+function convertCartesian(x, y) {
+	var arr = [];
+	for (i=0;i<x.length;i++){
+		var ar=[x[i], y[i]];
+		arr.push(ar)
+	}
+	return arr
+}
