@@ -2844,3 +2844,26 @@ function convertCartesian(x, y) {
 	}
 	return arr
 }
+
+// 105. Create a function that filters out an array to include numbers who only have a certain number of digits.
+
+// Yellow - filterDigitLength([88, 232, 4, 9721, 555], 3) ➞ [232, 555]
+// Include only numbers with 3 digits.
+
+function filterDigitLength(arr, num) {
+	return arr.filter(x => x.toString().length === num)
+}
+
+function filterDigitLength(arr, num) {
+	return arr.filter(n => String(n).length === num);
+}
+
+function filterDigitLength(arr, num) {
+	let set = []
+	let lengthen = arr.map(item => {
+		if (item.toString().length == num) {
+			set.push(item);
+		};
+	});
+	return set
+}
