@@ -2919,3 +2919,22 @@ function nthSmallest(arr, n) {
 const nthSmallest = (arr, n) =>
 	n > arr.length ? null : arr.sort((a, b) => a - b)[n - 1];
 	
+// 108. Create a function that returns true if two arrays contain identical values, and false otherwise.
+
+// White - checkEquals([4, 7, 6], [4, 5, 6]) ➞ false
+
+function checkEquals(arr1, arr2) {
+	if (arr1.join(" ") === arr2.join(" ")) {
+  	return true
+ 	} else {
+  	return false
+ 	}
+}
+
+function checkEquals(arr1, arr2) {
+	return (arr1.toString() === arr2.toString());
+}
+
+const checkEquals = (arr1, arr2) =>
+	JSON.stringify(arr1) === JSON.stringify(arr2);
+	
