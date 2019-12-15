@@ -2938,3 +2938,27 @@ function checkEquals(arr1, arr2) {
 const checkEquals = (arr1, arr2) =>
 	JSON.stringify(arr1) === JSON.stringify(arr2);
 	
+
+// 109. You are given one input: An array containing eight 1's and/or 0's. Write a function that takes an 8 bit binary number and convert it to decimal.
+
+// White - binaryToDecimal([1, 1, 1, 1, 1, 1, 1, 1]) ➞ 255
+
+function binaryToDecimal(binary) {
+	return parseInt(binary.join(""), 2);
+}
+
+function binaryToDecimal(binary) {
+	let index = binary.length-1;
+	let decimal = 0;
+	for(let i=0; i< binary.length; i++){
+		decimal += binary[i]*Math.pow(2,index);
+		index--;
+	}
+	return decimal;
+}
+
+function binaryToDecimal(binary) {
+	var bstr = binary.join('');
+	return parseInt((bstr + '')
+    .replace(/[^01]/gi, ''), 2);
+}
