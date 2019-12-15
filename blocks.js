@@ -2867,3 +2867,74 @@ function filterDigitLength(arr, num) {
 	});
 	return set
 }
+
+// 106. Write a function that maps files to their extension names.
+
+// Yellow - getExtension(["code.html", "code.css"])
+// ➞ ["html", "css"]
+
+function getExtension(arr) {
+	return arr.map(x => x.split(".").pop())
+}
+
+function getExtension(arr) {
+	return arr.map(x => x.split('.')[1])
+}
+
+const getExtension = arr => arr.map(file => file.split('.').slice(-1)[0]);
+
+function getExtension(arr) {
+	let arr0 = [];
+	for(let i in arr)
+		arr0.push(arr[i].split('.')[1])
+	return arr0;
+}
+
+// 107. Given an unsorted array, create a function that returns the nth smallest element (the smallest element is the first smallest, the second smallest element is the second smallest, etc).
+
+// Yellow - nthSmallest([1, 3, 5, 7], 3) ➞ 5
+// nthSmallest([7, 3, 5, 1], 2) ➞ 3
+
+function nthSmallest(arr, n) {
+	var sortedArr = arr.sort((a, b) => a - b)
+	if (n > sortedArr.length){
+		return null
+	} else return sortedArr[n-1]
+}
+
+function nthSmallest(arr, n) {
+	arr.sort(function(a,b){return a -b});
+	if (n <= arr.length) {
+		return arr[n -1];
+	} else {
+		return null;
+	}
+}
+
+
+function nthSmallest(arr, n) {
+	return n > arr.length ? null : arr.sort()[n-1];
+}
+
+const nthSmallest = (arr, n) =>
+	n > arr.length ? null : arr.sort((a, b) => a - b)[n - 1];
+	
+// 108. Create a function that returns true if two arrays contain identical values, and false otherwise.
+
+// White - checkEquals([4, 7, 6], [4, 5, 6]) ➞ false
+
+function checkEquals(arr1, arr2) {
+	if (arr1.join(" ") === arr2.join(" ")) {
+  	return true
+ 	} else {
+  	return false
+ 	}
+}
+
+function checkEquals(arr1, arr2) {
+	return (arr1.toString() === arr2.toString());
+}
+
+const checkEquals = (arr1, arr2) =>
+	JSON.stringify(arr1) === JSON.stringify(arr2);
+	
