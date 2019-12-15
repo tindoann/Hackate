@@ -2962,3 +2962,41 @@ function binaryToDecimal(binary) {
 	return parseInt((bstr + '')
     .replace(/[^01]/gi, ''), 2);
 }
+
+// 110. Create a function that reverses a boolean value and returns the string "boolean expected" if another variable type is given.
+
+// White - reverse(false) ➞ true
+
+function reverse(bool) {
+	return bool === true ? false : bool === false ? true : "boolean expected" 
+}
+
+
+function reverse(bool) {
+	if (typeof bool !== 'boolean') return "boolean expected"
+	return !bool
+}
+
+function reverse(bool) {
+	return typeof bool === 'boolean' ? !bool : 'boolean expected'
+}
+
+const reverse = bool => typeof bool === 'boolean' ? !bool : 'boolean expected';
+
+function reverse(bool) {
+	if (typeof bool === 'boolean') {
+		return !bool
+	} else {
+		return 'boolean expected'
+	}
+}
+
+function reverse(bool) {
+	if ( bool === true ) {
+		return false;
+	} else if ( bool === false ) {
+		return true;
+	} else {
+		return "boolean expected";
+	}
+}
