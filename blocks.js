@@ -3074,7 +3074,7 @@ function middleEarth(arr) {
 
 // 114. Transform something that looks like this: ["a", "b", [], [], [1, 2, 3]] to look like ["a", "b", [1, 2, 3]]
 
-// removeEmptyArrays(["a", "b", []]) ➞ ["a", "b"]
+// White = WremoveEmptyArrays(["a", "b", []]) ➞ ["a", "b"]
 
 function removeEmptyArrays(arr) {
 	return arr.filter(x => x.length !== 0)
@@ -3089,3 +3089,85 @@ function removeEmptyArrays(arr) {
 }
 
 const removeEmptyArrays = arr => arr.filter(x => x != false);
+
+// 115. Write a function that partitions the array into two subarrays: one with all even integers, and the other with all odd integers. Return your result in the following format:
+
+// evenOddPartition([1, 0, 1, 0, 1, 0]) ➞ [[0, 0, 0], [1, 1, 1]]
+
+const evenOddPartition = arr => [arr.filter(x => x % 2 == 0),arr.filter(y => y % 2 != 0) ]
+
+// solution 2
+
+const isEven = num => num % 2 === 0;
+
+const evenOddPartition = arr => [
+  arr.filter(isEven),
+  arr.filter(num => !isEven(num)),
+];
+
+// solution 3 
+
+function evenOddPartition(arr) {
+	var results = [[],[]];
+	for (var i in arr) {
+		results[arr[i]%2].push(arr[i]);
+	}
+	return r;
+}
+
+// solution 4 
+
+function evenOddPartition(arr) {
+	let even = arr.filter(x => x%2===0);
+  let odd = arr.filter(x=>x%2!==0);
+  return [even,odd]
+}
+
+// solution 5
+
+function evenOddPartition(arr) {
+	return [arr.filter(x => x%2==0),arr.filter(x => x%2!=0)]
+}
+
+// 116. Write a function that returns true if the product of an array is divisible by the sum of that same array.
+
+// White - divisible[4, 2, 6] ➞ true
+
+function divisible(arr) {
+	const arrSum = arr.reduce((a,b) => a + b, 0)
+	const arrProd = arr.reduce((a,b) => a * b, 1)
+	return arrProd % arrSum == 0 ? true : false; 
+}
+
+function divisible(arr) {
+	let prod = arr.reduce((acc,cur) => acc *= cur,1),
+			sum = arr.reduce((acc,cur) => acc += cur,0)
+	return prod % sum == 0
+}
+
+function divisible(arr) {
+	return arr.reduce((a, c) => a * c, 1) % arr.reduce((a, c) => a + c) === 0
+}
+
+function divisible(arr) {
+	let sum = 0;
+	let product = 1;
+	
+	for(let i = 0; i < arr.length; i++) {
+		sum += arr[i];
+		product *= arr[i];
+	}
+	if(product % sum === 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function divisible(arr) {
+	let total = arr.reduce( (sum, current) => sum + current, 0 );
+	let prod = arr.reduce( (a, b) => a * b );
+
+	return ( prod / total ) % 2 === 0;
+}
