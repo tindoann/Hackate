@@ -3074,7 +3074,7 @@ function middleEarth(arr) {
 
 // 114. Transform something that looks like this: ["a", "b", [], [], [1, 2, 3]] to look like ["a", "b", [1, 2, 3]]
 
-// removeEmptyArrays(["a", "b", []]) ➞ ["a", "b"]
+// White = WremoveEmptyArrays(["a", "b", []]) ➞ ["a", "b"]
 
 function removeEmptyArrays(arr) {
 	return arr.filter(x => x.length !== 0)
@@ -3089,3 +3089,42 @@ function removeEmptyArrays(arr) {
 }
 
 const removeEmptyArrays = arr => arr.filter(x => x != false);
+
+// 115. Write a function that partitions the array into two subarrays: one with all even integers, and the other with all odd integers. Return your result in the following format:
+
+// evenOddPartition([1, 0, 1, 0, 1, 0]) ➞ [[0, 0, 0], [1, 1, 1]]
+
+const evenOddPartition = arr => [arr.filter(x => x % 2 == 0),arr.filter(y => y % 2 != 0) ]
+
+// solution 2
+
+const isEven = num => num % 2 === 0;
+
+const evenOddPartition = arr => [
+  arr.filter(isEven),
+  arr.filter(num => !isEven(num)),
+];
+
+// solution 3 
+
+function evenOddPartition(arr) {
+	var results = [[],[]];
+	for (var i in arr) {
+		results[arr[i]%2].push(arr[i]);
+	}
+	return r;
+}
+
+// solution 4 
+
+function evenOddPartition(arr) {
+	let even = arr.filter(x => x%2===0);
+  let odd = arr.filter(x=>x%2!==0);
+  return [even,odd]
+}
+
+// solution 5
+
+function evenOddPartition(arr) {
+	return [arr.filter(x => x%2==0),arr.filter(x => x%2!=0)]
+}
