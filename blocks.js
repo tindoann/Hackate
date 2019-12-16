@@ -3051,3 +3051,41 @@ function oddProduct(arr) {
 function oddProduct(arr) {
 	return arr.filter(el => el % 2 !== 0).reduce((acc, curr) => acc * curr);
 }
+
+// 113. Sam and Frodo need to be close. If they are side by side in the array, your function should return true. If there is a name between them, return false.
+
+// White - middleEarth(["Frodo", "Sam", "Gandalf"]) ➞ true
+
+function middleEarth(arr) {
+	return Math.abs(arr.indexOf('Sam') - arr.indexOf('Frodo')) === 1
+}
+
+const middleEarth = arr => /samfrodo|frodosam/gi.test(arr.join(''));
+
+function middleEarth(arr) {
+	const i = [arr.indexOf('Frodo'), arr.indexOf('Sam')];
+	return (Math.max(...i) - Math.min(...i)) === 1;
+}
+
+function middleEarth(arr) {
+	const i = [arr.indexOf('Frodo'), arr.indexOf('Sam')];
+	return (Math.max(...i) - Math.min(...i)) === 1;
+}
+
+// 114. Transform something that looks like this: ["a", "b", [], [], [1, 2, 3]] to look like ["a", "b", [1, 2, 3]]
+
+// removeEmptyArrays(["a", "b", []]) ➞ ["a", "b"]
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x.length !== 0)
+}
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x > [])
+}
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x != "")
+}
+
+const removeEmptyArrays = arr => arr.filter(x => x != false);
