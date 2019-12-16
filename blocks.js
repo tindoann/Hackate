@@ -3071,3 +3071,21 @@ function middleEarth(arr) {
 	const i = [arr.indexOf('Frodo'), arr.indexOf('Sam')];
 	return (Math.max(...i) - Math.min(...i)) === 1;
 }
+
+// 114. Transform something that looks like this: ["a", "b", [], [], [1, 2, 3]] to look like ["a", "b", [1, 2, 3]]
+
+// removeEmptyArrays(["a", "b", []]) ➞ ["a", "b"]
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x.length !== 0)
+}
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x > [])
+}
+
+function removeEmptyArrays(arr) {
+	return arr.filter(x => x != "")
+}
+
+const removeEmptyArrays = arr => arr.filter(x => x != false);
