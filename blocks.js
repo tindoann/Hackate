@@ -3024,3 +3024,30 @@ const subReddit = link => link.match(/\/r\/(\w+)/)[1];
 
 let subReddit = r => (r.match(/\/r\/([a-z]+)/i))[1]
 
+// 112. Create a function that returns the product of all odd integers in an array.
+
+// Yellow - oddProduct([3, 4, 1, 1, 5]) ➞ 15
+
+function oddProduct(arr) {
+	return arr.filter(x => x % 2 !== 0).reduce((a,b) => a * b);
+}
+
+function oddProduct(arr) {
+	return arr.reduce((acc, a) => a % 2 !== 0 ? acc * a : acc, 1);
+}
+
+let oddProduct=(arr)=>arr.filter(x=>x%2==1).reduce((a,b)=>a*b)
+
+function oddProduct(arr) {
+	var sum = 1;
+	for (i = 0; i < arr.length; i++){
+		if(arr[i]%2 != 0){
+			sum = sum*arr[i];
+		}
+	}
+	return sum;
+}
+
+function oddProduct(arr) {
+	return arr.filter(el => el % 2 !== 0).reduce((acc, curr) => acc * curr);
+}
