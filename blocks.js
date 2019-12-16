@@ -3128,3 +3128,46 @@ function evenOddPartition(arr) {
 function evenOddPartition(arr) {
 	return [arr.filter(x => x%2==0),arr.filter(x => x%2!=0)]
 }
+
+// 116. Write a function that returns true if the product of an array is divisible by the sum of that same array.
+
+// White - divisible[4, 2, 6] ➞ true
+
+function divisible(arr) {
+	const arrSum = arr.reduce((a,b) => a + b, 0)
+	const arrProd = arr.reduce((a,b) => a * b, 1)
+	return arrProd % arrSum == 0 ? true : false; 
+}
+
+function divisible(arr) {
+	let prod = arr.reduce((acc,cur) => acc *= cur,1),
+			sum = arr.reduce((acc,cur) => acc += cur,0)
+	return prod % sum == 0
+}
+
+function divisible(arr) {
+	return arr.reduce((a, c) => a * c, 1) % arr.reduce((a, c) => a + c) === 0
+}
+
+function divisible(arr) {
+	let sum = 0;
+	let product = 1;
+	
+	for(let i = 0; i < arr.length; i++) {
+		sum += arr[i];
+		product *= arr[i];
+	}
+	if(product % sum === 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function divisible(arr) {
+	let total = arr.reduce( (sum, current) => sum + current, 0 );
+	let prod = arr.reduce( (a, b) => a * b );
+
+	return ( prod / total ) % 2 === 0;
+}
