@@ -3155,14 +3155,14 @@ function divisible(arr) {
 	
 	for(let i = 0; i < arr.length; i++) {
 		sum += arr[i];
-		product *= arr[i];
+		product *= arr[ i];
 	}
 	if(product % sum === 0) {
 		return true;
 	}
 	else {
 		return false;
-	}
+	} 
 }
 
 function divisible(arr) {
@@ -3195,6 +3195,20 @@ function last(a, n) {
 }
 
 const last = (a, n) => a.length >= n ? a.slice(a.length-n, a.length) : "invalid"
+
+// 118. Create a function that accepts a string (of a persons first and last name) and returns a string with the first and last name swapped.
+
+// White - nameShuffle("Donald Trump") ➞ "Trump Donald"
+
+function nameShuffle(str) {
+	return str.split(' ').reverse().join(' ')
+}
+
+function nameShuffle(str) {
+	const arr = str.split(' ');
+	return arr[1] + ' ' + arr[0];
+}
+
 
 
 
