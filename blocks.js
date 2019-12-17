@@ -3360,3 +3360,61 @@ function hammingDistance(a, b) {
 	const hammingDistance = (a, b) => [...a].filter((x, i) => x != b[i].length)
 
 
+// 124. Create a function that takes an array of numbers and returns only the even values.
+
+// White - noOdds([1, 2, 3, 4, 5, 6, 7, 8]) ➞ [2, 4, 6, 8]
+
+function noOdds(arr) {
+	return arr.filter(x => x % 2 == 0); 
+}
+
+let nooOdds = arr => arr.filter(x => x % 2 == 0); 
+
+function noOdds(arr) {
+	return arr.filter(a => !(a % 2)); 
+}
+
+function noOdds(arr) {
+	let even = []; 
+	for(let i = 0; i < arr.length; i++) {
+		if(arr[i] % 2 == 0) {
+			even.push(arr[i]); 
+		}
+	}
+	return even; 
+}
+
+// 125. Write a function that returns true if all characters in a string are identical and false otherwise.
+
+// White - isIdentical("aaaaaa") ➞ true
+// isIdentical("aabaaa") ➞ false
+
+function isIdentical(s) {
+	return s.split('').every(el => el === s[0]);
+}
+
+function isIdentical(s) {
+	return (new Set(s)).size == 1
+}
+
+function isIdentical(s) {
+	return /^(\w)\1*$/.test(s)
+}
+
+function isIdentical(s) {
+	let x = s[0];
+	for (let i of s) {
+		if (i !== x) { return false; }
+	}
+	return true;
+}
+
+function isIdentical(s){
+	for (let i = 0; i < s.length; i++){
+		if(s[0] !=s[i]){
+			return false; 
+		}
+		  return true; 
+		}
+	}
+
