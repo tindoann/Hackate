@@ -3155,14 +3155,14 @@ function divisible(arr) {
 	
 	for(let i = 0; i < arr.length; i++) {
 		sum += arr[i];
-		product *= arr[i];
+		product *= arr[ i];
 	}
 	if(product % sum === 0) {
 		return true;
 	}
 	else {
 		return false;
-	}
+	} 
 }
 
 function divisible(arr) {
@@ -3171,3 +3171,65 @@ function divisible(arr) {
 
 	return ( prod / total ) % 2 === 0;
 }
+
+// 117. Write a function that retrieves the last n elements from an array.
+
+/* 
+White - last([4, 3, 9, 9, 7, 6], 3) ➞ [9, 7, 6]
+
+last([1, 2, 3, 4, 5], 7) ➞ "invalid"
+
+last([1, 2, 3, 4, 5], 0) ➞ []
+*/
+
+function last(a, n) {
+	return n === 0 ? [] : n > a.length ? "invalid" : a.slice(-n);
+}
+
+function last (a, n) {
+	return n > a.length ? "invalid" : a.slice(a.length-n); 
+}
+
+function last(a, n) {
+	return a.length >= n ? a.slice(a.length - n, a.length) : 'invalid'
+}
+
+const last = (a, n) => a.length >= n ? a.slice(a.length-n, a.length) : "invalid"
+
+// 118. Create a function that accepts a string (of a persons first and last name) and returns a string with the first and last name swapped.
+
+// White - nameShuffle("Donald Trump") ➞ "Trump Donald"
+
+function nameShuffle(str) {
+	return str.split(' ').reverse().join(' ')
+}
+
+function nameShuffle(str) {
+	const arr = str.split(' ');
+	return arr[1] + ' ' + arr[0];
+}
+
+// 119. Given two integers, a and b, return True if a can be divided evenly by b. Return False otherwise.
+ 
+// White - dividesEvenly(98, 7) ➞ True
+// # 98/7 = 14
+
+function dividesEvenly(a, b) {
+  return a % b == 0 ? true : false; 
+}
+
+function dividesEvenly(a, b) {
+	if (a % b === 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
+
+
+
+
+
