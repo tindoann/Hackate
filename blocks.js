@@ -1663,7 +1663,7 @@ function removeVowels(str) {
 // White - additiveInverse([5, -7, 8, 3]) ➞ [-5, 7, -8, -3]
 
 function additiveInverse(arr) {
-	return arr.map(item => item * -1); 
+
 }
 
 const additiveInverse = (arr) => arr.map(item => item * 1)
@@ -3226,10 +3226,41 @@ function dividesEvenly(a, b) {
 	}
 }
 
+// 120. The solution should be one string with a comma in between every "Hello (Name)".
+
+//  Add "Hello" to every name.
+// Make one big string with all greetings.
+
+// greetPeople(["Angela", "Joe"]) ➞ "Hello Angela, Hello Joe"
 
 
+function greetPeople(names) {
+	return names.map(x => 'Hello ' + x).join(', '); 
+}
 
+const greetPeople = names => names.map(name => `Hello ${name}`).join(', ');
 
+function greetPeople(names) {
+	if (names.length === 0) {
+		return "";
+	}
+	let greeting = "";
+	for (let i = 0; i < names.length; i++) {
+		greeting = greeting + "Hello " + names[i] + ", ";
+	}
+	return greeting.slice(0, -2);
+}
+
+function greetPeople(names) {
+	if (names.length === 1) {
+		return `Hello ${names}`;
+	} else if (names.length > 1) {
+		let name = names.pop()
+		return greetPeople(names) + `, Hello ${name}`;
+	} else {
+		return '';
+	}
+}
 
 
 
