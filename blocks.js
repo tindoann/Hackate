@@ -3333,25 +3333,6 @@ function cardHide(card) {
 // Yellow - hammingDistance("abcde", "bcdef") ➞ 5
 // hammingDistance("abcde", "abcde") ➞ 0
 
-
-int hammingDist(char str1[], char str2[])
-{
-    int i = 0, count = 0;
-    while(str1[i]!='\0')
-    {
-        if (str1[i] != str2[i])
-            count++;
-        i++;
-    }
-    return count;
-}
-
-// 124. Hamming distance is the number of characters that differ between two strings.
-
-// Yellow - hammingDistance("abcde", "bcdef") ➞ 5
-
-// hammingDistance("abcde", "abcde") ➞ 0
-
 function hammingDistance(a, b) {
 	let counter = 0; 
 	for (let i = 0; i < a.length; i++) {
