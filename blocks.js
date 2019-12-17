@@ -3305,6 +3305,10 @@ function cardHide(card) {
 const cardHide = card => '*'.repeat(card.length - 4) + card.slice(-4);
 
 function cardHide(card) {
+	return '*'.repeat(card.length - 4) + card.slice(-4); 
+}
+
+function cardHide(card) {
 	return '*'.repeat(card.length - 4) + card.slice(card.length - 4);
 }
 
@@ -3323,7 +3327,55 @@ function cardHide(card) {
 	return newArr.join('');
 }
 
+// 123. Hamming distance is the number of characters that differ between two strings.
+// Create a function that computes the hamming distance between two strings.
+
+// Yellow - hammingDistance("abcde", "bcdef") ➞ 5
+// hammingDistance("abcde", "abcde") ➞ 0
 
 
+int hammingDist(char str1[], char str2[])
+{
+    int i = 0, count = 0;
+    while(str1[i]!='\0')
+    {
+        if (str1[i] != str2[i])
+            count++;
+        i++;
+    }
+    return count;
+}
+
+// 124. Hamming distance is the number of characters that differ between two strings.
+
+// Yellow - hammingDistance("abcde", "bcdef") ➞ 5
+
+// hammingDistance("abcde", "abcde") ➞ 0
+
+function hammingDistance(a, b) {
+	let counter = 0; 
+	for (let i = 0; i < a.length; i++) {
+		if (a[i] !== b[i]) {
+			counter++; 
+		 }
+		} 
+		return counter; 
+	}
+
+	function hammingDistance(a, b) {
+		let counter = 0; 
+		for (i in a) {
+			if (a[i] !== b[i]) {
+				counter++; 
+			}
+		}
+		return counter; 
+	}
+
+	function hammingDistance(a, b) {
+		return a.split('').filter((curr, i) => curr !== b[i]).length; 
+	}
+
+	const hammingDistance = (a, b) => [...a].filter((x, i) => x != b[i].length)
 
 
