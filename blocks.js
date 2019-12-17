@@ -3171,3 +3171,33 @@ function divisible(arr) {
 
 	return ( prod / total ) % 2 === 0;
 }
+
+// 117. Write a function that retrieves the last n elements from an array.
+
+/* 
+White - last([4, 3, 9, 9, 7, 6], 3) ➞ [9, 7, 6]
+
+last([1, 2, 3, 4, 5], 7) ➞ "invalid"
+
+last([1, 2, 3, 4, 5], 0) ➞ []
+*/
+
+function last(a, n) {
+	return n === 0 ? [] : n > a.length ? "invalid" : a.slice(-n);
+}
+
+function last (a, n) {
+	return n > a.length ? "invalid" : a.slice(a.length-n); 
+}
+
+function last(a, n) {
+	return a.length >= n ? a.slice(a.length - n, a.length) : 'invalid'
+}
+
+const last = (a, n) => a.length >= n ? a.slice(a.length-n, a.length) : "invalid"
+
+
+
+
+
+
