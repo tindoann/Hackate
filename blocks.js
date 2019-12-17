@@ -3402,7 +3402,7 @@ function isIdentical(s) {
 }
 
 function isIdentical(s) {
-	let x = s[0];
+	let x = s[0];as
 	for (let i of s) {
 		if (i !== x) { return false; }
 	}
@@ -3418,3 +3418,22 @@ function isIdentical(s){
 		}
 	}
 
+// 126. Create a function that takes a string as its argument and returns the string in reversed order.
+
+// White - reverse("Hello World") ➞ "dlroW olleH"
+
+function reverse(str) {
+	return str.split('').reverse().join('')
+}
+
+function reverse(str) {
+  return [...str].reverse().join('');
+}
+
+function reverse(str) {
+  let result = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i];
+  }
+  return result; 
+}
