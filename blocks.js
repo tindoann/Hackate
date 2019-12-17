@@ -3228,7 +3228,7 @@ function dividesEvenly(a, b) {
 
 // 120. The solution should be one string with a comma in between every "Hello (Name)".
 
-//  Add "Hello" to every name.
+//  Yellow - Add "Hello" to every name.
 // Make one big string with all greetings.
 
 // greetPeople(["Angela", "Joe"]) ➞ "Hello Angela, Hello Joe"
@@ -3261,6 +3261,69 @@ function greetPeople(names) {
 		return '';
 	}
 }
+
+
+// 121. Create a function that takes in an initial word and filters out an array to contain words that start with the same letters as the initial word.
+
+// dictionary("tri", ["triplet", "tries", "trip", "piano", "tree"]) ➞ ["triplet", "tries", trip"]
+
+function dictionary(initial, words) {
+	return words.filter(word => word.startsWith(initial));
+}
+
+function dictionary(initial, words) {
+	return words.filter(x => x.slice(0, initial.length) === initial);
+}
+
+function dictionary(initial, words) {
+	let matchingWords = [];
+	words.forEach(word => {
+		if (word.includes(initial)) {
+			matchingWords.push(word);
+		}
+	});
+	return matchingWords;
+}
+
+// 122. Write a function that takes a credit card number and only displays the last four characters. The rest of the card number must be replaced by ************.
+
+// White - cardHide("1234123456785678") ➞ "************5678"
+
+function cardHide(card) {
+	end = card.slice(-4)
+	if (card.length > 14) {
+	return '************' + end;
+  } else {
+	return '**********' + end;
+	}
+}
+
+function cardHide(card) {
+	return card.replace(/.(?=.{4,}$)/g, '*')
+}
+
+const cardHide = card => '*'.repeat(card.length - 4) + card.slice(-4);
+
+function cardHide(card) {
+	return '*'.repeat(card.length - 4) + card.slice(card.length - 4);
+}
+
+function cardHide(card) {
+	let num = card.split('');
+	let newArr = [];
+
+	for(let i = 0; i < num.length; i++) {
+		if(i > card.length - 5) {
+			newArr.push(num[i]);
+		} else {
+			newArr.push('*');
+		}
+	}
+	
+	return newArr.join('');
+}
+
+
 
 
 
