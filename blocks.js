@@ -3482,3 +3482,26 @@ function cars(wheels, bodies, figures) {
  }
  return num - 1;  
 }
+
+// 129. Create a function that takes two strings and returns true if the first string ends with the second string; otherewise return false.
+
+// White - checkEnding("abc", "bc") ➞ true
+// checkEnding("abc", "d") ➞ false
+
+function checkEnding(str1, str2) {
+	return str1.substring(str1.length - str2.length) === str2; 
+}
+
+function checkEnding(str1, str2) {
+	return str1.endsWith(str2); 
+}
+
+function checkEnding(str1, str2) {
+  return str2 === str1.substr(str1.length - str2.length, str2.length);
+}
+
+const checkEnding = (a, b) => {
+  return [...a].join('').slice(a.length - b.length, a.length) === b
+}
+
+const checkEnding = (str1, str2) => str1.endsWith(str2);
