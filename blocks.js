@@ -3209,6 +3209,24 @@ function nameShuffle(str) {
 	return arr[1] + ' ' + arr[0];
 }
 
+// 119. Given two integers, a and b, return True if a can be divided evenly by b. Return False otherwise.
+ 
+// White - dividesEvenly(98, 7) ➞ True
+// # 98/7 = 14
+
+function dividesEvenly(a, b) {
+  return a % b == 0 ? true : false; 
+}
+
+function dividesEvenly(a, b) {
+	if (a % b === 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 
 
 
