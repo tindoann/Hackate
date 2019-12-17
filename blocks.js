@@ -3437,3 +3437,25 @@ function reverse(str) {
   }
   return result; 
 }
+
+// 127. Create a function that takes a sentence and turns every "i" into "wi" and "e" into "we", and add "owo" at the end.
+
+// Yellow - owofied("I'm gonna ride 'til I can't no more")
+// ➞ "I'm gonna rwidwe 'twil I can't no morwe owo"
+
+function owofied(sentence) {
+	return sentence.replace(/([ie])/g, 'w$1') + ' owo';
+}
+
+function owofied(sentence) {
+	return sentence.replace(/i/g, "wi").replace(/e/g, "we") + " owo";
+}
+
+function owofied(sentence) {
+	var replaceI = sentence.replace(/\i/g, 'wi');
+	var replaceWi = replaceI.replace(/\e/g, 'we');
+	var owo = replaceWi + " owo";
+	return owo;
+}
+
+
