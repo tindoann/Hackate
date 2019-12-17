@@ -3458,4 +3458,27 @@ function owofied(sentence) {
 	return owo;
 }
 
+// 128. You work in a toy car workshop, and your job is to build toy cars from a collection of parts. 
+// Each toy car needs 4 wheels, 1 car body, and 2 figures of people to be placed inside. 
+// Given the total number of wheels, car bodies and figures available, how many complete toy cars can you make?
 
+// White - cars(2, 48, 76) ➞ 0
+// # 2 wheels, 48 car bodies, 76 figures
+
+// cars(43, 15, 87) ➞ 10
+
+function cars(wheels, bodies, figures) {
+	return Math.floor(Math.min(wheels / 4, bodies, figures / 2));
+}
+
+function cars(wheels, bodies, figures) {
+  return Math.floor(Math.min(wheels/4, bodies/1, figures/2))
+}
+
+function cars(wheels, bodies, figures) {
+	let num = 1; 
+	while(wheels >= num * 4 && bodies >= num * 1 && figures >= num * 2){
+		num++;
+ }
+ return num - 1;  
+}
