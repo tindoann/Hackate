@@ -3567,7 +3567,30 @@ function lettersOnly(str) {
 	return str.replace(/[^a-z]/gi, '')
 }
 
+// 133. Given an array, transform that array into a mirror.
 
+// Yellow - mirror([0, 2, 4, 6]) ➞ [0, 2, 4, 6, 4, 2, 0]
+
+function mirror(arr) {
+	return [... arr, ... arr.splice(0, arr.length - 1).reverse()]
+}
+
+function mirror(arr) {
+	return arr.concat(arr.concat().reverse().slice(1));
+}
+
+function mirror(arr) {
+	return [...arr, ...arr.slice(0,-1).reverse()]
+}
+
+function mirror(arr) {
+	let result = []
+	for(let i = arr.length - 2; i>=0; i--){
+			result.push(arr[i])
+	}
+	 arr.push(...result)
+	return arr
+}
 
 
 
