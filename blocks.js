@@ -3360,3 +3360,173 @@ function hammingDistance(a, b) {
 	const hammingDistance = (a, b) => [...a].filter((x, i) => x != b[i].length)
 
 
+// 124. Create a function that takes an array of numbers and returns only the even values.
+
+// White - noOdds([1, 2, 3, 4, 5, 6, 7, 8]) ➞ [2, 4, 6, 8]
+
+function noOdds(arr) {
+	return arr.filter(x => x % 2 == 0); 
+}
+
+let nooOdds = arr => arr.filter(x => x % 2 == 0); 
+
+function noOdds(arr) {
+	return arr.filter(a => !(a % 2)); 
+}
+
+function noOdds(arr) {
+	let even = []; 
+	for(let i = 0; i < arr.length; i++) {
+		if(arr[i] % 2 == 0) {
+			even.push(arr[i]); 
+		}
+	}
+	return even; 
+}
+
+// 125. Write a function that returns true if all characters in a string are identical and false otherwise.
+
+// White - isIdentical("aaaaaa") ➞ true
+// isIdentical("aabaaa") ➞ false
+
+function isIdentical(s) {
+	return s.split('').every(el => el === s[0]);
+}
+
+function isIdentical(s) {
+	return (new Set(s)).size == 1
+}
+
+function isIdentical(s) {
+	return /^(\w)\1*$/.test(s)
+}
+
+function isIdentical(s) {
+	let x = s[0];as
+	for (let i of s) {
+		if (i !== x) { return false; }
+	}
+	return true;
+}
+
+function isIdentical(s){
+	for (let i = 0; i < s.length; i++){
+		if(s[0] !=s[i]){
+			return false; 
+		}
+		  return true; 
+		}
+	}
+
+// 126. Create a function that takes a string as its argument and returns the string in reversed order.
+
+// White - reverse("Hello World") ➞ "dlroW olleH"
+
+function reverse(str) {
+	return str.split('').reverse().join('')
+}
+
+function reverse(str) {
+  return [...str].reverse().join('');
+}
+
+function reverse(str) {
+  let result = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i];
+  }
+  return result; 
+}
+
+// 127. Create a function that takes a sentence and turns every "i" into "wi" and "e" into "we", and add "owo" at the end.
+
+// Yellow - owofied("I'm gonna ride 'til I can't no more")
+// ➞ "I'm gonna rwidwe 'twil I can't no morwe owo"
+
+function owofied(sentence) {
+	return sentence.replace(/([ie])/g, 'w$1') + ' owo';
+}
+
+function owofied(sentence) {
+	return sentence.replace(/i/g, "wi").replace(/e/g, "we") + " owo";
+}
+
+function owofied(sentence) {
+	var replaceI = sentence.replace(/\i/g, 'wi');
+	var replaceWi = replaceI.replace(/\e/g, 'we');
+	var owo = replaceWi + " owo";
+	return owo;
+}
+
+// 128. You work in a toy car workshop, and your job is to build toy cars from a collection of parts. 
+// Each toy car needs 4 wheels, 1 car body, and 2 figures of people to be placed inside. 
+// Given the total number of wheels, car bodies and figures available, how many complete toy cars can you make?
+
+// White - cars(2, 48, 76) ➞ 0
+// # 2 wheels, 48 car bodies, 76 figures
+
+// cars(43, 15, 87) ➞ 10
+
+function cars(wheels, bodies, figures) {
+	return Math.floor(Math.min(wheels / 4, bodies, figures / 2));
+}
+
+function cars(wheels, bodies, figures) {
+  return Math.floor(Math.min(wheels/4, bodies/1, figures/2))
+}
+
+function cars(wheels, bodies, figures) {
+	let num = 1; 
+	while(wheels >= num * 4 && bodies >= num * 1 && figures >= num * 2){
+		num++;
+ }
+ return num - 1;  
+}
+
+// 129. Create a function that takes two strings and returns true if the first string ends with the second string; otherewise return false.
+
+// White - checkEnding("abc", "bc") ➞ true
+// checkEnding("abc", "d") ➞ false
+
+function checkEnding(str1, str2) {
+	return str1.substring(str1.length - str2.length) === str2; 
+}
+
+function checkEnding(str1, str2) {
+	return str1.endsWith(str2); 
+}
+
+function checkEnding(str1, str2) {
+  return str2 === str1.substr(str1.length - str2.length, str2.length);
+}
+
+const checkEnding = (a, b) => {
+  return [...a].join('').slice(a.length - b.length, a.length) === b
+}
+
+const checkEnding = (str1, str2) => str1.endsWith(str2);
+
+// 130. Create a function that takes a string and returns a string with its letters in alphabetical order.
+
+// White - AlphabetSoup("hello") ➞ "ehllo"
+
+function AlphabetSoup(str) {
+	return str.split('').sort().join('') 
+}
+
+function AlphabetSoup(str) {
+	return [...str].sort().join(''); 
+}
+
+function AlphabetSoup(str) {
+	return Array.from(str).sort().join(''); 
+}
+
+function AlphabetSoup(str) {
+  const chars = str.split('').map(c => c.charCodeAt())
+  chars.sort((a,b) => a-b)
+  return chars.map(c => String.fromCharCode(c)).join('')
+}
+
+
+
