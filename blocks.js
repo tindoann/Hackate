@@ -3528,5 +3528,72 @@ function AlphabetSoup(str) {
   return chars.map(c => String.fromCharCode(c)).join('')
 }
 
+// 131. Write a function that returns true if two arrays have the same number of unique elements, and false otherwise.
+
+// White - same([1, 3, 4, 4, 4], [2, 5, 7]) ➞ true
+// same([9, 8, 7, 6], [4, 4, 3, 1]) ➞ false
+
+function sameCase(a1, a2) {
+  return new Set(a1).size === new Set(a2).size; 
+}
+
+function same(a1, a2) {
+	return [...new Set(a1)].length == [...new Set(a2)].length; 
+}
+
+function same(a1, a2) {
+	let x = new Set(a1); 
+	let y = new Set(a2); 
+
+	if(x.size === y.size) {
+		return true; 
+	} else {
+		return false; 
+	}
+}
+
+// 132. Write a function that removes any non-letters from a string, returning a well-known film title.
+// White - lettersOnly("R!=:~0o0./c&}9k`60=y") ➞ "Rocky"
+
+function lettersOnly(str) {
+	return str.replace(/[^a-zA-Z]+/g, '')
+}
+
+function lettersOnly(str) {
+	return str.replace(/[^a-z]/gi, '');
+}
+
+function lettersOnly(str) {
+	return str.replace(/[^a-z]/gi, '')
+}
+
+// 133. Given an array, transform that array into a mirror.
+
+// Yellow - mirror([0, 2, 4, 6]) ➞ [0, 2, 4, 6, 4, 2, 0]
+
+function mirror(arr) {
+	return [... arr, ... arr.splice(0, arr.length - 1).reverse()]
+}
+
+function mirror(arr) {
+	return arr.concat(arr.concat().reverse().slice(1));
+}
+
+function mirror(arr) {
+	return [...arr, ...arr.slice(0,-1).reverse()]
+}
+
+function mirror(arr) {
+	let result = []
+	for(let i = arr.length - 2; i>=0; i--){
+			result.push(arr[i])
+	}
+	 arr.push(...result)
+	return arr
+}
+
+
+
+
 
 
