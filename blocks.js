@@ -3505,3 +3505,28 @@ const checkEnding = (a, b) => {
 }
 
 const checkEnding = (str1, str2) => str1.endsWith(str2);
+
+// 130. Create a function that takes a string and returns a string with its letters in alphabetical order.
+
+// White - AlphabetSoup("hello") ➞ "ehllo"
+
+function AlphabetSoup(str) {
+	return str.split('').sort().join('') 
+}
+
+function AlphabetSoup(str) {
+	return [...str].sort().join(''); 
+}
+
+function AlphabetSoup(str) {
+	return Array.from(str).sort().join(''); 
+}
+
+function AlphabetSoup(str) {
+  const chars = str.split('').map(c => c.charCodeAt())
+  chars.sort((a,b) => a-b)
+  return chars.map(c => String.fromCharCode(c)).join('')
+}
+
+
+
