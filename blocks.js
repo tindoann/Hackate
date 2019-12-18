@@ -3552,6 +3552,23 @@ function same(a1, a2) {
 	}
 }
 
+// 132. Write a function that removes any non-letters from a string, returning a well-known film title.
+// White - lettersOnly("R!=:~0o0./c&}9k`60=y") ➞ "Rocky"
+
+function lettersOnly(str) {
+	return str.replace(/[^a-zA-Z]+/g, '')
+}
+
+function lettersOnly(str) {
+	return str.replace(/[^a-z]/gi, '');
+}
+
+function lettersOnly(str) {
+	return str.replace(/[^a-z]/gi, '')
+}
+
+
+
 
 
 
