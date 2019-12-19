@@ -3652,7 +3652,7 @@ function countUnique(s1, s2) {
 
 // 136. creating a function that takes in a string and checks to see if it contains the following words or phrases:
 
-// Yellow - anime", "meme", "vine", "roasts", "Danny DeVito"
+// Yellow - "anime", "meme", "vine", "roasts", "Danny DeVito"
 
 function preventDistractions(str) {
 	let arr = ["anime", "meme", "vine", "roasts", "Danny DeVito"];
@@ -3670,6 +3670,37 @@ function preventDistractions(str) {
 }
 
 const preventDistractions = str => str.match(/\b\w*(anime|meme|vine|roasts|Danny\sDeVito)\w*\b/g) ? "NO!":"Safe watching!";
+
+// 137. Create a function that returns the minimum number of removals to make the sum of all elements in an array even.
+
+// Yellow - minimumRemovals([1, 2, 3, 4, 5]) ➞ 1
+// minimumRemovals([5, 7, 9, 11]) ➞ 0
+
+
+function minimumRemovals(arr) {
+	sum = arr.reduce((a,b) => a + b) 
+	return sum % 2 == 0 ? 0 : 1
+}
+
+function minimumRemovals(arr) {
+	return arr.reduce((a,b) => a + b) % 2 ? 1 : 0
+}
+
+function minimumRemovals(arr) {
+	return arr.filter(x => x % 2 != 0).length % 2 == 0 ? 0:1
+}
+
+function minimumRemovals(arr) {
+	let count =0;
+	for (let i=0; i < arr.length; i++) {
+		count = count + arr[i];
+	};
+	if (count % 2 === 0) {
+		return 0;
+	}
+	return 1;
+}
+
 
 
 
