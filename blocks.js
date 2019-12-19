@@ -3803,3 +3803,54 @@ function addUp(num) {
 function addUp(num) {
 	return (!num) ? 0 : num + add(num - 1)
 }
+
+
+// 143. Create a function, that will for a given a, b, c, do the following:
+
+// Yellow - Add a to itself b times. Then check if the result is divisible by c.
+
+if (b == 1) {
+	return 0
+}
+if ((abcmath(a, b - 1, c) + a + a) % c === 0) {
+	return true; 
+} else {
+  return false; 
+}
+
+function abcmath(a, b, c) {
+	for (let i = 0; i <= b; i++) {
+		a = a + a;
+	}
+	return a % c === 0;
+}
+
+function abcmath(a, b, c) {
+	let sum = a;
+	for (let i = 0; i < b; i++) {
+		sum += sum; 
+	}
+	  return sum % c == 0;
+}
+
+function abcmath(a, b, c) {
+	for (var i = 0; i < b; i++) {
+		a += a;
+	}
+	return a % c === 0;
+}
+
+function abcmath(a, b, c) {
+	var count = 0;
+	for (i = a; count <= b; count++){
+		a === a + a;
+	}
+	if (a % c === 0){
+		return true
+	} else {
+		return false;
+	}
+}
+
+
+
