@@ -3650,5 +3650,26 @@ function countUnique(s1, s2) {
 	return r.length;
 }
 
+// 136. creating a function that takes in a string and checks to see if it contains the following words or phrases:
+
+// Yellow - anime", "meme", "vine", "roasts", "Danny DeVito"
+
+function preventDistractions(str) {
+	let arr = ["anime", "meme", "vine", "roasts", "Danny DeVito"];
+	return arr.some(x => str.includes(x)) ? "NO!" : "Safe watching!";
+}
+
+function preventDistractions(str) {
+	const regexp = /anime|meme|vine|roasts|Danny DeVito/ig;
+	return regexp.test(str)? "NO!":"Safe watching!";
+}
+
+function preventDistractions(str) {
+	const Words = [ "anime", "meme", "vine", "roasts", "Danny DeVito"]
+	return Words.some(word => str.includes(word)) ? "NO!" : "Safe watching!"
+}
+
+const preventDistractions = str => str.match(/\b\w*(anime|meme|vine|roasts|Danny\sDeVito)\w*\b/g) ? "NO!":"Safe watching!";
+
 
 
