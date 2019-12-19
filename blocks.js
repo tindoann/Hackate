@@ -3725,3 +3725,33 @@ function repeat(str, n) {
 	}
 	return s;
 }
+
+// 139. Create a function that takes two arguments (item, times). 
+// The first argument (item) is the item that needs repeating while the second argument (times)
+//  is the number of times the item is to be repeated. Return the result in an array.
+
+// White -  repeat(3, 4) -> (3, 3, 3, 3)
+function repeat(item, times) {
+	return Array(times).fill(item);
+}
+
+function repeat(item, times) {
+	let a = [];
+	for (let i = 0; i<times; i++){
+		a.push(item)
+	}
+	return a
+}
+
+// 140. Create a function that takes a number (step) as an argument and returns the amount of matchsticks in that step. See step 1, 2 and 3 in the image above.
+// Matchstick Houses
+// matchHouses(4) ➞ 21
+
+function matchHouses(step) {
+	return step === 0 ? 0 : 5 * step + 1;
+}
+
+function matchHouses(step) {
+	return step > 0 ? (step * 5 + 1) : 0
+}
+
