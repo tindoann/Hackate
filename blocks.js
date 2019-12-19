@@ -3755,3 +3755,21 @@ function matchHouses(step) {
 	return step > 0 ? (step * 5 + 1) : 0
 }
 
+// 141. Write a function that returns true if a number is a palindrome.
+
+// Yellow - isPalindrome(838) ➞ true
+// isPalindrome(4433) ➞ false
+
+function isPalindrome(n) {
+	return [...String(n)].reverse().join('') === ''+n
+}
+
+function isPalindrome(n) {
+	return String(n).split('').reverse().join('') == String(n); 
+}
+
+function isPalindrome(n) {
+	return n.toString() === n.toString().split('').reverse().join('');
+}
+
+const isPalindrome = n => n == n.toString().split("").reverse().join("")
