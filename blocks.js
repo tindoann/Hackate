@@ -3592,8 +3592,84 @@ function mirror(arr) {
 	return arr
 }
 
+// 134. Create a function that takes an array of strings and returns the words that are exactly four letters.
 
+// White - isFourLetters(["Tomato", "Potato", "Pair"]) ➞ ["Pair"]
 
+function isFourLetters(arr) {
+	return arr.filter(x => x.split('').length == 4)
+}
+
+function isFourLetters (arr) {
+  return arr.filter(x => x.length === 4);
+}
+
+function isFourLetters(arr) {
+  var result = [];
+  for(var i=0; i < arr.length; i++){
+    if (arr[i].length == 4){
+      result.push(arr[i]);
+    }
+	}
+  return result;
+}
+
+function isFourLetters(arr) {
+  return arr.reduce(function(acc, val){
+  	if(val.length === 4) {
+      acc.push(val)
+    }
+    
+    return acc
+  }, [])
+}
+
+// 135. Given two strings, create a function that returns the total number of unique characters from the combined string.
+
+// "a", "e", "l", "p", "y"
+
+function countUnique(s1, s2) {
+	return new Set(s1 + s2).size;
+}
+
+function countUnique(s1, s2) {
+	let x =s1.concat(s2).split('');
+		return [...new Set(x)].length
+	}
+
+function countUnique(s1, s2) {
+	return new Set((s1+s2).split("")).size
+	}
+
+function countUnique(s1, s2) {
+	let r = "";
+	s1 += s2;
+	for (let x of s1) {
+		if (!r.includes(x)) { r += x; }
+	}
+	return r.length;
+}
+
+// 136. creating a function that takes in a string and checks to see if it contains the following words or phrases:
+
+// Yellow - anime", "meme", "vine", "roasts", "Danny DeVito"
+
+function preventDistractions(str) {
+	let arr = ["anime", "meme", "vine", "roasts", "Danny DeVito"];
+	return arr.some(x => str.includes(x)) ? "NO!" : "Safe watching!";
+}
+
+function preventDistractions(str) {
+	const regexp = /anime|meme|vine|roasts|Danny DeVito/ig;
+	return regexp.test(str)? "NO!":"Safe watching!";
+}
+
+function preventDistractions(str) {
+	const Words = [ "anime", "meme", "vine", "roasts", "Danny DeVito"]
+	return Words.some(word => str.includes(word)) ? "NO!" : "Safe watching!"
+}
+
+const preventDistractions = str => str.match(/\b\w*(anime|meme|vine|roasts|Danny\sDeVito)\w*\b/g) ? "NO!":"Safe watching!";
 
 
 
