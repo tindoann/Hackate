@@ -3773,3 +3773,33 @@ function isPalindrome(n) {
 }
 
 const isPalindrome = n => n == n.toString().split("").reverse().join("")
+
+// 142. Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function.
+
+// Yellow - addUp(4) ➞ 10
+// addUp(13) ➞ 91
+
+function addUp(num) {
+  if (num === 1) return 1;
+	return num + addUp(num - 1); // recursion 
+}
+
+function addUp(num) {
+	let sum = 0; 
+	for (let i = 1; i <= num; i++) {
+		sum += i; 
+	}
+	return sum; 
+}
+
+function addUp(num) {
+	if (num == 1) {
+		return 1
+	} else {
+		return num + addUp(num -1); 
+	}
+}
+
+function addUp(num) {
+	return (!num) ? 0 : num + add(num - 1)
+}
