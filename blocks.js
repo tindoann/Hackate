@@ -3701,6 +3701,27 @@ function minimumRemovals(arr) {
 	return 1;
 }
 
+// 138. Create a function that repeats each character in a string n times.
 
+// Yellow - repeat("mice", 5) ➞ "mmmmmiiiiiccccceeeee"
 
+function repeat(str, n) {
+	return str
+					.split('')
+					.map(x => x.repeat(n))
+					.join('');
+}
 
+function repeat(str, n) {
+	return [...str].map(x => x.repeat(n)).join('');
+}
+
+function repeat(str, n) {
+	var s = '';
+  for (var i = 0; i < str.length; i++) {
+		for (var j = 0; j < n; j++) {
+			s += str.charAt(i);
+		}
+	}
+	return s;
+}
