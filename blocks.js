@@ -3742,3 +3742,16 @@ function repeat(item, times) {
 	}
 	return a
 }
+
+// 140. Create a function that takes a number (step) as an argument and returns the amount of matchsticks in that step. See step 1, 2 and 3 in the image above.
+// Matchstick Houses
+// matchHouses(4) ➞ 21
+
+function matchHouses(step) {
+	return step === 0 ? 0 : 5 * step + 1;
+}
+
+function matchHouses(step) {
+	return step > 0 ? (step * 5 + 1) : 0
+}
+
