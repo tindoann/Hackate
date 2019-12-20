@@ -3852,5 +3852,43 @@ function abcmath(a, b, c) {
 	}
 }
 
+// 144. Write a function that calculates the factorial of a number recursively. Recursion
 
+// factorial(5) ➞ 120
+// factorial(1) ➞ 1
+// factorial(0) ➞ 1
+
+const factorial = n => n == 0 ? 1 : n * factorial(n - 1);
+
+const factorial = n => Array.from({length : n}, (v, i) => i+1).reduce((a, e) => a * e, 1)
+
+function factorial(n) {
+  if (n == 0 || n == 1)
+		return 1; 
+  for (let i = n - 1; i >= 1; i--) {
+		n *= i;
+	}
+	return n; 
+}
+
+function factorial(n) {
+	if( n > 1 ) {
+		return n * factorial(n-1);
+	}
+	return 1;
+}
+
+function factorial(n) {
+	return n < 2 ? 1 : n * factorial(n-1);
+}
+
+function factorial(n) {
+	let result = n 
+	if (n == 0 || n == 1) return 1
+	while (n > 1) { 
+    n--;
+    result *= n;
+  }
+  return result;
+}
 
