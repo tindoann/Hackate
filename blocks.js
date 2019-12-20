@@ -3892,3 +3892,54 @@ function factorial(n) {
   return result;
 }
 
+// 145. Write a function that finds the sum of an array. Make your function recursive.
+
+// Yellow - sum([1, 2, 3, 4]) ➞ 10
+
+function sum(arr) {
+  return arr != 0 ? arr.reduce((a,b) => a + b) : 0
+}
+
+function sum(arr) {
+	return arr.length > 0 ? arr.reduce((a, b) => a + b) : 0
+}
+
+function sum(arr) {
+	return arr.length === 0?0:arr.pop()+sum(arr);
+}
+
+function sum(arr) {
+	let sum = 0;
+	for(let i=0; i<arr.length; i++){	
+			sum += arr[i]
+	}
+	return sum
+}
+
+// 146. Create a function that takes two strings as arguments and returns the number of times the first string is found in the second string. Regex
+// Yellow - charCount("b", "big fat bubble") ➞ 4
+
+function charCount(myChar, str) {
+	let arr = str.split('')
+	let count = arr.filter(x => x == myChar)
+	return count.length
+}
+
+function charCount(myChar, str) {
+	return [...str].filter(x => x === myChar).length;
+}
+
+function charCount(myChar, str) {
+	let count = 0;
+	for (let i=0; i<str.length; i++) {
+		if (str.charAt(i) === myChar) {
+			count++;
+		}
+	}
+	return count;
+}
+
+
+
+
+
