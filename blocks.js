@@ -3892,3 +3892,27 @@ function factorial(n) {
   return result;
 }
 
+// 145. Write a function that finds the sum of an array. Make your function recursive.
+
+// Yellow - sum([1, 2, 3, 4]) ➞ 10
+
+function sum(arr) {
+  return arr != 0 ? arr.reduce((a,b) => a + b) : 0
+}
+
+function sum(arr) {
+	return arr.length > 0 ? arr.reduce((a, b) => a + b) : 0
+}
+
+function sum(arr) {
+	return arr.length === 0?0:arr.pop()+sum(arr);
+}
+
+function sum(arr) {
+	let sum = 0;
+	for(let i=0; i<arr.length; i++){	
+			sum += arr[i]
+	}
+	return sum
+}
+
