@@ -3755,3 +3755,140 @@ function matchHouses(step) {
 	return step > 0 ? (step * 5 + 1) : 0
 }
 
+// 141. Write a function that returns true if a number is a palindrome.
+
+// Yellow - isPalindrome(838) ➞ true
+// isPalindrome(4433) ➞ false
+
+function isPalindrome(n) {
+	return [...String(n)].reverse().join('') === ''+n
+}
+
+function isPalindrome(n) {
+	return String(n).split('').reverse().join('') == String(n); 
+}
+
+function isPalindrome(n) {
+	return n.toString() === n.toString().split('').reverse().join('');
+}
+
+const isPalindrome = n => n == n.toString().split("").reverse().join("")
+
+// 142. Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function.
+
+// Yellow - addUp(4) ➞ 10
+// addUp(13) ➞ 91
+
+function addUp(num) {
+  if (num === 1) return 1;
+	return num + addUp(num - 1); // recursion 
+}
+
+function addUp(num) {
+	let sum = 0; 
+	for (let i = 1; i <= num; i++) {
+		sum += i; 
+	}
+	return sum; 
+}
+
+function addUp(num) {
+	if (num == 1) {
+		return 1
+	} else {
+		return num + addUp(num -1); 
+	}
+}
+
+function addUp(num) {
+	return (!num) ? 0 : num + add(num - 1)
+}
+
+
+// 143. Create a function, that will for a given a, b, c, do the following:
+
+// Yellow - Add a to itself b times. Then check if the result is divisible by c.
+
+if (b == 1) {
+	return 0
+}
+if ((abcmath(a, b - 1, c) + a + a) % c === 0) {
+	return true; 
+} else {
+  return false; 
+}
+
+function abcmath(a, b, c) {
+	for (let i = 0; i <= b; i++) {
+		a = a + a;
+	}
+	return a % c === 0;
+}
+
+function abcmath(a, b, c) {
+	let sum = a;
+	for (let i = 0; i < b; i++) {
+		sum += sum; 
+	}
+	  return sum % c == 0;
+}
+
+function abcmath(a, b, c) {
+	for (var i = 0; i < b; i++) {
+		a += a;
+	}
+	return a % c === 0;
+}
+
+function abcmath(a, b, c) {
+	var count = 0;
+	for (i = a; count <= b; count++){
+		a === a + a;
+	}
+	if (a % c === 0){
+		return true
+	} else {
+		return false;
+	}
+}
+
+// 144. Write a function that calculates the factorial of a number recursively. Recursion
+
+// factorial(5) ➞ 120
+// factorial(1) ➞ 1
+// factorial(0) ➞ 1
+
+const factorial = n => n == 0 ? 1 : n * factorial(n - 1);
+
+const factorial = n => Array.from({length : n}, (v, i) => i+1).reduce((a, e) => a * e, 1)
+
+function factorial(n) {
+  if (n == 0 || n == 1)
+		return 1; 
+  for (let i = n - 1; i >= 1; i--) {
+		n *= i;
+	}
+	return n; 
+}
+
+function factorial(n) {
+	if( n > 1 ) {
+		return n * factorial(n-1);
+	}
+	return 1;
+}
+
+function factorial(n) {
+	return n < 2 ? 1 : n * factorial(n-1);
+}
+
+function factorial(n) {
+	let result = n 
+	if (n == 0 || n == 1) return 1
+	while (n > 1) { 
+    n--;
+    result *= n;
+  }
+  return result;
+}
+
