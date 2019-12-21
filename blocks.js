@@ -3924,7 +3924,7 @@ function charCount(myChar, str) {
 	let count = arr.filter(x => x == myChar)
 	return count.length
 }
-
+ 
 function charCount(myChar, str) {
 	return [...str].filter(x => x === myChar).length;
 }
@@ -3939,6 +3939,66 @@ function charCount(myChar, str) {
 	return count;
 }
 
+// 147.  Create a function that accepts a Date object and returns true if it's Christmas Eve (December 24th) and false otherwise.
+
+// timeForMilkAndCookies(new Date(2013, 11, 24)) ➞ true
+
+// timeForMilkAndCookies(new Date(2013, 0, 23)) ➞ false
+
+function timeForMilkAndCookies(date) {
+	return date.getMonth() === 11 && date.getDate() === 24; 
+}
+
+function timeForMilkAndCookies(date) {
+  var day = date.getDate();
+  var month = date.getMonth();
+  
+  if(day == 24 && month == 11) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// 148. Write a function that takes a positive integer and return its factorial. recursion
+
+// Yellow -  factorial(4) ➞ 24
+// factorial(0) ➞ 1
+
+function factorial(z) {
+	if( z > 1 ) {
+	  return z * factorial(z - 1);
+	}
+	  return 1;
+}
+
+function factorial(z) {
+	return z ? (z * factorial(z - 1)) : 1
+}
+
+function factorial(z) {
+	let result = 1
+	for (let i = 1; i <= z; i++) {
+		result *= i
+	}
+	return result
+}
+
+function factorial(z) {
+	if (z === 0){
+		return 1
+	} else {
+		var answer = 1;
+		while (z > 0) {
+			answer = z * answer;
+		  	z -= 1
+		}
+		return answer
+	}
+	
+}
+
+const factorial = num => (num <= 1 ? 1 : num * factorial(num - 1));
 
 
 
