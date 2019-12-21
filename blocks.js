@@ -3924,7 +3924,7 @@ function charCount(myChar, str) {
 	let count = arr.filter(x => x == myChar)
 	return count.length
 }
-
+ 
 function charCount(myChar, str) {
 	return [...str].filter(x => x === myChar).length;
 }
@@ -3939,7 +3939,111 @@ function charCount(myChar, str) {
 	return count;
 }
 
+// 147.  Create a function that accepts a Date object and returns true if it's Christmas Eve (December 24th) and false otherwise.
 
+// timeForMilkAndCookies(new Date(2013, 11, 24)) ➞ true
 
+// timeForMilkAndCookies(new Date(2013, 0, 23)) ➞ false
 
+function timeForMilkAndCookies(date) {
+	return date.getMonth() === 11 && date.getDate() === 24; 
+}
 
+function timeForMilkAndCookies(date) {
+  var day = date.getDate();
+  var month = date.getMonth();
+  
+  if(day == 24 && month == 11) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// 148. Write a function that takes a positive integer and return its factorial. recursion
+
+// Yellow -  factorial(4) ➞ 24
+// factorial(0) ➞ 1
+
+function factorial(z) {
+	if( z > 1 ) {
+	  return z * factorial(z - 1);
+	}
+	  return 1;
+}
+
+function factorial(z) {
+	return z ? (z * factorial(z - 1)) : 1
+}
+
+function factorial(z) {
+	let result = 1
+	for (let i = 1; i <= z; i++) {
+		result *= i
+	}
+	return result
+}
+
+function factorial(z) {
+	if (z === 0){
+		return 1
+	} else {
+		var answer = 1;
+		while (z > 0) {
+			answer = z * answer;
+		  	z -= 1
+		}
+		return answer
+	}
+}
+
+const factorial = num => (num <= 1 ? 1 : num * factorial(num - 1));
+
+// 149. Write a regular expression that matches only an even number. Numbers will be presented as strings.
+
+// "132" ➞ true
+//"29" ➞ false
+
+let x = /[02468]$/
+
+let x = /^\d*[02468]$/;
+
+// 150. Create a function that takes an array of non-negative numbers and strings and return a new array without the strings. Filter
+
+// White - filterArray([1, 2, "a", "b"]) ➞ [1, 2]
+// filterArray([1, "a", "b", 0, 15]) ➞ [1, 0, 15]
+
+function filterArray(arr) {
+	return arr.filter(function (x) {
+		return typeof x == 'number'
+	})
+}
+
+function filterArray(arr) {
+  return arr.filter(n => typeof n === 'number');
+}
+
+function filterArray(arr) {
+  return arr.filter(num => Number.isInteger(num));
+}
+
+function filterArray(arr) {
+  var returnArr = [];
+  for(var i = 0; i < arr.length; i++) {
+    if(typeof arr[i] === "number") {
+      returnArr.push(arr[i]);
+    }
+  }
+  return returnArr;
+}
+
+function filterArray(arr) {
+  var result = []; 
+  var filterArr = arr.map(function(str) {
+    if(typeof str === 'number') {
+      result.push(str);
+    }
+  });
+  
+  return result;
+}
