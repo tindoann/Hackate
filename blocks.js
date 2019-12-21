@@ -4047,3 +4047,50 @@ function filterArray(arr) {
   
   return result;
 }
+
+// 151. Create a function that takes a string and returns a string in which each character is repeated once.
+
+// White - Create a function that takes a string and returns a string in which each character is repeated once.
+
+function doubleChar(str) {
+	return str.split('').map(x => x + x).join('')
+}
+
+let doubleChar = str => str.replace(/./g,'$&$&');
+
+let doubleChar = s => s.replace(/./g, x => x+x)
+
+function doubleChar(str) {
+  var result = "";  
+  for (var i = 0; i < str.length; i++){
+    result = result.concat(str.charAt(i), str.charAt(i));
+  }  
+  return result;
+}
+
+function doubleChar(str) {
+  var string = str;
+  var newString = [];
+  
+  for(var i = 0; i < string.length; i++) {
+		newString.push(string[i]);
+    newString.push(string[i]);
+  }
+  return newString.join('');
+}
+
+/* 152. Your function will be passed two functions, f and g, that don't take any parameters. Your function has to call them, and return a string which indicates which function returned the larger number.
+HOF 
+
+If f returns the larger number, return the string f.
+If g returns the larger number, return the string g.
+If the functions return the same number, return the string neither.
+
+*/
+
+// Yellow - whichIsLarger(() => 5, () => 10) ➞ "g"
+
+// whichIsLarger(() => 25,  () => 25) ➞ "neither"
+
+// whichIsLarger(() => 505050, () => 5050) ➞ "f"
+
