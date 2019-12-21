@@ -3995,11 +3995,55 @@ function factorial(z) {
 		}
 		return answer
 	}
-	
 }
 
 const factorial = num => (num <= 1 ? 1 : num * factorial(num - 1));
 
+// 149. Write a regular expression that matches only an even number. Numbers will be presented as strings.
 
+// "132" ➞ true
+//"29" ➞ false
 
+let x = /[02468]$/
 
+let x = /^\d*[02468]$/;
+
+// 150. Create a function that takes an array of non-negative numbers and strings and return a new array without the strings. Filter
+
+// White - filterArray([1, 2, "a", "b"]) ➞ [1, 2]
+// filterArray([1, "a", "b", 0, 15]) ➞ [1, 0, 15]
+
+function filterArray(arr) {
+	return arr.filter(function (x) {
+		return typeof x == 'number'
+	})
+}
+
+function filterArray(arr) {
+  return arr.filter(n => typeof n === 'number');
+}
+
+function filterArray(arr) {
+  return arr.filter(num => Number.isInteger(num));
+}
+
+function filterArray(arr) {
+  var returnArr = [];
+  for(var i = 0; i < arr.length; i++) {
+    if(typeof arr[i] === "number") {
+      returnArr.push(arr[i]);
+    }
+  }
+  return returnArr;
+}
+
+function filterArray(arr) {
+  var result = []; 
+  var filterArr = arr.map(function(str) {
+    if(typeof str === 'number') {
+      result.push(str);
+    }
+  });
+  
+  return result;
+}
