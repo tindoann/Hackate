@@ -4094,3 +4094,37 @@ If the functions return the same number, return the string neither.
 
 // whichIsLarger(() => 505050, () => 5050) ➞ "f"
 
+function whichIsLarger(f, g) {
+	return f() > g() ? "f" : f() < g() ? "g" : "neither";
+}
+
+function whichIsLarger(f, g) {
+	if (f() === g()) return 'neither'
+	return f() > g () ? 'f' : 'g'
+}
+
+function whichIsLarger(f, g) {
+	return f() > g() ? "f" : 
+				 f() === g() ? "neither" : "g"
+}
+
+function whichIsLarger(f, g) {
+  if (f() > g()) return 'f';
+  else if (f() < g()) return 'g';
+  else return 'neither';
+}
+
+function whichIsLarger(f, g) {
+  const fval = f(), gval = g();
+  return (fval > gval) ? 'f' : (gval > fval) ? 'g' : 'neither';
+}
+
+function whichIsLarger(f, g) {
+	if(f()>g()){
+		return "f";
+	}else if(f()<g()){
+		return "g"
+	}else if(f()==g()){
+		return "neither";
+	}
+}
