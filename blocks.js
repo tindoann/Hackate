@@ -4273,3 +4273,37 @@ function sumOfCubes(nums) {
 const sumOfCubes = nums => nums.map(x => x * x * x).reduce((a,c) => a + c, 0);
 
 const sumOfCubes = nums => nums.map(x => Math.pow(x ,3)).reduce((a,b)=> a+b,0);
+
+// 158. Create a function that returns the number of hashes and pluses in a string.
+
+// Yellow - hashPlusCount("###+") ➞ [3, 1]
+
+// hashPlusCount("##+++#") ➞ [3, 3]
+
+function hashPlusCount(str) {
+	regex1 = /\#/gi; 
+	regex2 = /\+/gi; 
+	arr1 = str.match(regex1).length
+	arr2 = str.match(regex2).length
+	return [arr1, arr2]
+}
+
+function hashPlusCount(str) {
+	return [str.split('+').join('').length, str.split('#').join('').length]
+}
+
+let hashPlusCount=([...str])=>
+[str.filter(x=>x=='#').length,str.filter(x=>x=='+').length]
+
+function hashPlusCount(str) {
+	return [str.replace(/\+/g,'').length,
+	        str.replace(/\#/g,'').length];
+}
+
+function hashPlusCount(str) {
+	return [str.split("").filter(x => x === "#").length,
+				 str.split("").filter(x => x === "+").length,]
+}
+
+
+
