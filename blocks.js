@@ -4169,7 +4169,7 @@ function minMax(arr) {
   return arr.sort((a,b) => a - b).slice(0, 1).concat(arr.slice(-1));
 }
 
-// 154. Create a function that returns the index of the first vowel in a string.
+// 154. Create a function that returns the index of the first vowel in a string. REGEX
 
 // White - firstVowel("hello") ➞ 1
 // firstVowel("STRAWBERRY") ➞ 3
@@ -4198,5 +4198,30 @@ function firstVowel(str) {
 	return -1;
 }
 
+// 155. A group of friends have decided to start a secret society. The name will be the first letter of each of their names, sorted in alphabetical order.
+// Create a function that takes in an array of names and returns the name of the secret society.
 
+// Yellow - societyName(["Harry", "Newt", "Luna", "Cho"]) ➞ "CHLN"
+
+function societyName(friends) {
+	let order = friends.sort()
+	let initial = order.map(x => x[0])
+	return initial.join('')
+}
+
+function societyName(friends) {
+	return friends.map(x => x[0]).sort().join("")
+}
+
+function societyName(friends) {
+	return friends.map( person => person[0].toUpperCase() )
+		           .sort()
+		           .join('');
+}
+
+function societyName(friends) {
+	return friends.reduce(function(acc,current)  {
+    return acc + current[0]
+  }, "").split("").sort().join("")
+}
 
