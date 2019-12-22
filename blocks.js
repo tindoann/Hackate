@@ -4128,3 +4128,75 @@ function whichIsLarger(f, g) {
 		return "neither";
 	}
 }
+
+// 153. Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.
+
+// White - minMax([1, 2, 3, 4, 5]) ➞ [1, 5]
+
+function minMax(arr) {
+	return [Math.min(...arr), Math.max(...arr)] 
+}
+
+const minMax = arr => [Math.min(...arr), Math.max(...arr)];
+
+function minMax(arr) {
+  arr.sort(function(a, b){return a-b});
+  return [arr[0], arr[arr.length-1]];
+  
+}
+
+function minMax(arr) {
+  var returnArr = [];
+  var min = arr[0];
+  var max = arr[0];
+  
+  for(var i = 1; i < arr.length; i++) {
+    if(arr[i] < min) {
+      min = arr[i];
+    }
+    if(arr[i] > max) {
+      max = arr[i];
+    }
+  }
+
+	returnArr.push(min);
+  returnArr.push(max);
+  
+  return returnArr;
+}
+
+function minMax(arr) {
+  return arr.sort((a,b) => a - b).slice(0, 1).concat(arr.slice(-1));
+}
+
+// 154. Create a function that returns the index of the first vowel in a string.
+
+// White - firstVowel("hello") ➞ 1
+// firstVowel("STRAWBERRY") ➞ 3
+
+function firstVowel(str) {
+	str.search(/[aeiou]/i); 
+}
+
+function firstVowel(str) {
+	return str.search(/[aeiou]/gi);
+}
+
+function firstVowel(str) {
+	return str.search(/a|e|i|o|u/i);
+}
+
+function firstVowel(str) {
+	return str.indexOf(str.match(/[aeiou]/i))
+	}
+
+function firstVowel(str) {
+	var r = str.match(/[aiueo]/i);
+	if (r) {
+		return str.indexOf(r[0]);
+	}
+	return -1;
+}
+
+
+
