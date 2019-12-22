@@ -4225,3 +4225,30 @@ function societyName(friends) {
   }, "").split("").sort().join("")
 }
 
+// 156. Write a function that takes a two-digit number and determines if it's the largest of two possible digit swaps.
+
+// White - largestSwap(27) ➞ false
+
+// largestSwap(43) ➞ true
+
+function largestSwap(num) {
+	const digits = num.toFixed().split('')
+	return digits[0] >= digits[1]
+}
+
+function largestSwap(num) {
+	const swapNum = Number([...num.toString()].reverse().join(""))
+	return swapNum < num ? true : swapNum > num ? false : true 
+}
+
+function largestSwap(num) {
+	return num >= Number(String(num).split("").reverse().join(""));
+}
+
+function largestSwap(num) {
+	num = num.toString()
+	if (num[1] > num[0]) {
+		return false
+	}
+	return true
+}
