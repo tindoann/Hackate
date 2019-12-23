@@ -4305,5 +4305,51 @@ function hashPlusCount(str) {
 				 str.split("").filter(x => x === "+").length,]
 }
 
+// 159. Given a string, create a function to reverse the case. All lower-cased letters should be upper-cased, and vice versa.
+
+// Yellow - reverseCase("Happy Birthday") ➞ "hAPPY bIRTHDAY"
+// reverseCase("sPoNtAnEoUs") ➞ "SpOnTaNeOuS"
+
+function reverseCase(str) {
+	return [...str].map(c => c.toLowerCase() == c ? c.toUpperCase() : c.toLowerCase()).join("")
+}
+
+function reverseCase(str) {
+	let newString = '';
+	for (let i = 0; i < str.length; i++) {
+		let letter = str.charAt(i);
+		if (letter == letter.toUpperCase()) {
+            letter = letter.toLowerCase();
+        } else {
+            letter = letter.toUpperCase();
+        }
+		newString += letter;
+	}
+	return newString;
+}
+
+function reverseCase(str) {
+	return str.split('').map(a => a == a.toLowerCase() ? a.toUpperCase()
+				 : a.toLowerCase()).join('');
+}
+
+function reverseCase(str) {
+	return str.split('').map(l => {
+		return l.match(/[a-z]/) ? l.toUpperCase() : l.toLowerCase()
+	}).join('')
+}
 
 
+function reverseCase(str) {
+	return str.split('').map(x => x === x.toUpperCase() ? x.toLowerCase():x.toUpperCase()).join('');
+}
+
+function reverseCase(str) {
+	return str.split('').map(letter => letter == letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()).join('')
+}
+
+function reverseCase(str) {
+	return [...str].map(letter => {
+		return letter == letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()
+		}).join('')
+}
