@@ -4305,5 +4305,72 @@ function hashPlusCount(str) {
 				 str.split("").filter(x => x === "+").length,]
 }
 
+// 159. Given a string, create a function to reverse the case. All lower-cased letters should be upper-cased, and vice versa.
+
+// Yellow - reverseCase("Happy Birthday") ➞ "hAPPY bIRTHDAY"
+// reverseCase("sPoNtAnEoUs") ➞ "SpOnTaNeOuS"
+
+function reverseCase(str) {
+	return [...str].map(c => c.toLowerCase() == c ? c.toUpperCase() : c.toLowerCase()).join("")
+}
+
+function reverseCase(str) {
+	let newString = '';
+	for (let i = 0; i < str.length; i++) {
+		let letter = str.charAt(i);
+		if (letter == letter.toUpperCase()) {
+            letter = letter.toLowerCase();
+        } else {
+            letter = letter.toUpperCase();
+        }
+		newString += letter;
+	}
+	return newString;
+}
+
+function reverseCase(str) {
+	return str.split('').map(a => a == a.toLowerCase() ? a.toUpperCase()
+				 : a.toLowerCase()).join('');
+}
+
+function reverseCase(str) {
+	return str.split('').map(l => {
+		return l.match(/[a-z]/) ? l.toUpperCase() : l.toLowerCase()
+	}).join('')
+}
 
 
+function reverseCase(str) {
+	return str.split('').map(x => x === x.toUpperCase() ? x.toLowerCase():x.toUpperCase()).join('');
+}
+
+function reverseCase(str) {
+	return str.split('').map(letter => letter == letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()).join('')
+}
+
+function reverseCase(str) {
+	return [...str].map(letter => {
+		return letter == letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()
+		}).join('')
+}
+
+// 160. Create a function that returns true if the first array can be nested inside the second.
+// arr1 can be nested inside arr2 if:
+// arr1's min is greater than arr2's min.
+// arr1's max is less than arr2's max.
+
+// White - canNest([1, 2, 3, 4], [0, 6]) ➞ true
+
+// canNest([9, 9, 8], [8, 9]) ➞ false
+
+
+
+function canNest(arr1, arr2) {
+   return Math.min(...arr1) > Math.min(...arr2) && Math.max(...arr1) < Math.max(...arr2)
+}
+
+function canNest(arr1, arr2) {
+	arr1.sort(), arr2.sort();
+	let min = arr2[0], max = arr2[1];
+	return arr1[0] > min && arr1[arr1.length - 1] < max;
+}
