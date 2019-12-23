@@ -4353,3 +4353,24 @@ function reverseCase(str) {
 		return letter == letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()
 		}).join('')
 }
+
+// 160. Create a function that returns true if the first array can be nested inside the second.
+// arr1 can be nested inside arr2 if:
+// arr1's min is greater than arr2's min.
+// arr1's max is less than arr2's max.
+
+// White - canNest([1, 2, 3, 4], [0, 6]) ➞ true
+
+// canNest([9, 9, 8], [8, 9]) ➞ false
+
+
+
+function canNest(arr1, arr2) {
+   return Math.min(...arr1) > Math.min(...arr2) && Math.max(...arr1) < Math.max(...arr2)
+}
+
+function canNest(arr1, arr2) {
+	arr1.sort(), arr2.sort();
+	let min = arr2[0], max = arr2[1];
+	return arr1[0] > min && arr1[arr1.length - 1] < max;
+}
