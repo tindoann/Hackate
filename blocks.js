@@ -4363,8 +4363,6 @@ function reverseCase(str) {
 
 // canNest([9, 9, 8], [8, 9]) ➞ false
 
-
-
 function canNest(arr1, arr2) {
    return Math.min(...arr1) > Math.min(...arr2) && Math.max(...arr1) < Math.max(...arr2)
 }
@@ -4373,4 +4371,37 @@ function canNest(arr1, arr2) {
 	arr1.sort(), arr2.sort();
 	let min = arr2[0], max = arr2[1];
 	return arr1[0] > min && arr1[arr1.length - 1] < max;
+}
+
+// 161. Take an array of integers (positive or negative or both) and return the sum of the absolute value of each element.
+
+// Yellow - getAbsSum([2, -1, 4, 8, 10]) ➞ 25
+// getAbsSum([2, 4, 6, 8, 10]) ➞ 30
+
+function getAbsSum(arr){
+  return arr.reduce((count, num) => count + Math.abs(num), 0)
+}
+
+function getAbsSum(arr){
+  return arr.reduce((a, b)=> a + Math.abs(b), 0);
+}
+
+function getAbsSum(arr){
+  let sum = 0; 
+  arr.forEach(e => sum += Math.abs(e)); 
+  return sum;
+}
+
+function getAbsSum(arr){
+  var sum = 0;
+  arr.map(function(ar){
+    sum += Math.abs(ar);
+  })
+  return sum;
+}
+
+function getAbsSum(arr){
+  var i = 0
+	arr.forEach(x => i += Math.abs(x))
+	return i;
 }
