@@ -4429,8 +4429,42 @@ function factorial(int) {
 
 const factorial = int => int == 0 ? 1 : int * factorial(int - 1);
 
+// 163. Create a function that determines whether an input value is omnipresent for a given array.
+// A value is omnipresent if it exists in every subarray inside the main array.
+
+// [[3, 4], [8, 3, 2], [3], [9, 3], [5, 3], [4, 3]]
+// 3 exists in every element inside this array, so is omnipresent.
+
+// White - isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1) ➞ true
+
+// isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6) ➞ false
 
 
+function isOmnipresent(arr, val) {
+	return arr.every(x => x.includes(val));
+}
+
+function isOmnipresent(arr, val) {
+	for (let i =0; i<arr.length; i++){
+		if (arr[i].includes(val)){
+		}else{return false}
+	}
+	return true;
+}
 
 
+function isOmnipresent(arr, val) {
+	var ans = 0;
+  while(ans < arr.length){
+    if (arr[ans].indexOf(val) !== -1){
+      ans++;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
 
+function isOmnipresent(arr, val) {
+	return arr.map(a => a.includes(val)).every(res => res == true)
+	}
