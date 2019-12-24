@@ -4405,3 +4405,32 @@ function getAbsSum(arr){
 	arr.forEach(x => i += Math.abs(x))
 	return i;
 }
+
+// 162. Create a function that takes an integer and returns the factorial of that integer. That is, the integer multiplied by all positive lower integers.
+
+// White - factorial(5) ➞ 120
+// factorial(13) ➞ 6227020800
+
+function factorial(int) {
+	if(int < 1) {
+		return 1;
+	} else {
+		return int * factorial(int-1);
+	}
+ }
+
+function factorial(int) {
+	let num = 1;
+  for(let i = 1; i <= int; i++) {
+    num *= i;
+  }
+  return num;
+}
+
+const factorial = int => int == 0 ? 1 : int * factorial(int - 1);
+
+
+
+
+
+
