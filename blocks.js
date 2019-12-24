@@ -4429,6 +4429,113 @@ function factorial(int) {
 
 const factorial = int => int == 0 ? 1 : int * factorial(int - 1);
 
+// 163. Create a function that determines whether an input value is omnipresent for a given array.
+// A value is omnipresent if it exists in every subarray inside the main array.
+
+// [[3, 4], [8, 3, 2], [3], [9, 3], [5, 3], [4, 3]]
+// 3 exists in every element inside this array, so is omnipresent.
+
+// White - isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1) ➞ true
+
+// isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6) ➞ false
+
+
+function isOmnipresent(arr, val) {
+	return arr.every(x => x.includes(val));
+}
+
+function isOmnipresent(arr, val) {
+	for (let i =0; i<arr.length; i++){
+		if (arr[i].includes(val)){
+		}else{return false}
+	}
+	return true;
+}
+
+
+function isOmnipresent(arr, val) {
+	var ans = 0;
+  while(ans < arr.length){
+    if (arr[ans].indexOf(val) !== -1){
+      ans++;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
+function isOmnipresent(arr, val) {
+	return arr.map(a => a.includes(val)).every(res => res == true)
+	}
+
+/* 164.	Write a function that returns the number of users in a chatroom based on the following rules:
+
+If there is no one, return "no one online".
+If there 1 person, return "[user1] online".
+If there are 2 people, return [user 1] and [user 2] online".
+If there are n>2 people, return the first two names and add "and n-2 more online".
+For example, if there are 5 users, return:
+
+"[user1], [user2] and 3 more online"
+
+*/
+
+/* Yellow - chatroomStatus([]) ➞ "no one online"
+
+chatroomStatus(["paRIE_to"]) ➞ "parIE_to online"
+
+chatroomStatus(["s234f", "mailbox2"]) ➞ "s234f and mailbox2 online"
+
+chatroomStatus(["pap_ier44", "townieBOY", "panda321", "motor_bike5", "sandwichmaker833", "violinist91"])
+➞ "pap_ier44, townieBOY and 4 more online"
+
+*/
+
+function chatroomStatus(users) {
+	if (users.length == 0){
+		return 'no one online'
+	} else if (users.length == 1){
+		return `${users[0]} online`
+	} else if (users.length == 2){
+		return `${users[0]} and ${users[1]} online`
+	} else if (users.length > 2){
+		return `${users[0]}, ${users[1]} and ${users.length - 2} more online`
+	}
+}
+
+function chatroomStatus(users) {
+	if(users.length === 0){
+		return "no one online";
+	}
+	else if(users.length === 1){
+		return users[0] + " online";
+	}
+	else if(users.length === 2){
+		return users[0] + " and " + users[1] + " online";
+	}
+	else {
+		return users[0]  + ", " + users[1] + " and "+ (users.length-2) +" more online" ;
+	}
+}
+
+function chatroomStatus(users) {
+	switch (users.length){
+		case 0: return "no one online"
+		case 1: return users[0]+' online'
+		case 2: return users[0]+' and '+users[1]+ ' online'
+		default: return users[0]+', '+users[1]+' and '+(users.length-2)+' more online'
+	}
+}
+
+const chatroomStatus = users => {
+  const { length } = users;
+  if (length > 2) {
+    return `${users.slice(0, 2).join(', ')} and ${length - 2} more online`;
+  }
+  if (length < 1) return 'no one online';
+  return `${users.join(' and ')} online`;
+};
 
 
 
