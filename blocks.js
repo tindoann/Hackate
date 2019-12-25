@@ -4537,6 +4537,83 @@ const chatroomStatus = users => {
   return `${users.join(' and ')} online`;
 };
 
+// 165. Write a function that returns true if an object is empty, and false otherwise.
+
+// White - isEmpty({}) ➞ true
+// isEmpty({ a: 1 }) ➞ false
+
+function isEmpty(obj) {
+	for(let key in obj) {
+			if(obj.hasOwnProperty(key))
+					return false;
+	}
+	return true;
+}
+
+function isEmpty(obj) {
+	return !Object.keys(obj).length
+}
+
+function isEmpty(obj) {
+  return Object.keys(obj).length == 0;
+}
+
+function isEmpty(obj) {
+	return Object.keys(obj).length? false:true
+}
+
+// 166. A set is a collection of unique items. A set can be formed from an array from removing all duplicate items.
+
+// Create a function that transforms an array into a set.
+
+// set([1, 3, 3, 5, 5]) ➞ [1, 3, 5]
+
+// set([4, 4, 4, 4]) ➞ [4]
+
+// set([5, 7, 8, 9, 10, 15]) ➞ [5, 7, 8, 9, 10, 15]
+
+// https://medium.com/dailyjs/how-to-remove-array-duplicates-in-es6-5daa8789641c
+
+function set(arr) {
+	[...new Set(arr)]; 	
+	arr.filter((item, index) => arr.indexOf(item) === index); 
+	return arr.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], []); 
+}
+
+function set(arr) {
+	return [...new Set(arr)]
+}
+
+function set(arr) {
+	return arr.filter((n, index) => arr.indexOf(n) == index);
+}
+
+const set = (arr) => Array.from(new Set(arr))
+
+function set(arr) {
+	const set = [];
+	arr.map(e => {
+		if (set.includes(e)) {
+			return null
+		} else {
+			set.push(e)
+		}
+	})
+return set
+}
+
+function set(arr) {
+	var a = [];
+	for(var i = 0; i< arr.length; i++){
+		if(!a.includes(arr[i])){
+			a.push(arr[i]);
+		}
+	}
+	return a;
+}
+
+
+
 
 
 
