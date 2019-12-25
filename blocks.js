@@ -4537,7 +4537,27 @@ const chatroomStatus = users => {
   return `${users.join(' and ')} online`;
 };
 
+// 165. Write a function that returns true if an object is empty, and false otherwise.
 
+// White - isEmpty({}) ➞ true
+// isEmpty({ a: 1 }) ➞ false
 
+function isEmpty(obj) {
+	for(let key in obj) {
+			if(obj.hasOwnProperty(key))
+					return false;
+	}
+	return true;
+}
 
+function isEmpty(obj) {
+	return !Object.keys(obj).length
+}
 
+function isEmpty(obj) {
+  return Object.keys(obj).length == 0;
+}
+
+function isEmpty(obj) {
+	return Object.keys(obj).length? false:true
+}
