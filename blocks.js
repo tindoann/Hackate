@@ -4667,3 +4667,23 @@ let x = /^[0-9][0-9]{3}[0-9]$/;
 
 let x = /(^\d{5}$)|(^\d{5}-\d{4}$)/
 
+// 168. Create a function to convert an array of percentages to their decimal equivalents.
+
+// White - convertToDecimal(["1%", "2%", "3%"]) ➞ [0.01, 0.02, 0.03]
+
+function convertToDecimal(perc) {
+	return perc.map(x => parseFloat(x)/100);
+}
+
+function convertToDecimal(perc) {
+	return perc.map(i => parseFloat(i.slice(0, i.length - 1)) / 100)
+}
+
+function convertToDecimal(perc) {
+	let decimalsArray = []
+    for(let i = 0; i < perc.length; i++){
+        let percentagesNumbers = parseFloat(perc[i])/100;
+         decimalsArray.push(percentagesNumbers);
+    }
+    return decimalsArray;
+}
