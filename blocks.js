@@ -4687,3 +4687,62 @@ function convertToDecimal(perc) {
     }
     return decimalsArray;
 }
+
+// 169. Write two functions:
+
+// toArray(), which converts a number to an array of its digits.
+// toNumber(), which converts an array of digits back to its number.
+
+// toArray(235) ➞ [2, 3, 5]
+
+// toArray(0) ➞ [0]
+
+// toNumber([2, 3, 5]) ➞ 235
+
+// toNumber([0]) ➞ 0
+
+const toArray = num => String(num).split('').map(Number);
+const toNumber = arr => Number(arr.join(''));
+
+function toArray(num) {
+	return [...num.toString()].map(s => Number(s))
+}
+
+function toNumber(arr) {
+	return Number(arr.join(""))
+}
+
+function toArray(num) {
+	return String(num).split("").map(Number);
+}
+
+function toNumber(arr) {
+	return parseInt(arr.join(""))
+}
+
+function toArray(num) {
+  var arr = [...num.toString()];
+	return arr.map(el=> Number(el));
+}
+
+function toNumber(arr) {
+  return Number(arr.join(''));
+}
+
+let toArray = function(num){
+	let a = [];
+	while(true){
+			a.push(num%10);
+			num = Math.floor(num/10);
+			if(num == 0){
+					break;
+			}
+	}
+	a.sort((a, b) => a - b);
+	return a;
+}
+
+function toNumber(arr) {
+	let num = parseInt(arr.join(''), 10);
+	return num;
+}
