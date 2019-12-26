@@ -4646,7 +4646,24 @@ function isSuffix(word, suffix) {
 const isPrefix = (word, prefix) => word.startsWith(prefix.split('-')[0]);
 const isSuffix = (word, suffix) => word.endsWith(suffix.split('-')[1]);
 
+// 168. Write a regular expression that matches a string if and only if it is a valid zip code.
 
+// White - "32554" ➞ true
 
+// "92 342" ➞ false
+// Invalid: contains a whitespace
 
+// "9@342" ➞ false
+// Invalid: contains a non-numeric character
+
+// "923444" ➞ false
+// Invalid: length is not 5
+
+const x = /^\d{5}$/;
+
+let x = /^[0-9]{5}$/;
+
+let x = /^[0-9][0-9]{3}[0-9]$/;
+
+let x = /(^\d{5}$)|(^\d{5}-\d{4}$)/
 
