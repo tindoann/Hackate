@@ -4612,9 +4612,58 @@ function set(arr) {
 	return a;
 }
 
+// 167. Create two functions: isPrefix(word, prefix-) and isSuffix(word, -suffix).
 
+// isPrefix should return true if it begins with the prefix argument.
+// isSuffix should return true if it ends with the suffix argument.
+// Otherwise return false.
 
+/* 
+Yellow 
 
+isPrefix("automation", "auto-") ➞ true
 
+isSuffix("arachnophobia", "-phobia") ➞ true
 
+isPrefix("retrospect", "sub-") ➞ false
+
+isSuffix("vocation", "-logy") ➞ false
+
+*/
+
+const isPrefix = (word, prefix) => word.startsWith(prefix.slice(0, -1));
+
+const isSuffix = (word, suffix) => word.endsWith(suffix.slice(1));
+
+function isPrefix(word, prefix) {
+	return word.startsWith(prefix.replace("-", ""));
+}
+
+function isSuffix(word, suffix) {
+	return word.endsWith(suffix.replace("-", ""));
+}
+
+const isPrefix = (word, prefix) => word.startsWith(prefix.split('-')[0]);
+const isSuffix = (word, suffix) => word.endsWith(suffix.split('-')[1]);
+
+// 168. Write a regular expression that matches a string if and only if it is a valid zip code.
+
+// White - "32554" ➞ true
+
+// "92 342" ➞ false
+// Invalid: contains a whitespace
+
+// "9@342" ➞ false
+// Invalid: contains a non-numeric character
+
+// "923444" ➞ false
+// Invalid: length is not 5
+
+const x = /^\d{5}$/;
+
+let x = /^[0-9]{5}$/;
+
+let x = /^[0-9][0-9]{3}[0-9]$/;
+
+let x = /(^\d{5}$)|(^\d{5}-\d{4}$)/
 
