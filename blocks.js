@@ -4775,3 +4775,59 @@ function leftDigit(num) {
 function leftDigit(num) {
 	return Number(num.match(/[0-9]/gi)[0])
 }
+
+
+// 171. Create a function that moves all capital letters to the front of a word.
+
+// White capToFront("hApPy") ➞ "APhpy"
+
+// capToFront("moveMENT") ➞ "MENTmove"
+
+// capToFront("shOrtCAKE") ➞ "OCAKEshrt"
+
+function capToFront(s) {
+  return s.match(/[A-Z]/g).join('') + s.match(/[a-z]/g).join('');
+}
+
+function capToFront(s) {
+	let lowerCase = [...s].filter(l => l === l.toLowerCase())
+	let upperCase = [...s].filter(l => l === l.toUpperCase())
+	return [...upperCase,...lowerCase].join("")
+}
+
+function capToFront(s) {
+	let inputArr = s.split("");
+	let indexArr = [];
+	let resultStr = "";
+
+	for (i = 0; i < inputArr.length; i++) {
+			if (inputArr[i] != inputArr[i].toLowerCase()) {
+					resultStr = resultStr + inputArr[i];
+					indexArr.push(i);
+			};
+	};
+
+	for (i = indexArr.length - 1;  i >= 0; i--) {
+			inputArr.splice(indexArr[i], 1);
+			console.log(inputArr)
+	}
+
+	inputArr.forEach(function(element) {
+			resultStr = resultStr + element;
+	})
+return resultStr;
+}
+
+function capToFront(s) {
+	var sLetters = s.split('')
+var upper = []
+var lower = []
+sLetters.forEach(function(letter) {
+	if(letter === letter.toUpperCase()) {
+		upper.push(letter)
+	} else {
+		lower.push(letter)
+	}
+	})
+return upper.join('') + lower.join('')
+}
