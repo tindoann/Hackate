@@ -4746,3 +4746,32 @@ function toNumber(arr) {
 	let num = parseInt(arr.join(''), 10);
 	return num;
 }
+
+// 170. Write a function that takes a string as an argument and returns the left most digit in the string.
+
+// Yellow - leftDigit("TrAdE2W1n95!") ➞ 2
+// leftDigit("V3r1ta$") ➞ 3
+// leftDigit("U//DertHe1nflu3nC3") ➞ 1
+// leftDigit("J@v@5cR1PT") ➞ 5
+
+function leftDigit(num) {
+	let regex = /[0-9]/g;
+  let found = num.match(regex)
+	return parseInt(found[0])
+}
+
+const leftDigit = str => Number(str.match(/[\d]/));
+
+function leftDigit(num) {
+  return +num.split("").find(function(e) {
+    return !isNaN(e);
+  });
+}
+
+function leftDigit(num) {
+	return +num.replace(/[^\d]/g, '')[0]
+}
+
+function leftDigit(num) {
+	return Number(num.match(/[0-9]/gi)[0])
+}
