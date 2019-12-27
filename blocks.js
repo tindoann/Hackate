@@ -4667,3 +4667,167 @@ let x = /^[0-9][0-9]{3}[0-9]$/;
 
 let x = /(^\d{5}$)|(^\d{5}-\d{4}$)/
 
+// 168. Create a function to convert an array of percentages to their decimal equivalents.
+
+// White - convertToDecimal(["1%", "2%", "3%"]) ➞ [0.01, 0.02, 0.03]
+
+function convertToDecimal(perc) {
+	return perc.map(x => parseFloat(x)/100);
+}
+
+function convertToDecimal(perc) {
+	return perc.map(i => parseFloat(i.slice(0, i.length - 1)) / 100)
+}
+
+function convertToDecimal(perc) {
+	let decimalsArray = []
+    for(let i = 0; i < perc.length; i++){
+        let percentagesNumbers = parseFloat(perc[i])/100;
+         decimalsArray.push(percentagesNumbers);
+    }
+    return decimalsArray;
+}
+
+// 169. Write two functions:
+
+// toArray(), which converts a number to an array of its digits.
+// toNumber(), which converts an array of digits back to its number.
+
+// toArray(235) ➞ [2, 3, 5]
+
+// toArray(0) ➞ [0]
+
+// toNumber([2, 3, 5]) ➞ 235
+
+// toNumber([0]) ➞ 0
+
+const toArray = num => String(num).split('').map(Number);
+const toNumber = arr => Number(arr.join(''));
+
+function toArray(num) {
+	return [...num.toString()].map(s => Number(s))
+}
+
+function toNumber(arr) {
+	return Number(arr.join(""))
+}
+
+function toArray(num) {
+	return String(num).split("").map(Number);
+}
+
+function toNumber(arr) {
+	return parseInt(arr.join(""))
+}
+
+function toArray(num) {
+  var arr = [...num.toString()];
+	return arr.map(el=> Number(el));
+}
+
+function toNumber(arr) {
+  return Number(arr.join(''));
+}
+
+let toArray = function(num){
+	let a = [];
+	while(true){
+			a.push(num%10);
+			num = Math.floor(num/10);
+			if(num == 0){
+					break;
+			}
+	}
+	a.sort((a, b) => a - b);
+	return a;
+}
+
+function toNumber(arr) {
+	let num = parseInt(arr.join(''), 10);
+	return num;
+}
+
+// 170. Write a function that takes a string as an argument and returns the left most digit in the string.
+
+// Yellow - leftDigit("TrAdE2W1n95!") ➞ 2
+// leftDigit("V3r1ta$") ➞ 3
+// leftDigit("U//DertHe1nflu3nC3") ➞ 1
+// leftDigit("J@v@5cR1PT") ➞ 5
+
+function leftDigit(num) {
+	let regex = /[0-9]/g;
+  let found = num.match(regex)
+	return parseInt(found[0])
+}
+
+const leftDigit = str => Number(str.match(/[\d]/));
+
+function leftDigit(num) {
+  return +num.split("").find(function(e) {
+    return !isNaN(e);
+  });
+}
+
+function leftDigit(num) {
+	return +num.replace(/[^\d]/g, '')[0]
+}
+
+function leftDigit(num) {
+	return Number(num.match(/[0-9]/gi)[0])
+}
+
+
+// 171. Create a function that moves all capital letters to the front of a word.
+
+// White capToFront("hApPy") ➞ "APhpy"
+
+// capToFront("moveMENT") ➞ "MENTmove"
+
+// capToFront("shOrtCAKE") ➞ "OCAKEshrt"
+
+function capToFront(s) {
+  return s.match(/[A-Z]/g).join('') + s.match(/[a-z]/g).join('');
+}
+
+function capToFront(s) {
+	let lowerCase = [...s].filter(l => l === l.toLowerCase())
+	let upperCase = [...s].filter(l => l === l.toUpperCase())
+	return [...upperCase,...lowerCase].join("")
+}
+
+function capToFront(s) {
+	let inputArr = s.split("");
+	let indexArr = [];
+	let resultStr = "";
+
+	for (i = 0; i < inputArr.length; i++) {
+			if (inputArr[i] != inputArr[i].toLowerCase()) {
+					resultStr = resultStr + inputArr[i];
+					indexArr.push(i);
+			};
+	};
+
+	for (i = indexArr.length - 1;  i >= 0; i--) {
+			inputArr.splice(indexArr[i], 1);
+			console.log(inputArr)
+	}
+
+	inputArr.forEach(function(element) {
+			resultStr = resultStr + element;
+	})
+return resultStr;
+}
+
+function capToFront(s) {
+	var sLetters = s.split('')
+var upper = []
+var lower = []
+sLetters.forEach(function(letter) {
+	if(letter === letter.toUpperCase()) {
+		upper.push(letter)
+	} else {
+		lower.push(letter)
+	}
+	})
+return upper.join('') + lower.join('')
+}
