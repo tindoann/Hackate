@@ -4831,3 +4831,33 @@ sLetters.forEach(function(letter) {
 	})
 return upper.join('') + lower.join('')
 }
+
+// 172. Create a function that takes a string and returns the number (count) of vowels contained within it.
+
+// White - countVowels("Celebration") ➞ 5
+// countVowels("Palm") ➞ 1
+// countVowels("Prediction") ➞ 4
+
+function countVowels(str) {
+	let regex = /[aeiou]/g;
+	let found = str.match(regex);
+	return found.length
+ }
+
+function countVowels(str) {
+  return str.match(/[aeiou]/g).length;
+}
+
+function countVowels(str) {
+  return str.match(/[aeiou]/gi).length;
+}
+
+function countVowels(str) {
+  return str.split('').reduce(function(count, val){
+    if (val.match(/[aeiuo]/)) {
+      count++;
+    }
+    return count;
+  },0);
+}
+
