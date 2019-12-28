@@ -4984,3 +4984,50 @@ function convertBinary(str) {
 	return str.split("").map(x => x.match(s) ? 0 :  1).join("");
 }
 
+// 178. Create a function to count the number of 1s in a 2D array.
+
+// White - countOnes([
+//   [1, 1, 1],
+//   [0, 0, 1],
+//   [1, 1, 1]
+// ]) ➞ 7
+
+function countOnes(matrix) {
+	return matrix.toString().split(',').filter(x => x == '1').length
+}
+
+function countOnes(matrix) {
+	return matrix.join("").split("").filter(x => x == "1").length;
+}
+
+function countOnes(matrix) {
+	return matrix.reduce((a, arr) => a + arr.reduce((_a, n) => _a += n === 1 ? 1: 0, 0), 0);
+}
+
+function countOnes(matrix) {
+	let count = 0;
+	for(i=0; i<matrix.length; i++){
+		matrix[i].map(x => {
+			if(x === 1){
+				count += 1;
+			}
+		})
+	}
+	return count;
+}
+
+function countOnes(matrix) {
+	let arr= matrix.concat(...matrix)
+	    var count = 0;
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === 1) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function countOnes(matrix) {
+	const flat =  matrix.reduce((acc1, m)=>acc1.concat(m),[])
+	return flat.filter(val=>val===1).length
+}
