@@ -4831,3 +4831,53 @@ sLetters.forEach(function(letter) {
 	})
 return upper.join('') + lower.join('')
 }
+
+// 172. Create a function that takes a string and returns the number (count) of vowels contained within it.
+
+// White - countVowels("Celebration") ➞ 5
+// countVowels("Palm") ➞ 1
+// countVowels("Prediction") ➞ 4
+
+function countVowels(str) {
+	let regex = /[aeiou]/g;
+	let found = str.match(regex);
+	return found.length
+ }
+
+function countVowels(str) {
+  return str.match(/[aeiou]/g).length;
+}
+
+function countVowels(str) {
+  return str.match(/[aeiou]/gi).length;
+}
+
+function countVowels(str) {
+  return str.split('').reduce(function(count, val){
+    if (val.match(/[aeiuo]/)) {
+      count++;
+    }
+    return count;
+  },0);
+}
+
+// 173. Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not. A number is symmetrical when it is the same as its reverse.
+
+// White - isSymmetrical(7227) ➞ true
+
+// isSymmetrical(12567) ➞ false
+
+function isSymmetrical(num) {
+  return String(num).split('').reverse().join('') == String(num); 
+}
+
+const isSymmetrical = num => {
+	const str = String(num);
+	return str.split('').reverse().join('') === str;
+}
+
+function isSymmetrical(num) {
+	return num.toString().split("").reverse().join("") === num.toString();
+}
+
+const isSymmetrical = num => num == num.toString().split('').reverse().join('');
