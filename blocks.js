@@ -4936,3 +4936,30 @@ function sayHelloBye (name, num) {
 	}
 	return say + capName;
 }
+
+// 176. Zip codes consist of 5 consecutive digits. Given a string, write a function to determine whether the input is a valid zip code. A valid zip code is as follows:
+
+// Must only contain numbers (no non-digits allowed).
+// Must not contain any spaces.
+// Must not be greater than 5 digits in length.
+
+// White - isValid("59001") ➞ true
+// isValid("853a7") ➞ false
+// isValid("732 32") ➞ false
+
+function isValid(zip) {
+	let regex = /^[0-9]{5}$/;
+	return zip.match(regex) ? true : false; 
+}
+
+function isValid(zip) {
+	return zip.length == 5 && !isNaN(zip);
+	}
+
+function isValid(zip) {
+	return !isNaN(zip) && zip.length === 5
+}
+
+function isValid(zip) {
+	return !isNaN(zip);
+}
