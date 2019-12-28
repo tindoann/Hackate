@@ -4986,7 +4986,7 @@ function convertBinary(str) {
 
 // 178. Create a function to count the number of 1s in a 2D array.
 
-// White - countOnes([
+// Yellow - countOnes([
 //   [1, 1, 1],
 //   [0, 0, 1],
 //   [1, 1, 1]
@@ -5031,3 +5031,57 @@ function countOnes(matrix) {
 	const flat =  matrix.reduce((acc1, m)=>acc1.concat(m),[])
 	return flat.filter(val=>val===1).length
 }
+
+// 179. Given an array of boxes, create a function that returns the total volume of all those boxes combined together. A box is represented by an array with three elements: length, width and height.
+
+// For instance, totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1]) should return 266 since (2 x 3 x 2) + (6 x 6 x 7) + (1 x 2 x 1) = 12 + 252 + 2 = 266.
+
+// Yellow  - totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]) ➞ 63
+// totalVolume([2, 2, 2], [2, 1, 1]) ➞ 10
+// totalVolume([1, 1, 1]) ➞ 1
+
+const totalVolume = (...boxes) =>
+	boxes.reduce((total, [l, w, h]) => total + l * w * h, 0);
+	
+function totalVolume(...boxes) {
+	var sum=0;
+	for (i=0; i<boxes.length; i++) {
+		sum+=boxes[i][0] * boxes[i][1] * boxes[i][2];
+	}
+	return sum;
+}
+
+function totalVolume(...boxes) {
+	let total = 0;
+	for (var i = 0; i < boxes.length; i++) {
+		total += boxes[i].reduce((a, b) => a * b);
+	}
+	return total;
+}
+
+function totalVolume(...boxes) {
+	return [...boxes].map(arr => arr.reduce((a,b) => a * b)).reduce((a,b) => a + b);
+}
+
+const totalVolume = (...boxes) => boxes.map(el => el.reduce((sum,item) => sum *=item,1)).reduce((a,b)=> a+b,0)
+
+// 180. Write a function that receives two portions of a path and joins them. The portions will be joined with the "/" separator. There could be only one separator and if it is not present it should be added.
+
+// White - joinPath("portion1", "portion2") ➞ "portion1/portion2"
+// joinPath("portion1/", "/portion2") ➞ "portion1/portion2"
+
+function joinPath(portion1, portion2) {
+	return `${portion1.replace('/','')}/${portion2.replace('/','')}`;
+}
+
+function joinPath(portion1, portion2) {
+	let p1 = portion1.includes('/')? portion1.slice(0,-1) : portion1
+	let p2 = portion2.includes('/')? portion2.slice(1) : portion2
+	return `${p1}/${p2}`
+}
+
+function joinPath(portion1, portion2) {
+  return portion1.replace(/\//g,'')+'/'+portion2.replace(/\//g,'');
+}
+
+const joinPath = (...portions) => portions.map(portion => portion.replace(/\//g, '')).join('/');
