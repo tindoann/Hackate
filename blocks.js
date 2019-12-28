@@ -4910,3 +4910,29 @@ function isAvgWhole(arr) {
 	return false;
 }
 
+// 175. Write a function that takes a string name and a number num (either 0 or 1) and return "Hello" + name if num is 1, otherwise return "Bye" + name.
+
+// White - sayHelloBye("alon", 1) ➞ "Hello Alon"
+// sayHelloBye("Tomi", 0) ➞ "Bye Tomi"
+// sayHelloBye("jose", 0) ➞ "Bye Jose"
+
+function sayHelloBye(name, num) {
+	n = name.charAt(0).toUpperCase() + name.slice(1)
+	return num === 1 ? `Hello ${n}` : `Bye ${n}`
+}
+
+function sayHelloBye (name, num) {
+	name = name[0].toUpperCase() + name.slice(1);
+	return num === 1 ? `Hello ${name}` : `Bye ${name}`;
+}
+
+function sayHelloBye (name, num) {
+	let say = ""
+	let capName = name[0].toUpperCase() + name.slice(1);
+	if (num == 0){
+		say = "Bye ";
+	}else{
+		say = "Hello "
+	}
+	return say + capName;
+}
