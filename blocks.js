@@ -4910,3 +4910,56 @@ function isAvgWhole(arr) {
 	return false;
 }
 
+// 175. Write a function that takes a string name and a number num (either 0 or 1) and return "Hello" + name if num is 1, otherwise return "Bye" + name.
+
+// White - sayHelloBye("alon", 1) ➞ "Hello Alon"
+// sayHelloBye("Tomi", 0) ➞ "Bye Tomi"
+// sayHelloBye("jose", 0) ➞ "Bye Jose"
+
+function sayHelloBye(name, num) {
+	n = name.charAt(0).toUpperCase() + name.slice(1)
+	return num === 1 ? `Hello ${n}` : `Bye ${n}`
+}
+
+function sayHelloBye (name, num) {
+	name = name[0].toUpperCase() + name.slice(1);
+	return num === 1 ? `Hello ${name}` : `Bye ${name}`;
+}
+
+function sayHelloBye (name, num) {
+	let say = ""
+	let capName = name[0].toUpperCase() + name.slice(1);
+	if (num == 0){
+		say = "Bye ";
+	}else{
+		say = "Hello "
+	}
+	return say + capName;
+}
+
+// 176. Zip codes consist of 5 consecutive digits. Given a string, write a function to determine whether the input is a valid zip code. A valid zip code is as follows:
+
+// Must only contain numbers (no non-digits allowed).
+// Must not contain any spaces.
+// Must not be greater than 5 digits in length.
+
+// White - isValid("59001") ➞ true
+// isValid("853a7") ➞ false
+// isValid("732 32") ➞ false
+
+function isValid(zip) {
+	let regex = /^[0-9]{5}$/;
+	return zip.match(regex) ? true : false; 
+}
+
+function isValid(zip) {
+	return zip.length == 5 && !isNaN(zip);
+	}
+
+function isValid(zip) {
+	return !isNaN(zip) && zip.length === 5
+}
+
+function isValid(zip) {
+	return !isNaN(zip);
+}
