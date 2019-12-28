@@ -4881,3 +4881,32 @@ function isSymmetrical(num) {
 }
 
 const isSymmetrical = num => num == num.toString().split('').reverse().join('');
+
+// 174. Create a function that takes an array as an argument and returns true or false depending on whether the average of all elements in the array is a whole number or not.
+
+// White - isAvgWhole([1, 3]) ➞ true
+// isAvgWhole([1, 2, 3, 4]) ➞ false
+// isAvgWhole([1, 5, 6]) ➞ true
+// isAvgWhole([1, 1, 1]) ➞ true
+// isAvgWhole([9, 2, 2, 5]) ➞ false
+
+function isAvgWhole(arr) {
+	sum = arr.reduce((acc,cur) => acc += cur,0)
+	return sum % arr.length == 0 ? true : false; 
+}
+
+function isAvgWhole(arr) {
+	return Number.isInteger(arr.reduce((accum, val) => accum + val) / arr.length) 
+}
+
+function isAvgWhole(arr) {
+	var sum = 0;
+	arr.forEach(num => {
+		sum += num;
+	})
+	if (sum/arr.length % 1 === 0) {
+		return true;
+	}
+	return false;
+}
+
