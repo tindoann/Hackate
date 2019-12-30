@@ -5270,3 +5270,28 @@ function findNemo(sentence) {
 	}
 	return "I can't find Nemo :("
 }
+
+// 187. Given a string of letters, how many capital letters are there?
+
+// White - capitalLetters("fvLzpxmgXSDrobbgMVrc") ➞ 6
+
+// capitalLetters("JMZWCneOTFLWYwBWxyFw") ➞ 14
+
+// capitalLetters("mqeytbbjwqemcdrdsyvq") ➞ 0
+
+function capitalLetters(txt) {
+	let regex = /[A-Z]/g
+	count = txt.match(regex) || []
+		return count.length
+}
+
+const capitalLetters = s => {
+	return [...s].filter(v => v === v.toUpperCase()).length;
+}
+
+const capitalLetters = txt => txt.split(/[A-Z]/).length - 1;
+
+function capitalLetters(txt) {
+	return txt.match(/[A-Z]/g)!==null ? txt.match(/[A-Z]/g).length : 0
+}
+
