@@ -5085,3 +5085,96 @@ function joinPath(portion1, portion2) {
 }
 
 const joinPath = (...portions) => portions.map(portion => portion.replace(/\//g, '')).join('/');
+
+// 181. Create a function that takes an array of strings and return an array, sorted from shortest to longest.
+
+// sortByLength(["Google", "Apple", "Microsoft"])
+// ➞ ["Apple", "Google", "Microsoft"]
+
+// sortByLength(["Leonardo", "Michelangelo", "Raphael", "Donatello"])
+// ➞ ["Raphael", "Leonardo", "Donatello", "Michelangelo"]
+
+function sortByLength(arr) {
+	return arr.sort(function(a,b){
+		return a.length - b.length;
+	})
+}
+
+/* 
+
+If compareFunction is supplied, all non-undefined array elements are sorted according to the return value of the compare function (all undefined elements are sorted to the end of the array, with no call to compareFunction). If a and b are two elements being compared, then:
+
+If compareFunction(a, b) returns less than 0, sort a to an index lower than b (i.e. a comes first).
+If compareFunction(a, b) returns 0, leave a and b unchanged with respect to each other, but sorted with respect to all different elements. Note: the ECMAscript standard does not guarantee this behavior, thus, not all browsers (e.g. Mozilla versions dating back to at least 2003) respect this.
+If compareFunction(a, b) returns greater than 0, sort b to an index lower than a (i.e. b comes first).
+compareFunction(a, b) must always return the same value when given a specific pair of elements a and b as its two arguments. If inconsistent results are returned, then the sort order is undefined.
+
+*/
+
+function sortByLength(arr) {
+	return arr.sort((a, b) => { return a.length - b.length})
+}
+
+function sortByLength(arr) {
+	return arr.sort((a, b) => a.length - b.length);
+}
+
+function sortByLength(arr) {
+	return arr.sort(function(a,b){
+		return a.length - b.length;
+	})
+}
+
+function sortByLength(array) {
+  for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array.length - i - 1; j++) {
+      var temp = array[j]
+      if (array[j].length > array[j + 1].length) {
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+    }
+  }
+	return array;
+}
+
+// 182. Given two numbers, return true if the sum of both numbers is less than 100. Return false otherwise.
+
+// lessThan100(22, 15) ➞ true
+// 22 + 15 = 37
+
+// lessThan100(83, 34) ➞ false
+// 83 + 34 = 117
+
+function lessThan100(a, b) {
+  sum = a + b
+	return sum < 100 ? true : false; 
+}
+
+const lessThan100 = (a, b) => a + b < 100;
+
+// 183. Given a number n, write a function that returns PI to n decimal places.
+
+// White - myPi(5) ➞ 3.14159
+
+// myPi(4) ➞ 3.1416
+
+// myPi(15) ➞ 3.141592653589793
+
+function myPi(n) {
+	return Number(Math.PI.toFixed(n));
+}
+
+function myPi(n) {
+	return parseFloat(Math.PI.toFixed(n))
+}
+
+function myPi(n) {
+	var pi = +(Math.PI);
+	return Number(parseFloat(pi).toFixed(n));
+}
+
+function myPi(n) {
+	var num= Math.PI.toFixed(n);
+  return parseFloat(num);
+}
