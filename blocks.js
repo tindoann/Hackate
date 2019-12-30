@@ -5135,5 +5135,20 @@ function sortByLength(array) {
       }
     }
   }
-  return array;
+	return array;
 }
+
+// 182. Given two numbers, return true if the sum of both numbers is less than 100. Return false otherwise.
+
+// lessThan100(22, 15) ➞ true
+// 22 + 15 = 37
+
+// lessThan100(83, 34) ➞ false
+// 83 + 34 = 117
+
+function lessThan100(a, b) {
+  sum = a + b
+	return sum < 100 ? true : false; 
+}
+
+const lessThan100 = (a, b) => a + b < 100;
