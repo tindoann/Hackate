@@ -5178,3 +5178,47 @@ function myPi(n) {
 	var num= Math.PI.toFixed(n);
   return parseFloat(num);
 }
+
+// 184. Create a function which takes in a word and spells it out, by consecutively adding letters until the full word is completed.
+
+// White - spelling("bee") ➞ ["b", "be", "bee"]
+// spelling("happy") ➞ ["h", "ha", "hap", "happ", "happy"]
+
+function spelling(str) {
+	return str.split('').map((c, i) => str.slice(0, i+1) );
+}
+
+function spelling(str) {
+	let newArr = [];
+	for(let i = 1; i <= str.length; i++){
+		newArr.push(str.slice(0, i));
+	}
+	return newArr;
+}
+
+const spelling = str => {
+	let arr = [];
+	for(let i = 1; i<=str.length; i++)
+		arr.push(str.substr(0, i));
+	return arr;
+}
+
+function spelling(str) {
+	let result = [];
+	let word = "";
+	for(let i in str) {
+		word = word + str[i];
+		result.push(word);
+	}
+	return result;
+}
+
+function spelling(str) {
+	var a = [];
+	for(var i = 0; i < str.length; i++){
+		a.push(str.slice(0,i+1));
+	}
+	return a;
+}
+
+
