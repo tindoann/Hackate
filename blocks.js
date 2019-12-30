@@ -5295,3 +5295,31 @@ function capitalLetters(txt) {
 	return txt.match(/[A-Z]/g)!==null ? txt.match(/[A-Z]/g).length : 0
 }
 
+// 188. An array is special, if every even index contains an even number and every odd index contains an odd number. Create a function that returns true if an array is special, and false otherwise.
+
+// Yellow - isSpecialArray([2, 7, 4, 9, 6, 1, 6, 3]) ➞ true
+// Even indices: [2, 4, 6, 6]; Odd indices: [7, 9, 1, 3]
+
+// isSpecialArray([2, 7, 9, 1, 6, 1, 6, 3]) ➞ false
+// Index 2 has an odd number 9.
+
+function isSpecialArray(arr) {
+	for (var i in arr) {
+		if (i%2 != arr[i]%2) return false;
+	}
+	return true;
+}
+
+const isSpecialArray = a => a.every((v, i) => v%2 == i%2);
+
+function isSpecialArray(arr) {
+	return arr.every((n, i) => n % 2 === i % 2);
+}
+
+function isSpecialArray(arr) {
+  return arr.every((element, index) => element%2 === index%2)
+}
+
+function isSpecialArray(arr) {
+	return arr.every((a,i) => (a % 2) === (i % 2));
+}
