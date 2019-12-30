@@ -5152,3 +5152,29 @@ function lessThan100(a, b) {
 }
 
 const lessThan100 = (a, b) => a + b < 100;
+
+// 183. Given a number n, write a function that returns PI to n decimal places.
+
+// White - myPi(5) ➞ 3.14159
+
+// myPi(4) ➞ 3.1416
+
+// myPi(15) ➞ 3.141592653589793
+
+function myPi(n) {
+	return Number(Math.PI.toFixed(n));
+}
+
+function myPi(n) {
+	return parseFloat(Math.PI.toFixed(n))
+}
+
+function myPi(n) {
+	var pi = +(Math.PI);
+	return Number(parseFloat(pi).toFixed(n));
+}
+
+function myPi(n) {
+	var num= Math.PI.toFixed(n);
+  return parseFloat(num);
+}
