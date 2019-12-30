@@ -5295,3 +5295,59 @@ function capitalLetters(txt) {
 	return txt.match(/[A-Z]/g)!==null ? txt.match(/[A-Z]/g).length : 0
 }
 
+// 188. An array is special, if every even index contains an even number and every odd index contains an odd number. Create a function that returns true if an array is special, and false otherwise.
+
+// Yellow - isSpecialArray([2, 7, 4, 9, 6, 1, 6, 3]) ➞ true
+// Even indices: [2, 4, 6, 6]; Odd indices: [7, 9, 1, 3]
+
+// isSpecialArray([2, 7, 9, 1, 6, 1, 6, 3]) ➞ false
+// Index 2 has an odd number 9.
+
+function isSpecialArray(arr) {
+	for (var i in arr) {
+		if (i%2 != arr[i]%2) return false;
+	}
+	return true;
+}
+
+const isSpecialArray = a => a.every((v, i) => v%2 == i%2);
+
+function isSpecialArray(arr) {
+	return arr.every((n, i) => n % 2 === i % 2);
+}
+
+function isSpecialArray(arr) {
+  return arr.every((element, index) => element%2 === index%2)
+}
+
+function isSpecialArray(arr) {
+	return arr.every((a,i) => (a % 2) === (i % 2));
+}
+
+// 189. Create a function that transforms a string of upvote counts into an array of numbers. Each k represents a thousand.
+
+// White - transformUpvotes("6.8k 13.5k") ➞ [6800, 13500]
+
+// transformUpvotes("5.5k 8.9k 32") ➞ [5500, 8900, 32]
+
+function transformUpvotes(str) {
+	return str.split(' ')
+		.map(a => (a.endsWith("k") ? parseFloat(a) * 1000 : parseInt(a)));
+}
+
+function transformUpvotes(str) {
+	return str.split(' ').map(element => element.endsWith('k') ? parseFloat(element)*1000 : parseFloat(element));
+}
+
+const transformUpvotes = s => s.split(" ").map(x =>
+	+ (x.replace(".", "").replace("k", "00")));
+
+function transformUpvotes(str) {
+	str = str.split(" ");
+	for (var i = 0; i < str.length; i++){
+		if (str[i].charAt(str[i].length - 1) == "k"){
+			str[i] = str[i].slice(0, str[i].length - 1) * 1000;
+		}
+	}
+	return str.map(x => Number(x));
+}
