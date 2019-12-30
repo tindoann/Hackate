@@ -5237,4 +5237,36 @@ function removeVowels(str) {
   return str.split("").filter(char => 'aeiouAEIOU'.indexOf(char) < 0).join("")
 }
 
+// 186. You're given a string of words. You need to find the word "Nemo", and return a string like this: "I found Nemo at [the order of the word you find nemo]!".
 
+// If you can't find Nemo, return "I can't find Nemo :(".
+
+// findNemo("I am finding Nemo !") ➞ "I found Nemo at 4!"
+
+// findNemo("Nemo is me") ➞ "I found Nemo at 1!"
+
+// findNemo("I Nemo am") ➞ "I found Nemo at 2!"
+
+findNemo = a => {
+  b = a.split(" ").indexOf("Nemo") + 1
+  return b ? `I found Nemo at ${b}!` : "I can't find Nemo :("
+}
+
+function findNemo(sentance) {
+	let str = sentance.split(' ');
+	for (let i = 0; i < str.length; i++){
+		if (str[i] == "Nemo") return "I found Nemo at " + (i+1) + "!";
+	}
+	
+	return "I can\'t find Nemo :(";
+}
+
+function findNemo(sentence) {
+	let newSentence = sentence.split(" ");
+	for(let i = 0; i < newSentence.length; ++i){
+		if(newSentence[i] === "Nemo") {
+			return `I found Nemo at ${i + 1}!`
+		}
+	}
+	return "I can't find Nemo :("
+}
