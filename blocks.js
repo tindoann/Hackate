@@ -5405,3 +5405,31 @@ function highLow(str) {
   let a = str.split(' ').map((x) => +x);
   return Math.max(...a) + ' ' + Math.min(...a);
 }
+
+// 192. Create a function that keeps only strings with repeating identical characters (in other words, it has a set size of 1).
+
+function identicalFilter(arr){
+	return arr.filter((str) => new Set(str).size === 1)
+}
+
+function identicalFilter(arr) {
+	return arr.filter(val => {
+		return new Set(val.split('')).size == 1
+	})
+}
+
+function identicalFilter(arr) {
+	return arr.filter(i => i === i[0].repeat(i.length))
+}
+
+function identicalFilter(arr) {
+	return arr.filter(word => {
+		let keep = true;
+		for (let i = 1; i < word.length; i++) {
+			if (word[i] !== word[0]) {
+				keep = false;
+			}
+		}
+		return keep;
+	})
+}
