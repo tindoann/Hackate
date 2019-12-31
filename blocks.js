@@ -5372,3 +5372,36 @@ function formatPhoneNumber(numbers) {
 function formatPhoneNumber(numbers) {
   return numbers.join('').replace(/^(\d{3})/, '($1) ').replace(/(\d{3})(\d{4})$/, '$1-$2');
 }
+
+// 191. Create a function that accepts a string of space separated numbers and returns the highest and lowest number (as a string).
+
+// White - highLow("1 2 3 4 5") ➞ "5 1"
+
+// highLow("1 2 -3 4 5") ➞ "5 -3"
+
+// highLow("1 9 3 4 -5") ➞ "9 -5"
+
+// highLow("13") ➞ "13 13"
+
+function highLow(str) {
+  var nums = str.split(' ');
+  return `${Math.max(...nums)} ${Math.min(...nums)}`;
+}
+
+function highLow(str) {
+  const num = str.split(' ');
+  return [
+    Math.max(...num),
+    Math.min(...num),
+  ].join(' ');
+}
+
+function highLow(str) {
+  str = str.split(" ")
+  return Math.max(...str) + " " + Math.min(...str) 
+}
+
+function highLow(str) {
+  let a = str.split(' ').map((x) => +x);
+  return Math.max(...a) + ' ' + Math.min(...a);
+}
