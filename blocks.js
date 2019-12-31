@@ -5433,3 +5433,28 @@ function identicalFilter(arr) {
 		return keep;
 	})
 }
+
+// 192. Write a function that reverses all the words in a sentence which contains a particular letter.
+
+// specialReverse("word searches are super fun", "s")
+// ➞ "word sehcraes are repus fun"
+
+// specialReverse("first man to walk on the moon", "m")
+// ➞ "first nam to walk on the noom"
+
+function specialReverse(s, c) {
+	return s.split(" ")
+		.map(x => x[0]== c ? x.split("").reverse().join(""):x)
+		.join(" ");
+}
+
+function specialReverse(s, c) {
+	return s.split(" ").map(x => (x.includes(c)? x.split("").reverse().join("") : x)).join(" ")
+}
+
+function specialReverse(s, c) {
+	return s.split(" ")
+		.map(a => a[0] == c ? a.split("").reverse().join("") : a)
+		.join(" ");
+}
+
