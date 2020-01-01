@@ -5433,3 +5433,81 @@ function identicalFilter(arr) {
 		return keep;
 	})
 }
+
+// 192. Write a function that reverses all the words in a sentence which contains a particular letter.
+
+// Yellow - specialReverse("word searches are super fun", "s")
+// ➞ "word sehcraes are repus fun"
+
+// specialReverse("first man to walk on the moon", "m")
+// ➞ "first nam to walk on the noom"
+
+function specialReverse(s, c) {
+	return s.split(" ")
+		.map(x => x[0]== c ? x.split("").reverse().join(""):x)
+		.join(" ");
+}
+
+function specialReverse(s, c) {
+	return s.split(" ").map(x => (x.includes(c)? x.split("").reverse().join("") : x)).join(" ")
+}
+
+function specialReverse(s, c) {
+	return s.split(" ")
+		.map(a => a[0] == c ? a.split("").reverse().join("") : a)
+		.join(" ");
+}
+
+// 193. Create a function that returns only strings with unique characters.
+
+// Yellow - filterUnique(["abb", "abc", "abcdb", "aea", "bbb"]) ➞ ["abc"]
+// "b" occurs in "abb" more than once, "b" occurs in "abcdb" more than once, etc.
+
+// filterUnique(["88", "999", "989", "9988", "9898"]) ➞ []
+
+// filterUnique(["ABCDE", "DDEB", "BED", "CCA", "BAC"]) ➞ ["ABCDE", "BED", "BAC"]
+
+const filterUnique = arr =>
+arr.filter(x => new Set(x).size == x.length);
+
+function filterUnique(arr) {
+	return arr.filter(a => new Set(a.split('')).size === a.length)
+}
+
+function filterUnique(arr) {
+	return arr.filter(a => new Set(a.split('')).size === a.length);
+}
+
+// 194. Create a function that returns "even" if a number has an even number of factors and "odd" if a number has an odd number of factors.
+
+// Yellow - factorGroup(33) ➞ "even"
+// factorGroup(36) ➞ "odd"
+// factorGroup(7) ➞ "even"
+
+const factorGroup = num => Number.isInteger(Math.sqrt(num)) ? 'odd' : 'even';
+
+let factorGroup=(num)=>Number.isInteger(Math.sqrt(num))?'odd':'even'
+
+function factorGroup(num) {
+	var r = [];
+	for (var i = 1; i <= num; i++) {
+		if (num % i == 0) r.push(i);
+	}
+	return r.length % 2 == 1 ? 'odd' : 'even';
+}
+
+function factorGroup(num) {
+	var sum = 0;
+	for (var i  = 1; i <= num; i++){
+		if (num%i == 0){
+			sum = sum + 1;
+		}
+	}
+	
+	if (sum % 2 == 0){
+		return "even";
+	}
+	else{
+		return "odd";
+	}
+}
