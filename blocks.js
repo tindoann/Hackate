@@ -5478,3 +5478,36 @@ function filterUnique(arr) {
 	return arr.filter(a => new Set(a.split('')).size === a.length);
 }
 
+// 194. Create a function that returns "even" if a number has an even number of factors and "odd" if a number has an odd number of factors.
+
+// Yellow - factorGroup(33) ➞ "even"
+// factorGroup(36) ➞ "odd"
+// factorGroup(7) ➞ "even"
+
+const factorGroup = num => Number.isInteger(Math.sqrt(num)) ? 'odd' : 'even';
+
+let factorGroup=(num)=>Number.isInteger(Math.sqrt(num))?'odd':'even'
+
+function factorGroup(num) {
+	var r = [];
+	for (var i = 1; i <= num; i++) {
+		if (num % i == 0) r.push(i);
+	}
+	return r.length % 2 == 1 ? 'odd' : 'even';
+}
+
+function factorGroup(num) {
+	var sum = 0;
+	for (var i  = 1; i <= num; i++){
+		if (num%i == 0){
+			sum = sum + 1;
+		}
+	}
+	
+	if (sum % 2 == 0){
+		return "even";
+	}
+	else{
+		return "odd";
+	}
+}
