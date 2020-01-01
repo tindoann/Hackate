@@ -5436,7 +5436,7 @@ function identicalFilter(arr) {
 
 // 192. Write a function that reverses all the words in a sentence which contains a particular letter.
 
-// specialReverse("word searches are super fun", "s")
+// Yellow - specialReverse("word searches are super fun", "s")
 // ➞ "word sehcraes are repus fun"
 
 // specialReverse("first man to walk on the moon", "m")
@@ -5456,5 +5456,25 @@ function specialReverse(s, c) {
 	return s.split(" ")
 		.map(a => a[0] == c ? a.split("").reverse().join("") : a)
 		.join(" ");
+}
+
+// 193. Create a function that returns only strings with unique characters.
+
+// Yellow - filterUnique(["abb", "abc", "abcdb", "aea", "bbb"]) ➞ ["abc"]
+// "b" occurs in "abb" more than once, "b" occurs in "abcdb" more than once, etc.
+
+// filterUnique(["88", "999", "989", "9988", "9898"]) ➞ []
+
+// filterUnique(["ABCDE", "DDEB", "BED", "CCA", "BAC"]) ➞ ["ABCDE", "BED", "BAC"]
+
+const filterUnique = arr =>
+arr.filter(x => new Set(x).size == x.length);
+
+function filterUnique(arr) {
+	return arr.filter(a => new Set(a.split('')).size === a.length)
+}
+
+function filterUnique(arr) {
+	return arr.filter(a => new Set(a.split('')).size === a.length);
 }
 
