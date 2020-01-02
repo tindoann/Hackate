@@ -5511,3 +5511,36 @@ function factorGroup(num) {
 		return "odd";
 	}
 }
+
+// 195. Create a function that takes an array of arrays with numbers. Return a new (single) array with the largest numbers of each.
+
+// Yellow - findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]) ➞ [7, 90, 2]
+
+// findLargestNums([[-34, -54, -74], [-32, -2, -65], [-54, 7, -43]]) ➞ [-34, -2, 7]
+
+function findLargestNums(arr) {
+  return arr.map(x => Math.max(...x));
+}
+
+function findLargestNums(arr) {
+  var result = [];
+  for(var i = 0; i < arr.length; i++){
+    var val = arr[i].sort(function(a,b){return a<b?1: -1;});
+    result.push(val[0]);
+  }
+  return result;
+}
+
+function findLargestNums(arr) {
+  return arr.map(el => el.sort((a, b) => a - b).pop());
+}
+
+function findLargestNums(arr) {
+	var res = [];
+		for(var i =0;i< arr.length; i++){
+			var arr1 = arr[i];
+			arr1.sort(function(a,b){return a-b});
+			res.push(arr1[arr1.length-1])
+		}
+		return res
+}
