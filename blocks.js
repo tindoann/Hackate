@@ -5545,7 +5545,7 @@ function findLargestNums(arr) {
 		return res
 }
 
-// A factor chain is an array where each previous element is a factor of the next consecutive element. The following is a factor chain:
+// 196. A factor chain is an array where each previous element is a factor of the next consecutive element. The following is a factor chain:
 
 // 3 is a factor of 6
 // 6 is a factor of 12
@@ -5583,3 +5583,32 @@ function factorChain(arr) {
 
 const factorChain = arr => arr.slice(1).every((num, i) => num % arr[i] === 0);
 
+// 197. Create a function that takes an array of numbers and returns the mean value.
+
+// mean([1, 0, 4, 5, 2, 4, 1, 2, 3, 3, 3]) ➞ 2.55
+// mean([2, 3, 2, 3]) ➞ 2.50
+// mean([3, 3, 3, 3, 3]) ➞ 3.00
+
+function mean(arr) {
+  reducer = (a, b) => a + b;
+  let total = arr.reduce(reducer);
+  let answer = (total / arr.length);
+  let ans = answer.toFixed(2)
+	return Number.parseFloat(ans)
+}
+
+function mean(arr) {
+  return parseFloat((arr.reduce((a, b) => a + b) / arr.length).toFixed(2));
+}
+
+function mean(arr) {
+  return Number((arr.reduce((a, b) => a + b) / arr.length).toFixed(2));
+}
+
+function mean(arr) {
+	var mean = 0;
+	 for (var i=0; i<arr.length; i++) {
+		 mean += arr[i];
+	 }
+	 return mean = Math.round((mean / arr.length) * 100) / 100;
+ }
