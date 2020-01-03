@@ -5612,3 +5612,64 @@ function mean(arr) {
 	 }
 	 return mean = Math.round((mean / arr.length) * 100) / 100;
  }
+
+//  198. Create a function that takes in a date and returns the correct century.
+
+function century(year) {
+	if (year > 2000) {
+		return "21st century";
+	} else if (year % 100 === 0) {
+		return year / 100 + "th century";
+	} else {
+		var remain = year % 100;
+		return ((year + 100) - remain) / 100 + "th century";
+	}
+}
+
+function century(year) {
+	return Math.ceil(year/100)== 21 ? "21st century":Math.ceil(year/100)+"th century";
+}
+
+function century(year) {
+	const century = Math.ceil(year / 100);
+  return century !== 21 
+		? `${century}th century` 
+		: `${century}st century`;
+}
+
+const century = y => {
+	let c = Math.ceil(y/100); 
+	return	`${c}${c==21?"st":"th"} century`;
+};
+
+function century(year) {
+	const c = Math.floor((year - 1) / 100) + 1;
+	return c + (c == 21 ? "st" : "th") + " century"
+}
+
+function century(year) {
+	var lastIdx = year > 999 ? 2 : 1;
+	
+	var cent = parseInt(year.toString().substring(0,lastIdx));
+	if (year.toString().substring(2,4) != "00") {
+		cent++;
+	}
+	var result = `${cent}th century`;
+	
+	switch (cent) {
+		case 1:
+		case 21:
+			result = `${cent}st century`;
+			break;
+		case 2:
+		case 22:
+			result = `${cent}nd century`;
+			break;
+		case 3:
+		case 23:
+			result = `${cent}rd century`;
+			break;
+	}
+
+return result;
+}
