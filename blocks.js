@@ -5673,3 +5673,21 @@ function century(year) {
 
 return result;
 }
+
+// 199. Write a function that returns 0 if the input is 1, and returns 1 if the input is 0.
+
+// White - flip(1) ➞ 0
+// flip(0) ➞ 1
+
+function flip(y) {
+	return 1-y;
+}
+
+function flip(y) {
+	x = [1, 0]
+	return x[y]
+}
+
+function flip(y) {
+	return Math.abs(1 - y);
+}
