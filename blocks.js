@@ -5544,3 +5544,132 @@ function findLargestNums(arr) {
 		}
 		return res
 }
+
+// 196. A factor chain is an array where each previous element is a factor of the next consecutive element. The following is a factor chain:
+
+// 3 is a factor of 6
+// 6 is a factor of 12
+// 12 is a factor of 36
+
+// Create a function that determines whether or not an array is a factor chain.
+
+// Yellow - factorChain([1, 2, 4, 8, 16, 32]) ➞ true
+// factorChain([1, 1, 1, 1, 1, 1]) ➞ true
+// factorChain([2, 4, 6, 7, 12]) ➞ false
+
+function factorChain(arr) {
+	for (let i = 0; i < arr.length - 1; i++) {
+		if ((arr[i + 1] % arr[i]))
+			return false
+	}
+	return true
+}
+
+function factorChain(arr) {
+	var counter = 0;
+	 for(var i = 0; i < arr.length - 1; i++) {
+		 if(arr[i+1] % arr[i] != 0) {
+			 counter++
+		 }
+	 }
+	 return counter < 1
+ }
+
+function factorChain(arr) {
+	return !Number.isNaN(
+		arr.reduce((a, b) => b % a === 0 ? b : NaN)
+	);
+}
+
+const factorChain = arr => arr.slice(1).every((num, i) => num % arr[i] === 0);
+
+// 197. Create a function that takes an array of numbers and returns the mean value.
+
+// mean([1, 0, 4, 5, 2, 4, 1, 2, 3, 3, 3]) ➞ 2.55
+// mean([2, 3, 2, 3]) ➞ 2.50
+// mean([3, 3, 3, 3, 3]) ➞ 3.00
+
+function mean(arr) {
+  reducer = (a, b) => a + b;
+  let total = arr.reduce(reducer);
+  let answer = (total / arr.length);
+  let ans = answer.toFixed(2)
+	return Number.parseFloat(ans)
+}
+
+function mean(arr) {
+  return parseFloat((arr.reduce((a, b) => a + b) / arr.length).toFixed(2));
+}
+
+function mean(arr) {
+  return Number((arr.reduce((a, b) => a + b) / arr.length).toFixed(2));
+}
+
+function mean(arr) {
+	var mean = 0;
+	 for (var i=0; i<arr.length; i++) {
+		 mean += arr[i];
+	 }
+	 return mean = Math.round((mean / arr.length) * 100) / 100;
+ }
+
+//  198. Create a function that takes in a date and returns the correct century.
+
+function century(year) {
+	if (year > 2000) {
+		return "21st century";
+	} else if (year % 100 === 0) {
+		return year / 100 + "th century";
+	} else {
+		var remain = year % 100;
+		return ((year + 100) - remain) / 100 + "th century";
+	}
+}
+
+function century(year) {
+	return Math.ceil(year/100)== 21 ? "21st century":Math.ceil(year/100)+"th century";
+}
+
+function century(year) {
+	const century = Math.ceil(year / 100);
+  return century !== 21 
+		? `${century}th century` 
+		: `${century}st century`;
+}
+
+const century = y => {
+	let c = Math.ceil(y/100); 
+	return	`${c}${c==21?"st":"th"} century`;
+};
+
+function century(year) {
+	const c = Math.floor((year - 1) / 100) + 1;
+	return c + (c == 21 ? "st" : "th") + " century"
+}
+
+function century(year) {
+	var lastIdx = year > 999 ? 2 : 1;
+	
+	var cent = parseInt(year.toString().substring(0,lastIdx));
+	if (year.toString().substring(2,4) != "00") {
+		cent++;
+	}
+	var result = `${cent}th century`;
+	
+	switch (cent) {
+		case 1:
+		case 21:
+			result = `${cent}st century`;
+			break;
+		case 2:
+		case 22:
+			result = `${cent}nd century`;
+			break;
+		case 3:
+		case 23:
+			result = `${cent}rd century`;
+			break;
+	}
+
+return result;
+}
