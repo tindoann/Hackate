@@ -5723,3 +5723,39 @@ function toArray(obj) {
 	}
 	return arr
 }
+
+// 201. You need to detect what browser is being used. Create a function that takes a string (browser identifier) and returns the browser name.
+
+// White - detectBrowser("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36") ➞ "Google Chrome"
+// detectBrowser("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0") ➞ "Mozilla Firefox"
+
+function detectBrowser(userAgent){
+	if (userAgent.includes('Firefox')) {
+		return "Mozilla Firefox";
+	} else if (userAgent.includes('Chrome')){
+		return "Google Chrome";
+	} else {
+		return "Internet Explorer";
+	}
+}
+
+function detectBrowser(userAgent){
+	if (/Firefox\//.test(userAgent)) {
+		return 'Mozilla Firefox';
+		
+	} else if (/Chrome\//.test(userAgent)) {
+		return 'Google Chrome';
+		
+	} else if (/Windows\/|Windows\ |PowerPC/.test(userAgent)) {
+		return 'Internet Explorer';
+		
+	}
+}
+
+let detectBrowser = userAgent => userAgent.includes("Firefox") 
+? "Mozilla Firefox" : userAgent.includes("Chrome") ? "Google Chrome" :
+"Internet Explorer";
+
+detectBrowser = s => s.includes("Firefox") ? "Mozilla Firefox" : s.includes("AppleWebKit") ? "Google Chrome" : "Internet Explorer"
+
+
