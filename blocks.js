@@ -5673,3 +5673,102 @@ function century(year) {
 
 return result;
 }
+
+// 199. Write a function that returns 0 if the input is 1, and returns 1 if the input is 0.
+
+// White - flip(1) ➞ 0
+// flip(0) ➞ 1
+
+function flip(y) {
+	return 1-y;
+}
+
+function flip(y) {
+	x = [1, 0]
+	return x[y]
+}
+
+function flip(y) {
+	return Math.abs(1 - y);
+}
+
+// 200. Write a function that converts an object into an array, where each element represents a key-value pair.
+
+// White - toArray({ a: 1, b: 2 }) ➞ [["a", 1], ["b", 2]]
+// toArray({ shrimp: 15, tots: 12 }) ➞ [["shrimp", 15], ["tots", 12]]
+// toArray({}) ➞ []
+
+function toArray(obj) {
+	return Object.entries(obj);
+}
+
+function toArray(obj) {
+	var a = [];
+	for(var i in obj){
+		a.push([i,obj[i]]);
+	}
+	return a;
+}
+
+function toArray(obj) {
+	return Object.keys(obj).map(x => [x, obj[x]]);
+}
+
+function toArray(obj) {
+	var arr = [];
+	for(let [key,value] of Object.entries(obj)){
+		if(key){
+			arr.push([key,value]);
+		}
+	}
+	return arr
+}
+
+// 201. You need to detect what browser is being used. Create a function that takes a string (browser identifier) and returns the browser name.
+
+// White - detectBrowser("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36") ➞ "Google Chrome"
+// detectBrowser("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0") ➞ "Mozilla Firefox"
+
+function detectBrowser(userAgent){
+	if (userAgent.includes('Firefox')) {
+		return "Mozilla Firefox";
+	} else if (userAgent.includes('Chrome')){
+		return "Google Chrome";
+	} else {
+		return "Internet Explorer";
+	}
+}
+
+function detectBrowser(userAgent){
+	if (/Firefox\//.test(userAgent)) {
+		return 'Mozilla Firefox';
+		
+	} else if (/Chrome\//.test(userAgent)) {
+		return 'Google Chrome';
+		
+	} else if (/Windows\/|Windows\ |PowerPC/.test(userAgent)) {
+		return 'Internet Explorer';
+		
+	}
+}
+
+let detectBrowser = userAgent => userAgent.includes("Firefox") 
+? "Mozilla Firefox" : userAgent.includes("Chrome") ? "Google Chrome" :
+"Internet Explorer";
+
+detectBrowser = s => s.includes("Firefox") ? "Mozilla Firefox" : s.includes("AppleWebKit") ? "Google Chrome" : "Internet Explorer"
+
+// 202. Write a function redundant that takes in a string str and returns a function that returns str.
+
+// White - const f1 = redundant("apple")
+// f1() ➞ "apple"
+
+// const f2 = redundant("pear")
+// f2() ➞ "pear"
+
+// const f3 = redundant("")
+// f3() ➞ ""
+
+const redundant = str => () => str;
+
+
