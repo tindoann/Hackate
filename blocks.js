@@ -5691,3 +5691,35 @@ function flip(y) {
 function flip(y) {
 	return Math.abs(1 - y);
 }
+
+// 200. Write a function that converts an object into an array, where each element represents a key-value pair.
+
+// White - toArray({ a: 1, b: 2 }) ➞ [["a", 1], ["b", 2]]
+// toArray({ shrimp: 15, tots: 12 }) ➞ [["shrimp", 15], ["tots", 12]]
+// toArray({}) ➞ []
+
+function toArray(obj) {
+	return Object.entries(obj);
+}
+
+function toArray(obj) {
+	var a = [];
+	for(var i in obj){
+		a.push([i,obj[i]]);
+	}
+	return a;
+}
+
+function toArray(obj) {
+	return Object.keys(obj).map(x => [x, obj[x]]);
+}
+
+function toArray(obj) {
+	var arr = [];
+	for(let [key,value] of Object.entries(obj)){
+		if(key){
+			arr.push([key,value]);
+		}
+	}
+	return arr
+}
