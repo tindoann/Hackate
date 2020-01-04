@@ -5771,4 +5771,11 @@ detectBrowser = s => s.includes("Firefox") ? "Mozilla Firefox" : s.includes("App
 
 const redundant = str => () => str;
 
+function redundant(str) {
+	return () => str;
+}
 
+function redundant(str) {
+  const e = () => str;
+  return e;
+}
