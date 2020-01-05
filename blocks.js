@@ -5802,3 +5802,38 @@ function indexMultiplier(arr) {
 	}
 	return sum;
 }
+
+// 204. Write a function that converts an object into an array of keys and values.
+
+// objectToArray({
+//   D: 1,
+//   B: 2,
+//   C: 3
+// }) ➞ [["D", 1], ["B", 2], ["C", 3]]
+
+// objectToArray({
+//   likes: 2,
+//   dislikes: 3,
+//   followers: 10
+// }) ➞ [["likes", 2], ["dislikes", 3], ["followers", 10]]
+
+function objectToArray(obj) {
+	return Object.keys(obj).map(key => [key, obj[key]])
+}
+
+function objectToArray(obj) {
+	return Object.keys(obj).map(a => [a, obj[a]]);
+}
+
+function objectToArray(obj) {
+	const myArray = Object.entries(obj);
+	return myArray;
+}
+
+function objectToArray(obj) {
+	var r = [];
+  for (var i in obj) {
+		r.push([i, obj[i]]);
+	}
+	return r;
+}
