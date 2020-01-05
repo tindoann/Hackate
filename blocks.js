@@ -5887,3 +5887,60 @@ function arrayOfMultiples (num, length) {
 			}
 			return result
 	}
+
+	// 207. Create a function that takes any nonnegative number as an argument and return it with it's digits in descending order.
+
+	function sortDescending(num) {
+		return parseInt(num.toString().split('').sort().reverse().join(''));
+	}
+
+	function sortDescending(num) {
+		return Number(num.toString().split('').sort((a, b) => b - a).join(''));
+	}
+
+	function sortDescending(num) {
+		var arr = num.toString().split('');
+		arr = arr.sort((a,b) => b - a );
+		arr = arr.join('');
+		return parseInt(arr);
+	}
+
+	// 208. Create a function that takes an integer and returns it as an ordinal number. An Ordinal Number is a number that tells the position of something in a list, such as 1st, 2nd, 3rd, 4th, 5th etc.
+
+// White - returnEndOfNumber(553) ➞ "553-RD"
+// returnEndOfNumber(34) ➞ "34-TH"
+// returnEndOfNumber(1231) ➞ "1231-ST"
+// returnEndOfNumber(22) ➞ "22-ND"
+
+function returnEndOfNumber(num) {
+	if ([11,12,13].includes(num)) return `${num}-TH`
+	if (String(num).endsWith('1')) return `${num}-ST`
+	if (String(num).endsWith('2')) return `${num}-ND`
+	if (String(num).endsWith('3')) return `${num}-RD`
+	return `${num}-TH`
+}
+
+function returnEndOfNumber(num) {	
+	switch(""+num%10) {
+		case "1": return num.toString() + "-ST"
+		case "2": return num.toString() + "-ND"
+	 case "3": return num.toString() + "-RD"
+	 default: return num.toString() + "-TH"
+   }	
+}
+
+function returnEndOfNumber(num) {
+	var res
+	var end = num.toString().slice(-1)
+	
+	if (end == 1) {
+		res = num + '-ST'
+	} else if (end == 2) {
+		res = num + '-ND'
+	} else if (end == 3) {
+		res = num + '-RD'
+	} else if (end > 3) {
+		res = num + '-TH'
+	}
+	return res
+}
