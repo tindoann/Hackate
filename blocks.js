@@ -5779,3 +5779,26 @@ function redundant(str) {
   const e = () => str;
   return e;
 }
+
+// 203. Return the sum of all items in an array, where each item is multiplied by its index (zero-based). For empty arrays, return 0.
+
+// White - indexMultiplier([1, 2, 3, 4, 5]) ➞ 40
+// (1*0 + 2*1 + 3*2 + 4*3 + 5*4)
+
+// indexMultiplier([-3, 0, 8, -6]) ➞ -2
+// (-3*0 + 0*1 + 8*2 + -6*3)
+
+function indexMultiplier(arr) {
+	return arr.reduce((acc, cv, i)=> acc + cv * i, 0)
+}
+
+const indexMultiplier = arr => arr.reduce((a,v,i) => a + v*i, 0);
+
+function indexMultiplier(arr) {
+	let sum = 0;
+	for (let i=0; i<arr.length; i++) {
+		const count = arr[i] * [i];
+		sum += count;
+	}
+	return sum;
+}
