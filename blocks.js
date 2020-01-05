@@ -5805,7 +5805,7 @@ function indexMultiplier(arr) {
 
 // 204. Write a function that converts an object into an array of keys and values.
 
-// objectToArray({
+// White - objectToArray({
 //   D: 1,
 //   B: 2,
 //   C: 3
@@ -5837,3 +5837,53 @@ function objectToArray(obj) {
 	}
 	return r;
 }
+
+// 205. Per 6 coffee cups I buy, I get a 7th cup free. In total, I get 7 cups. Create a function that takes n cups bought and return as an integer the total number of cups i would get.
+
+// White - totalCups(6) ➞ 7
+// totalCups(12) ➞ 14
+// totalCups(213) ➞ 248
+
+function totalCups(n) {
+	return n + Math.floor(n / 6)
+ }
+
+ function totalCups(n) {
+  let extra = n / 6;
+	return Math.floor(n + extra)
+}
+
+const totalCups = num => num + Math.floor(num / 6);
+
+function totalCups(n) {
+  return Math.floor((n / 6 + n));
+}
+
+// 206. Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num up to length.
+
+// Yellow - arrayOfMultiples(7, 5) ➞ [7, 14, 21, 28, 35]
+// arrayOfMultiples(12, 10) ➞ [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+// arrayOfMultiples(17, 6) ➞ [17, 34, 51, 68, 85, 102]
+
+const arrayOfMultiples = (num, length) => {
+	return Array.from({length: length}, (_, i) => num * (i + 1));
+}
+
+function arrayOfMultiples (num, length) {
+	let mult = [];
+	
+		for(i = 1;i <= length; i++){
+			mult.push(num*i);
+		}
+		
+	return mult;
+	}
+
+	function arrayOfMultiples (num, length) {
+		var result = []
+			for (let i = 1; i <= length; i++) {
+					result.push(num*i)
+					
+			}
+			return result
+	}
