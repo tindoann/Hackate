@@ -5984,3 +5984,45 @@ function changeEnough(change, amountDue) {
 	a += change[3]*0.01;
 	return a >= amountDue;
 }
+
+// 210. Write a function that takes all even-indexed characters and odd-indexed characters from a string and concatenates them together.
+
+// Yellow -  indexShuffle("abcdefg") ➞ "acegbdf"
+// indexShuffle("holiday") ➞ "hldyoia"
+// indexShuffle("maybe") ➞ "myeab"
+
+function indexShuffle(str) {
+	const even = [...str].filter((char, i) => i % 2 === 0);
+	const odd = [...str].filter((char, i) => i % 2);
+	
+	return [...even, ...odd].join('');
+}
+
+// 211. Create a function that takes an object and returns the keys and values as separate arrays.
+
+// White - keysAndValues({ a: 1, b: 2, c: 3 })
+// ➞ [["a", "b", "c"], [1, 2, 3]]
+
+// keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" })
+// ➞ [["a", "b", "c"], ["Apple", "Microsoft", "Google"]]
+
+// keysAndValues({ key1: true, key2: false, key3: undefined })
+// ➞ [["key1", "key2", "key3"], [true, false, undefined]]
+
+function keysAndValues(obj) {
+  return [Object.keys(obj), Object.keys(obj).map(x => obj[x])];
+}
+
+function keysAndValues(obj) {
+  var keys = Object.keys(obj);
+  return [keys, keys.map( key => obj[key] )];
+}
+
+function keysAndValues(obj) {
+  var result = [];
+  result.push(Object.keys(obj))
+  const vals = Object.keys(obj).map(key => obj[key]);
+  result.push(vals)
+  return result
+}
+
