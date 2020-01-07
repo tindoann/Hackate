@@ -6118,3 +6118,50 @@ function testJackpot(result) {
 	}
 	return true;
 }
+
+// 215. Create a function that returns true if an asterisk * is inside a box.
+
+// White - inBox([
+//   "###",
+//   "#*#",
+//   "###"
+// ]) ➞ true
+
+// inBox([
+//   "####",
+//   "#* #",
+//   "#  #",
+//   "####"
+// ]) ➞ true
+
+// inBox([
+//   "*####",
+//   "# #",
+//   "#  #*",
+//   "####"
+// ]) ➞ false
+
+const inBox = arr => arr.some(x => x.includes('*'));
+
+function inBox(arr) {
+  for (let i=0; i<arr.length; i++){
+    let element = arr[i]; 
+    //console.log(element)
+
+    if (element.includes('*')){
+      return true
+    }
+  }
+  return false
+}
+
+function inBox(arr) {
+	for (var i in arr) {
+		if (arr[i].indexOf('*') != -1) return true;
+	}
+	return false;
+}
+
+function inBox(arr) {
+	return arr.join('').includes('*')
+}
