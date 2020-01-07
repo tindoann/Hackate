@@ -5944,3 +5944,121 @@ function returnEndOfNumber(num) {
 	}
 	return res
 }
+
+/* 209. Given a total due and an array representing the amount of change in your pocket, 
+determine whether or not you are able to pay for the item. Change will always be represented 
+in the following order: quarters, dimes, nickels, pennies.
+
+To illustrate: changeEnough([25, 20, 5, 0], 4.25) should yield true, since having 25 quarters, 
+20 dimes, 5 nickels and 0 pennies gives you 6.25 + 2 + .25 + 0 = 8.50. 
+*/
+
+function changeEnough(change, amountDue) {
+	let sum = change[0]*0.25 + change[1]*0.1 + change[2]*0.05 + change[3]*0.01;
+	return sum >= amountDue;
+}
+
+const changeEnough = (change, amountDue) => {
+	change[0] *= 0.25;
+	change[1] *= 0.1;
+	change[2] *= 0.05;
+  change[3] *= 0.01;
+  
+  return change.reduce((acc, val) => acc + val, 0) >= amountDue;
+}
+
+function changeEnough(change, amountDue) {
+	let [q,d,n,p] = change;
+	return (q*.25) + (d*.10) + (n*.05) + (p*.01) >= amountDue;
+}
+
+function changeEnough(change, amountDue) {
+	let money = [change[0] * 0.25, change[1] * 0.1, change[2] * 0.05, change[3] * 0.01];
+	return (money.reduce((acc, next) => acc + next) >= amountDue); 
+}
+
+function changeEnough(change, amountDue) {
+	var a = change[0]*0.25;
+	a += change[1]*0.1;
+	a += change[2]*0.05;
+	a += change[3]*0.01;
+	return a >= amountDue;
+}
+
+// 210. Write a function that takes all even-indexed characters and odd-indexed characters from a string and concatenates them together.
+
+// Yellow -  indexShuffle("abcdefg") ➞ "acegbdf"
+// indexShuffle("holiday") ➞ "hldyoia"
+// indexShuffle("maybe") ➞ "myeab"
+
+function indexShuffle(str) {
+	const even = [...str].filter((char, i) => i % 2 === 0);
+	const odd = [...str].filter((char, i) => i % 2);
+	
+	return [...even, ...odd].join('');
+}
+
+// 211. Create a function that takes an object and returns the keys and values as separate arrays.
+
+// White - keysAndValues({ a: 1, b: 2, c: 3 })
+// ➞ [["a", "b", "c"], [1, 2, 3]]
+
+// keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" })
+// ➞ [["a", "b", "c"], ["Apple", "Microsoft", "Google"]]
+
+// keysAndValues({ key1: true, key2: false, key3: undefined })
+// ➞ [["key1", "key2", "key3"], [true, false, undefined]]
+
+function keysAndValues(obj) {
+  return [Object.keys(obj), Object.keys(obj).map(x => obj[x])];
+}
+
+function keysAndValues(obj) {
+  var keys = Object.keys(obj);
+  return [keys, keys.map( key => obj[key] )];
+}
+
+function keysAndValues(obj) {
+  var result = [];
+  result.push(Object.keys(obj))
+  const vals = Object.keys(obj).map(key => obj[key]);
+  result.push(vals)
+  return result
+}
+
+// 212. Create a function that takes two numbers and a mathematical operator + - / * and will perform a calculation with the given numbers.
+
+function calculator(num1,operator,num2) {
+	return {
+		'+': num1 + num2,
+		'-': num1 - num2,
+		'*': num1 * num2,
+		'/': num2 ? num1 / num2 : 'Cannot divide by 0!'
+	}[operator]
+}
+
+function calculator(num1, operator, num2) {
+	operations = {
+		'+': (a,b) => a + b,
+		'-': (a,b) => a - b,
+		'*': (a,b) => a * b,
+		'/': (a,b) => b ? a / b :"Can't divide by 0!"
+	}
+	
+	return operations[operator](num1,num2)
+}
+
+function calculator(num1, operator, num2) {
+	switch (operator) {
+		case '+':
+			return num1 + num2;
+		case '-':
+			return num1 - num2;
+		case '*':
+			return num1 * num2;
+		case '/':
+			if (num2 === 0) return "Can't divide by 0!";
+			return num1 / num2;
+	}
+	return null;
+}
