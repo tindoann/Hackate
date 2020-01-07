@@ -6092,4 +6092,29 @@ function sortNumsAscending(arr) {
   return arr ? arr.sort(function(a, b){ return a - b; }) : [];
 }
 
+// 214. Create a function that takes in an array (slot machine outcome) and returns true if all elements in the array are identical, and false otherwise. 
 
+// White - testJackpot(["@", "@", "@", "@"]) ➞ true
+// testJackpot(["abc", "abc", "abc", "abc"]) ➞ true
+// testJackpot(["SS", "SS", "SS", "SS"]) ➞ true
+// testJackpot(["&&", "&", "&&&", "&&&&"]) ➞ false
+// testJackpot(["SS", "SS", "SS", "Ss"]) ➞ false
+
+function testJackpot(result) {
+  return result.every(x => x === result[0]);	
+}
+
+function testJackpot(result) {
+	return new Set(result).size === 1
+}
+
+const testJackpot = result => !result.find(r => r !== result[0])
+
+function testJackpot(result) {
+	for(var i=0; i<result.length-1; i++) {
+		if(result[i] !== result[i+1] ) {
+			return false;
+		}
+	}
+	return true;
+}
