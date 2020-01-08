@@ -6235,3 +6235,44 @@ function doubleLetters(word) {
 function doubleLetters(word) {
 	return /(\w)\1/gi.test(word)
 }
+
+// 219. Create a function that takes an array of items and checks if the last item matches the rest of the array.
+
+// White - matchLastItem(["rsq", "6hi", "g", "rsq6hig"]) ➞ true
+// The last item is the rest joined.
+
+// matchLastItem([1, 1, 1, "11"]) ➞ false
+// The last item should be "111".
+
+// matchLastItem([8, "thunder", true, "8thundertrue"]) ➞ true
+
+function matchLastItem(arr) {
+	return arr.pop() === arr.join('');
+}
+
+const matchLastItem = arr => {
+  const last = arr.pop();
+  return arr.join('') === last;
+};
+
+function matchLastItem(arr) {
+	// Get the last item in the array.
+	var lastItem = arr.pop();
+
+	// Convert the rest into strings and join them.
+	var onlyStrings = arr.map(function(item){
+			return item.toString();
+	});
+
+	var str = onlyStrings.join("");
+
+	// Compare the joined string to the last item.
+	if(str === lastItem){
+			// console.log("T");
+			return true;
+	}
+	else{
+			// console.log("F");
+			return false;
+	}
+}
