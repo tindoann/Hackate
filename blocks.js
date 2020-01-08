@@ -6118,3 +6118,75 @@ function testJackpot(result) {
 	}
 	return true;
 }
+
+// 215. Create a function that returns true if an asterisk * is inside a box.
+
+// White - inBox([
+//   "###",
+//   "#*#",
+//   "###"
+// ]) ➞ true
+
+// inBox([
+//   "####",
+//   "#* #",
+//   "#  #",
+//   "####"
+// ]) ➞ true
+
+// inBox([
+//   "*####",
+//   "# #",
+//   "#  #*",
+//   "####"
+// ]) ➞ false
+
+const inBox = arr => arr.some(x => x.includes('*'));
+
+function inBox(arr) {
+  for (let i=0; i<arr.length; i++){
+    let element = arr[i]; 
+    //console.log(element)
+
+    if (element.includes('*')){
+      return true
+    }
+  }
+  return false
+}
+
+function inBox(arr) {
+	for (var i in arr) {
+		if (arr[i].indexOf('*') != -1) return true;
+	}
+	return false;
+}
+
+function inBox(arr) {
+	return arr.join('').includes('*')
+}
+
+// 216. Create a function that concatenates n input arrays, where n is variable.
+
+// White - concat([1, 2, 3], [4, 5], [6, 7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+// concat([1], [2], [3], [4], [5], [6], [7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+// concat([1, 2], [3, 4]) ➞ [1, 2, 3, 4]
+// concat([4, 4, 4, 4, 4]) ➞ [4, 4, 4, 4, 4]
+
+function concat(...args) {
+	return [].concat(...args)
+}
+
+function concat() {
+	var a = [];
+	for (var i = 0; i < arguments.length; i++) {
+		a = a.concat(arguments[i]);
+	}
+	return a;
+}
+
+function concat(...args) {
+	return args.reduce((a, b) => a.concat(b), [])
+}
+
+const concat = (...arrays) => arrays.reduce((result, arr) => result.concat(arr), []);
