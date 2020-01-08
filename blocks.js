@@ -6177,12 +6177,12 @@ function concat(...args) {
 	return [].concat(...args)
 }
 
-function concat() {
-	var a = [];
-	for (var i = 0; i < arguments.length; i++) {
-		a = a.concat(arguments[i]);
+function concat(...args) {
+	var result = args[0];
+	for (var i = 1; i < args.length; i++){
+		result = result.concat(args[i]);
 	}
-	return a;
+	return result;
 }
 
 function concat(...args) {
@@ -6190,3 +6190,48 @@ function concat(...args) {
 }
 
 const concat = (...arrays) => arrays.reduce((result, arr) => result.concat(arr), []);
+
+// 217. Create a function that takes an integer n and reverses it.
+
+// White - rev(5121) ➞ "1215"
+// rev(69) ➞ "96"
+// rev(-122157) ➞ "751221"
+
+function rev(n) {
+	return Math.abs(n).toString().split('').reverse().join('')
+}
+
+function rev(n) {
+	return [...n.toString()].reverse().join('').replace(/-/, '')
+}
+
+function rev(n) {
+	let arr = String(n).match(/\d/g);
+	return arr.reverse().join("");
+} 
+
+// 218. Create a function that takes a word and returns true if the word has two consecutive identical letters.
+
+// White - doubleLetters("loop") ➞ true
+// doubleLetters("yummy") ➞ true
+// doubleLetters("orange") ➞ false
+// doubleLetters("munchkin") ➞ false
+
+function doubleLetters(word) {
+	return /(\w)\1/.test(word)
+}
+
+function doubleLetters(word) {
+	word = word.split("");
+	for (var i = 1; i < word.length; i++){
+		if(word[i-1] == word[i]){
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+
+function doubleLetters(word) {
+	return /(\w)\1/gi.test(word)
+}
