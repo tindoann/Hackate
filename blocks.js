@@ -6165,3 +6165,28 @@ function inBox(arr) {
 function inBox(arr) {
 	return arr.join('').includes('*')
 }
+
+// 216. Create a function that concatenates n input arrays, where n is variable.
+
+// White - concat([1, 2, 3], [4, 5], [6, 7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+// concat([1], [2], [3], [4], [5], [6], [7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+// concat([1, 2], [3, 4]) ➞ [1, 2, 3, 4]
+// concat([4, 4, 4, 4, 4]) ➞ [4, 4, 4, 4, 4]
+
+function concat(...args) {
+	return [].concat(...args)
+}
+
+function concat() {
+	var a = [];
+	for (var i = 0; i < arguments.length; i++) {
+		a = a.concat(arguments[i]);
+	}
+	return a;
+}
+
+function concat(...args) {
+	return args.reduce((a, b) => a.concat(b), [])
+}
+
+const concat = (...arrays) => arrays.reduce((result, arr) => result.concat(arr), []);
