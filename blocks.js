@@ -6309,3 +6309,48 @@ function evenOddTransform(arr, n) {
 	}
 	return arr;
 }
+
+// 221. Suppose an image can be represented as a 2D array of 0s and 1s. Write a function to reverse an image. Replace the 0s with 1s and vice versa.
+
+// White - reverseImage([
+//   [1, 0, 0],
+//   [0, 1, 0],
+//   [0, 0, 1]
+// ]) ➞ [
+//   [0, 1, 1],
+//   [1, 0, 1],
+//   [1, 1, 0]
+// ]
+
+// reverseImage([
+//   [1, 1, 1],
+//   [0, 0, 0]
+// ]) ➞ [
+//   [0, 0, 0],
+//   [1, 1, 1]
+// ]
+
+// reverseImage([
+//   [1, 0, 0],
+//   [1, 0, 0]
+// ]) ➞ [
+//   [0, 1, 1],
+//   [0, 1, 1]
+// ]
+
+function reverseImage(image) {
+	return image.split('').reverse().join('')
+}
+
+function reverseImage(image) {
+	return image.map(el => el.map(e => (e === 0) ? 1 : 0));
+}
+
+function reverseImage(image) {
+	for (var i in image) {
+		for (var j in image[i]) {
+			image[i][j] = image[i][j] == 0 ? 1 : 0;
+		}
+	}
+	return image;
+}
