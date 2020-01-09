@@ -6386,5 +6386,60 @@ function solutions(a, b, c) {
 
 const solutions = (a,b,c) => [0,1,2][Math.sign(b*b-4*a*c)+1];
 
+// 223. Create a function that takes an array of names and returns an array with the first letter capitalized.
 
+// Yellow - capMe(["mavis", "senaida", "letty"]) ➞ ["Mavis", "Senaida", "Letty"]
+// capMe(["samuel", "MABELLE", "letitia", "meridith"]) ➞ ["Samuel", "Mabelle", "Letitia", "Meridith"]
+// capMe(["Slyvia", "Kristal", "Sharilyn", "Calista"]) ➞ ["Slyvia", "Kristal", "Sharilyn", "Calista"]
+
+
+function capMe(arr) {
+	return arr.map(x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase());
+}
+
+function capMe(arr) {
+	for(let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].toLowerCase().substring(1);
+  }
+  return arr;
+}
+
+function capMe(arr) {
+  var tempArr;
+	for (i in arr){
+    arr[i] = arr[i].substring(0,1).toUpperCase() + arr[i].substring(1).toLowerCase();
+  }
+  return arr;
+}
+
+function capMe(arr) {
+	for(i = 0; i < arr.length; i++){
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase();
+  }
+  
+  return arr;
+}
+
+// 224. Return the total number of arrays inside a given array.
+
+// numOfSubbarrays([[1, 2, 3]]) ➞ 1
+// numOfSubbarrays([[1, 2, 3], [1, 2, 3], [1, 2, 3]]) ➞ 3
+// numOfSubbarrays([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]) ➞ 4
+// numOfSubbarrays([1, 2, 3]) ➞ 0
+
+function numOfSubbarrays(arr) {
+	return arr.filter(x => x.length).length; 
+}
+
+function numOfSubbarrays(arr) {
+	return arr.filter(a => a instanceof Array).length; 
+}
+
+function numOfSubbarrays(arr) {
+	let count = 0; 
+	for(let i = 0; i < arr.length; i++) {
+		if (Array.isArray(arr[i])) count++; 
+	}
+	return count; 
+}
 
