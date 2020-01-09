@@ -6309,3 +6309,82 @@ function evenOddTransform(arr, n) {
 	}
 	return arr;
 }
+
+// 221. Suppose an image can be represented as a 2D array of 0s and 1s. Write a function to reverse an image. Replace the 0s with 1s and vice versa.
+
+// White - reverseImage([
+//   [1, 0, 0],
+//   [0, 1, 0],
+//   [0, 0, 1]
+// ]) ➞ [
+//   [0, 1, 1],
+//   [1, 0, 1],
+//   [1, 1, 0]
+// ]
+
+// reverseImage([
+//   [1, 1, 1],
+//   [0, 0, 0]
+// ]) ➞ [
+//   [0, 0, 0],
+//   [1, 1, 1]
+// ]
+
+// reverseImage([
+//   [1, 0, 0],
+//   [1, 0, 0]
+// ]) ➞ [
+//   [0, 1, 1],
+//   [0, 1, 1]
+// ]
+
+function reverseImage(image) {
+	return image.split('').reverse().join('')
+}
+
+function reverseImage(image) {
+	return image.map(el => el.map(e => (e === 0) ? 1 : 0));
+}
+
+function reverseImage(image) {
+	for (var i in image) {
+		for (var j in image[i]) {
+			image[i][j] = image[i][j] == 0 ? 1 : 0;
+		}
+	}
+	return image;
+}
+
+// 222. A quadratic equation a x² + b x + c = 0 has either 0, 1, or 2 distinct solutions for real values of x. 
+// Given a, b and c, you should return the number of solutions to the equation.
+
+// Yellow - solutions(1, 0, -1) ➞ 2
+// x² - 1 = 0 has two solutions (x = 1 and x = -1).
+
+// solutions(1, 0, 0) ➞ 1
+// x² = 0 has one solution (x = 0).
+
+// solutions(1, 0, 1) ➞ 0
+// x² + 1 = 0 has no solutions.
+
+function solutions(a, b, c) {
+	var d = Math.pow(b,2) - 4*a*c;
+	if (d > 0) return 2;
+	if (d == 0) return 1;
+	return 0;
+}
+
+function solutions(a,b,c) {
+  const disc = b*b - 4*a*c;
+  return disc > 0 ? 2 : disc == 0 ? 1 : 0;
+}
+
+function solutions(a, b, c) {
+	let num = Math.pow(b, 2) - 4 * a * c;
+	return num === 0 ? 1 : (num > 0 ? 2 : 0);
+}
+
+const solutions = (a,b,c) => [0,1,2][Math.sign(b*b-4*a*c)+1];
+
+
+
