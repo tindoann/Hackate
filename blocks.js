@@ -6422,7 +6422,7 @@ function capMe(arr) {
 
 // 224. Return the total number of arrays inside a given array.
 
-// numOfSubbarrays([[1, 2, 3]]) ➞ 1
+// Yellow - numOfSubbarrays([[1, 2, 3]]) ➞ 1
 // numOfSubbarrays([[1, 2, 3], [1, 2, 3], [1, 2, 3]]) ➞ 3
 // numOfSubbarrays([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]) ➞ 4
 // numOfSubbarrays([1, 2, 3]) ➞ 0
@@ -6443,3 +6443,29 @@ function numOfSubbarrays(arr) {
 	return count; 
 }
 
+// 225. Given an array of numbers, write a function that returns an array that...
+
+// Has all duplicate elements removed.
+// Is sorted from least to greatest value.
+
+// White - uniqueSort([1, 2, 4, 3]) ➞ [1, 2, 3, 4]
+// uniqueSort([1, 4, 4, 4, 4, 4, 3, 2, 1, 2]) ➞ [1, 2, 3, 4]
+// uniqueSort([6, 7, 3, 2, 1]) ➞ [1, 2, 3, 6, 7]
+
+function uniqueSort(arr) {
+  return Array.from(new Set(arr)).sort((a,b) => a - b);
+}
+
+function uniqueSort(arr) {
+	return [...new Set(arr)].sort((a,b) => a - b)
+}
+
+function uniqueSort(arr) {
+	var used = [];
+  arr.forEach(function(item){
+    if (!used.includes(item)){
+    	used.push(item);
+    };
+  });
+  return used.sort(function(a, b){ return a-b; });
+}
