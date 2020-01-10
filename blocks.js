@@ -6469,3 +6469,24 @@ function uniqueSort(arr) {
   });
   return used.sort(function(a, b){ return a-b; });
 }
+
+// 226. Write a function, .vreplace() that extends the String prototype by replacing all vowels in a string with a specified vowel.
+
+// White - "apples and bananas".vreplace("u") ➞ "upplus und bununus"
+// "cheese casserole".vreplace("o") ➞ "chooso cossorolo"
+// "stuffed jalapeno poppers".vreplace("e") ➞ "steffed jelepene peppers"
+
+String.prototype.vreplace = function(vowel) {
+	return this.replace(/[aeiou]/gi, vowel);
+}
+
+String.prototype.vreplace= function vreplace (vowel,str) {
+	if(!str){
+		str = this;
+	}
+  return str.replace(/[aeiou]/g,vowel);
+}
+
+String.prototype.vreplace = function(vowel) {
+	return this.split('').map(x=>x.match(/[aeiou]/i) ? vowel : x).join('')
+}
