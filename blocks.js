@@ -6554,3 +6554,43 @@ function factorize(num) {
 	
 	return factors
 }
+
+// 229. Create a function that takes a number as an argument and returns a string formatted to separate thousands.
+
+// White - formatNum(1000) ➞ "1,000"
+// formatNum(100000) ➞ "100,000"
+// formatNum(20) ➞ "20"
+
+function formatNum(num) {
+	return num.toLocaleString();
+}
+
+function formatNum(num) {
+	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function formatNum(num) {
+	let ar = [...(''+num)];
+  let i = ar.length;
+  while (i -= 3) {
+    if (i < 0) break;
+    ar.splice(i, 0, ',');
+  }
+  return ar.join('');
+}
+
+// 330. Create a function that takes an array of items, removes all duplicate items and returns a new array in the same sequential order as the old array (minus duplicates).
+
+// White - removeDups([1, 0, 1, 0]) ➞ [1, 0]
+// removeDups(["The", "big", "cat"]) ➞ ["The", "big", "cat"]
+// removeDups(["John", "Taylor", "John"]) ➞ ["John", "Taylor"]
+
+const removeDups = arr => [...new Set(arr)]
+
+function removeDups(arr) {
+  return [...new Set(arr)];
+}
+
+function removeDups(arr) {
+  return arr.filter((x, i, a) => a.indexOf(x) === i);
+}
