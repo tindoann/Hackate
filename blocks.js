@@ -6490,3 +6490,67 @@ String.prototype.vreplace= function vreplace (vowel,str) {
 String.prototype.vreplace = function(vowel) {
 	return this.split('').map(x=>x.match(/[aeiou]/i) ? vowel : x).join('')
 }
+
+// 227. Create a function that takes a single word string and does the following:
+// Concatenates inator to the end if the word ends with a consonant otherwise, concatenate -inator instead.
+// Adds the word length of the original word to the end, supplied with '000'.
+
+// White - inatorInator("Shrink") ➞ "Shrinkinator 6000"
+// inatorInator("Doom") ➞ "Doominator 4000"
+// inatorInator("EvilClone") ➞ "EvilClone-inator 9000"
+
+const inatorInator = w => {
+	let c = /[aeiou]/i.test(w[w.length - 1]) ? "-inator" : "inator";
+	return `${w}${c} ${w.length}000`;
+}
+
+function inatorInator(w){
+	let regex = /[aeiou]/i
+	return w+(regex.test(w.slice(-1))?"-":"")+"inator "+ w.length*1000
+}
+
+function inatorInator(inv) {
+	return /[aeiou]$/gi.test(inv)
+				 ? inv + "-inator" + " " + inv.length + "000"
+				 : inv + "inator"	 + " " + inv.length + "000"
+}
+
+// 228. Create a function that takes a number as its argument and returns an array of all its factors.
+
+// White - factorize(12) ➞ [1, 2, 3, 4, 6, 12]
+// factorize(4) ➞ [1, 2, 4]
+// factorize(17) ➞ [1, 17]
+
+function factorize(num) {
+	let factors = []
+	for (i = 1; i <= num; i++) {
+		if (num % i === 0) {
+			factors.push(i)
+		}
+	}
+	return factors
+}
+
+function factorize(num) {
+	return new Array(num).fill().map((x, i) => i + 1).filter(n => num % n === 0)
+}
+
+function factorize(num) {
+	var r = [1];
+	for (var i = 2; i <= num; i++) {
+		if (num % i == 0) r.push(i);
+	}
+	return r;
+}
+
+function factorize(num) {
+	let factors = []
+	
+	for(let i = 1; i <= num; i++) {
+		if (num % i === 0) {
+			factors.push(i)
+		}
+	}
+	
+	return factors
+}
