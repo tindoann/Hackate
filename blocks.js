@@ -6554,3 +6554,27 @@ function factorize(num) {
 	
 	return factors
 }
+
+// 229. Create a function that takes a number as an argument and returns a string formatted to separate thousands.
+
+// White - formatNum(1000) ➞ "1,000"
+// formatNum(100000) ➞ "100,000"
+// formatNum(20) ➞ "20"
+
+function formatNum(num) {
+	return num.toLocaleString();
+}
+
+function formatNum(num) {
+	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function formatNum(num) {
+	let ar = [...(''+num)];
+  let i = ar.length;
+  while (i -= 3) {
+    if (i < 0) break;
+    ar.splice(i, 0, ',');
+  }
+  return ar.join('');
+}
