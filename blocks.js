@@ -6623,3 +6623,35 @@ const sumTwoSmallestNums = (arr) => {
 	newArr.sort((a, b) => (a > b) ? 1 : -1)
 	return newArr[0]+newArr[1]
 }
+
+// 332. Create a function that takes three integer arguments (a, b, c) and returns the number of equal values.
+
+// White - equal(3, 4, 3) ➞ 2
+// equal(1, 1, 1) ➞ 3
+// equal(3, 4, 1) ➞ 0
+
+function equal(a, b, c) {
+	const size = (new Set([a, b, c])).size;
+	return size === 3 ? 0 : 4 - size;
+}
+
+const equal = (a, b, c) => {
+	var z = 4 - [... new Set([a, b, c])].length
+	return z == 1 ? 0 : z;
+}
+
+function equal(a, b, c) {
+	return new Set([a, b, c]).size === 3 ? 0 : (new Set([a, b, c]).size === 1 ? 3 : 2);
+}
+
+function equal(a, b, c) {
+	set1 = new Set([a, b, c]);
+	if (set1.size === 3) {
+		return 0;
+	} else {
+	return (4-set1.size);
+	}
+}
+
+
+
