@@ -6594,3 +6594,32 @@ function removeDups(arr) {
 function removeDups(arr) {
   return arr.filter((x, i, a) => a.indexOf(x) === i);
 }
+
+// 331. Create a function that takes an array of numbers and returns the sum of the two lowest positive numbers.
+
+// White - sumTwoSmallestNums([19, 5, 42, 2, 77]) ➞ 7
+// sumTwoSmallestNums([10, 343445353, 3453445, 3453545353453]) ➞ 3453455
+// sumTwoSmallestNums([2, 9, 6, -1]) ➞ 8
+
+function sumTwoSmallestNums(arr) {
+	arr = arr.sort((a,b) => a - b).filter(x => x > 0);
+	return arr[0] + arr[1];
+}
+
+function sumTwoSmallestNums(arr) {
+  return arr.filter((item) => item >= 0)
+    .sort((a, b) => a - b)
+    .slice(0, 2)
+    .reduce((acc, item) => acc + item);
+}
+
+const sumTwoSmallestNums = (arr) => {
+	let newArr=[];
+	for(let i=0;i<arr.length;i++)
+		{
+			if(arr[i]>0)
+				newArr.push(arr[i])
+		}
+	newArr.sort((a, b) => (a > b) ? 1 : -1)
+	return newArr[0]+newArr[1]
+}
