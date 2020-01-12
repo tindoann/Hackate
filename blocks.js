@@ -6764,3 +6764,26 @@ function XO(str) {
   }
   return x === o;
 }
+
+// 336. Create a function that takes a string, removes all "special" characters (e.g. !, @, #, $, %, ^, &, \, *, (, )) 
+// and returns the new string. The only non-alphanumeric characters allowed are dashes -, underscores _ and spaces.
+
+// removeSpecialCharacters("The quick brown fox!") ➞ "The quick brown fox"
+// removeSpecialCharacters("%fd76$fd(-)6GvKlO.") ➞ "fd76fd-6GvKlO"
+// removeSpecialCharacters("D0n$c sed 0di0 du1") ➞ "D0nc sed 0di0 du1"
+
+function removeSpecialCharacters(str) {
+  return str.replace(/[^\w- ]/gi, "");
+}
+
+function removeSpecialCharacters(str) {
+  var replaced = str.replace(/[^a-zA-Z0-9-_\s]/g, '');
+	return replaced;
+}
+
+function removeSpecialCharacters(str) {
+  return str.replace(/\?|\||{|}|<|>|,|`|~|\[|\]|\+|=|\.|\(|\)|!|@|#|\$|%|\^|&|\*/gi, '');
+}
+
+const removeSpecialCharacters = str =>
+str.replace(/[!&\/\\#,+()$~%.'":*?<>{}`@^|'=[\]]/g, '');
