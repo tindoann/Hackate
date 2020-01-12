@@ -6724,3 +6724,43 @@ function halveCount(a, b) {
 	}
 	 return count;
 }
+
+// 335. Create a function that takes a string, checks if it has the same number of x's and o's and returns either true or false.
+
+// Return a boolean value (true or false).
+// The string can contain any character.
+// When no x and no o are in the string, return true.
+
+// White - XO("ooxx") ➞ true
+// XO("xooxx") ➞ false
+// XO("ooxXm") ➞ true
+// Case insensitive.
+// XO("zpzpzpp") ➞ true
+// Returns true if no x and o.
+// XO("zzoo") ➞ false
+
+function XO(str) {
+  return str.replace(/[^x]/ig, '').length === str.replace(/[^o]/ig, '').length
+}
+
+function XO(str) {
+  let x = str.toLowerCase().split('').filter(x => x === 'x').length;
+  let o = str.toLowerCase().split('').filter(x => x === 'o').length;
+  return x === o;
+}
+
+function XO(str) {
+  return str.toLowerCase().split("x").length == str.split("o").length;
+}
+
+function XO(str) {
+  var x = 0, o = 0;
+  for (var i = 0; i < str.length; i++) {
+    if (str[i].toLowerCase() === 'x') {
+      x += 1;
+    } else if (str[i].toLowerCase() == 'o') {
+      o += 1;
+    }
+  }
+  return x === o;
+}
