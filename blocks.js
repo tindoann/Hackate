@@ -6653,5 +6653,32 @@ function equal(a, b, c) {
 	}
 }
 
+// 333. Create a function that takes a string as an argument and converts the first character of each word to uppercase. Return the newly formatted string.
 
+// White - makeTitle("This is a title") ➞ "This Is A Title"
+// makeTitle("capitalize every word") ➞ "Capitalize Every Word"
+// makeTitle("I Like Pizza") ➞ "I Like Pizza"
+// makeTitle("PIZZA PIZZA PIZZA") ➞ "PIZZA PIZZA PIZZA"
 
+function makeTitle(str) {
+  return str.split(' ').map( w => w[0].toUpperCase() + w.slice(1)).join(' ');
+}
+
+let makeTitle = x => x.replace(/(^\w|\s\w)/g, x => x.toUpperCase());
+
+const makeTitle = str => str.split(' ')
+.map(x=> x.charAt(0).toUpperCase() + x.substring(1))
+.join(' ');
+
+function makeTitle(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1);
+  });
+}
+
+function makeTitle(str) {
+  return str.split(' ').map(x => {
+    const [ first, ...rest ] = x
+    return first.toUpperCase() + rest.join('')
+  }).join(' ')
+}
