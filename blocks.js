@@ -6724,3 +6724,66 @@ function halveCount(a, b) {
 	}
 	 return count;
 }
+
+// 335. Create a function that takes a string, checks if it has the same number of x's and o's and returns either true or false.
+
+// Return a boolean value (true or false).
+// The string can contain any character.
+// When no x and no o are in the string, return true.
+
+// White - XO("ooxx") ➞ true
+// XO("xooxx") ➞ false
+// XO("ooxXm") ➞ true
+// Case insensitive.
+// XO("zpzpzpp") ➞ true
+// Returns true if no x and o.
+// XO("zzoo") ➞ false
+
+function XO(str) {
+  return str.replace(/[^x]/ig, '').length === str.replace(/[^o]/ig, '').length
+}
+
+function XO(str) {
+  let x = str.toLowerCase().split('').filter(x => x === 'x').length;
+  let o = str.toLowerCase().split('').filter(x => x === 'o').length;
+  return x === o;
+}
+
+function XO(str) {
+  return str.toLowerCase().split("x").length == str.split("o").length;
+}
+
+function XO(str) {
+  var x = 0, o = 0;
+  for (var i = 0; i < str.length; i++) {
+    if (str[i].toLowerCase() === 'x') {
+      x += 1;
+    } else if (str[i].toLowerCase() == 'o') {
+      o += 1;
+    }
+  }
+  return x === o;
+}
+
+// 336. Create a function that takes a string, removes all "special" characters (e.g. !, @, #, $, %, ^, &, \, *, (, )) 
+// and returns the new string. The only non-alphanumeric characters allowed are dashes -, underscores _ and spaces.
+
+// removeSpecialCharacters("The quick brown fox!") ➞ "The quick brown fox"
+// removeSpecialCharacters("%fd76$fd(-)6GvKlO.") ➞ "fd76fd-6GvKlO"
+// removeSpecialCharacters("D0n$c sed 0di0 du1") ➞ "D0nc sed 0di0 du1"
+
+function removeSpecialCharacters(str) {
+  return str.replace(/[^\w- ]/gi, "");
+}
+
+function removeSpecialCharacters(str) {
+  var replaced = str.replace(/[^a-zA-Z0-9-_\s]/g, '');
+	return replaced;
+}
+
+function removeSpecialCharacters(str) {
+  return str.replace(/\?|\||{|}|<|>|,|`|~|\[|\]|\+|=|\.|\(|\)|!|@|#|\$|%|\^|&|\*/gi, '');
+}
+
+const removeSpecialCharacters = str =>
+str.replace(/[!&\/\\#,+()$~%.'":*?<>{}`@^|'=[\]]/g, '');
