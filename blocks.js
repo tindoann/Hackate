@@ -6787,3 +6787,20 @@ function removeSpecialCharacters(str) {
 
 const removeSpecialCharacters = str =>
 str.replace(/[!&\/\\#,+()$~%.'":*?<>{}`@^|'=[\]]/g, '');
+
+// 337. Your job is to make a 'Twitter Link' regex expression rx. This regex searches a tweet to find the @handle and the #handle.
+// The function is already written in the test tab, so you only provide the Regex variable.
+// Only return the @ and # handles.
+
+// White - tweet('Visit us at @edabit') ➞ '@edabit'
+// tweet('Follow @JavaScript') ➞ '@JavaScript'
+// tweet('#Honesty is the best @policy!!') ➞ '#Honesty @policy'
+
+// The function is at the test tab, you only need to provide
+// the Regex variable:
+
+const rx = /[@#]\w+/gi
+
+const rx = /[@#][a-z]+/gi;
+
+const rx = /([@][A-z]+)|([#][A-z]+)/g;
