@@ -6682,3 +6682,45 @@ function makeTitle(str) {
     return first.toUpperCase() + rest.join('')
   }).join(' ')
 }
+
+// 334. Given two integers a and b, return how many times a can be halved while still being greater than b.
+
+// White - halveCount(1324, 98) ➞ 3
+// (1324 -> 662 -> 331 -> 165.5)
+
+// halveCount(624, 8) ➞ 6
+// (624 -> 312 -> 156 -> 78 -> 39 -> 19.5 -> 9.75)
+
+// halveCount(1000, 3) ➞ 8
+// (1000 -> 500 -> 250 -> 125 -> 62.5 -> 31.25 -> 15.625 -> 7.8125 -> 3.90625)
+
+function halveCount(a, b) {
+	let count = -1;
+	while (a > b) { a /= 2; count++; }
+	return count;
+}
+
+function halveCount(a, b) {
+	let count = 0;
+	while(a>b){
+		a/=2;
+		count++;
+	};
+	return count-1;
+}
+
+function halveCount(a, b) {
+	return a<=b?-1:1+halveCount(a/2,b);
+}
+
+function halveCount(a, b) {
+	var count = 0;
+	while (a > b){
+		a = a / 2
+		count++
+		if (a <= b){
+			count--
+		}
+	}
+	 return count;
+}
