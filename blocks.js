@@ -6787,3 +6787,76 @@ function removeSpecialCharacters(str) {
 
 const removeSpecialCharacters = str =>
 str.replace(/[!&\/\\#,+()$~%.'":*?<>{}`@^|'=[\]]/g, '');
+
+// 337. Your job is to make a 'Twitter Link' regex expression rx. This regex searches a tweet to find the @handle and the #handle.
+// The function is already written in the test tab, so you only provide the Regex variable.
+// Only return the @ and # handles.
+
+// White - tweet('Visit us at @edabit') ➞ '@edabit'
+// tweet('Follow @JavaScript') ➞ '@JavaScript'
+// tweet('#Honesty is the best @policy!!') ➞ '#Honesty @policy'
+
+// The function is at the test tab, you only need to provide
+// the Regex variable:
+
+const rx = /[@#]\w+/gi
+
+const rx = /[@#][a-z]+/gi;
+
+const rx = /([@][A-z]+)|([#][A-z]+)/g;
+
+// 338. An isogram is a word that has no repeating letters, consecutive or nonconsecutive. Create a function that takes a string and returns either true or false depending on whether or not it's an "isogram".
+
+// Yellow - isIsogram("Algorism") ➞ true
+// isIsogram("PasSword") ➞ false
+// Not case sensitive.
+// isIsogram("Consecutive") ➞ false
+
+function isIsogram(str) {
+  let strArr = str.toLowerCase().split('').sort();
+  for (i = 0; i < strArr.length; i++) {
+    if (strArr[i] == strArr[i+1])
+      return false
+  }
+  return true
+}
+
+function isIsogram(str) {
+	return !str.match(/(.).*\1/ig); 
+ }
+
+ function isIsogram(str) {
+  return !/(\w).*\1/i.test(str);
+}
+
+function isIsogram(str) {
+  return str.length === (new Set(str.toLowerCase())).size;
+}
+
+// 339. Create a function that returns the mean of all digits.
+
+// Yellow - mean(42) ➞ 3
+// mean(12345) ➞ 3
+// mean(666) ➞ 6
+
+function mean(num) {
+	return String(Math.abs(num)).split('').reduce((sum, val) => sum + Number(val),0) / String(Math.abs(num)).length
+ }
+
+ function mean(num) {
+	var str = "" + Math.abs(num)
+	var arr = str.split("")
+	var sum = 0
+	for(var i = 0; i < arr.length; i++)
+		{
+			sum += Number(arr[i])
+		}
+	return sum/arr.length
+}
+
+function mean(num) {
+	num = Math.abs(num);
+	let arr = String(num).split("");
+	let nums = arr.map((val) => Number(val));
+	return nums.reduce((acc, next) => acc + next) / nums.length;
+}
