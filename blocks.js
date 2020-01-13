@@ -6860,3 +6860,76 @@ function mean(num) {
 	let nums = arr.map((val) => Number(val));
 	return nums.reduce((acc, next) => acc + next) / nums.length;
 }
+
+// 440. Create a function that takes a string and returns the middle character(s). If the word's length is odd, return the middle character. If the word's length is even, return the middle two characters.
+
+// Yellow - getMiddle("test") ➞ "es"
+// getMiddle("testing") ➞ "t"
+// getMiddle("middle") ➞ "dd"
+// getMiddle("A") ➞ "A"
+
+function getMiddle(str) {
+  var start = Math.ceil(str.length / 2) - 1;
+  var end = Math.floor(str.length / 2) + 1;
+  return str.substring(start, end);
+}
+
+function getMiddle(str) {
+  return str.length % 2 ? str[(str.length - 1) / 2] : str.substr((str.length - 2) / 2 , 2);
+}
+
+function getMiddle(str) {
+  var length = Math.floor(str.length/2);
+  if (str.length % 2 === 0){
+    var newStr = '';
+    return newStr += str[length-1] + str[length]
+  } else {
+    return str[length]
+  }
+}
+
+const getMiddle = str => {
+	const middle = str.length / 2 | 0;
+	return str.slice(middle - (str.length % 2 ? 0 : 1), middle + 1);
+}
+
+// 441. To train for an upcoming marathon, Johnny goes on one long-distance run each Saturday. 
+// He wants to track how often the number of miles he runs this Saturday exceeds the number of miles run the previous Saturday. This is called a progress day.
+
+// Create a function that takes in an array of miles run every Saturday and returns Johnny's total number of progress days.
+
+// Yellow - progressDays([3, 4, 1, 2]) ➞ 2
+// There are two progress days, (3->4) and (1->2)
+// progressDays([10, 11, 12, 9, 10]) ➞ 3
+// progressDays([6, 5, 4, 3, 2, 9]) ➞ 1
+// progressDays([9, 9])  ➞ 0
+
+function progressDays(runs) {
+	let days = 0; 
+	for (let i = 1; i < runs.length; i++) {
+		if (runs[i] > runs[i -1]){
+			days++; 
+		}
+	}
+	return days; 
+}
+
+function progressDays(runs) {
+	var days=0;
+	for(i =1; i<runs.length; i++){
+		if(runs[i]>runs[i-1]){
+			days++;
+		} 
+	}
+	return days;
+}
+
+function progressDays(runs) {
+	return runs.filter((e, i, a) => e < a [i + 1]).length; 
+}
+
+const progressDays = runs =>
+  runs.slice(1).reduce((progress, runs, i) => {
+		const prevRun = runs[i]; 
+		return progress + (run > prevRun ? 1 : 0); 
+	}, 0); 
