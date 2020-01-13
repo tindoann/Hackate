@@ -6804,3 +6804,31 @@ const rx = /[@#]\w+/gi
 const rx = /[@#][a-z]+/gi;
 
 const rx = /([@][A-z]+)|([#][A-z]+)/g;
+
+// 338. An isogram is a word that has no repeating letters, consecutive or nonconsecutive. Create a function that takes a string and returns either true or false depending on whether or not it's an "isogram".
+
+// Yellow - isIsogram("Algorism") ➞ true
+// isIsogram("PasSword") ➞ false
+// Not case sensitive.
+// isIsogram("Consecutive") ➞ false
+
+function isIsogram(str) {
+  let strArr = str.toLowerCase().split('').sort();
+  for (i = 0; i < strArr.length; i++) {
+    if (strArr[i] == strArr[i+1])
+      return false
+  }
+  return true
+}
+
+function isIsogram(str) {
+	return !str.match(/(.).*\1/ig); 
+ }
+
+ function isIsogram(str) {
+  return !/(\w).*\1/i.test(str);
+}
+
+function isIsogram(str) {
+  return str.length === (new Set(str.toLowerCase())).size;
+}
