@@ -7058,3 +7058,39 @@ function maskify(str) {
   return dd.replace(/.(?=.{4,}$)/g, '#');
 }
 
+// 446. Create a function that returns the total number of steps it takes to transform each element to the maximal element in the array. Each step consists of incrementing a digit by one.
+
+// incrementToTop([3, 4, 5]) ➞ 3
+// 3 increments: 3 -> 4, 4 -> 5; 4 -> 5
+// incrementToTop([4, 3, 4]) ➞ 1
+// incrementToTop([3, 3, 3]) ➞ 0
+// incrementToTop([3, 10, 3]) ➞ 14
+
+function incrementToTop(arr) {
+	var sum = 0;
+	for (var i = 0; i < arr.length; i++){
+		sum = sum + (Math.max(...arr) - arr[i]);
+	}
+	return sum;
+}
+
+function incrementToTop(arr) {
+	var mx = Math.max(...arr);
+	return arr.map(a => mx-a).reduce((a,b) => a+b);
+}
+
+function incrementToTop(arr) {
+	let biggestElem = Math.max(...arr);
+	return arr.reduce((a,b) => { return a + (biggestElem - b) }, 0);
+}
+
+function incrementToTop(arr) {
+	var counter = 0;
+ 
+  for(var i = 0; i < arr.length; i++){
+    for(var j = arr[i]; j < Math.max(...arr); j++) {
+      counter++
+    }
+  }
+  return counter;
+}
