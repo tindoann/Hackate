@@ -7031,3 +7031,30 @@ function validatePIN(pin) {
   var regEx =  new RegExp(/^(\d{4}|\d{6})$/);
   return regEx.test(pin);
 }
+
+// 445. Your task is to create a function that takes a string, transforms all but the last four characters into "#" and returns the new masked string.
+
+// White - maskify("4556364607935616") ➞ "############5616"
+// maskify("64607935616") ➞ "#######5616"
+// maskify("1") ➞ "1"
+// maskify("") ➞ ""
+
+function maskify(str) {
+  var mask = "";
+  for (var i = 0; i < str.length-4; i++){
+    mask += "#";
+  }
+  return mask += str.substring(str.length-4, str.length);
+}
+
+const maskify = str => str.replace(/.(?=.{4})/g, '#');
+
+function maskify(str) {
+  return str.split('').map((x, i, a) => i < a.length - 4 ? '#' : x).join('');
+}
+
+function maskify(str) {
+  var dd = str.toString();
+  return dd.replace(/.(?=.{4,}$)/g, '#');
+}
+
