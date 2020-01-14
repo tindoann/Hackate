@@ -7006,3 +7006,55 @@ function missingNum(arr) {
     if(!arr.includes(i)) return i;
   }
 }
+
+// 444. ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits. Your task is to create a function that takes a string and returns true if the PIN is valid and false if it's not.
+
+function validatePIN(pin) {
+  return (/^(\d{4}|\d{6})$/).test(pin);
+}
+
+function validatePIN(pin) {
+  if (!parseInt(pin).isNaN){
+    if (pin.length == 4 || pin.length == 6){
+      return true;
+    }
+  }
+  return false;
+}
+
+function validatePIN(pin) {
+  var regex = /^(\d{4})$|^(\d{6})$/;
+	return regex.test(pin);
+}
+
+function validatePIN(pin) {
+  var regEx =  new RegExp(/^(\d{4}|\d{6})$/);
+  return regEx.test(pin);
+}
+
+// 445. Your task is to create a function that takes a string, transforms all but the last four characters into "#" and returns the new masked string.
+
+// White - maskify("4556364607935616") ➞ "############5616"
+// maskify("64607935616") ➞ "#######5616"
+// maskify("1") ➞ "1"
+// maskify("") ➞ ""
+
+function maskify(str) {
+  var mask = "";
+  for (var i = 0; i < str.length-4; i++){
+    mask += "#";
+  }
+  return mask += str.substring(str.length-4, str.length);
+}
+
+const maskify = str => str.replace(/.(?=.{4})/g, '#');
+
+function maskify(str) {
+  return str.split('').map((x, i, a) => i < a.length - 4 ? '#' : x).join('');
+}
+
+function maskify(str) {
+  var dd = str.toString();
+  return dd.replace(/.(?=.{4,}$)/g, '#');
+}
+
