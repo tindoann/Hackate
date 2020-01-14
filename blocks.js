@@ -6933,3 +6933,40 @@ const progressDays = runs =>
 		const prevRun = runs[i]; 
 		return progress + (run > prevRun ? 1 : 0); 
 	}, 0); 
+
+// 442. Create a function that takes two strings and returns either true or false depending on whether they're anagrams or not.
+
+// Yellow - isAnagram("cristian", "Cristina") ➞ true
+// isAnagram("Dave Barry", "Ray Adverb") ➞ true
+// isAnagram("Nope", "Note") ➞ false
+
+function isAnagram(s1, s2) {
+  var str1 = s1.toLowerCase().split('').sort().join('').trim();
+  var str2 = s2.toLowerCase().split('').sort().join('').trim();
+  return str1===str2;
+}
+
+function isAnagram(s1, s2) {
+  var t = s => s.toLowerCase().split('').sort().join('');
+  return t(s1) === t(s2); 
+}
+
+function isAnagram(s1, s2) {
+ 
+  s1 = s1.toLowerCase().trim().replace(/[^a-z]/, '');
+  s2 = s2.toLowerCase().trim().replace(/[^a-z]/, '').split('');
+  if (s1.length != s2.length || s1 == s2) {
+    return false;
+  }
+  for (letter of s1.split('')) {
+    letterIndex = s2.indexOf(letter);
+    if (letterIndex == -1) {
+      return false;
+    }
+    s2[letterIndex] = "#";
+  }
+  if (s2.join('').match(/[a-z]*/) == null) {
+    return false;
+  }
+  return true;
+}
