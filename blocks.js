@@ -6933,3 +6933,76 @@ const progressDays = runs =>
 		const prevRun = runs[i]; 
 		return progress + (run > prevRun ? 1 : 0); 
 	}, 0); 
+
+// 442. Create a function that takes two strings and returns either true or false depending on whether they're anagrams or not.
+
+// Yellow - isAnagram("cristian", "Cristina") ➞ true
+// isAnagram("Dave Barry", "Ray Adverb") ➞ true
+// isAnagram("Nope", "Note") ➞ false
+
+function isAnagram(s1, s2) {
+  var str1 = s1.toLowerCase().split('').sort().join('').trim();
+  var str2 = s2.toLowerCase().split('').sort().join('').trim();
+  return str1===str2;
+}
+
+function isAnagram(s1, s2) {
+  var t = s => s.toLowerCase().split('').sort().join('');
+  return t(s1) === t(s2); 
+}
+
+function isAnagram(s1, s2) {
+ 
+  s1 = s1.toLowerCase().trim().replace(/[^a-z]/, '');
+  s2 = s2.toLowerCase().trim().replace(/[^a-z]/, '').split('');
+  if (s1.length != s2.length || s1 == s2) {
+    return false;
+  }
+  for (letter of s1.split('')) {
+    letterIndex = s2.indexOf(letter);
+    if (letterIndex == -1) {
+      return false;
+    }
+    s2[letterIndex] = "#";
+  }
+  if (s2.join('').match(/[a-z]*/) == null) {
+    return false;
+  }
+  return true;
+}
+
+
+// 443. Create a function that takes an array of numbers between 1 and 10 (excluding one number) and returns the missing number.
+
+// Yellow - missingNum([1, 2, 3, 4, 6, 7, 8, 9, 10]) ➞ 5
+// missingNum([7, 2, 3, 6, 5, 9, 1, 4, 8]) ➞ 10
+// missingNum([10, 5, 1, 2, 4, 6, 8, 3, 9]) ➞ 7
+
+function missingNum(arr) {
+  var sum = arr.reduce((a, b) => a + b, 0);
+  return 55 - sum;
+}
+
+const missingNum = (arr) => {
+  for (let i = 1; i <= arr.length + 1; i++) {
+    if (arr.indexOf(i) === -1) return i;
+  }
+}
+
+function missingNum(arr) {
+  for(var i = 1; i <= 10; i++){
+    if(arr.indexOf(i) == -1) return i
+  }
+}
+
+function missingNum(arr) {
+	var arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+return Number(arr1.filter(x => arr.indexOf(x) === -1 ));
+}
+
+function missingNum(arr) {
+  for(i = 1; i <= 10; i++) {
+    if(!arr.includes(i)) return i;
+  }
+}
