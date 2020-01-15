@@ -7172,4 +7172,40 @@ function correctSpacing(sentence) {
 	return sentence.split(' ').filter(x => x != '').join(' ')
 }
 
+// 450. Return the smallest number of steps it takes to convert a string entirely into uppercase or
+// entirely into lower case, whichever takes the fewest number of steps. A step consists of changing 
+// one character from lower to upper case, or vice versa.
+
+// stepsToConvert("abC") ➞ 1
+// "abC" converted to "abc" in 1 step
+
+// stepsToConvert("abCBA") ➞ 2
+// "abCBA" converted to "ABCBA" in 2 steps
+
+// stepsToConvert("aba") ➞ 0
+// stepsToConvert("abaCCC") ➞ 3
+
+function stepsToConvert(str) {
+	const lower = str.replace(/[^a-z]/g, "").length;
+	const upper = str.replace(/[^A-Z]/g, "").length;
+	return Math.min(lower, upper);
+}
+
+function stepsToConvert(str) {
+	if(str == '') { return 0}
+	if(str == str.toUpperCase() || str == str.toLowerCase()){return 0}
+	let a = str.match(/[a-z]/g).length;
+	let b = str.match(/[A-Z]/g).length;
+	return Math.min(a,b);
+}
+
+function stepsToConvert(string) {
+	const upper = [...string].filter(char => char === char.toUpperCase())
+	const lower = [...string].filter(char => char === char.toLowerCase())
+	return Math.min(upper.length,lower.length)
+}
+
+function stepsToConvert(str) {
+	return Math.min((str.match(/[a-z]/g) || []).length, (str.match(/[A-Z]/g) || []).length)
+}
 
