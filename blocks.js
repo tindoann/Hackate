@@ -7112,6 +7112,115 @@ function uniqueArr(arr) {
 	return arr.filter(x => x > 0).filter((x, i, a)=> i == a.indexOf(x));
 }
 
+// 448. Write a function that takes an array and a number as arguments. Add the number to the end of the array, then remove the first element of the array. The function should then return the updated array.
 
+// Yellow - nextInLine([5, 6, 7, 8, 9], 1) ➞ [6, 7, 8, 9, 1]
+// nextInLine([7, 6, 3, 23, 17], 10) ➞ [6, 3, 23, 17, 10]
+// nextInLine([1, 10, 20, 42 ], 6) ➞ [10, 20, 42, 6]
+// nextInLine([], 6) ➞ "No array has been selected"
 
+function nextInLine(arr, num) {
+	if(!Array.isArray(arr)) return 'No array has been selected';
+		arr.push(num);
+		arr.shift()
+	return arr;
+}
 
+function nextInLine(arr, num) {
+	if (Number.isNaN(arr)) return 'No array has been selected'; 
+	arr.push(num); 
+	arr.shift(); 
+	return arr; 
+}
+
+function nextInLine(arr, num) {
+	if(!arr) {return 'No arr has been selected'}
+	arr.push(num)
+	arr.shift()
+	return arr
+}
+
+function nextInLine(arr, num) {
+	return !arr.length ? 'No array has been selected' : [...arr].concat(num).slice(1)
+}
+
+// 449. Additional spaces have been added to a sentence. Return the correct sentence by removing them. All words should be separated by one space, and there should be no spaces at the beginning or end of the sentence.
+
+// Yellow - correctSpacing("The film   starts       at      midnight. ")
+// ➞ "The film starts at midnight."
+
+// correctSpacing("The     waves were crashing  on the     shore.   ")
+// ➞ "The waves were crashing on the shore."
+
+// correctSpacing(" Always look on    the bright   side of  life.")
+// ➞ "Always look on the bright side of life."
+
+function correctSpacing(sentence) {
+	return sentence.replace(/\s+/g,' ').trim();
+}
+
+function correctSpacing(sentence) {
+  return sentence.split(" ").filter(a=>a!="").join(" ")
+}
+
+function correctSpacing(sentence) {
+	let arr = sentence.match(/\S+/g);
+	return arr.join(" ");
+}
+
+function correctSpacing(sentence) {
+	return sentence.split(' ').filter(x => x != '').join(' ')
+}
+
+// 450. Return the smallest number of steps it takes to convert a string entirely into uppercase or
+// entirely into lower case, whichever takes the fewest number of steps. A step consists of changing 
+// one character from lower to upper case, or vice versa.
+
+// stepsToConvert("abC") ➞ 1
+// "abC" converted to "abc" in 1 step
+
+// stepsToConvert("abCBA") ➞ 2
+// "abCBA" converted to "ABCBA" in 2 steps
+
+// stepsToConvert("aba") ➞ 0
+// stepsToConvert("abaCCC") ➞ 3
+
+function stepsToConvert(str) {
+	const lower = str.replace(/[^a-z]/g, "").length;
+	const upper = str.replace(/[^A-Z]/g, "").length;
+	return Math.min(lower, upper);
+}
+
+function stepsToConvert(str) {
+	if(str == '') { return 0}
+	if(str == str.toUpperCase() || str == str.toLowerCase()){return 0}
+	let a = str.match(/[a-z]/g).length;
+	let b = str.match(/[A-Z]/g).length;
+	return Math.min(a,b);
+}
+
+function stepsToConvert(string) {
+	const upper = [...string].filter(char => char === char.toUpperCase())
+	const lower = [...string].filter(char => char === char.toLowerCase())
+	return Math.min(upper.length,lower.length)
+}
+
+function stepsToConvert(str) {
+	return Math.min((str.match(/[a-z]/g) || []).length, (str.match(/[A-Z]/g) || []).length)
+}
+
+// 451. Create a function that accepts a string and returns true if it's in the format of a proper phone number and false if it's not. 
+// Assume any number between 0-9 (in the appropriate spots) will produce a valid phone number. This is what a valid phone number looks like: (123) 456-7890
+
+// Yellow - isValidPhoneNumber("(123) 456-7890") ➞ true
+// isValidPhoneNumber("1111)555 2345") ➞ false
+// isValidPhoneNumber("098) 123 4567") ➞ false
+
+function isValidPhoneNumber(str) {
+	return /^\(\d{3}\) \d{3}-\d{4}$/.test(str);
+}
+
+function isValidPhoneNumber(str) {
+  var expr=/^\(\d{3}\)\s\d{3}\-\d{4}$/g;
+	return expr.test(str);
+}
