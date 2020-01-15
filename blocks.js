@@ -7224,3 +7224,48 @@ function isValidPhoneNumber(str) {
   var expr=/^\(\d{3}\)\s\d{3}\-\d{4}$/g;
 	return expr.test(str);
 }
+
+function isValidPhoneNumber(str) {
+	return str.match(/^\(\d{3}\)\s\d{3}-\d{4}$/) ? true : false;
+}
+
+// 452. Write a function that, given a date (in the format MM/DD/YYYY), returns the day of the week as a string. Each day name must be one of the following strings: "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", or "Saturday".
+
+// To illustrate, the day of the week for "12/07/2016" is "Wednesday".
+
+// Yellow - getDay("12/07/2016") ➞ "Wednesday"
+// getDay("09/04/2016") ➞ "Sunday"
+// getDay("12/08/2011") ➞ "Thursday"
+
+function getDay(day) {
+	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	var date = new Date(day);
+	return days[date.getDay()];
+}
+
+const getDay = day =>
+new Date(day).toLocaleString('en-us', {weekday:'long'});
+
+function getDay(day) {
+	day = new Date(day).getDay()
+	return switchDay(day)
+}
+function switchDay(num){
+	switch (num){
+		case 1:
+			return 'Monday'
+		case 2:
+			return 'Tuesday'
+		case 3:
+			return 'Wednesday'
+		case 4:
+			return 'Thursday'
+		case 5:
+			return 'Friday'
+		case 6:
+			return 'Saturday'
+		case 0:
+			return 'Sunday'
+	}
+}
+
