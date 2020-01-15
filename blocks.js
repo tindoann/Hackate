@@ -7224,3 +7224,94 @@ function isValidPhoneNumber(str) {
   var expr=/^\(\d{3}\)\s\d{3}\-\d{4}$/g;
 	return expr.test(str);
 }
+
+function isValidPhoneNumber(str) {
+	return str.match(/^\(\d{3}\)\s\d{3}-\d{4}$/) ? true : false;
+}
+
+// 452. Write a function that, given a date (in the format MM/DD/YYYY), returns the day of the week as a string. Each day name must be one of the following strings: "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", or "Saturday".
+
+// To illustrate, the day of the week for "12/07/2016" is "Wednesday".
+
+// Yellow - getDay("12/07/2016") ➞ "Wednesday"
+// getDay("09/04/2016") ➞ "Sunday"
+// getDay("12/08/2011") ➞ "Thursday"
+
+function getDay(day) {
+	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	var date = new Date(day);
+	return days[date.getDay()];
+}
+
+const getDay = day =>
+new Date(day).toLocaleString('en-us', {weekday:'long'});
+
+function getDay(day) {
+	day = new Date(day).getDay()
+	return switchDay(day)
+}
+function switchDay(num){
+	switch (num){
+		case 1:
+			return 'Monday'
+		case 2:
+			return 'Tuesday'
+		case 3:
+			return 'Wednesday'
+		case 4:
+			return 'Thursday'
+		case 5:
+			return 'Friday'
+		case 6:
+			return 'Saturday'
+		case 0:
+			return 'Sunday'
+	}
+}
+
+// 453. Create a function that accepts a string, checks if it's a valid email address and returns either true or false, depending on the evaluation.
+
+// Yellow - The string must contain an @ character.
+// The string must contain a . character.
+// The @ must have at least one character in front of it.
+// e.g. "e@edabit.com" is valid while "@edabit.com" is invalid.
+// The . and the @ must be in the appropriate places.
+// e.g. "hello.email@com" is invalid while "john.smith@email.com" is valid.
+// If the string passes these tests, it's considered a valid email address.
+
+// validateEmail("@gmail.com") ➞ false
+// validateEmail("hello.gmail@com") ➞ false
+// validateEmail("gmail") ➞ false
+// validateEmail("hello@gmail") ➞ false
+// validateEmail("hello@edabit.com") ➞ true
+
+function validateEmail(str) {
+  return /.+@.+\..+/.test(str);
+}
+
+function validateEmail(str) {
+  return (/[\w\.]+@(\w+\.)+\w+/).test(str);
+}
+
+function validateEmail(str) {
+  var posAt = str.indexOf("@"),
+      posDot = str.lastIndexOf(".");
+  
+  if (posAt > 0 && posDot > posAt) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validateEmail(str) {
+  if (str.indexOf('@') < 1 
+     || str.indexOf('.') < 0
+     || str.indexOf('@') > str.lastIndexOf('.')
+     ) return false;
+  return true;
+}
+
+function validateEmail(str) {
+  return str.match(/\w+@\w+\.\w+/) ? true: false;
+}
