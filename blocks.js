@@ -7269,3 +7269,49 @@ function switchDay(num){
 	}
 }
 
+// 453. Create a function that accepts a string, checks if it's a valid email address and returns either true or false, depending on the evaluation.
+
+// Yellow - The string must contain an @ character.
+// The string must contain a . character.
+// The @ must have at least one character in front of it.
+// e.g. "e@edabit.com" is valid while "@edabit.com" is invalid.
+// The . and the @ must be in the appropriate places.
+// e.g. "hello.email@com" is invalid while "john.smith@email.com" is valid.
+// If the string passes these tests, it's considered a valid email address.
+
+// validateEmail("@gmail.com") ➞ false
+// validateEmail("hello.gmail@com") ➞ false
+// validateEmail("gmail") ➞ false
+// validateEmail("hello@gmail") ➞ false
+// validateEmail("hello@edabit.com") ➞ true
+
+function validateEmail(str) {
+  return /.+@.+\..+/.test(str);
+}
+
+function validateEmail(str) {
+  return (/[\w\.]+@(\w+\.)+\w+/).test(str);
+}
+
+function validateEmail(str) {
+  var posAt = str.indexOf("@"),
+      posDot = str.lastIndexOf(".");
+  
+  if (posAt > 0 && posDot > posAt) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validateEmail(str) {
+  if (str.indexOf('@') < 1 
+     || str.indexOf('.') < 0
+     || str.indexOf('@') > str.lastIndexOf('.')
+     ) return false;
+  return true;
+}
+
+function validateEmail(str) {
+  return str.match(/\w+@\w+\.\w+/) ? true: false;
+}
