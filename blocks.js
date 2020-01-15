@@ -7315,3 +7315,27 @@ function validateEmail(str) {
 function validateEmail(str) {
   return str.match(/\w+@\w+\.\w+/) ? true: false;
 }
+
+// 545. Write a function that returns the longest sequence of consecutive zeroes in a binary string.
+
+// Yellow - longestZero("01100001011000") ➞ "0000"
+
+// longestZero("100100100") ➞ "00"
+
+// longestZero("11111") ➞ ""
+
+function longestZero(s) {
+	return s.split('1').sort().reverse()[0]
+}
+
+function longestZero(s) {
+	return s.split('1').sort((a, b) => b.length - a.length)[0]
+}
+
+function longestZero(s) {
+	return s.split('1').reduce((a, b) => a.length > b.length ? a : b); 
+}
+
+function longestZero(s) {
+	return '0'.repeat(Math.max(...s.split('1').map(x => x.length))); 
+}
