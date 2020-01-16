@@ -7451,3 +7451,31 @@ function mathExpr(expr) {
 function mathExpr(expr) {
   return (expr[0] > -1) ? true: false; 
 }
+
+// 550. Imagine a messaging device with only one button. For the letter A, you press the button one time, for E, you press it five times, for G, it's pressed seven times, etc, etc.
+
+// Write a function that takes a string (the message) and returns the total number of times the button is pressed.
+
+// Yellow - howManyTimes("abde") ➞ 12
+// howManyTimes("azy") ➞ 52
+// howManyTimes("qudusayo") ➞ 123
+
+const howManyTimes = msg => [...msg].reduce((a,v) => a + v.charCodeAt()-96, 0);
+
+function howManyTimes(msg) {
+	return msg.toLowerCase().split("").reduce((a,b)=>a+b.charCodeAt(0)-96,0)
+ }
+
+ function howManyTimes(msg) {
+	return new Array(msg.length).fill(0).reduce((r,v,i) => r + msg.charCodeAt(i) - 96, 0);
+}
+
+function howManyTimes(msg) {
+	let total = 0
+	const alphaVal = (s) => s.toLowerCase().charCodeAt(0) - 97 + 1
+	for(i = 0; i<msg.length;i++){
+		total+=alphaVal(msg[i])
+	}
+	return total
+}
+
