@@ -7570,7 +7570,7 @@ function findZip(str) {
 	return str.indexOf('zip', str.indexOf('zip')+3)
 }
 
-// Write a function that takes three arguments (x, y, z) and returns an array containing x subarrays (e.g. [[], [], []]), each containing y number of item z.
+// 554. Write a function that takes three arguments (x, y, z) and returns an array containing x subarrays (e.g. [[], [], []]), each containing y number of item z.
 
 // x Number of subarrays contained within the main array.
 // y Number of items contained within each subarray.
@@ -7598,3 +7598,33 @@ function matrix(x, y, z)  {
 	}
 	return arr; 
 }
+
+// 555. Create a function that takes a string as an argument. The string is a random name.
+
+// If the last character of the name is an 'n', return true.
+// If the last character of the name is not an 'n', return false.
+
+// Yellow - isLastCharacterN('Aiden') ➞ true
+// isLastCharacterN('Piet')  ➞ false
+
+function isLastCharacter(w) {
+	return w[w.length-1] === 'n'; 
+}
+
+function isLastCharacterN(word) {
+	return [...word].pop() == 'n'
+}
+
+function isLastCharacterN(word) {
+	return word.toLowerCase().endsWith('n')
+}
+
+function isLastCharacterN(word) {
+	if(word.slice(-1) === 'n') {
+		return true; 
+	} else {
+		return false; 
+	}
+}
+
+
