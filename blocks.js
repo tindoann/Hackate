@@ -7507,3 +7507,43 @@ function splitCode(item) {
 	return [item.match(reg1).join(''),parseInt(item.match(reg2).join(''))]
 }
 
+// 552. Create a function that takes two parameters (start, stop), and returns the sum of all even numbers in the range.
+
+// Yellow - sumEvenNumsInRange(10, 20) ➞ 90
+// 10, 12, 14, 16, 18, 20
+// sumEvenNumsInRange(51, 150) ➞ 5050
+// sumEvenNumsInRange(63, 97) ➞ 1360
+
+function sumEvenNumsInRange(start, stop) {
+	const a = Math.ceil(start /2); 
+	const b = Math.floor(stop /2); 
+	return (a + b) * (b - a + 1); 
+}
+
+function sumEvenNumsInRange(start,stop) {
+	let sum = 0; 
+	for (let i = start; i <= stop; i++) {
+		if (i % 2 === 0) {
+			sum += i; 
+		}
+	}
+	return sum; 
+}
+
+function sumEvenNumsInRange(start, stop) {
+	for (var i = start, box = []; i <= stop; i++) {
+		if ( i % 2 == 0) {
+			box.push(i)
+		}
+	}
+	  return box.reduce((a, b) => a + b); 
+}
+
+function sumEvenNumsInRange(start, stop) {
+	var arr = []; 
+	for(let i = start; i < stop; i++){
+		if(i % 2 == 0){
+			arr.push(i); 
+		}
+	}
+}
