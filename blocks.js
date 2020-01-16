@@ -7433,3 +7433,21 @@ function isPalindrome(str) {
 function isPalindrome(str) {
 	return str[0] !== str[str.length-1] ? false : str.length< 3 ? true : isPalindrome(str.substring(1,str.length-1))
 }
+
+// 549. Create a function that takes an input (e.g. "5 + 4") and returns true if it's a mathematical expression or false if not.
+
+// White - mathExpr("4 + 5") ➞ true
+// mathExpr("4*6") ➞ true
+// mathExpr("4*no") ➞ false
+
+function mathExpr(expr) {
+	return /^\d(\s)*[%+/*-](\s)*\d$/.test(expr);
+}
+
+function mathExpr(expr) {
+  return /^\d\s?[-+*/%]\s?\d$/.test(expr);
+}
+
+function mathExpr(expr) {
+  return (expr[0] > -1) ? true: false; 
+}
