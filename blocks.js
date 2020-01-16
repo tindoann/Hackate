@@ -7547,3 +7547,107 @@ function sumEvenNumsInRange(start, stop) {
 		}
 	}
 }
+
+// 553. Write a function that returns the position of the second occurrence of "zip" in a string, or -1 if it does not occur at least twice. Your code should be general enough to pass every possible case where "zip" can occur in a string.
+
+// Yellow - findZip("all zip files are zipped") ➞ 18
+// findZip("all zip files are compressed") ➞ -1
+
+function findZip(str) {
+	let arr = str.match(/zip/g);
+	if(arr.length < 2){
+		return -1;
+	}else{
+		return str.lastIndexOf("zip");
+	}
+}
+
+function findZip(str) {
+	return str.indexOf("zip", str.indexOf("zip") + 1)
+}
+
+function findZip(str) {
+	return str.indexOf('zip', str.indexOf('zip')+3)
+}
+
+// 554. Write a function that takes three arguments (x, y, z) and returns an array containing x subarrays (e.g. [[], [], []]), each containing y number of item z.
+
+// x Number of subarrays contained within the main array.
+// y Number of items contained within each subarray.
+// z Item contained within each subarray.
+
+function matrix(x, y, z) {
+	return Array(x).fill(Array(y).fill(z)); 
+}
+
+const matrix = (x, y, z) => 
+	Array.from({length: x}, () => 
+		Array.from({length: y}, () => z)
+	); 
+
+function matrix(x, y, z) {
+	return Array(x).fill().map(m => Array(y).fill(z)); 
+}
+
+function matrix(x, y, z)  {
+	let arr = []; 
+	for (let i = 0; i < x; i += 1) {
+		let subarr = new Array(y); 
+		subarr.fill(z, 0, y); 
+		arr.push(subarr); 
+	}
+	return arr; 
+}
+
+// 555. Create a function that takes a string as an argument. The string is a random name.
+
+// If the last character of the name is an 'n', return true.
+// If the last character of the name is not an 'n', return false.
+
+// Yellow - isLastCharacterN('Aiden') ➞ true
+// isLastCharacterN('Piet')  ➞ false
+
+function isLastCharacter(w) {
+	return w[w.length-1] === 'n'; 
+}
+
+function isLastCharacterN(word) {
+	return [...word].pop() == 'n'
+}
+
+function isLastCharacterN(word) {
+	return word.toLowerCase().endsWith('n')
+}
+
+function isLastCharacterN(word) {
+	if(word.slice(-1) === 'n') {
+		return true; 
+	} else {
+		return false; 
+	}
+}
+
+// 556. Write a function that returns the greatest common divisor (GCD) of two integers.
+
+// White - gcd(32, 8) ➞ 8
+// gcd(8, 12) ➞ 4
+// gcd(17, 13) ➞ 1
+
+const gcd = (n1, n2) => !n2 ? n1: gcd(n2, n1 % n2)
+
+function gcd(n1, n2) {
+	if (n2 == 0) return n1
+	  return gcd(n2, n1 % n2); 
+}
+
+const gcd = (a, b) => (!b ? a : gcd(b, a % b)); 
+
+function gcd(n1, n2) {
+	let resolve = 0; 
+	  for (let i = 0; i < Math.min(n1, n2); i++)
+			if (n1% i == 0 && n2% i ==0) resolve = i; 
+  return resolve
+}
+
+
+
