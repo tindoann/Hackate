@@ -7412,3 +7412,24 @@ function reverse(str) {
   });
   return split.join(' ');
 }
+
+// 548. Write a function that recursively determines if a string is a palindrome.
+
+// White - isPalindrome("abcba") ➞ true
+// isPalindrome("b") ➞ true
+// isPalindrome("") ➞ true
+// isPalindrome("ad") ➞ false
+
+const isPalindrome = str => str.length < 2 ? true : str.endsWith(str[0]) ? isPalindrome(str.slice(1,-1)) : false;
+
+function isPalindrome(str) {
+  return str == str.split("").reverse().join("");
+}
+
+function isPalindrome(str) {
+	return [...str].reverse().join('') === str
+}
+
+function isPalindrome(str) {
+	return str[0] !== str[str.length-1] ? false : str.length< 3 ? true : isPalindrome(str.substring(1,str.length-1))
+}
