@@ -7479,3 +7479,31 @@ function howManyTimes(msg) {
 	return total
 }
 
+// 551. You have an array of item codes with the following format: "[letters][digits]"
+// Create a function that splits these strings into their alphabetic and numeric parts.
+
+// Yellow - splitCode("TEWA8392") ➞ ["TEWA", 8392]
+// splitCode("MMU778") ➞ ["MMU", 778]
+// splitCode("SRPE5532") ➞ ["SRPE", 5532]
+
+function splitCode(item) {
+	const arr = item.match(/([A-Z]+)(\d+)/);
+	return [arr[1],+arr[2]];
+}
+
+function splitCode(item) {
+	let index = item.split('').findIndex(c => !isNaN(c))
+	return [item.substring(0, index), Number(item.substring(index))]
+}
+
+const splitCode = item => [
+  item.match(/[a-z]+/i)[0],
+  Number(item.match(/[0-9]+/)[0]),
+];
+
+function splitCode(item) {
+	var reg1 = /[A-Za-z]/gi
+	var reg2 = /[0-9]/gi
+	return [item.match(reg1).join(''),parseInt(item.match(reg2).join(''))]
+}
+
