@@ -7315,3 +7315,167 @@ function validateEmail(str) {
 function validateEmail(str) {
   return str.match(/\w+@\w+\.\w+/) ? true: false;
 }
+
+// 545. Write a function that returns the longest sequence of consecutive zeroes in a binary string.
+
+// Yellow - longestZero("01100001011000") ➞ "0000"
+
+// longestZero("100100100") ➞ "00"
+
+// longestZero("11111") ➞ ""
+
+function longestZero(s) {
+	return s.split('1').sort().reverse()[0]
+}
+
+function longestZero(s) {
+	return s.split('1').sort((a, b) => b.length - a.length)[0]
+}
+
+function longestZero(s) {
+	return s.split('1').reduce((a, b) => a.length > b.length ? a : b); 
+}
+
+function longestZero(s) {
+	return '0'.repeat(Math.max(...s.split('1').map(x => x.length))); 
+}
+
+// 546. Write a function that creates an object with each (key, value) pair being the (lower case, upper case) versions of a letter, respectively.
+
+// White - mapping(["p", "s"]) ➞ { "p": "P", "s": "S" }
+// mapping(["a", "b", "c"]) ➞ { "a": "A", "b": "B", "c": "C" }
+// mapping(["a", "v", "y", "z"]) ➞ { "a": "A", "v": "V", "y": "Y", "z": "Z" }
+
+function mapping(letters) {
+	return letters.reduce((a, c) => (a[c] = c.toUpperCase(), a), {});
+}
+
+function mapping(letters) {
+	var x = letters.map(m => [m, m.toUpperCase()]); 
+	  return Object.formEntries(x); 
+}
+
+const mapping = arr => {
+	const obj = {}
+	arr.forEach(el => obj[el] = el.toUpperCase())
+	return obj
+}
+
+function mapping(letters) {
+	a = {}
+	for (c of letters){
+		a[c] = c.toUpperCase();
+	}
+	return a;
+}
+
+function mapping(letters) {
+	return letters.reduce(function(obj, item) {
+		obj[item] = item.charat().toUpperCase(); 
+		return (obj); 
+	}, {})
+}
+
+function mapping(arr){
+	let obj = {}; 
+		arr.forEach(a => obj[a] = a.toUpperCase()); 
+	return obj; 
+}
+
+// 547. Write a function that takes a string of one or more words as an argument and returns the same string, but with all five or more letter words reversed. Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+// White - reverse("Reverse") ➞ "esreveR"
+// reverse("This is a typical sentence.") ➞ "This is a lacipyt .ecnetnes"
+// reverse("The dog is big.") ➞ "The dog is big."
+
+function reverse(str) {
+  return str.split(' ').map(x => x.length > 4 ? x.split('').reverse().join('') : x).join(' ');
+}
+
+const reverse = str => str.replace(/(\S{5,})/gi, match =>
+	[...match].reverse().join('')
+)
+
+function reverse(str) {
+  return str.split(' ')
+  	.map(a => a.length >= 5 ? a.split('').reverse().join('') : a)
+    .join(' ');
+}
+
+function reverse(str) {
+  var split = str.split(' ');
+  split = split.map(function(el){
+    if(el.length > 4){
+      return el.split('').reverse().join('');
+    }
+    return el;
+  });
+  return split.join(' ');
+}
+
+// 548. Write a function that recursively determines if a string is a palindrome.
+
+// White - isPalindrome("abcba") ➞ true
+// isPalindrome("b") ➞ true
+// isPalindrome("") ➞ true
+// isPalindrome("ad") ➞ false
+
+const isPalindrome = str => str.length < 2 ? true : str.endsWith(str[0]) ? isPalindrome(str.slice(1,-1)) : false;
+
+function isPalindrome(str) {
+  return str == str.split("").reverse().join("");
+}
+
+function isPalindrome(str) {
+	return [...str].reverse().join('') === str
+}
+
+function isPalindrome(str) {
+	return str[0] !== str[str.length-1] ? false : str.length< 3 ? true : isPalindrome(str.substring(1,str.length-1))
+}
+
+// 549. Create a function that takes an input (e.g. "5 + 4") and returns true if it's a mathematical expression or false if not.
+
+// White - mathExpr("4 + 5") ➞ true
+// mathExpr("4*6") ➞ true
+// mathExpr("4*no") ➞ false
+
+function mathExpr(expr) {
+	return /^\d(\s)*[%+/*-](\s)*\d$/.test(expr);
+}
+
+function mathExpr(expr) {
+  return /^\d\s?[-+*/%]\s?\d$/.test(expr);
+}
+
+function mathExpr(expr) {
+  return (expr[0] > -1) ? true: false; 
+}
+
+// 550. Imagine a messaging device with only one button. For the letter A, you press the button one time, for E, you press it five times, for G, it's pressed seven times, etc, etc.
+
+// Write a function that takes a string (the message) and returns the total number of times the button is pressed.
+
+// Yellow - howManyTimes("abde") ➞ 12
+// howManyTimes("azy") ➞ 52
+// howManyTimes("qudusayo") ➞ 123
+
+const howManyTimes = msg => [...msg].reduce((a,v) => a + v.charCodeAt()-96, 0);
+
+function howManyTimes(msg) {
+	return msg.toLowerCase().split("").reduce((a,b)=>a+b.charCodeAt(0)-96,0)
+ }
+
+ function howManyTimes(msg) {
+	return new Array(msg.length).fill(0).reduce((r,v,i) => r + msg.charCodeAt(i) - 96, 0);
+}
+
+function howManyTimes(msg) {
+	let total = 0
+	const alphaVal = (s) => s.toLowerCase().charCodeAt(0) - 97 + 1
+	for(i = 0; i<msg.length;i++){
+		total+=alphaVal(msg[i])
+	}
+	return total
+}
+
