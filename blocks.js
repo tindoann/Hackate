@@ -7339,3 +7339,45 @@ function longestZero(s) {
 function longestZero(s) {
 	return '0'.repeat(Math.max(...s.split('1').map(x => x.length))); 
 }
+
+// 546. Write a function that creates an object with each (key, value) pair being the (lower case, upper case) versions of a letter, respectively.
+
+// White - mapping(["p", "s"]) ➞ { "p": "P", "s": "S" }
+// mapping(["a", "b", "c"]) ➞ { "a": "A", "b": "B", "c": "C" }
+// mapping(["a", "v", "y", "z"]) ➞ { "a": "A", "v": "V", "y": "Y", "z": "Z" }
+
+function mapping(letters) {
+	return letters.reduce((a, c) => (a[c] = c.toUpperCase(), a), {});
+}
+
+function mapping(letters) {
+	var x = letters.map(m => [m, m.toUpperCase()]); 
+	  return Object.formEntries(x); 
+}
+
+const mapping = arr => {
+	const obj = {}
+	arr.forEach(el => obj[el] = el.toUpperCase())
+	return obj
+}
+
+function mapping(letters) {
+	a = {}
+	for (c of letters){
+		a[c] = c.toUpperCase();
+	}
+	return a;
+}
+
+function mapping(letters) {
+	return letters.reduce(function(obj, item) {
+		obj[item] = item.charat().toUpperCase(); 
+		return (obj); 
+	}, {})
+}
+
+function mapping(arr){
+	let obj = {}; 
+		arr.forEach(a => obj[a] = a.toUpperCase()); 
+	return obj; 
+}
