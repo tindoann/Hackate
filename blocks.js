@@ -7381,3 +7381,34 @@ function mapping(arr){
 		arr.forEach(a => obj[a] = a.toUpperCase()); 
 	return obj; 
 }
+
+// 547. Write a function that takes a string of one or more words as an argument and returns the same string, but with all five or more letter words reversed. Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+// White - reverse("Reverse") ➞ "esreveR"
+// reverse("This is a typical sentence.") ➞ "This is a lacipyt .ecnetnes"
+// reverse("The dog is big.") ➞ "The dog is big."
+
+function reverse(str) {
+  return str.split(' ').map(x => x.length > 4 ? x.split('').reverse().join('') : x).join(' ');
+}
+
+const reverse = str => str.replace(/(\S{5,})/gi, match =>
+	[...match].reverse().join('')
+)
+
+function reverse(str) {
+  return str.split(' ')
+  	.map(a => a.length >= 5 ? a.split('').reverse().join('') : a)
+    .join(' ');
+}
+
+function reverse(str) {
+  var split = str.split(' ');
+  split = split.map(function(el){
+    if(el.length > 4){
+      return el.split('').reverse().join('');
+    }
+    return el;
+  });
+  return split.join(' ');
+}
