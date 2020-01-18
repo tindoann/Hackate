@@ -7810,3 +7810,22 @@ const kmtomiles = kilometers => Number((kilometers * 0.621371).toFixed(5))
 function kmtomiles(kilometers){
 	return +(kilometers * 0.621371).toPrecision(6);
 }
+
+// 563. Create a function that returns true when num1 is equal to num2.
+
+function isSameNum(num1, num2) {
+	return num1 === num2;
+}
+
+function isSameNum(num1, num2) {
+	if (num1 === num2) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+const isSameNum = (num1, num2) => {
+	num1 === num2 ? true : false; 
+}
+
