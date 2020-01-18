@@ -7669,3 +7669,44 @@ function compoundInterest(p, t, r, n) {
 function compoundInterest(p, t, r, n) {
 	return Math.round(((p * (1 + r / n) ** (t * n)) * 100)) / 100;	
  }
+
+//  558. Two sisters are eating chocolate, whose pieces are represented as subarrays of [l x w].
+
+// Write a function that returns true if the total area of chocolate is the same for each sister.
+
+// Yellow - testFairness([[1, 2], [2, 1]], [[2, 2]]) ➞ true
+
+// testFairness([[1, 2], [2, 1]], [[2, 2], [4, 4]]) ➞ false
+
+// testFairness([[2, 2], [2, 2], [2, 2], [2, 2]], [[4, 4]]) ➞ true
+
+// testFairness([[1, 5], [6, 3], [1, 1]], [[7, 1], [2, 2], [1, 1]]) ➞ false
+
+function testFairness(agatha, bertha) {
+	return agatha.reduce((a,c) => a += c[0] * c[1], 0) ==
+         bertha.reduce((a,c) => a += c[0] * c[1], 0)
+}
+
+function testFairness(agatha, bertha) {
+	const f = (c) => c.reduce((acc, cur) => acc + cur[0] * cur[1], 0)
+	return f(agatha) === f(bertha)
+}
+
+function testFairness(agatha, bertha) {
+	return agatha.map(a=>a[0]*a[1]).reduce((t,a)=>t+a) ==	bertha.map(a=>a[0]*a[1]).reduce((t,a)=>t+a)
+}
+
+function testFairness(agatha, bertha) {
+	var aCount = 0;
+	var bCount = 0;
+	for(var i = 0; i < agatha.length; i++){
+			var chocolateAmount = agatha[i][0] * agatha[i][1]
+			aCount += chocolateAmount;
+		}
+	for(var i = 0; i < bertha.length; i++){
+			var chocolateAmount = bertha[i][0] * bertha[i][1]
+			bCount += chocolateAmount;
+		}
+	
+	return aCount === bCount
+	}
