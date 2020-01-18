@@ -7710,3 +7710,36 @@ function testFairness(agatha, bertha) {
 	
 	return aCount === bCount
 	}
+
+	// 559. Create a function that returns true if a number is prime and false if it's not. A prime number is any positive integer that is evenly divisible by only two divisors: 1 and itself. The first ten prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29.
+
+// White - isPrime(7) ➞ true
+// isPrime(9) ➞ false
+// isPrime(10) ➞ false
+
+function isPrime(num){
+  for(let i = num-1; i > 1; i--) {
+    if(num%i === 0) return false;
+  }
+  return true;
+}
+
+function isPrime(n) {
+  for(let i = 2, s = Math.sqrt(n); i <= s; i++)
+    if(n % i === 0) return false; 
+  return n !== 1;
+}
+
+function isPrime(num){
+  for(var i = 2;i<num;i++) if(num%i===0) return false;
+  return true;
+}
+
+function isPrime(num){
+  for (let n = 2; n < num; n++) {
+    if (num % n === 0) return false;
+  }
+  return true;
+}
+
+
