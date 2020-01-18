@@ -7795,3 +7795,18 @@ function AreNumbersSame(num1, num2) {
 	return num1 === num2 ? true : false;
 }
 
+// 562. Make a program that converts kilometers into miles. Round the answer to the fifth decimal.
+
+// White - kilometertomiles(2) ➞ 1.24274
+// kilometertomiles(6) ➞ 3.72823
+// kilometertomiles(8) ➞ 4.97097
+
+function kmtomiles(kilometers){
+	return parseFloat((kilometers * 0.62137119).toFixed(5))
+}
+
+const kmtomiles = kilometers => Number((kilometers * 0.621371).toFixed(5))
+
+function kmtomiles(kilometers){
+	return +(kilometers * 0.621371).toPrecision(6);
+}
