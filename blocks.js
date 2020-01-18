@@ -7772,5 +7772,41 @@ function powerOfTwo(num) {
 	return Number.isInteger(Math.log(num) / Math.log(2));
 }
 
+// 561. Create a function that returns TRUE when number1 = number2.
 
+// White - AreNumbersSame(4, 8) ==> false
+// AreNumbersSame(2, 2) ==> true
+// AreNumbersSame(0, 6) ==> false
 
+function AreNumbersSame(num1, num2) {
+	return num1 == num2;
+}
+
+function AreNumbersSame(num1, num2) {
+	if(num1==num2){
+		return true;
+		}
+	else{
+		return false;
+	}
+}
+
+function AreNumbersSame(num1, num2) {
+	return num1 === num2 ? true : false;
+}
+
+// 562. Make a program that converts kilometers into miles. Round the answer to the fifth decimal.
+
+// White - kilometertomiles(2) ➞ 1.24274
+// kilometertomiles(6) ➞ 3.72823
+// kilometertomiles(8) ➞ 4.97097
+
+function kmtomiles(kilometers){
+	return parseFloat((kilometers * 0.62137119).toFixed(5))
+}
+
+const kmtomiles = kilometers => Number((kilometers * 0.621371).toFixed(5))
+
+function kmtomiles(kilometers){
+	return +(kilometers * 0.621371).toPrecision(6);
+}
