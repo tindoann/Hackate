@@ -7649,5 +7649,64 @@ function gcd(n1, n2) {
   return resolve
 }
 
+// 557. Suppose that you invest $10,000 for 10 years at an interest rate of 6% compounded monthly. What will be the value of your investment at the end of the 10 year period?
+// Create a function that accepts the principal p, the term in years t, the interest rate r, and the number of compounding periods per year n. The function returns the value at the end of term rounded to the nearest cent.
 
+// Yellow - compoundInterest(100, 1, 0.05, 1) ➞ 105.0
 
+// compoundInterest(3500, 15, 0.1, 4) ➞ 15399.26
+
+// compoundInterest(100000, 20, 0.15, 365) ➞ 2007316.26
+
+const compoundInterest = (p, t, r, n) => {
+	return Math.round(((p * (1 + r / n) ** (t * n)) * 100)) / 100;
+}
+
+function compoundInterest(p, t, r, n) {
+	return +(p * (1 + r / n) ** (n * t)).toFixed(2);
+}
+
+function compoundInterest(p, t, r, n) {
+	return Math.round(((p * (1 + r / n) ** (t * n)) * 100)) / 100;	
+ }
+
+//  558. Two sisters are eating chocolate, whose pieces are represented as subarrays of [l x w].
+
+// Write a function that returns true if the total area of chocolate is the same for each sister.
+
+// Yellow - testFairness([[1, 2], [2, 1]], [[2, 2]]) ➞ true
+
+// testFairness([[1, 2], [2, 1]], [[2, 2], [4, 4]]) ➞ false
+
+// testFairness([[2, 2], [2, 2], [2, 2], [2, 2]], [[4, 4]]) ➞ true
+
+// testFairness([[1, 5], [6, 3], [1, 1]], [[7, 1], [2, 2], [1, 1]]) ➞ false
+
+function testFairness(agatha, bertha) {
+	return agatha.reduce((a,c) => a += c[0] * c[1], 0) ==
+         bertha.reduce((a,c) => a += c[0] * c[1], 0)
+}
+
+function testFairness(agatha, bertha) {
+	const f = (c) => c.reduce((acc, cur) => acc + cur[0] * cur[1], 0)
+	return f(agatha) === f(bertha)
+}
+
+function testFairness(agatha, bertha) {
+	return agatha.map(a=>a[0]*a[1]).reduce((t,a)=>t+a) ==	bertha.map(a=>a[0]*a[1]).reduce((t,a)=>t+a)
+}
+
+function testFairness(agatha, bertha) {
+	var aCount = 0;
+	var bCount = 0;
+	for(var i = 0; i < agatha.length; i++){
+			var chocolateAmount = agatha[i][0] * agatha[i][1]
+			aCount += chocolateAmount;
+		}
+	for(var i = 0; i < bertha.length; i++){
+			var chocolateAmount = bertha[i][0] * bertha[i][1]
+			bCount += chocolateAmount;
+		}
+	
+	return aCount === bCount
+	}
