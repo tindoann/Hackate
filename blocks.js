@@ -7710,3 +7710,67 @@ function testFairness(agatha, bertha) {
 	
 	return aCount === bCount
 	}
+
+	// 559. Create a function that returns true if a number is prime and false if it's not. A prime number is any positive integer that is evenly divisible by only two divisors: 1 and itself. The first ten prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29.
+
+// White - isPrime(7) ➞ true
+// isPrime(9) ➞ false
+// isPrime(10) ➞ false
+
+function isPrime(num){
+  for(let i = num-1; i > 1; i--) {
+    if(num%i === 0) return false;
+  }
+  return true;
+}
+
+function isPrime(n) {
+  for(let i = 2, s = Math.sqrt(n); i <= s; i++)
+    if(n % i === 0) return false; 
+  return n !== 1;
+}
+
+function isPrime(num){
+  for(var i = 2;i<num;i++) if(num%i===0) return false;
+  return true;
+}
+
+function isPrime(num){
+  for (let n = 2; n < num; n++) {
+    if (num % n === 0) return false;
+  }
+  return true;
+}
+
+// 560. Write a function that returns true if an integer is a power of 2, and false otherwise.
+
+// White - powerOfTwo(32) ➞ true
+// powerOfTwo(1) ➞ true
+// powerOfTwo(-7) ➞ false
+// powerOfTwo(18) ➞ false
+
+function powerOfTwo(num) {
+	return Number.isInteger(Math.log2(num));
+}
+
+function powerOfTwo(num) {
+	if (num < 0) return false;
+	if (num === 0) return true;
+	for(let i = 0; Math.pow(2, i) <= num; i++) {
+		if (Math.pow(2, i) === num) return true
+	}
+	return false;
+}
+
+function powerOfTwo(num) {
+	while (((num % 2) == 0) && num > 1)
+   num /= 2;
+ return (num == 1);
+}
+
+function powerOfTwo(num) {
+	return Number.isInteger(Math.log(num) / Math.log(2));
+}
+
+
+
