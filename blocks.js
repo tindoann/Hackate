@@ -7772,5 +7772,26 @@ function powerOfTwo(num) {
 	return Number.isInteger(Math.log(num) / Math.log(2));
 }
 
+// 561. Create a function that returns TRUE when number1 = number2.
 
+// White - AreNumbersSame(4, 8) ==> false
+// AreNumbersSame(2, 2) ==> true
+// AreNumbersSame(0, 6) ==> false
+
+function AreNumbersSame(num1, num2) {
+	return num1 == num2;
+}
+
+function AreNumbersSame(num1, num2) {
+	if(num1==num2){
+		return true;
+		}
+	else{
+		return false;
+	}
+}
+
+function AreNumbersSame(num1, num2) {
+	return num1 === num2 ? true : false;
+}
 
