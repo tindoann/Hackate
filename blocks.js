@@ -7742,4 +7742,35 @@ function isPrime(num){
   return true;
 }
 
+// 560. Write a function that returns true if an integer is a power of 2, and false otherwise.
+
+// White - powerOfTwo(32) ➞ true
+// powerOfTwo(1) ➞ true
+// powerOfTwo(-7) ➞ false
+// powerOfTwo(18) ➞ false
+
+function powerOfTwo(num) {
+	return Number.isInteger(Math.log2(num));
+}
+
+function powerOfTwo(num) {
+	if (num < 0) return false;
+	if (num === 0) return true;
+	for(let i = 0; Math.pow(2, i) <= num; i++) {
+		if (Math.pow(2, i) === num) return true
+	}
+	return false;
+}
+
+function powerOfTwo(num) {
+	while (((num % 2) == 0) && num > 1)
+   num /= 2;
+ return (num == 1);
+}
+
+function powerOfTwo(num) {
+	return Number.isInteger(Math.log(num) / Math.log(2));
+}
+
+
 
