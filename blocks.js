@@ -7861,6 +7861,37 @@ function isNarcissistic(n) {
 }
 
 function isNarcissistic(n) {
-	return n === n.toString().split``.map((d, _, arr) => Math.pow(parseInt(d), arr.length)).reduce((a, c) => a + c)
+	return n === n.toString().split('').map((d, _, arr) => Math.pow(parseInt(d), arr.length)).reduce((a, c) => a + c)
 }
+
+// 564. Write a function that takes a string, breaks it up and returns it with vowels first, consonants second. For any character that's not a vowel (like special characters or spaces), treat them like consonants.
+
+// Yellow - split("abcde") ➞ "aebcd"
+// split("Hello!") ➞ "eoHll!"
+// split("What's the time?") ➞ "aeieWht's th tm?"
+
+function split(str) {
+	let [vowels, cons] = ['',''];
+ str.split('').map(x=>/[aeiou]/gi.test(x)?vowels+=x:cons+=x);
+ return vowels+cons;
+}
+
+function split(str) {
+	let s1 = ''; 
+	let s2 = ''; 
+	let v = ['a', 'e', 'i', 'o', 'u'];
+	let s = str.split(''); 
+
+	for(let i = 0; i < s.length; i++) {
+		v.includes(s[i]) ? s1 += s[i] : s2 +=s[i];  
+	}
+	return s1 + s2; 
+}
+
+function split(str) {
+	let a = str.match(/[aeiou]/gi);
+	let b = str.match(/[^aeiou]/gi);
+		return a.concat(b).join('');
+	}
+
 
