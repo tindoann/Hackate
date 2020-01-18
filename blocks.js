@@ -7649,5 +7649,23 @@ function gcd(n1, n2) {
   return resolve
 }
 
+// 557. Suppose that you invest $10,000 for 10 years at an interest rate of 6% compounded monthly. What will be the value of your investment at the end of the 10 year period?
+// Create a function that accepts the principal p, the term in years t, the interest rate r, and the number of compounding periods per year n. The function returns the value at the end of term rounded to the nearest cent.
 
+// Yellow - compoundInterest(100, 1, 0.05, 1) ➞ 105.0
 
+// compoundInterest(3500, 15, 0.1, 4) ➞ 15399.26
+
+// compoundInterest(100000, 20, 0.15, 365) ➞ 2007316.26
+
+const compoundInterest = (p, t, r, n) => {
+	return Math.round(((p * (1 + r / n) ** (t * n)) * 100)) / 100;
+}
+
+function compoundInterest(p, t, r, n) {
+	return +(p * (1 + r / n) ** (n * t)).toFixed(2);
+}
+
+function compoundInterest(p, t, r, n) {
+	return Math.round(((p * (1 + r / n) ** (t * n)) * 100)) / 100;	
+ }
