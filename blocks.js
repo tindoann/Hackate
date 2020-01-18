@@ -7829,3 +7829,38 @@ const isSameNum = (num1, num2) => {
 	num1 === num2 ? true : false; 
 }
 
+// 563. A number is narcissistic when the sum of its digits, with each digit raised to the power of digits quantity, is equal to the number itself.
+
+// Given a positive integer n, implement a function that returns true if the number is narcissistic, and false if it's not.
+
+// Yellow - isNarcissistic(8208) ➞ true
+// 8⁴ + 2⁴ + 0⁴ + 8⁴ = 8208
+
+// isNarcissistic(22) ➞ false
+// 2² + 2² = 8
+
+// isNarcissistic(9) ➞ true
+// 9¹ = 9
+
+const isNarcissistic = n => {
+	let array = n.toString().split('')
+	let length = array.length;
+
+	let result = 0
+
+	for (let i = 0; i < array.length; i++) {
+			result += Math.pow(Number(array[i]), length)
+	}
+	
+	return result === n ? true : false;
+}
+
+function isNarcissistic(n) {
+	const digits = [...String(n)];
+	return digits.reduce((a, c) => a + c ** digits.length, 0) === n;
+}
+
+function isNarcissistic(n) {
+	return n === n.toString().split``.map((d, _, arr) => Math.pow(parseInt(d), arr.length)).reduce((a, c) => a + c)
+}
+
