@@ -7861,6 +7861,102 @@ function isNarcissistic(n) {
 }
 
 function isNarcissistic(n) {
-	return n === n.toString().split``.map((d, _, arr) => Math.pow(parseInt(d), arr.length)).reduce((a, c) => a + c)
+	return n === n.toString().split('').map((d, _, arr) => Math.pow(parseInt(d), arr.length)).reduce((a, c) => a + c)
+}
+
+// 564. Write a function that takes a string, breaks it up and returns it with vowels first, consonants second. For any character that's not a vowel (like special characters or spaces), treat them like consonants.
+
+// Yellow - split("abcde") ➞ "aebcd"
+// split("Hello!") ➞ "eoHll!"
+// split("What's the time?") ➞ "aeieWht's th tm?"
+
+function split(str) {
+	let [vowels, cons] = ['',''];
+ str.split('').map(x=>/[aeiou]/gi.test(x)?vowels+=x:cons+=x);
+ return vowels+cons;
+}
+
+function split(str) {
+	let s1 = ''; 
+	let s2 = ''; 
+	let v = ['a', 'e', 'i', 'o', 'u'];
+	let s = str.split(''); 
+
+	for(let i = 0; i < s.length; i++) {
+		v.includes(s[i]) ? s1 += s[i] : s2 +=s[i];  
+	}
+	return s1 + s2; 
+}
+
+function split(str) {
+	let a = str.match(/[aeiou]/gi);
+	let b = str.match(/[^aeiou]/gi);
+		return a.concat(b).join('');
+	}
+
+	// 565. Create a function that returns the sum of all even elements in a 2D matrix.
+
+/*
+	Yellow - sumOfEvens([
+		[1, 0, 2],
+		[5, 5, 7],
+		[9, 4, 3]
+	]) ➞ 6
+	
+	// 2 + 4 = 6
+	
+	sumOfEvens([
+		[1, 1],
+		[1, 1]
+	]) ➞ 0
+	
+	sumOfEvens([
+		[42, 9],
+		[16, 8]
+	]) ➞ 66
+	
+	sumOfEvens([
+		[],
+		[],
+		[]
+	]) ➞ 0
+
+*/
+
+function sumOfEvens(arr) {
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i].filter(x => x % 2 === 0).length > 0) {
+			sum += arr[i].filter(x => x % 2 === 0).reduce((a, b) => a + b);
+		}
+	}
+	return sum;
+}
+
+function sumOfEvens(arr) {
+	return arr.map(x => x.filter(x => !(x % 2)).reduce((a, b) => a+b, 0)).reduce((a, b) => a+b, 0)
+}
+
+function sumOfEvens(arr) {
+	let sum = 0;
+	for (let subarr of arr) {
+		for (let num of subarr) {
+			if (num % 2 === 0)
+				sum += num;
+		}
+	}
+	return sum;
+}
+
+function sumOfEvens(arr) {
+	let sum=0
+  for (let i=0;i<arr.length;i++)
+	{
+		for (let j=0;j<arr[i].length;j++)
+			{
+				if (arr[i][j]%2===0) sum+=arr[i][j]
+			}
+	}
+	return sum
 }
 
