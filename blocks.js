@@ -7894,7 +7894,7 @@ function split(str) {
 		return a.concat(b).join('');
 	}
 
-	// 565. Create a function that returns the sum of all even elements in a 2D matrix.
+// 565. Create a function that returns the sum of all even elements in a 2D matrix.
 
 /*
 	Yellow - sumOfEvens([
@@ -7958,5 +7958,115 @@ function sumOfEvens(arr) {
 			}
 	}
 	return sum
+}
+
+// 566. Suppose you have a guest list of students and the country they are from, stored as key-value pairs in an object.
+
+/*
+
+Suppose you have a guest list of students and the country they are from, stored as key-value pairs in an object.
+
+const GUEST_LIST = {
+  Randy: "Germany",
+  Karla: "France",
+  Wendy: "Japan",
+  Norman: "England",
+  Sam: "Argentina"
+}
+
+Write a function that takes in a name and returns a name tag, that should read:
+
+"Hi! I'm [name], and I'm from [country]."
+
+If the name is not in the object, return:
+
+"Hi! I'm a guest."
+
+*/
+
+// White - greeting("Randy") ➞ "Hi! I'm Randy, and I'm from Germany."
+
+// greeting("Sam") ➞ "Hi! I'm Sam, and I'm from Argentina."
+
+// greeting("Monti") ➞ "Hi! I'm a guest."
+
+const GUEST_LIST = {
+	Randy: "Germany",
+	Karla: "France",
+	Wendy: "Japan",
+	Norman: "England",
+	Sam: "Argentina"
+}
+
+function greeting(name) {
+	return GUEST_LIST[name]?`Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`:"Hi! I'm a guest."
+}
+
+const GUEST_LIST = {
+	Randy: "Germany",
+	Karla: "France",
+	Wendy: "Japan",
+	Norman: "England",
+	Sam: "Argentina"
+}
+
+const greeting=name=>
+	GUEST_LIST[name]?"Hi! I'm "+`${name}`+", and I'm from "+`${GUEST_LIST[name]}`+".":"Hi! I'm a guest."
+
+	const countries = {
+		Randy: 'Germany',
+		Karla: 'France',
+		Wendy: 'Japan',
+		Norman: 'England',
+		Sam: 'Argentina',
+	};
+	
+	const greeting = name =>
+		countries.hasOwnProperty(name)
+			? `Hi! I'm ${name}, and I'm from ${countries[name]}.`
+			: "Hi! I'm a guest.";
+
+			const GUEST_LIST = {
+				Randy: "Germany",
+				Karla: "France",
+				Wendy: "Japan",
+				Norman: "England",
+				Sam: "Argentina"
+			}
+			
+			function greeting(name) {
+				if(GUEST_LIST[name]){
+					return `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`;
+				}
+				return"Hi! I'm a guest."
+			}
+
+// 557. Create a function that takes the month and year (as integers) and returns the number of days in that month.
+
+// Yellow - days(2, 2018) ➞ 28
+
+// days(4, 654) ➞ 30
+// days(2, 200) ➞ 28
+// days(2, 1000) ➞ 28
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate()
+}
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
+}
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
+}
+
+function days(month, year) {
+	let x = new Date(year, month, 0);
+ return x.getDate();
+}
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
 }
 
