@@ -8140,3 +8140,28 @@ function fibonacciSequence() {
 	}
 	return arr.filter(e=> e<255)
 }
+
+// 660.  Create a function that takes three numbers as arguments and returns true if it's a triangle and false if not.
+
+// isTriangle(2, 3, 4) ➞ true
+
+// isTriangle(3, 4, 5) ➞ true
+
+// isTriangle(4, 3, 8) ➞ false
+
+function isTriangle(a, b, c) {
+	if (a + b > c && b + c > a && c + a > b) {
+		return true
+	} else {
+		return false
+	}
+}
+
+function isTriangle(a, b, c) {
+	return (a + b > c && a + c > b && b + c > a) ? true : false
+}
+
+const isTriangle = (...s) => s.sort((a,b) => a - b)[0] + s[1] > s[2];
+
+
+
