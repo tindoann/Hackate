@@ -7894,7 +7894,7 @@ function split(str) {
 		return a.concat(b).join('');
 	}
 
-	// 565. Create a function that returns the sum of all even elements in a 2D matrix.
+// 565. Create a function that returns the sum of all even elements in a 2D matrix.
 
 /*
 	Yellow - sumOfEvens([
@@ -7960,3 +7960,183 @@ function sumOfEvens(arr) {
 	return sum
 }
 
+// 566. Suppose you have a guest list of students and the country they are from, stored as key-value pairs in an object.
+
+/*
+
+Suppose you have a guest list of students and the country they are from, stored as key-value pairs in an object.
+
+const GUEST_LIST = {
+  Randy: "Germany",
+  Karla: "France",
+  Wendy: "Japan",
+  Norman: "England",
+  Sam: "Argentina"
+}
+
+Write a function that takes in a name and returns a name tag, that should read:
+
+"Hi! I'm [name], and I'm from [country]."
+
+If the name is not in the object, return:
+
+"Hi! I'm a guest."
+
+*/
+
+// White - greeting("Randy") ➞ "Hi! I'm Randy, and I'm from Germany."
+
+// greeting("Sam") ➞ "Hi! I'm Sam, and I'm from Argentina."
+
+// greeting("Monti") ➞ "Hi! I'm a guest."
+
+const GUEST_LIST = {
+	Randy: "Germany",
+	Karla: "France",
+	Wendy: "Japan",
+	Norman: "England",
+	Sam: "Argentina"
+}
+
+function greeting(name) {
+	return GUEST_LIST[name]?`Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`:"Hi! I'm a guest."
+}
+
+const GUEST_LIST = {
+	Randy: "Germany",
+	Karla: "France",
+	Wendy: "Japan",
+	Norman: "England",
+	Sam: "Argentina"
+}
+
+const greeting=name=>
+	GUEST_LIST[name]?"Hi! I'm "+`${name}`+", and I'm from "+`${GUEST_LIST[name]}`+".":"Hi! I'm a guest."
+
+	const countries = {
+		Randy: 'Germany',
+		Karla: 'France',
+		Wendy: 'Japan',
+		Norman: 'England',
+		Sam: 'Argentina',
+	};
+	
+	const greeting = name =>
+		countries.hasOwnProperty(name)
+			? `Hi! I'm ${name}, and I'm from ${countries[name]}.`
+			: "Hi! I'm a guest.";
+
+			const GUEST_LIST = {
+				Randy: "Germany",
+				Karla: "France",
+				Wendy: "Japan",
+				Norman: "England",
+				Sam: "Argentina"
+			}
+			
+			function greeting(name) {
+				if(GUEST_LIST[name]){
+					return `Hi! I'm ${name}, and I'm from ${GUEST_LIST[name]}.`;
+				}
+				return"Hi! I'm a guest."
+			}
+
+// 557. Create a function that takes the month and year (as integers) and returns the number of days in that month.
+
+// Yellow - days(2, 2018) ➞ 28
+
+// days(4, 654) ➞ 30
+// days(2, 200) ➞ 28
+// days(2, 1000) ➞ 28
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate()
+}
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
+}
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
+}
+
+function days(month, year) {
+	let x = new Date(year, month, 0);
+ return x.getDate();
+}
+
+function days(month, year) {
+	return new Date(year, month, 0).getDate();
+}
+
+// 558. Create a function that takes a string and returns a new string with its first and last characters swapped, except under three conditions:
+
+// If the length of the string is less than two, return "Incompatible.".
+// If the argument is not a string, return "Incompatible.".
+// If the first and last characters are the same, return "Two's a pair.".
+
+// Yellow - flipEndChars("Cat, dog, and mouse.") ➞ ".at, dog, and mouseC"
+// flipEndChars("ada") ➞ "Two's a pair."
+// flipEndChars("Ada") ➞ "adA"
+// flipEndChars("z") ➞ "Incompatible."
+// flipEndChars([1, 2, 3]) ➞ "Incompatible."
+
+function flipEndChars(str) {
+	return typeof str != "string"  || str.length < 2 ? "Incompatible." : 
+         str[0] == str[str.length - 1] ? "Two's a pair." : 
+         str[str.length - 1] + str.slice(1,str.length - 1) + str[0] ;
+}
+
+const flipEndChars = str => (typeof str !== 'string' || str.length < 2)
+  ? "Incompatible." : (str[0] === str.substr(-1))
+		? "Two's a pair." : str.substr(-1) + str.slice(1,-1) + str[0];
+		
+		function flipEndChars(str) {
+
+			if (typeof str !== 'string') {
+				return 'Incompatible.'
+			}
+			if (str.length < 2) {
+				return 'Incompatible.'
+			}
+			if (str[0] === str[str.length - 1]) {
+				return `Two's a pair.`
+			}
+			return str[str.length - 1] + str.slice(1, str.length - 1) + str[0]
+		}
+
+// 559. The Fibonacci Sequence is the sequence of numbers (Fibonacci Numbers) whose sum is the two preceding numbers (e.g. 0, 1, 1, 2, 3, etc). 
+// Using 0 and 1 as the starting values, create a function that returns an array containing all of the Fibonacci numbers less than 255.
+
+// Yellow - 0, 1 ➞ 1
+
+// 1, 1 ➞ 2
+
+// 1, 2 ➞ 3
+
+function fibonacciSequence() {
+	let arr = [0,1]
+	 for (let i = 0; arr[i]<255; i++){
+			 arr.push(arr[i]+arr[i+1])
+	 }
+	 return arr.slice(0,-2)
+}
+
+function fibonacciSequence() {
+	result = [];
+		for (i = 0; i < 14; i++) {
+			if (i == 0) result.push(0);
+			else if (i == 1) result.push(1);
+			else result.push(result[i - 2] + result[i - 1]);
+		}
+	return result;
+}
+
+function fibonacciSequence() {
+	let arr = [ 0, 1]
+	while (arr[arr.length -1] < 255){
+		arr.push(arr[arr.length - 1]+ arr[arr.length - 2])
+	}
+	return arr.filter(e=> e<255)
+}
