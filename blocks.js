@@ -7894,4 +7894,69 @@ function split(str) {
 		return a.concat(b).join('');
 	}
 
+	// 565. Create a function that returns the sum of all even elements in a 2D matrix.
+
+/*
+	Yellow - sumOfEvens([
+		[1, 0, 2],
+		[5, 5, 7],
+		[9, 4, 3]
+	]) ➞ 6
+	
+	// 2 + 4 = 6
+	
+	sumOfEvens([
+		[1, 1],
+		[1, 1]
+	]) ➞ 0
+	
+	sumOfEvens([
+		[42, 9],
+		[16, 8]
+	]) ➞ 66
+	
+	sumOfEvens([
+		[],
+		[],
+		[]
+	]) ➞ 0
+
+*/
+
+function sumOfEvens(arr) {
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i].filter(x => x % 2 === 0).length > 0) {
+			sum += arr[i].filter(x => x % 2 === 0).reduce((a, b) => a + b);
+		}
+	}
+	return sum;
+}
+
+function sumOfEvens(arr) {
+	return arr.map(x => x.filter(x => !(x % 2)).reduce((a, b) => a+b, 0)).reduce((a, b) => a+b, 0)
+}
+
+function sumOfEvens(arr) {
+	let sum = 0;
+	for (let subarr of arr) {
+		for (let num of subarr) {
+			if (num % 2 === 0)
+				sum += num;
+		}
+	}
+	return sum;
+}
+
+function sumOfEvens(arr) {
+	let sum=0
+  for (let i=0;i<arr.length;i++)
+	{
+		for (let j=0;j<arr[i].length;j++)
+			{
+				if (arr[i][j]%2===0) sum+=arr[i][j]
+			}
+	}
+	return sum
+}
 
