@@ -8142,6 +8142,7 @@ function fibonacciSequence() {
 }
 
 // 660.  Create a function that takes three numbers as arguments and returns true if it's a triangle and false if not.
+// To build a triangle from three sections, the longest of them must be shorter than the sum of the length of the other two.
 
 // isTriangle(2, 3, 4) ➞ true
 
@@ -8163,5 +8164,112 @@ function isTriangle(a, b, c) {
 
 const isTriangle = (...s) => s.sort((a,b) => a - b)[0] + s[1] > s[2];
 
+// 661. In this challenge, you have to convert a weight weighed on a planet of the Solar System to the corresponding weight on another planet.
+
+// To convert the weight, you have to divide it by the gravitational force of the planet on which is weighed and multiply the result (the mass) for the gravitational force of the other planet. See the table below for a list of gravitational forces:
+
+
+// Planet	m/s²
+// Mercury	3.7
+// Venus	8.87
+// Earth	9.81
+// Mars	3.711
+// Jupiter	24.79
+// Saturn	10.44
+// Uranus	8.69
+// Neptune	11.15
+
+// Given a weight weighed on planetA, return the converted value for planetB rounded to the nearest hundredth.
+
+// White - spaceWeights("Earth", 1, "Mars") ➞ 0.38
+// spaceWeights("Earth", 1, "Jupiter") ➞ 2.53
+// spaceWeights("Earth", 1, "Neptune") ➞ 1.14
+
+function spaceWeights(planetA, weight, planetB) {
+	let Planet = {
+		Mercury:	3.7,
+		Venus:		8.87,
+		Earth:		9.81,
+		Mars:			3.711,
+		Jupiter:	24.79,
+		Saturn:		10.44,
+		Uranus:		8.69,
+		Neptune:	11.15
+	}
+	return +Number(weight / Planet[planetA] * Planet[planetB]).toFixed(2);
+}
+
+function spaceWeights(planetA, weight, planetB) {
+	let obj = {"Mercury":	3.7,
+		"Venus":	8.87,
+		"Earth":	9.81,
+		"Mars":	3.711,
+		"Jupiter":	24.79,
+		"Saturn":	10.44,
+		"Uranus":	8.69,
+		"Neptune":	11.15
+	};
+	let divided = weight / obj[planetA];
+	return Math.round(divided * obj[planetB] * 100) / 100;
+}
+
+function spaceWeights(planetA, weight, planetB) {
+	var planets = {
+		'Mercury'	: 3.7,
+		'Venus'	: 8.87,
+		'Earth'	: 9.81,
+		'Mars' :	3.711,
+		'Jupiter' :	24.79,
+		'Saturn' :	10.44,
+		'Uranus' :	8.69,
+		'Neptune' :	11.15,
+	};
+	return +(weight/planets[planetA]*planets[planetB]).toFixed(2);
+}
+
+function spaceWeights(planetA, weight, planetB) {
+	var planets = {
+		Mercury:3.7,
+		Venus:8.87,
+		Earth:9.81,
+		Mars:	3.711,
+		Jupiter:	24.79,
+		Saturn:	10.44,
+		Uranus:	8.69,
+		Neptune:11.15
+	};
+	return Number((planets[planetB]*weight/planets[planetA]).toFixed(2));
+}
+
+function spaceWeights(planetA, weight, planetB) {
+	
+	function getPlanet(planet){
+	
+	switch(planet){
+			
+		case "Mercury": return 3.7 ;
+				break;
+		case "Venus": return 8.87;
+				break;
+		case "Earth": return 9.81 ;
+				break;
+		case "Mars": return 3.711 ;
+				break;
+		case "Jupiter": return 24.79;
+				break;
+		case "Saturn": return 10.44;
+				break;
+		case "Uranus": return 8.69;
+				break;
+		case "Neptune": return 11.15;
+				break;
+	}
+}
+	var divider = getPlanet(planetA);
+	var multiplier = getPlanet(planetB);
+	
+	return (Math.round((100 * (weight / divider)) * multiplier)/100);
+	
+}
 
 
