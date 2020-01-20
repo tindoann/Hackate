@@ -8273,3 +8273,39 @@ function spaceWeights(planetA, weight, planetB) {
 }
 
 
+// 662. Write a function that calculates the nth Fibonacci number.
+
+// Write a function that calculates the nth Fibonacci number.
+
+// Yellow - fib(0) ➞ 0
+
+// fib(1) ➞ 1
+// fib(2) ➞ 1
+// fib(8) ➞ 21
+
+const fib = n => n <= 1 ? n : fib(n-1) + fib(n-2)
+
+function fib(n) {
+  if(n === 0) return 0;
+	else if(n === 1) return 1;
+	else {
+		return fib(n - 1) + fib(n - 2);
+	}
+}
+
+function fib(n) {
+  const r = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    r[i] = r[i - 2] + r[i - 1];
+  }
+  return r[n];
+}
+
+function fib(n) {
+	if (n <= 1) return n;
+	return fib(n-1) + fib(n-2);
+}
+
+function fib(n) {
+	return n<2 ? n : fib(n-1)+fib(n-2);
+}
