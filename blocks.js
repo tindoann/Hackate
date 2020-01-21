@@ -8309,3 +8309,27 @@ function fib(n) {
 function fib(n) {
 	return n<2 ? n : fib(n-1)+fib(n-2);
 }
+
+// 663. Create a function that returns the amount of duplicate characters in a string. It will be case sensitive and spaces are included. If there are no duplicates, return 0.
+
+function duplicates(str) {
+	let letters = str.split('');
+	let unique = new Set(letters);
+	return letters.length - unique.size;
+}
+
+function duplicates(str) {
+	return str.length - new Set(str).size 
+}
+
+function duplicates(str) {
+	var x = new Set(str).size;
+	return str.length - x;
+}
+
+const duplicates = str => str.length - new Set(str).size;
+
+const duplicates = str => str.length - [...new Set(str.split(''))].length
+
+
+
