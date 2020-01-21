@@ -8331,5 +8331,31 @@ const duplicates = str => str.length - new Set(str).size;
 
 const duplicates = str => str.length - [...new Set(str.split(''))].length
 
+// 664. Create a function that takes three numbers — the width and height of a rectangle, and the radius of a circle and returns true if the rectangle can fit inside the circle, false if it can't.
 
+// Yellow - rectangleInCircle(8, 6, 5) ➞ true
+// rectangleInCircle(5, 9, 5) ➞ false
+// rectangleInCircle(4, 7, 4) ➞ false
 
+function rectangleInCircle(w, h, radius) {
+	let diag = w*w + h*h; 
+	let c = 4 * (radius * radius);
+	if (diag <= c)
+	{
+		return true;
+	}
+	return false;
+}
+
+function rectangleInCircle(w, h, radius) {
+	let len = Math.hypot(w, h);
+	return len <= 2*radius;
+}
+
+function rectangleInCircle(w, h, radius) {
+	return radius <= Math.sqrt(w * w + h * h) / 2 ? false : true
+}
+
+function rectangleInCircle(w, h, radius) {
+	return w*w+h*h <= Math.pow(radius*2, 2)
+}
