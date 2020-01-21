@@ -8359,3 +8359,46 @@ function rectangleInCircle(w, h, radius) {
 function rectangleInCircle(w, h, radius) {
 	return w*w+h*h <= Math.pow(radius*2, 2)
 }
+
+// 665. Create a function that determines if there is an upward trend.
+
+// upwardTrend([1, 2, 3, 4]) ➞ true
+// upwardTrend([1, 2, 6, 5, 7, 8]) ➞ false
+// upwardTrend([1, 2, 3, "4"]) ➞ "Strings not permitted!"
+// upwardTrend([1, 2, 3, 6, 7]) ➞ true
+
+// 666. Write a function that returns the first n vowels of a string.
+
+// Yellow - firstNVowels("sharpening skills", 3) ➞ "aei"
+// firstNVowels("major league", 5) ➞ "aoeau"
+// firstNVowels("hostess", 5) ➞ "invalid"
+
+// 666. Write a function that returns the first n vowels of a string.
+
+// firstNVowels("sharpening skills", 3) ➞ "aei"
+// firstNVowels("major league", 5) ➞ "aoeau"
+// firstNVowels("hostess", 5) ➞ "invalid"
+
+const firstNVowels = (str, n) => {
+  const vowels = str.match(/[aeiou]/gi) || [];
+  return vowels.length < n ? 'invalid' : vowels.slice(0, n).join('');
+};
+
+function firstNVowels(s, n) {
+	const v = s.match(/[aeiou]/gi).join("");
+	return v.length >= n ? v.slice(0, n) : "invalid";
+}
+
+function firstNVowels(s, n) {
+	const regex = /[aeiou]/g
+	var arr = s.match(regex);
+	if (arr.length<n) return 'invalid'
+	arr.length=n
+	return arr.join('')
+}
+
+function firstNVowels(s, n) {
+	const vowels = s.match(/[aeiou]/g).join('').slice(0,n);
+	return vowels.length == n? vowels:'invalid'
+	
+}
