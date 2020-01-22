@@ -8515,5 +8515,84 @@ function count(deck) {
 	return count;
 }
 
+// 669. A palindrome is a word, phrase, number or other sequence of characters which reads the same backward or forward, such as madam or kayak.
+// Write a function that takes a string and determines whether it's a palindrome or not. The function should return a boolean (true or false value).
 
+// White - isPalindrome("Neuquen") ➞ true
+// isPalindrome("Not a palindrome") ➞ false
+// isPalindrome("A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!") ➞ true
 
+function isPalindrome(string) {
+  string = string.replace(/[^a-zA-Z]/g, '').toLowerCase()
+  return string.split('').reverse().join('') === string
+}
+
+function isPalindrome(string) {
+  var arr = string.toLowerCase()
+    .split('')
+    .filter(c=>/[a-z]/.test(c));
+  
+  return arr.join() == arr.reverse().join();
+}
+
+const isPalindrome = str => {
+  const newStrArr = [...str.toLowerCase().replace(/[^\w]|_/gi, "")];
+  
+  return newStrArr.join("") === newStrArr.reverse().join("");
+};
+
+function isPalindrome(string) {
+  var arr = string.toLowerCase().match(/[a-z]+/g).join('');
+  
+  return arr.split('').join('') == arr.split('').reverse().join('');
+}
+
+function isPalindrome(string) {
+  var sanitized = string.toLowerCase().replace(/[^a-z]/g, "");
+  var reversed = sanitized.split('').reverse().join(''); 
+  return (reversed == sanitized);
+}
+
+// 770. Create a function that outputs true if a number is prime, and false otherwise.
+
+// Yellow - isPrime(31) ➞ true
+// isPrime(18) ➞ false
+// isPrime(11) ➞ true
+
+function isPrime(num) {
+	if (num === 1) return false;
+	if (num === 2) return true;
+	if (!(num & 1)) return false;
+	for (let i = 2; i <= num >> 1; i++) {
+		if (!(num % i)) return false;
+	}
+	return true;
+}
+
+const isPrime = num => {
+	for(let i = 2, s = Math.sqrt(num); i <= s; i++)
+			if(num % i === 0) return false; 
+	return num > 1;
+}
+
+function isPrime(num) {
+	if (num == 1) return false;
+  for (var i = 2; i < num; i++) {
+		if (num % i == 0) return false;
+	}
+	return true;
+}
+
+function isPrime(num) {
+	if (num === 1) return false;
+  let n = 2;
+	while (n < num) {
+		if (num % n === 0) return false;
+		n++;
+	}
+	return true;
+}
+
+const isPrime = (num) => {
+	return ([...Array(num + 1).keys()].filter(n => num % n === 0).length) === 2
+}
