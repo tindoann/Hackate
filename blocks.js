@@ -8623,3 +8623,29 @@ function grabCity(str) {
 	return bracketedWords[bracketedWords.length-1].replace(/\[|\]/gi , "");
 }
 
+// 672. Create a function that takes a string of four numbers. These numbers represent two separat points on a graph known as the x-axis (horizontal axis) and y-axis (vertical axis). Each number corresponds as follows: "x1, y1, x2, y2". Calculate the distance between x and y.
+
+// Yellow - shortestDistance("1,1,2,1") ➞ 1
+// shortestDistance("1,1,3,1") ➞ 2
+// shortestDistance("-5,1,3,1") ➞ 8
+// shortestDistance("-5,2,3,1") ➞ 8.06
+
+function shortestDistance(str) {
+	let [x1,y1,x2,y2] = str.split(",").map(a => Number(a));
+	return Number(Math.hypot(x1 - x2, y1 - y2).toFixed(2));
+};
+
+function shortestDistance(str) {
+	var arr = str.split(",").map(e => parseFloat(e));
+	return parseFloat(Math.sqrt((Math.pow(arr[0]-arr[2], 2)+Math.pow(arr[1]-arr[3], 2))).toFixed(2));
+};
+
+function shortestDistance(s) {
+	s = s.split(",")
+	return parseFloat((Math.sqrt(Math.pow(s[0]-s[2], 2) + Math.pow(s[1] - s[3], 2))).toFixed(2));
+};
+
+shortestDistance = s => (
+	[a,b,c,d] = s.split`,`,
+	+Math.sqrt(Math.pow(a-c,2) + Math.pow(b-d,2)).toFixed(2)
+)
