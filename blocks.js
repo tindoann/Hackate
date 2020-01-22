@@ -8402,3 +8402,118 @@ function firstNVowels(s, n) {
 	return vowels.length == n? vowels:'invalid'
 	
 }
+
+// 667. You will be creating a drink object with the following properties:
+
+// name
+// price
+
+// The drink object has a method: getDrinkDetails. When the drink object's method is called it will output the following:
+// drink.getDrinkDetails() ➞ 'Drink {name} has a price of {price}'
+
+// printDrinkDetails() ➞ 'Drink Water has a price of 2'
+
+function printDrinkDetails() {
+	drink = {
+    name: 'Cola',
+    price: 0.50,
+    getDrinkDetails(){
+        return `Drink ${this.name} has a price of ${this.price}`;
+    }
+	};
+	return drink.getDrinkDetails();
+}
+
+function printDrinkDetails() {
+	drink = {
+	  name : 'vodka',
+	  price : 10,
+	  }
+  
+  	return `Drink ${drink.name} has a price of ${drink.price}`
+}
+
+let drink = {
+	name: "Water",
+	price: 2,
+	getDrinkDetails: function() {
+		return `Drink ${this.name} has a price of ${this.price}`;
+	},
+};
+
+function printDrinkDetails() {
+	return drink.getDrinkDetails();
+}
+
+// 668. In BlackJack, cards are counted with -1, 0, 1 values:
+
+// 2, 3, 4, 5, 6 are counted as +1
+// 7, 8, 9 are counted as 0
+// 10, J, Q, K, A are counted as -1
+
+// Create a function that counts the number and returns it from the array of cards provided.
+
+// Yellow - count([5, 9, 10, 3, "J", "A", 4, 8, 5]) ➞ 1
+// count(["A", "A", "K", "Q", "Q", "J"]) ➞ -6
+// count(["A", 5, 5, 2, 6, 2, 3, 8, 9, 7]) ➞ 5
+
+function count(deck) {
+	var card = {
+		2 : 1,
+		3 : 1,
+		4 : 1,
+		5 : 1,
+		6 : 1,
+		7 : 0,
+		8 : 0,
+		9 : 0,
+		10 : -1,
+		"J" : -1,
+		"Q" : -1,
+		"K" : -1,
+		"A" : -1
+	}
+	return deck.reduce((a, b) => a + card[b], 0);
+}
+
+function count(deck) {
+	let total = 0;
+	 for(let i = 0; i < deck.length; i++){
+		 switch(deck[i]){
+			 case 2:		
+			 case 3:		
+			 case 4:		
+			 case 5:		
+			 case 6:		
+				 total++;
+			 break;
+			 case 10:		
+			 case "J":		
+			 case "Q":		
+			 case "K":		
+			 case "A":		
+				 total--;
+		 }
+	 }
+	 return total;
+ }
+
+function count(deck) {
+	return deck.reduce((a, c) => a + (c <= 6 ? 1 : c <= 9 ? 0 : -1), 0);
+}
+
+function count(deck) {
+	var count = 0;
+	for(var i=0; i<deck.length; i++){
+		if(deck[i] == 2 || deck[i] == 3 || deck[i] == 4 ||  deck[i] == 5 || deck[i] == 6){
+				count++;
+			}
+		else if(deck[i] == 10 || deck[i] == "J" || deck[i] == "Q" || deck[i] == "K" || deck[i] == "A"){
+			count--;
+		}
+	}
+	return count;
+}
+
+
+
