@@ -8359,3 +8359,240 @@ function rectangleInCircle(w, h, radius) {
 function rectangleInCircle(w, h, radius) {
 	return w*w+h*h <= Math.pow(radius*2, 2)
 }
+
+// 665. Create a function that determines if there is an upward trend.
+
+// upwardTrend([1, 2, 3, 4]) ➞ true
+// upwardTrend([1, 2, 6, 5, 7, 8]) ➞ false
+// upwardTrend([1, 2, 3, "4"]) ➞ "Strings not permitted!"
+// upwardTrend([1, 2, 3, 6, 7]) ➞ true
+
+// 666. Write a function that returns the first n vowels of a string.
+
+// Yellow - firstNVowels("sharpening skills", 3) ➞ "aei"
+// firstNVowels("major league", 5) ➞ "aoeau"
+// firstNVowels("hostess", 5) ➞ "invalid"
+
+// 666. Write a function that returns the first n vowels of a string.
+
+// firstNVowels("sharpening skills", 3) ➞ "aei"
+// firstNVowels("major league", 5) ➞ "aoeau"
+// firstNVowels("hostess", 5) ➞ "invalid"
+
+const firstNVowels = (str, n) => {
+  const vowels = str.match(/[aeiou]/gi) || [];
+  return vowels.length < n ? 'invalid' : vowels.slice(0, n).join('');
+};
+
+function firstNVowels(s, n) {
+	const v = s.match(/[aeiou]/gi).join("");
+	return v.length >= n ? v.slice(0, n) : "invalid";
+}
+
+function firstNVowels(s, n) {
+	const regex = /[aeiou]/g
+	var arr = s.match(regex);
+	if (arr.length<n) return 'invalid'
+	arr.length=n
+	return arr.join('')
+}
+
+function firstNVowels(s, n) {
+	const vowels = s.match(/[aeiou]/g).join('').slice(0,n);
+	return vowels.length == n? vowels:'invalid'
+	
+}
+
+// 667. You will be creating a drink object with the following properties:
+
+// name
+// price
+
+// The drink object has a method: getDrinkDetails. When the drink object's method is called it will output the following:
+// drink.getDrinkDetails() ➞ 'Drink {name} has a price of {price}'
+
+// printDrinkDetails() ➞ 'Drink Water has a price of 2'
+
+function printDrinkDetails() {
+	drink = {
+    name: 'Cola',
+    price: 0.50,
+    getDrinkDetails(){
+        return `Drink ${this.name} has a price of ${this.price}`;
+    }
+	};
+	return drink.getDrinkDetails();
+}
+
+function printDrinkDetails() {
+	drink = {
+	  name : 'vodka',
+	  price : 10,
+	  }
+  
+  	return `Drink ${drink.name} has a price of ${drink.price}`
+}
+
+let drink = {
+	name: "Water",
+	price: 2,
+	getDrinkDetails: function() {
+		return `Drink ${this.name} has a price of ${this.price}`;
+	},
+};
+
+function printDrinkDetails() {
+	return drink.getDrinkDetails();
+}
+
+// 668. In BlackJack, cards are counted with -1, 0, 1 values:
+
+// 2, 3, 4, 5, 6 are counted as +1
+// 7, 8, 9 are counted as 0
+// 10, J, Q, K, A are counted as -1
+
+// Create a function that counts the number and returns it from the array of cards provided.
+
+// Yellow - count([5, 9, 10, 3, "J", "A", 4, 8, 5]) ➞ 1
+// count(["A", "A", "K", "Q", "Q", "J"]) ➞ -6
+// count(["A", 5, 5, 2, 6, 2, 3, 8, 9, 7]) ➞ 5
+
+function count(deck) {
+	var card = {
+		2 : 1,
+		3 : 1,
+		4 : 1,
+		5 : 1,
+		6 : 1,
+		7 : 0,
+		8 : 0,
+		9 : 0,
+		10 : -1,
+		"J" : -1,
+		"Q" : -1,
+		"K" : -1,
+		"A" : -1
+	}
+	return deck.reduce((a, b) => a + card[b], 0);
+}
+
+function count(deck) {
+	let total = 0;
+	 for(let i = 0; i < deck.length; i++){
+		 switch(deck[i]){
+			 case 2:		
+			 case 3:		
+			 case 4:		
+			 case 5:		
+			 case 6:		
+				 total++;
+			 break;
+			 case 10:		
+			 case "J":		
+			 case "Q":		
+			 case "K":		
+			 case "A":		
+				 total--;
+		 }
+	 }
+	 return total;
+ }
+
+function count(deck) {
+	return deck.reduce((a, c) => a + (c <= 6 ? 1 : c <= 9 ? 0 : -1), 0);
+}
+
+function count(deck) {
+	var count = 0;
+	for(var i=0; i<deck.length; i++){
+		if(deck[i] == 2 || deck[i] == 3 || deck[i] == 4 ||  deck[i] == 5 || deck[i] == 6){
+				count++;
+			}
+		else if(deck[i] == 10 || deck[i] == "J" || deck[i] == "Q" || deck[i] == "K" || deck[i] == "A"){
+			count--;
+		}
+	}
+	return count;
+}
+
+// 669. A palindrome is a word, phrase, number or other sequence of characters which reads the same backward or forward, such as madam or kayak.
+// Write a function that takes a string and determines whether it's a palindrome or not. The function should return a boolean (true or false value).
+
+// White - isPalindrome("Neuquen") ➞ true
+// isPalindrome("Not a palindrome") ➞ false
+// isPalindrome("A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!") ➞ true
+
+function isPalindrome(string) {
+  string = string.replace(/[^a-zA-Z]/g, '').toLowerCase()
+  return string.split('').reverse().join('') === string
+}
+
+function isPalindrome(string) {
+  var arr = string.toLowerCase()
+    .split('')
+    .filter(c=>/[a-z]/.test(c));
+  
+  return arr.join() == arr.reverse().join();
+}
+
+const isPalindrome = str => {
+  const newStrArr = [...str.toLowerCase().replace(/[^\w]|_/gi, "")];
+  
+  return newStrArr.join("") === newStrArr.reverse().join("");
+};
+
+function isPalindrome(string) {
+  var arr = string.toLowerCase().match(/[a-z]+/g).join('');
+  
+  return arr.split('').join('') == arr.split('').reverse().join('');
+}
+
+function isPalindrome(string) {
+  var sanitized = string.toLowerCase().replace(/[^a-z]/g, "");
+  var reversed = sanitized.split('').reverse().join(''); 
+  return (reversed == sanitized);
+}
+
+// 770. Create a function that outputs true if a number is prime, and false otherwise.
+
+// Yellow - isPrime(31) ➞ true
+// isPrime(18) ➞ false
+// isPrime(11) ➞ true
+
+function isPrime(num) {
+	if (num === 1) return false;
+	if (num === 2) return true;
+	if (!(num & 1)) return false;
+	for (let i = 2; i <= num >> 1; i++) {
+		if (!(num % i)) return false;
+	}
+	return true;
+}
+
+const isPrime = num => {
+	for(let i = 2, s = Math.sqrt(num); i <= s; i++)
+			if(num % i === 0) return false; 
+	return num > 1;
+}
+
+function isPrime(num) {
+	if (num == 1) return false;
+  for (var i = 2; i < num; i++) {
+		if (num % i == 0) return false;
+	}
+	return true;
+}
+
+function isPrime(num) {
+	if (num === 1) return false;
+  let n = 2;
+	while (n < num) {
+		if (num % n === 0) return false;
+		n++;
+	}
+	return true;
+}
+
+const isPrime = (num) => {
+	return ([...Array(num + 1).keys()].filter(n => num % n === 0).length) === 2
+}
