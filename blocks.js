@@ -8798,6 +8798,42 @@ function afterNMonths(year, months) {
 	return year + Math.floor(months / 12);
 }
 
+// 778. Create a function that determines whether a shopping order is eligible for free shipping. An order is eligible for free shipping if the total cost of items purchased exceeds $50.00.
 
+// Yellow - freeShipping({ "Shampoo": 5.99, "Rubber Ducks": 15.99 }) ➞ false
+// freeShipping({ "Flatscreen TV": 399.99 }) ➞ true
+// freeShipping({ "Monopoly": 11.99, "Secret Hitler": 35.99, "Bananagrams": 13.99 }) ➞ true
 
+function freeShipping(order) {
+	let totalCost = 0.00; 
+	for(item in order) {
+		totalCost += order[item]; 
+	}
+	return totalCost >= 50.00; 
+}
 
+function freeShipping(order) {
+	let keys = Object.keys(order); 
+	let vals = []; 
+	for (let i = 0; i < keys.length; i++) {
+		vals.push(order[keys[i]])
+	}
+	return vals.reduce((a,b) => a + b) >= 50
+}
+
+function freeShipping(order) {
+	let mapData = []
+	Object.keys(order).map(function (key) {
+		mapData.push(order[key]); 
+	}); 
+	return mapData.reduce((a,b) => a + b) >= 50; 
+}
+
+function freeShipping(order) {
+	var names = Object.keys(order)
+	var total = 0
+	names.forEach(function(val) {
+		total += order[val] 
+	})
+	return (total > 50) 
+}
