@@ -8712,7 +8712,7 @@ const censor = str => {
 
 // 675. Write a function that takes the last number of a consecutive list of numbers and returns the total of all numbers up to and including it.
 
-// addUpTo(3) ➞ 6
+// White - addUpTo(3) ➞ 6
 // 1 + 2 + 3 = 6
 // addUpTo(10) ➞ 55
 // 1 + 2 + 3 + ... + 10 = 55
@@ -8734,3 +8734,26 @@ function addUpTo(n) {
 function addUpTo(n) {
 	return n == 0 ? 0 : n + addUpTo(n - 1); 
 }
+
+// 676. Create a function which outputs the result of a math expression in words.
+
+// Yellow - wordedMath('One plus one') ➞ 'Two'
+// wordedMath('zero Plus one') ➞ 'One'
+// wordedMath('one minus one') ➞ 'Zero'
+
+function wordedMath(expr) {
+	
+  if((eval(expr.replace(/two/gi, 2).replace(/one/gi, 1)
+    .replace(/zero/gi, 0).replace(/minus/i, "-").replace(/plus/i, "+"))) === 1){
+    return 'One';
+  } else if ((eval(expr.replace(/two/gi, 2).replace(/one/gi, 1)
+    .replace(/zero/gi, 0).replace(/minus/i, "-").replace(/plus/i, "+"))) === 2){
+    return 'Two';
+  } else if ((eval(expr.replace(/two/gi, 2).replace(/one/gi, 1)
+    .replace(/zero/gi, 0).replace(/minus/i, "-").replace(/plus/i, "+"))) === 0){
+    return 'Zero';
+  }  
+}
+
+
+
