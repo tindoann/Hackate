@@ -8362,10 +8362,37 @@ function rectangleInCircle(w, h, radius) {
 
 // 665. Create a function that determines if there is an upward trend.
 
+// If there is a string element in the array, return "Strings not permitted!".
+// The numbers don't have to be consectutive (e.g. [1, 3, 5] should still return true).
+
 // upwardTrend([1, 2, 3, 4]) ➞ true
 // upwardTrend([1, 2, 6, 5, 7, 8]) ➞ false
 // upwardTrend([1, 2, 3, "4"]) ➞ "Strings not permitted!"
 // upwardTrend([1, 2, 3, 6, 7]) ➞ true
+
+const upwardTrend = arr => 
+	arr.some(x => typeof x === "string")? "Strings not permitted!" 
+	: arr.slice(1).every((x, i) => x > arr[i]);
+
+function upwardTrend(arr) {
+	return arr.some(x=>typeof x == 'string')?'Strings not permitted!':arr.toString()==arr.sort((a,b)=>a-b).toString()
+}
+
+function upwardTrend(arr) {
+	let last = 0
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] === 'string') {
+			return 'Strings not permitted!'
+		}
+		if (arr[i] < last) return false
+		last = arr[i]
+	}
+	return true
+}
+
+function upwardTrend(arr) {
+	return arr.some(e=>typeof e=='string')?"Strings not permitted!":arr.every((a,i,ar)=>i==arr.length-1?true:a<ar[i+1]);
+}
 
 // 666. Write a function that returns the first n vowels of a string.
 
@@ -8649,3 +8676,37 @@ shortestDistance = s => (
 	[a,b,c,d] = s.split`,`,
 	+Math.sqrt(Math.pow(a-c,2) + Math.pow(b-d,2)).toFixed(2)
 )
+
+// 673. Create a function that takes a string and returns a string with spaces in between all of the characters.
+
+// White - spaceMeOut('space') ➞ 's p a c e'
+// spaceMeOut('far out') ➞ 'f a r  o u t'
+// spaceMeOut('elongated musk') ➞ 'e l o n g a t e d   m u s k'
+
+const spaceMeOut = str => str.split('').join(' '); 
+
+function spaceMeOut(str) {
+	return str.split('').join(' '); 
+}
+
+// 674. Create a function that takes in a string and returns the string but with words over four characters to be censored with *.
+
+// Yellow - censor('The code is fourty') ➞ 'The code is ******'
+// censor('Two plus three is five') ➞ 'Two plus ***** is five'
+// censor('aaaa aaaaa 1234 12345') ➞ 'aaaa ***** 1234 *****'
+
+function censor(str) {
+	return str.split(' ').map(word => word.length < 5 ? word : '*'.repeat(word.length)).join(' '); 
+}
+
+function censor(str) {
+	return str.split(' ').map( e => e.length > 4 ? '*'.repeat(e.length) : e).join(' '); 
+}
+
+const censor = str => {
+	return str
+		.split(" ")
+		.map(wrd => wrd.length > 4 ? "*".repeat(wrd.length) : wrd)
+		.join(" ");
+}
+
