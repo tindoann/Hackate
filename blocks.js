@@ -8710,3 +8710,130 @@ const censor = str => {
 		.join(" ");
 }
 
+// 675. Write a function that takes the last number of a consecutive list of numbers and returns the total of all numbers up to and including it.
+
+// White - addUpTo(3) ➞ 6
+// 1 + 2 + 3 = 6
+// addUpTo(10) ➞ 55
+// 1 + 2 + 3 + ... + 10 = 55
+// addUpTo(7) ➞ 28
+// 1 + 2 + 3 + ... + 7 = 28
+
+const addUpTo = n => n * (n + 1) / 2; 
+
+function addUpTo(n) {
+	let x = n * (n + 1); 
+	let y = x / 2; 
+	return y; 
+}
+
+function addUpTo(n) {
+	return (n * (n + 1)) / 2; // 3 --> 6
+}
+
+function addUpTo(n) {
+	return n == 0 ? 0 : n + addUpTo(n - 1); 
+}
+
+// 676. Create a function which outputs the result of a math expression in words.
+
+// Yellow - wordedMath('One plus one') ➞ 'Two'
+// wordedMath('zero Plus one') ➞ 'One'
+// wordedMath('one minus one') ➞ 'Zero'
+
+function wordedMath(expr) {
+	
+  if((eval(expr.replace(/two/gi, 2).replace(/one/gi, 1)
+    .replace(/zero/gi, 0).replace(/minus/i, "-").replace(/plus/i, "+"))) === 1){
+    return 'One';
+  } else if ((eval(expr.replace(/two/gi, 2).replace(/one/gi, 1)
+    .replace(/zero/gi, 0).replace(/minus/i, "-").replace(/plus/i, "+"))) === 2){
+    return 'Two';
+  } else if ((eval(expr.replace(/two/gi, 2).replace(/one/gi, 1)
+    .replace(/zero/gi, 0).replace(/minus/i, "-").replace(/plus/i, "+"))) === 0){
+    return 'Zero';
+  }  
+}
+
+// 777. Create a function which takes in year and months as input, then return what year it would be after n-months has elapsed.
+
+// Yellow - afterNMonths(2020, 24) ➞ 2022
+// afterNMonths(1832, 2) ➞ 1832
+// afterNMonths(1444, 60) ➞ 1449
+
+function afterNMonths(year, months) {
+  return !year
+    ? "year missing"
+    : !months
+    ? "month missing"
+    : year + Math.floor(months / 12);
+}
+
+function afterNMonths(year, months) {
+	if (year === undefined)return 'year missing';
+	if (months === undefined) return 'month missing';
+	return Math.floor(months/12) + year;
+}
+
+function afterNMonths(year, months) {
+	if (!year){ 
+		return 'year missing'
+	} else if (!months) {
+		return 'month missing'
+	} else {
+		if (months >= 12) {
+			while(months >= 12){
+				year += 1;
+				months -= 12;
+			}
+		}
+		
+		return year
+	}
+}
+
+function afterNMonths(year, months) {
+	if(!year) return 'year missing';
+	if(!months) return 'month missing';
+	return year + Math.floor(months / 12);
+}
+
+// 778. Create a function that determines whether a shopping order is eligible for free shipping. An order is eligible for free shipping if the total cost of items purchased exceeds $50.00.
+
+// Yellow - freeShipping({ "Shampoo": 5.99, "Rubber Ducks": 15.99 }) ➞ false
+// freeShipping({ "Flatscreen TV": 399.99 }) ➞ true
+// freeShipping({ "Monopoly": 11.99, "Secret Hitler": 35.99, "Bananagrams": 13.99 }) ➞ true
+
+function freeShipping(order) {
+	let totalCost = 0.00; 
+	for(item in order) {
+		totalCost += order[item]; 
+	}
+	return totalCost >= 50.00; 
+}
+
+function freeShipping(order) {
+	let keys = Object.keys(order); 
+	let vals = []; 
+	for (let i = 0; i < keys.length; i++) {
+		vals.push(order[keys[i]])
+	}
+	return vals.reduce((a,b) => a + b) >= 50
+}
+
+function freeShipping(order) {
+	let mapData = []
+	Object.keys(order).map(function (key) {
+		mapData.push(order[key]); 
+	}); 
+	return mapData.reduce((a,b) => a + b) >= 50; 
+}
+
+function freeShipping(order) {
+	var names = Object.keys(order)
+	var total = 0
+	names.forEach(function(val) {
+		total += order[val] 
+	})
+	return (total > 50) 
+}
