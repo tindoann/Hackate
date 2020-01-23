@@ -8689,3 +8689,24 @@ function spaceMeOut(str) {
 	return str.split('').join(' '); 
 }
 
+// 674. Create a function that takes in a string and returns the string but with words over four characters to be censored with *.
+
+// Yellow - censor('The code is fourty') ➞ 'The code is ******'
+// censor('Two plus three is five') ➞ 'Two plus ***** is five'
+// censor('aaaa aaaaa 1234 12345') ➞ 'aaaa ***** 1234 *****'
+
+function censor(str) {
+	return str.split(' ').map(word => word.length < 5 ? word : '*'.repeat(word.length)).join(' '); 
+}
+
+function censor(str) {
+	return str.split(' ').map( e => e.length > 4 ? '*'.repeat(e.length) : e).join(' '); 
+}
+
+const censor = str => {
+	return str
+		.split(" ")
+		.map(wrd => wrd.length > 4 ? "*".repeat(wrd.length) : wrd)
+		.join(" ");
+}
+
