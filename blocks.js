@@ -8755,5 +8755,49 @@ function wordedMath(expr) {
   }  
 }
 
+// 777. Create a function which takes in year and months as input, then return what year it would be after n-months has elapsed.
+
+// Yellow - afterNMonths(2020, 24) ➞ 2022
+// afterNMonths(1832, 2) ➞ 1832
+// afterNMonths(1444, 60) ➞ 1449
+
+function afterNMonths(year, months) {
+  return !year
+    ? "year missing"
+    : !months
+    ? "month missing"
+    : year + Math.floor(months / 12);
+}
+
+function afterNMonths(year, months) {
+	if (year === undefined)return 'year missing';
+	if (months === undefined) return 'month missing';
+	return Math.floor(months/12) + year;
+}
+
+function afterNMonths(year, months) {
+	if (!year){ 
+		return 'year missing'
+	} else if (!months) {
+		return 'month missing'
+	} else {
+		if (months >= 12) {
+			while(months >= 12){
+				year += 1;
+				months -= 12;
+			}
+		}
+		
+		return year
+	}
+}
+
+function afterNMonths(year, months) {
+	if(!year) return 'year missing';
+	if(!months) return 'month missing';
+	return year + Math.floor(months / 12);
+}
+
+
 
 
