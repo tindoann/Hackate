@@ -8904,3 +8904,56 @@ function gcd(a, b) {
 				max = Math.max(a, b);
 		return max % min === 0 ? min : gcd(min, max % min);
 	}
+
+// 881. A museum wants to get rid of some exhibitions. Katya, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and removes the one with the lowest rating. Just as she finishes rating the exhibitions, she's called off to an important meeting. She asks you to write a program that tells her the ratings of the items after the lowest one is removed.
+
+// Create a function that takes an array of integers and removes the smallest value.
+
+function removeSmallest(arr) {
+  arr.splice(arr.indexOf(Math.min(...arr)), 1);
+  return arr;
+}
+
+function removeSmallest(arr) {
+  let lowest = Math.min(...arr);
+  arr.splice(arr.indexOf(lowest), 1);
+  return arr;
+}
+
+function removeSmallest(arr) {
+  let tmp = arr.slice(0);
+  tmp.sort((a, b) => a - b)
+  arr.splice(arr.indexOf(tmp[0]), 1)
+  return arr
+}
+ // Create a function that takes an array of booleans that represent whether or not a player has logged into a game that day. Output the longest streak of consecutive logged in days.
+
+//  Yellow - dailyStreak([True, True, False, True]) ➞ 2
+//  dailyStreak([False, False, False]) ➞ 0
+//  dailyStreak([True, True, True, False, True, True]) ➞ 3
+
+function dailyStreak(arr) {
+	let num = 0;
+	let count = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i]) {
+			num++;
+			count.push(num);
+		} else {
+			num = 0;
+		}
+	}
+	return count.length < 1 ? 0 : Math.max(...count);
+}
+
+function dailyStreak(arr) {
+	var c = arr.reduce((a, b) => (b ? a[a.length-1]++ : a.push(0), a), [0]);
+	return c.sort((a,b) => b-a)[0];
+}
+
+function dailyStreak(arr) {
+	let res =Math.abs(0 - arr.indexOf(false))
+	let res1 =Math.abs((arr.length-1) - arr.indexOf(false))
+	if(arr.indexOf(true) === -1) {return 0}
+	return res1 > res ? res1 : res
+}
