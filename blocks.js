@@ -8966,8 +8966,6 @@ function dailyStreak(arr) {
 // countVowels("bbb") ➞ 0
 // countVowels("") ➞ 0
 
-const countVowels = str => !str ? 0 : /[aeiou]/.test(str[0]) + countVowels(str.slice(1));
-
 function countVowels(str) {
 	let reg = /[aeiou]/i;
 	if (str.length < 1) return 0;
@@ -8980,4 +8978,25 @@ function countVowels(str) {
 
 function countVowels(str) {
 	return [...str].filter(x=> x.match(/[aeiou]/ig)).length		
-	}
+}
+
+// 884. Create a function that capitalizes the last letter of every word.
+
+// Yellow - capLast("hello") ➞ "hellO"
+// capLast("My Name Is Edabit") ➞"MY NamE IS EdabiT"
+// capLast("HELp THe LASt LETTERs CAPITALISe") ➞ "HELP THE LAST LETTERS CAPITALISE"
+
+function capLast(txt) {
+	const cap = s => s.slice(0,-1) + s.slice(-1).toUpperCase();
+	return txt.split(' ').map(cap).join(' ');
+}
+
+function capLast(txt){
+	return txt.split(' ').map(word => word.slice(0, -1) + word[word.length-1].toUpperCase()).join(' ')
+}
+
+function capLast(txt){
+	let arr = txt.split(' ')
+	return arr.map(word => word.slice(0, word.length-1) + word.charAt(word.length-1).toUpperCase()).join(' ')
+}
+
