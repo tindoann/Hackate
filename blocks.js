@@ -8876,3 +8876,31 @@ function uniqueInOrder(sequence) {
  }
   return arr
 }
+
+// 880. Create a function that takes two numbers as arguments and returns the GCD of the two numbers.
+
+// White - gcd(3, 5) ➞ 1
+// gcd(14, 28) ➞ 14
+// gcd(4, 18) ➞ 2
+
+function gcd(a,b){
+	return b == 0 ? a : gcd(b, a % b);
+};
+
+const gcd = (a, b) => !b ? a : gcd(b, a % b);
+
+function gcd(a, b) {
+	var c=[]
+		for(var i=1;i<=Math.max(a,b);i++){
+		if(a%i===0&&b%i===0){
+			c.push(i)
+		}	
+		}
+		return Math.max(...c)	
+	}
+
+	function gcd(a, b) {
+		let min = Math.min(a, b),
+				max = Math.max(a, b);
+		return max % min === 0 ? min : gcd(min, max % min);
+	}
