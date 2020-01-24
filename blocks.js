@@ -8926,7 +8926,7 @@ function removeSmallest(arr) {
   arr.splice(arr.indexOf(tmp[0]), 1)
   return arr
 }
- // Create a function that takes an array of booleans that represent whether or not a player has logged into a game that day. Output the longest streak of consecutive logged in days.
+ // 882. Create a function that takes an array of booleans that represent whether or not a player has logged into a game that day. Output the longest streak of consecutive logged in days.
 
 //  Yellow - dailyStreak([True, True, False, True]) ➞ 2
 //  dailyStreak([False, False, False]) ➞ 0
@@ -8957,3 +8957,46 @@ function dailyStreak(arr) {
 	if(arr.indexOf(true) === -1) {return 0}
 	return res1 > res ? res1 : res
 }
+
+// 883. Write a function that recursively returns the number of vowels in a string.
+
+// Yellow - countVowels("apple") ➞ 2
+
+// countVowels("cheesecake") ➞ 5
+// countVowels("bbb") ➞ 0
+// countVowels("") ➞ 0
+
+function countVowels(str) {
+	let reg = /[aeiou]/i;
+	if (str.length < 1) return 0;
+	return (reg.test(str[str.length - 1]) ? 1 : 0) + countVowels(str.slice(0, str.length - 1));
+}
+
+function countVowels(str) {
+	return str.split('').filter(x=>(/[aeiou]/ig).test(x)).length;
+}
+
+function countVowels(str) {
+	return [...str].filter(x=> x.match(/[aeiou]/ig)).length		
+}
+
+// 884. Create a function that capitalizes the last letter of every word.
+
+// Yellow - capLast("hello") ➞ "hellO"
+// capLast("My Name Is Edabit") ➞"MY NamE IS EdabiT"
+// capLast("HELp THe LASt LETTERs CAPITALISe") ➞ "HELP THE LAST LETTERS CAPITALISE"
+
+function capLast(txt) {
+	const cap = s => s.slice(0,-1) + s.slice(-1).toUpperCase();
+	return txt.split(' ').map(cap).join(' ');
+}
+
+function capLast(txt){
+	return txt.split(' ').map(word => word.slice(0, -1) + word[word.length-1].toUpperCase()).join(' ')
+}
+
+function capLast(txt){
+	let arr = txt.split(' ')
+	return arr.map(word => word.slice(0, word.length-1) + word.charAt(word.length-1).toUpperCase()).join(' ')
+}
+
