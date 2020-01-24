@@ -8926,5 +8926,34 @@ function removeSmallest(arr) {
   arr.splice(arr.indexOf(tmp[0]), 1)
   return arr
 }
+ // Create a function that takes an array of booleans that represent whether or not a player has logged into a game that day. Output the longest streak of consecutive logged in days.
 
+//  Yellow - dailyStreak([True, True, False, True]) ➞ 2
+//  dailyStreak([False, False, False]) ➞ 0
+//  dailyStreak([True, True, True, False, True, True]) ➞ 3
 
+function dailyStreak(arr) {
+	let num = 0;
+	let count = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i]) {
+			num++;
+			count.push(num);
+		} else {
+			num = 0;
+		}
+	}
+	return count.length < 1 ? 0 : Math.max(...count);
+}
+
+function dailyStreak(arr) {
+	var c = arr.reduce((a, b) => (b ? a[a.length-1]++ : a.push(0), a), [0]);
+	return c.sort((a,b) => b-a)[0];
+}
+
+function dailyStreak(arr) {
+	let res =Math.abs(0 - arr.indexOf(false))
+	let res1 =Math.abs((arr.length-1) - arr.indexOf(false))
+	if(arr.indexOf(true) === -1) {return 0}
+	return res1 > res ? res1 : res
+}
