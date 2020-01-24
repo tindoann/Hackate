@@ -8837,3 +8837,70 @@ function freeShipping(order) {
 	})
 	return (total > 50) 
 }
+
+// 779. Create a function that takes a sequence of either strings or numbers, 
+// removes the surrounding duplicates and returns an array of items without any 
+// items with the same value next to each other and preserves the original order 
+// of items.
+
+// Yellow - uniqueInOrder("AAAABBBCCDAABBB") ➞ ["A", "B", "C", "D", "A", "B"]
+// uniqueInOrder("ABBCcAD") ➞ ["A", "B", "C", "c", "A", "D"]
+// uniqueInOrder([1, 2, 2, 3, 3]) ➞ [1, 2, 3]
+
+// Example - Array.from 
+// console.log(Array.from([1, 2, 3], x => x + x));
+// expected output: Array [2, 4, 6]
+
+function uniqueInOrder(sequence) {
+  return Array.from(sequence).filter((x,i,a) => x !== a[i-1]);
+}
+
+function uniqueInOrder(sequence) {
+	return [...sequence].filter((a, i) => a !== sequence[i+1])
+}
+
+function uniqueInOrder(s) {
+  if (typeof s == 'string') s = s.split('');
+  return s.filter((x, i, a) => {
+    if (i === a.length - 1) return true;
+    else return x !== a[i + 1]
+  });
+}
+
+function uniqueInOrder(sequence) {
+  var arr=[sequence[0]];
+ for (var i=1;i<sequence.length;i++){
+   if (sequence[i]!==sequence[i-1]){
+     arr.push(sequence[i]);
+   }
+ }
+  return arr
+}
+
+// 880. Create a function that takes two numbers as arguments and returns the GCD of the two numbers.
+
+// White - gcd(3, 5) ➞ 1
+// gcd(14, 28) ➞ 14
+// gcd(4, 18) ➞ 2
+
+function gcd(a,b){
+	return b == 0 ? a : gcd(b, a % b);
+};
+
+const gcd = (a, b) => !b ? a : gcd(b, a % b);
+
+function gcd(a, b) {
+	var c=[]
+		for(var i=1;i<=Math.max(a,b);i++){
+		if(a%i===0&&b%i===0){
+			c.push(i)
+		}	
+		}
+		return Math.max(...c)	
+	}
+
+	function gcd(a, b) {
+		let min = Math.min(a, b),
+				max = Math.max(a, b);
+		return max % min === 0 ? min : gcd(min, max % min);
+	}
