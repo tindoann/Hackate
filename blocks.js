@@ -8837,3 +8837,42 @@ function freeShipping(order) {
 	})
 	return (total > 50) 
 }
+
+// 779. Create a function that takes a sequence of either strings or numbers, 
+// removes the surrounding duplicates and returns an array of items without any 
+// items with the same value next to each other and preserves the original order 
+// of items.
+
+// Yellow - uniqueInOrder("AAAABBBCCDAABBB") ➞ ["A", "B", "C", "D", "A", "B"]
+// uniqueInOrder("ABBCcAD") ➞ ["A", "B", "C", "c", "A", "D"]
+// uniqueInOrder([1, 2, 2, 3, 3]) ➞ [1, 2, 3]
+
+// Example - Array.from 
+// console.log(Array.from([1, 2, 3], x => x + x));
+// expected output: Array [2, 4, 6]
+
+function uniqueInOrder(sequence) {
+  return Array.from(sequence).filter((x,i,a) => x !== a[i-1]);
+}
+
+function uniqueInOrder(sequence) {
+	return [...sequence].filter((a, i) => a !== sequence[i+1])
+}
+
+function uniqueInOrder(s) {
+  if (typeof s == 'string') s = s.split('');
+  return s.filter((x, i, a) => {
+    if (i === a.length - 1) return true;
+    else return x !== a[i + 1]
+  });
+}
+
+function uniqueInOrder(sequence) {
+  var arr=[sequence[0]];
+ for (var i=1;i<sequence.length;i++){
+   if (sequence[i]!==sequence[i-1]){
+     arr.push(sequence[i]);
+   }
+ }
+  return arr
+}
