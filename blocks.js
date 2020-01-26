@@ -9240,3 +9240,70 @@ function letterCounter(arr, letter) {
 		return acc + a.filter(b => b === letter).length;
 	}, 0)
 }
+
+// 893. Create a function that returns the array of numbers from a given range. But for multiples of three, 
+// return “Eda” instead of the number and for the multiples of five, return “Bit”. For numbers which are 
+// multiples of both three and five, return “EdaBit”.
+
+// Yellow - edaBit(0, 10) ➞ ["EdaBit", 1, 2, "Eda", 4, "Bit", "Eda", 7, 8, "Eda", "Bit" ]
+// edaBit(14, 20) ➞ [14,  "EdaBit", 16, 17,  "Eda", 19, "Bit" ]
+// edaBit(99, 106) ➞ ["Eda", "Bit", 101, "Eda", 103, 104, "EdaBit", 106 ]
+
+function edaBit(start, end) {
+	let res = []
+	for(let i = start; i < end +1 ; i++){
+		i%5==0 && i%3==0? res.push("EdaBit"):i%3==0 ? res.push("Eda"): i%5==0?
+			res.push("Bit"): res.push(i)}
+	return res
+
+ffunction edaBit(start, end) {
+	let range = [];
+	for (let i = start; i <= end; i++) {
+		if (i % 5 == 0 && i % 3 == 0) {
+			range.push('EdaBit');
+		} else if (i % 3 == 0) {
+			range.push ('Eda');
+		} else if (i % 5 == 0) {
+			range.push ('Bit');
+		} else {
+			range.push(i);
+		}
+	}
+	return range;
+}
+
+
+function edaBit(start, end) {
+	var arr =  Array.from({ length: (end+1 - start)}, (_, i) => start + (i));
+	return arr.map(num =>{
+		if(num % 3 === 0 && num % 5 === 0){
+			return 'EdaBit';
+		}
+		if(num % 3 === 0){
+			return 'Eda';
+		}
+		if(num % 5 === 0){
+			return 'Bit';
+		}
+		return num;
+	})
+}
+
+
+function edaBit(start, end) {
+	const arr = [];
+	while(start <= end) {
+		if ((start % 3 == 0 && start % 5 == 0) || start == 0) {
+			arr.push("EdaBit");
+		} else if (start % 3 == 0) {
+		  arr.push("Eda");
+		} else if (start % 5 == 0) {
+			arr.push("Bit");
+		} else {
+			arr.push(start);
+		}
+		start ++;
+	}
+	
+	return arr;
+}
