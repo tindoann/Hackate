@@ -9000,3 +9000,78 @@ function capLast(txt){
 	return arr.map(word => word.slice(0, word.length-1) + word.charAt(word.length-1).toUpperCase()).join(' ')
 }
 
+// 885. Given an array of ingredients and a string flavour as input, create a function that returns the array but with the elements bread around the selected ingredient.
+
+// Yellow - makeSandwich(['tuna', 'ham', 'tomato'], 'ham') ➞ ['tuna', 'bread', 'ham', 'bread', 'tomato']
+// makeSandwich(['cheese', 'lettuce'], 'cheese') ➞ ['bread', 'cheese', 'bread', 'lettuce']
+// makeSandwich(['ham', 'ham'], 'ham') ➞ ['bread', 'ham', 'bread', 'bread', 'ham', 'bread']
+
+function makeSandwich(ingredients, flavour) {
+	return ingredients.map(e => e==flavour ? ["bread", e, "bread"] : e).flat();
+}
+
+function makeSandwich(ingredients, f) {
+	return ingredients.join(" ").split(f).join(`bread ${f} bread`).split(" ")
+}
+
+function makeSandwich(i, f) {
+	return i.join(" ")
+					.split(f)
+					.join("bread,bread")
+					.replace(/[,]/g," "+f+" ")
+					.split(" ");
+ }
+
+ function makeSandwich(ingredients, flavour) {
+	let arr = [];
+	let mapArr = ingredients.map((cur, i) => {
+		if (cur === flavour) {
+				arr.push('bread', cur, 'bread');
+		} else {
+			 arr.push(cur);
+		}
+	});
+	return arr;
+}
+
+// 886. Create a function that takes width and height and finds the perimeter of a rectangle.
+
+// Yellow - findPerimeter(6, 7) ➞ 26
+// findPerimeter(20, 10) ➞ 60
+// findPerimeter(2, 9) ➞ 22
+
+function findPerimeter(height,width){
+	return (height + width) * 2;
+}
+
+function findPerimeter(height,width){
+	return 2 * (height + width)
+}
+
+function findPerimeter(height,width){
+	const perimeter = (height + width) * 2
+	return perimeter
+}
+
+// 887. Given an array of numbers and a value n, write a function that returns the probability of choosing a number greater than or equal to n from the array. The probability should be expressed as a percentage, rounded to one decimal place.
+
+// White - probability([5, 1, 8, 9], 6) ➞ 50.0
+// probability([7, 4, 17, 14, 12, 3], 16) ➞ 16.7
+// probability([4, 6, 2, 9, 15, 18, 8, 2, 10, 8], 6) ➞ 70.0
+
+const probability = (arr, num) =>
+	Number(((arr.filter(n => n >= num).length / arr.length) * 100).toFixed(1));
+	
+function probability(arr, num) {
+		return +((arr.filter( x => x >= num).length / arr.length) * 100).toFixed(1);
+}
+
+function probability(arr, num) {
+  var count = 0;
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] >= num){
+			count++;
+		}
+	}
+	return Number(((count/arr.length)*100).toFixed(1));
+}
