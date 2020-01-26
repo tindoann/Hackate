@@ -9075,3 +9075,62 @@ function probability(arr, num) {
 	}
 	return Number(((count/arr.length)*100).toFixed(1));
 }
+
+// 888. Create a function that takes an array of factorial expressions and returns their sum.
+
+// Yellow - evalFactorial(["2!", "3!"]) ➞ 8
+// evalFactorial(["5!", "4!", "2!"]) ➞ 146
+// evalFactorial(["0!", "1!"]) ➞ 2
+
+function evalFactorial(arr) {
+	const getFact = x => {
+		x = +x.slice(0, -1);
+		if (x === 0 || x === 1) return 1;
+		for (let i = x - 1; i >= 2; i--) x *= i;
+		return x;
+	}
+	return arr.map(getFact).reduce((a,b) => a + b, 0);
+}
+
+function evalFactorial(lst) {
+	return lst.join(' ').match(/\d+/g).map(x => {
+	let calck = 1;
+	for(let i = 1; i <= x; i++) calck *= i;
+		return calck;
+}).reduce((c,i) => c + i, 0);
+}
+
+const evalFactorial = N => (
+	f = x => +x ? x * f(--x) : 1,
+	eval(`${N}`.match(/\d+/g).map(f).join`+`)
+)
+
+function evalFactorial(lst) {
+	r=0;function f(n){return n===0?1:n*f(n-1)}
+	lst.forEach(i=>r+=f(parseInt(i)))
+	return r;
+}
+
+// 889. Create a function that takes a single string as argument and returns an ordered array containing the indices of all capital letters in the string.
+
+// Yellow - indexOfCaps("eDaBiT") ➞ [1, 3, 5]
+// indexOfCaps("eQuINoX") ➞ [1, 3, 4, 6]
+// indexOfCaps("determine") ➞ []
+// indexOfCaps("STRIKE") ➞ [0, 1, 2, 3, 4, 5]
+// indexOfCaps("sUn") ➞ [1]
+
+function indexOfCaps(str) {
+  var res = [];
+  for(var i = 0; i < str.length; i++){
+    if (/[A-Z]/.test(str[i])){
+      res.push(i);
+    }
+  }
+  return res;
+}
+
+function indexOfCaps(str) {
+  return str.split('').reduce((arr, c, i) => /[A-Z]/.test(c) ? arr.concat(i) : arr, [])
+}
+
+const indexOfCaps = str => str.split('').map((v,k) => k).filter(i => str[i].match(/[A-Z]/))
