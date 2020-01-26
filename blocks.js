@@ -9110,3 +9110,27 @@ function evalFactorial(lst) {
 	lst.forEach(i=>r+=f(parseInt(i)))
 	return r;
 }
+
+// 889. Create a function that takes a single string as argument and returns an ordered array containing the indices of all capital letters in the string.
+
+// Yellow - indexOfCaps("eDaBiT") ➞ [1, 3, 5]
+// indexOfCaps("eQuINoX") ➞ [1, 3, 4, 6]
+// indexOfCaps("determine") ➞ []
+// indexOfCaps("STRIKE") ➞ [0, 1, 2, 3, 4, 5]
+// indexOfCaps("sUn") ➞ [1]
+
+function indexOfCaps(str) {
+  var res = [];
+  for(var i = 0; i < str.length; i++){
+    if (/[A-Z]/.test(str[i])){
+      res.push(i);
+    }
+  }
+  return res;
+}
+
+function indexOfCaps(str) {
+  return str.split('').reduce((arr, c, i) => /[A-Z]/.test(c) ? arr.concat(i) : arr, [])
+}
+
+const indexOfCaps = str => str.split('').map((v,k) => k).filter(i => str[i].match(/[A-Z]/))
