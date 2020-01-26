@@ -9134,3 +9134,38 @@ function indexOfCaps(str) {
 }
 
 const indexOfCaps = str => str.split('').map((v,k) => k).filter(i => str[i].match(/[A-Z]/))
+
+// 890. Create the function that takes an array with objects and returns the sum of people's budgets.
+
+// Yellow - getBudgets([
+//   { name: "John", age: 21, budget: 23000 },
+//   { name: "Steve",  age: 32, budget: 40000 },
+//   { name: "Martin",  age: 16, budget: 2700 }
+// ]) ➞ 65700
+
+// getBudgets([
+//   { name: "John",  age: 21, budget: 29000 },
+//   { name: "Steve",  age: 32, budget: 32000 },
+//   { name: "Martin",  age: 16, budget: 1600 }
+// ]) ➞ 62600
+
+function getBudgets(arr) {
+	const budgets = arr.reduce((total, person) => total + person.budget, 0);
+	return budgets;
+}
+
+function getBudgets(arr) {
+	return arr 
+		.map(obj => Object.values(obj) [2])
+		.reduce((acc, curr) => acc + curr); 
+}
+
+function getBudgets(arr) {
+	return arr.reduce((sum, x) => sum + x.budget, 0); 
+}
+
+const getBudgets = arr => arr.reduce((a, v) => a + v.budget, 0); 
+
+function getBudgets(arr) {
+	return arr.map(elem => elem.budget).reduce((acc, inx) => acc += idx); 
+}
