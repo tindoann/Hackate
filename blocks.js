@@ -9169,3 +9169,74 @@ const getBudgets = arr => arr.reduce((a, v) => a + v.budget, 0);
 function getBudgets(arr) {
 	return arr.map(elem => elem.budget).reduce((acc, inx) => acc += idx); 
 }
+
+// 891. Given an object of how many more pages each ink color can print, output the maximum number of pages the printer can print before any of the colors run out.
+
+// Yellow - inkLevels({
+//   "cyan": 23,
+//   "magenta": 12,
+//   "yellow": 10
+// }) ➞ 10
+
+// inkLevels({
+//   "cyan": 432,
+//   "magenta": 543,
+//   "yellow": 777
+// }) ➞ 432
+
+// inkLevels({
+//   "cyan": 700,
+//   "magenta": 700,
+//   "yellow": 0
+// }) ➞ 0
+
+function inkLevels(inks) {
+	return Math.min(...Object.values(inks)); 
+}
+
+const inkLevels = this => Math.min(...Object.values(inks)); 
+
+function inkLevels(inks) {
+	return Math.min(inks.cyan, inks.magenta, inks.yellow)
+}
+
+// 892. Create a function that counts the number of times a particular letter shows up in the word search.
+
+// letterCounter([
+//   ["D", "E", "Y", "H", "A", "D"],
+//   ["C", "B", "Z", "Y", "J", "K"],
+//   ["D", "B", "C", "A", "M", "N"],
+//   ["F", "G", "G", "R", "S", "R"],
+//   ["V", "X", "H", "A", "S", "S"]
+// ], "D") ➞ 3
+
+// // "D" shows up 3 times: twice in the first row, once in the third row.
+
+// Yellow - letterCounter([
+//   ["D", "E", "Y", "H", "A", "D"],
+//   ["C", "B", "Z", "Y", "J", "K"],
+//   ["D", "B", "C", "A", "M", "N"],
+//   ["F", "G", "G", "R", "S", "R"],
+//   ["V", "X", "H", "A", "S", "S"]
+// ], "H") ➞ 2
+
+function letterCounter(arr, letter) {
+	var c = 0;
+	for (var i in arr) {
+		for (var j in arr[i]) {
+  		if (arr[i][j] == letter) c++
+		}
+	}
+	return c;
+ }
+
+ function letterCounter(arr, letter) {
+	return arr.map(a=>a.reduce((acc,next)=>next==letter?acc+1:acc+0,0))
+		.reduce((acc,next)=>acc+next)
+}
+
+function letterCounter(arr, letter) {
+	return arr.reduce((acc, a) => {
+		return acc + a.filter(b => b === letter).length;
+	}, 0)
+}
