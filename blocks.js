@@ -9307,3 +9307,24 @@ function edaBit(start, end) {
 	
 	return arr;
 }
+
+// 894. Create a function that takes a string and returns a new string with each new character accumulating by +1. Separate each set with a dash.
+
+// accum("abcd") ➞ "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") ➞ "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") ➞ "C-Ww-Aaa-Tttt"
+
+function accum(str) {
+  return 	str.split('').map((x, i) => x.toUpperCase() + x.repeat(i).toLowerCase()).join('-');
+}
+
+function accum(str) {
+  var s = Array.from(str).reduce((acc, ch, i) => acc + '-' + ch.toUpperCase() + ch.toLowerCase().repeat(i));
+  return s[0].toUpperCase() + s.slice(1);
+}
+
+function accum(str) [
+	return str.split('').map((el, idx) => {
+		return el.toUpperCase() + el.toLowerCase().repeat(idx)
+	}).join('-')
+]
