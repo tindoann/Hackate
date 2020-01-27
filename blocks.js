@@ -9416,3 +9416,15 @@ const blahBlah = (str, n) =>
 	.map(w, i, a) => a.length - 1 <= n ? 'blah' : 2) 
 	.join(' ')
 	.concat('...'); 
+
+// 890. When creating variables, the variable name must always start with a letter, though numbers and underscores are allowed to be contained in it also.
+// Create a function which returns true if a given variable name is valid, otherwise return false.
+
+// White - variableValid("result") ➞ true
+// variableValid("odd_nums") ➞ true
+// variableValid("2TimesN") ➞ false
+
+// Yellow - variableValid("result") ➞ true
+// variableValid("odd_nums") ➞ true
+// variableValid("2TimesN") ➞ false
+
