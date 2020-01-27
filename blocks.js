@@ -9372,3 +9372,59 @@ function countClaps(txt) {
 function countClaps(txt) {
 	return txt.split('C').length - 1; 
 }
+
+// 887. Create a function that calculates the profit margin given costPrice and salesPrice. Return the result as a percentage formated string, and rounded to one decimals. To calculate profit margin you subtract the cost from the sales price, then divide by salesprice.
+
+// Yellow - profitMargin(50, 50) ➞ "0.0%"
+// profitMargin(28, 39) ➞ "28.2%"
+// profitMargin(33, 84) ➞ "60.7%"
+
+function profitMargin(costPrice, salesPrice) {
+  return (((salesPrice - costPrice)/salesPrice) * 100).toFixed(1) + '%'; 
+}
+
+function profitMargin(costPrice, salesPrice) {
+	return ((1 - (costPrice / salesPrice)) * 100).toFixed(1) + '%'
+}
+
+const profitMargin = (cost, sale) => (100*(sale-cost)/sale).toFixed(1)+'%';
+
+// 888. Create a function which replaces the last n words with "blah". Add "..." to the last blah.
+
+// White - blahBlah("A function is a block of code which only runs when it is called",  5) ➞ "A function is a block of code which only blah blah blah blah blah..."
+// blahBlah("one two three four five", 2) ➞ "one two three blah blah..."
+// blahBlah("Sphinx of black quartz judge my vow", 10) ➞ "blah blah blah blah blah blah blah..."
+
+function blahBlah(str, n) {
+	return str.split(' ').length > n ? (str.split(' ').slice(0, str.split(' ')
+				 .length-n)).join(' ')  + ' blah'.repeat(n) + '...' 
+				 : 'blah '.repeat(str.split(' ').length-1) + 'blah...
+}
+
+function blahBlah(str, n) {
+	let arr = str.split(' ')
+	if(n > arr.length)
+		return 'blah '.repeat(arr.length - 1) + 'blah...'
+	for(i = 0; i < n; i++)
+		arr.pop()
+	str = arr.join(' ') + ' blah'.repeat(n - 1) + ' blah..'
+	return str
+}
+
+const blahBlah = (str, n) => 
+	str.split(' ')
+	.map(w, i, a) => a.length - 1 <= n ? 'blah' : 2) 
+	.join(' ')
+	.concat('...'); 
+
+// 890. When creating variables, the variable name must always start with a letter, though numbers and underscores are allowed to be contained in it also.
+// Create a function which returns true if a given variable name is valid, otherwise return false.
+
+// White - variableValid("result") ➞ true
+// variableValid("odd_nums") ➞ true
+// variableValid("2TimesN") ➞ false
+
+// Yellow - variableValid("result") ➞ true
+// variableValid("odd_nums") ➞ true
+// variableValid("2TimesN") ➞ false
+
