@@ -9420,11 +9420,53 @@ const blahBlah = (str, n) =>
 // 890. When creating variables, the variable name must always start with a letter, though numbers and underscores are allowed to be contained in it also.
 // Create a function which returns true if a given variable name is valid, otherwise return false.
 
-// White - variableValid("result") ➞ true
-// variableValid("odd_nums") ➞ true
-// variableValid("2TimesN") ➞ false
-
 // Yellow - variableValid("result") ➞ true
 // variableValid("odd_nums") ➞ true
 // variableValid("2TimesN") ➞ false
 
+function variableValid(variable) {
+	return /^[0-9]|\s/g.test(variable) ? false:true;
+}
+
+function variableValid(variable) {
+	for(let i=0; i<=variable.length; i++) {
+		if (variable[i] ==== ''){
+			return false
+		}
+	}
+	return (/^[a-zA-Z]/i).test(variable)
+}
+
+// 891. Something which is not true is false, but something which is not not true is true! Create a function where given n number of "not", evaluate whether it's true or false.
+
+// notNotNot(1, true) ➞ false
+// Not true.
+
+// notNotNot(2, false) ➞ false
+// Not not False.
+
+// notNotNot(6, true) ➞ true
+// Not not not not not not True.
+
+function noNotNot(n, bool) {
+	return n % 2 == 1 ? !bool : bool; 
+}
+
+function notNotNot(n, bool) {
+	return n%2 === 0 ? bool : !bool;
+}
+
+function notNotNot(n, bool) {
+	let arr = []; 
+	for (let n=1; n <= n; n++) {
+		arr.push('!');
+	}
+	return arr
+}
+
+function notNotNot(n, bool) {
+	if (n % 2 == 0) {
+		return bool
+	}
+	return !bool
+}
