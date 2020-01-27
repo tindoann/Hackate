@@ -9496,3 +9496,37 @@ function tidyBooks(arr) {
 	return arr.map(nameArr => nameArr[0].trim().split('-').map(name => name.trim())); 
 }
 
+// 893. Create a function that accepts an array of two strings and checks if the letters in the second string are present in the first string.
+
+// Yellow - letterCheck(["trances", "nectar"]) ➞ true
+// letterCheck(["compadres", "DRAPES"]) ➞ true
+// letterCheck(["parses", "parsecs"]) ➞ false
+
+function letterCheck(arr) {
+	let strOne = arr[0].toLowerCase(); 
+	let strTwo = arr[1].toLowerCase(); 
+	for(i = 0; i < strTwo.length; i++){
+		if(strOne.indexOf(strTwo.charAt(i)) == -1) {
+			return false; 
+		}
+	}
+	return true; 
+}
+
+function letterCheck(arr) {
+	return arr[1].split('').reduce(function(present, char) {
+    if (arr[0].toLowerCase().indexOf(char.toLowerCase()) === -1) {
+			present = false;
+		}
+		return present; 
+	}, true); 
+}			
+
+function letterCheck(arr) {
+	let arr = [arr[0].toLowerCase(), arr[1].toLowerCase()]; 
+	let s1 = new Set(arr[0]); 
+	return arr[1].split('').map(c => {
+		return s1.has(c); 
+	}).reduce((a, b) => a && b, true); 
+}
+
