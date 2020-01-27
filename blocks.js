@@ -9328,3 +9328,47 @@ function accum(str) [
 		return el.toUpperCase() + el.toLowerCase().repeat(idx)
 	}).join('-')
 ]
+
+// 895. Create a function that takes a number as input and returns true if the sum of its digits has the same parity as the entire number. Otherwise, return false.     
+
+// parityAnalysis(243) ➞ true
+// 243 is odd and so is 9 (2 + 4 + 3)
+
+// parityAnalysis(12) ➞ false
+// 12 is even but 3 is odd (1 + 2)
+
+// parityAnalysis(3) ➞ true
+// 3 is odd and 3 is odd and 3 is odd (3)
+
+function parityAnalysis(num) {
+	let sum = num.toString().split('').map(el => + el)
+		.reduce((acc, idx) => acc += idx); 
+	return num % 2 === sum % 2; 
+}
+
+function parityAnalysis(num) {
+	let sum = num.toString().split('').reduce((a, b) => Number(a) + Number(b)); 
+}
+
+function parityAnalysis(num) {
+	return (Array.from(String(num), Number).reduce((a, b) => a + b)) % 2 == num % 2; 
+}
+
+// 886. An overlapped clap is a clap which starts but doesn't finish, as in 'ClaClap' (The first clap is cut chort and there are overall 2 claps)
+// Given a string of what the overlapping claps sounded like, return how many claps were made in total
+
+// White - countClaps('ClaClaClaClap!') ➞ 4
+// countClaps('ClClClaClaClaClap!') ➞ 6
+// countClaps('CCClaClClap!Clap!ClClClap!') ➞ 9
+
+function countClap(txt) {
+	return text.split('').filter(i => i == 'C').length; 
+}
+
+function countClaps(txt) {
+	return txt.match(/[C]/gi).length; 
+}
+
+function countClaps(txt) {
+	return txt.split('C').length - 1; 
+}
