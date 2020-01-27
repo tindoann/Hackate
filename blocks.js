@@ -9354,3 +9354,21 @@ function parityAnalysis(num) {
 	return (Array.from(String(num), Number).reduce((a, b) => a + b)) % 2 == num % 2; 
 }
 
+// 886. An overlapped clap is a clap which starts but doesn't finish, as in 'ClaClap' (The first clap is cut chort and there are overall 2 claps)
+// Given a string of what the overlapping claps sounded like, return how many claps were made in total
+
+// White - countClaps('ClaClaClaClap!') ➞ 4
+// countClaps('ClClClaClaClaClap!') ➞ 6
+// countClaps('CCClaClClap!Clap!ClClClap!') ➞ 9
+
+function countClap(txt) {
+	return text.split('').filter(i => i == 'C').length; 
+}
+
+function countClaps(txt) {
+	return txt.match(/[C]/gi).length; 
+}
+
+function countClaps(txt) {
+	return txt.split('C').length - 1; 
+}
