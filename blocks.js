@@ -9470,3 +9470,29 @@ function notNotNot(n, bool) {
 	}
 	return !bool
 }
+
+// 892. Create a function that takes an array like the one above and transforms it into the same format as the one below:
+
+// Yellow - tidyBooks([
+//   "     The Catcher in the Rye - J. D. Salinger    ",
+//   "    Brave New World - Aldous Huxley   ",
+//   "    Of Mice and Men - John Steinbeck    "
+// ]) ➞ [
+//   "The Catcher in the Rye", "J. D. Salinger",
+//   "Brave New World", "Aldous Huley",
+//   "Of Mice and Men", "John Steinbeck"
+// ]
+
+function tidyBooks(arr) {
+	return arr.map(s => s.split(' - ').map(a => a.trim()))
+}
+
+function tidyBooks(arr) {
+	arr = arr.map(x => x.trim(x)).map(x => x.split(' - ')); 
+	return arr; 
+}
+
+function tidyBooks(arr) {
+	return arr.map(nameArr => nameArr[0].trim().split('-').map(name => name.trim())); 
+}
+
