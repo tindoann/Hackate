@@ -9599,3 +9599,31 @@ function unstretch(word) {
 
 const unstretch = word => word.replace(/(.)\1+/g, '$1'); 
 
+// 896. Create a function that checks to see if two object arguments are equal to one another. Return true if the objects are equal, otherwise, return false.
+
+// White - The first object parameter.
+
+// {
+//   name: "Benny",
+//   phone: "3325558745",
+//   email: "benny@edabit.com"
+// }
+
+// // The second object parameter.
+
+// {
+//   name: "Jason",
+//   phone: "9853759720",
+//   email: "jason@edabit.com"
+// }
+
+
+// ➞ false
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) === JSON.stringify(objTwo);
+}
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) == JSON.stringify(objTwo);
+}
