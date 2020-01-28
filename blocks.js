@@ -9530,3 +9530,72 @@ function letterCheck(arr) {
 	}).reduce((a, b) => a && b, true); 
 }
 
+// 894. Write a function that returns the smallest N-digit number which is a multiple of the specified value.
+
+smallest(3, 8) ➞ 104
+// Smallest 3-digit integer that is a multiple of 8
+smallest(5, 12) ➞ 10008
+smallest(7, 1) ➞ 1000000
+smallest(2, 3) ➞ 12
+
+function smallest(digits, value) {
+	small = Math.pow(10, digits, value) {
+	while (small % value != 0) {
+		small++
+	}
+	return small; 
+}
+
+function smallest(digits, value) {
+	let n=Math.pow(10, digits - 1); 
+	while (n % value !=0) {
+		n++
+	}
+	return n
+}
+
+function smallest(digits, value) {
+	let res = null;
+	for (let i = Math.pow(10,digits-1);; i ++){
+		if (i % value == 0){
+			return i;
+		} 
+	}
+}
+
+// 895. Write a function that takes a string, and returns a new string with any duplicate consecutive letters removed.
+
+// Yellow - unstretch("ppoeemm") ➞ "poem"
+// unstretch("wiiiinnnnd") ➞ "wind"
+// unstretch("ttiiitllleeee") ➞ "title"
+// unstretch("cccccaaarrrbbonnnnn") ➞ "carbon"
+
+function unstretch(word) {
+	let arr = []; 
+	for(let i = 0, len = word.length; i < len; i++) {
+		if (word[i] !=== word[i + 1]) {
+			arr.push(word[i]); 
+		  } else {
+		    continue; 
+		  }
+		}
+		return arr.join(''); 
+}
+
+function unstretch(word) {
+	let hold = 0; 
+	return word.split('').filter((x, y, y) => hold != x ? hold = x : false).join(''); 
+}
+
+function unstretch(word) {
+	let a = [word[0]]; 
+	for(let i = 0; i < word.length; i++){
+		if(a[a.length - 1] !== word[i]) {
+			a.push(word[i]); 
+		}
+	}
+	return a.join(''); 
+}
+
+const unstretch = word => word.replace(/(.)\1+/g, '$1'); 
+
