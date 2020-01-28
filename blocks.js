@@ -9627,3 +9627,30 @@ function isEqual(objOne, objTwo) {
 function isEqual(objOne, objTwo) {
 	return JSON.stringify(objOne) == JSON.stringify(objTwo);
 }
+
+// 897. Create a function which returns the original value from a matrix with too many sub arrays.
+
+// deNest([[[[[[[[[[[[3]]]]]]]]]]]]) ➞ 3
+
+// deNest([[[[[[[true]]]]]]]) ➞ true
+
+// deNest([[[[[[[[[[[[[[[[['edabit']]]]]]]]]]]]]]]]]) ➞ 'edabit'
+
+function deNest(arr) {
+	return arr.flat(Infinity)[0]; 
+}
+
+function deNest(arr) {
+	let x = arr.flat(Infinity)
+	return x[0]; 
+}
+
+const deNest = arr => {
+	let n = 20;
+	while(n != 0) {
+		arr = arr.flat(); 
+		n--;
+	}
+	return arr.pop(); 
+}
+
