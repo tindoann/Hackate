@@ -9599,3 +9599,58 @@ function unstretch(word) {
 
 const unstretch = word => word.replace(/(.)\1+/g, '$1'); 
 
+// 896. Create a function that checks to see if two object arguments are equal to one another. Return true if the objects are equal, otherwise, return false.
+
+// White - The first object parameter.
+
+// {
+//   name: "Benny",
+//   phone: "3325558745",
+//   email: "benny@edabit.com"
+// }
+
+// // The second object parameter.
+
+// {
+//   name: "Jason",
+//   phone: "9853759720",
+//   email: "jason@edabit.com"
+// }
+
+
+// ➞ false
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) === JSON.stringify(objTwo);
+}
+
+function isEqual(objOne, objTwo) {
+	return JSON.stringify(objOne) == JSON.stringify(objTwo);
+}
+
+// 897. Create a function which returns the original value from a matrix with too many sub arrays.
+
+// deNest([[[[[[[[[[[[3]]]]]]]]]]]]) ➞ 3
+
+// deNest([[[[[[[true]]]]]]]) ➞ true
+
+// deNest([[[[[[[[[[[[[[[[['edabit']]]]]]]]]]]]]]]]]) ➞ 'edabit'
+
+function deNest(arr) {
+	return arr.flat(Infinity)[0]; 
+}
+
+function deNest(arr) {
+	let x = arr.flat(Infinity)
+	return x[0]; 
+}
+
+const deNest = arr => {
+	let n = 20;
+	while(n != 0) {
+		arr = arr.flat(); 
+		n--;
+	}
+	return arr.pop(); 
+}
+
