@@ -9654,3 +9654,91 @@ const deNest = arr => {
 	return arr.pop(); 
 }
 
+// 898. This Triangular Number Sequence is generated from a pattern of dots that form a triangle. 
+// The first 5 numbers of the sequence, or dots, are: 1, 3, 6, 10, 15. Write a function that converts 
+// n number of places with its corresponding number.
+
+// Yellow - triangle(1) ➞ 1
+// triangle(6) ➞ 21
+// triangle(215) ➞ 23220
+
+const triangle = num => (num <= 1 ? 1 : triangle(num - 1) + num);
+
+function triangle(n) {
+	return n * (n + 1) / 2;
+}
+
+function triangle(n) {
+	return n*(++n)/2;
+}
+
+function triangle(n) {
+	let s = 0 ;
+	for (let i=0 ; i<n ; i++){
+		s += (i+1) ;
+	}
+	return s ;
+}
+
+function triangle(n) {
+	let result = 1;
+	for (let i=1;  i < n; i++) {
+		result += (i+1);
+	}
+	return result
+}
+
+// 899. Create a function that flips M's to W's (all uppercase).
+
+// White - wumbo("I LOVE MAKING CHALLENGES") ➞ "I LOVE WAKING CHALLENGES"
+// wumbo("MEET ME IN WARSAW") ➞ "WEET WE IN WARSAW"
+// wumbo("WUMBOLOGY") ➞ "WUWBOLOGY"
+
+function wumbo(words) {
+	return words
+		.split('')
+		.map(x => (x === "M" ? "W" : x))
+		.join(''); 
+}
+
+function wumbo(words) {
+	return words.replace(/M/g, 'W'); 
+}
+
+function wumbo(words) {
+	let i = 0; 
+	let newstr = ''; 
+	while(i < words.length) {
+		newstr ++ words[i].replace('M', 'W')
+		i++; 
+	}
+	return newstr; 
+}
+
+// 900. Wild Roger is tasked with shooting down 6 bottles with 6 shots as fast as possible. Here are the different types of shots he could make:
+
+// He could use one pistol to shoot a bottle with a "Bang!" in 0.5 seconds.
+// Or he could use both pistols at once with a "BangBang!" to shoot two bottles in 0.5 seconds.
+// Given an array of strings, return the time (in seconds) it took to shoot down all 6 bottles. Make sure to only count Bangs and BangBangs. Anything else doesn't count.
+
+// Yellow - rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]) ➞ 3
+// rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "BangBang!"]) ➞ 2.5
+// rogerShots(["Bang!", "BangBangBang!", "Boom!", "Bang!", "BangBang!", "BangBang!"]) ➞ 2
+
+function rogerShots(arr) {
+	return arr.filter(word => word === "Bang!" || word === "BangBang!")
+		.length * 0.5;
+}
+
+function rogerShots(arr) {
+	return arr.filter(x => /^(Bang){1,2}\!$/.test(x)).length * 0.5;
+}
+
+function rogerShots(arr) {
+	time = 0;
+	result = arr.map(x => x === "Bang!" ? time+=0.5 : x === "BangBang!" ? time+=0.5 : true);
+	return time;
+}
+
+const rogerShots = arr =>
+	arr.reduce((a,v) => a + (['Bang!','BangBang!'].includes(v) ? .5 : 0), 0)
