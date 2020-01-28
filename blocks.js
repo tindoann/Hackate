@@ -9710,7 +9710,35 @@ function wumbo(words) {
 	let newstr = ''; 
 	while(i < words.length) {
 		newstr ++ words[i].replace('M', 'W')
-		i+=; 
+		i++; 
 	}
 	return newstr; 
 }
+
+// 900. Wild Roger is tasked with shooting down 6 bottles with 6 shots as fast as possible. Here are the different types of shots he could make:
+
+// He could use one pistol to shoot a bottle with a "Bang!" in 0.5 seconds.
+// Or he could use both pistols at once with a "BangBang!" to shoot two bottles in 0.5 seconds.
+// Given an array of strings, return the time (in seconds) it took to shoot down all 6 bottles. Make sure to only count Bangs and BangBangs. Anything else doesn't count.
+
+// Yellow - rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "Bang!", "Bang!"]) ➞ 3
+// rogerShots(["Bang!", "Bang!", "Bang!", "Bang!", "BangBang!"]) ➞ 2.5
+// rogerShots(["Bang!", "BangBangBang!", "Boom!", "Bang!", "BangBang!", "BangBang!"]) ➞ 2
+
+function rogerShots(arr) {
+	return arr.filter(word => word === "Bang!" || word === "BangBang!")
+		.length * 0.5;
+}
+
+function rogerShots(arr) {
+	return arr.filter(x => /^(Bang){1,2}\!$/.test(x)).length * 0.5;
+}
+
+function rogerShots(arr) {
+	time = 0;
+	result = arr.map(x => x === "Bang!" ? time+=0.5 : x === "BangBang!" ? time+=0.5 : true);
+	return time;
+}
+
+const rogerShots = arr =>
+	arr.reduce((a,v) => a + (['Bang!','BangBang!'].includes(v) ? .5 : 0), 0)
