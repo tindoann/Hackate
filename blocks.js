@@ -9909,3 +9909,42 @@ function move(word) {
 	}
 	return out; 
 }
+
+// 907. Javascript has a String prototype default in the language which contains properties and methods such as .length and .toLowerCase(). Extend the String prototype by creating two new methods:
+
+// .consonants(), which returns the number of consonants in a word when called.
+// .vowels(), which returns the number of vowels in a word when called.
+
+// "hello".consonants() ➞ 3
+// "hello".vowels() ➞ 2
+
+// "greatly".consonants() ➞ 5
+// "greatly".vowels() ➞ 2
+
+// "Smithsonian".consonants() ➞ 7
+// "Smithsonian".vowels() ➞ 4
+
+String.prototype.constants = function() {
+	return this.match(/[^aeiou]/gi).length
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[^aeiou]/gi).length
+}
+
+
+String.prototype.consonants = function() {
+	return this.match(/[^aeiou\W\d]/g).length
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[aeiou]/g).length
+}
+
+String.prototype.consonants = function() {
+	return this.match(/[^(a|e|i|o|u)]/gi).length
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[a|e|i|o|u]/gi).length
+}
