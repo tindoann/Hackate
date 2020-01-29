@@ -9850,3 +9850,62 @@ function isRepdigit(num) {
 	return false
 }
 
+// 905. Create a function, that takes an array as argument and returns the sum of all numbers in this array.
+
+// Yellow - [2, 7, 4] ➞ 13
+// [45, 3, 0] ➞ 48
+// [-2, 84, 23] ➞ 105
+
+function getSumItems(arr) {
+	let sum = 0; 
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i]
+	}
+	return sum
+}
+
+function getSumOfItems(arr) {
+	let sum = 0; 
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i]; 
+	}
+	return sum; 
+}
+function getSumOfItems(arr) {
+	return arr.reduce((sum, v) => sum + v, 0)
+}
+
+function getSumOfItems(arr) {
+	const reducer = (accumulator, currentValue) => accumulator + currentValue
+	return arr.reduce(reducer)
+}
+
+// 906. Write a function that changes every letter to the next letter:
+
+// White - move("hello") ➞ "ifmmp"
+// move("bye") ➞ "czf"
+// move("welcome") ➞ "xfmdpnf"
+
+function move(word) {
+	return [...word].map(a => String.fromCharCode(a.charCodeAt(0) + 1)).join(''; )
+}
+
+function move(word) {
+	return word.split('').map(x => x.charCodeAt(0) + 1).map(x => String.fromCharCode(x)).join(''); 
+}
+
+function move(word) {
+	return word.split('')
+		.map(x => x.charCodeAt(0) + 1)
+		.map(x => String.fromCharCode(x))
+		.join(''); 
+}
+
+function move(word) {
+	let out = ''; 
+
+	for(let i = 0; i < word.length; i++) {
+		out += String.fromCharCode(word[i].charCodeAt() + 1); 
+	}
+	return out; 
+}
