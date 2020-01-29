@@ -9742,3 +9742,63 @@ function rogerShots(arr) {
 
 const rogerShots = arr =>
 	arr.reduce((a,v) => a + (['Bang!','BangBang!'].includes(v) ? .5 : 0), 0)
+
+	// 901 Given an array with an odd number of elements, return whether the scale will tip "left" 
+	// or "right" based on the sum of the numbers. The scale will tip on the direction of the largest total. 
+	// If both sides are equal, return "balanced".
+
+	// Ex. 
+// The middle element will always be "I" so you can just ignore it.
+// Assume the numbers all represent the same unit (kilograms for example).
+// Both sides will have the same number of elements.
+// There are no such things as negative weights in both real life and the tests!
+
+// scaleTip([0, 0, "I", 1, 1, ]) ➞ "right"
+// 0 < 3 so it will tip right
+
+// scaleTip([1, 2, 3, "I", 4, 0, 0]) ➞ "left"
+// 6 > 4 so it will tip left
+
+// scaleTip([5, 5, 5, 0, "I", 10, 2, 2, 1]) ➞ "balanced"
+// 15 = 15 so it will stay balanced
+
+function scaleTip(arr) {
+	let mid = arr.indexOf('I'); 
+	let left = arr.slice(0, mid).reduce((a, b) => a + (+b), 0); 
+	let right = arr.slice(mid+1).reduce((a,b) => a + (+b), 0); 
+	return left === right ? 'balanced' : (left > right) ? 'left' : 'right'; 
+}
+
+const scaleTip = arr => {
+	const sum = a => a.reduce((a, b) => a + b, 0); 
+		lft = sum(arr.slice(0, arr.length / 2)), 
+		rgt = sum(arr.slice(arr.length / 2 + 1)); 
+	return ['left', 'return', 'balance']
+	  [[lft > rgt, rgt > lft, true].indexOf(true)]; 
+}
+
+function scaleTip(arr) {
+	let sum1 = arr.slice(0,arr.indexOf('I')).reduce((sum,x) => sum + +x, 0);
+	let sum2 = arr.slice(arr.indexOf('I')+1).reduce((sum,x) => sum + +x, 0);
+  return sum1 === sum2? 'balanced' : sum1 > sum2 ? 'left': 'right';
+}
+
+// 902. The digit distance between two numbers is the absolute value of the difference of each digit.
+
+// Yellow - digitDistance(121, 599) ➞ 19
+// digitDistance(12, 12) ➞ 0
+// digitDistance(10, 20) ➞ 1
+
+function digitDistance(num1, num2) {
+	let result = num2 - num1; 
+return result.toString().split('').reduce((acc, cv) => += Number(cv), 0); 
+}
+
+function digitDistance(num1, num2) {
+	return String(num1).split('')
+		.reduce((a, c, i) => a + Math.abs(c - String(num2)[i]), 0)
+}
+
+function digitDistance(num1, num2) {
+	return num1.toString().split('').reduce((a, b, i) => a + Math.abs(b - num2.toString().split('')[i]), 0)
+}
