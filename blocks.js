@@ -9879,3 +9879,33 @@ function getSumOfItems(arr) {
 	const reducer = (accumulator, currentValue) => accumulator + currentValue
 	return arr.reduce(reducer)
 }
+
+// 906. Write a function that changes every letter to the next letter:
+
+// White - move("hello") ➞ "ifmmp"
+// move("bye") ➞ "czf"
+// move("welcome") ➞ "xfmdpnf"
+
+function move(word) {
+	return [...word].map(a => String.fromCharCode(a.charCodeAt(0) + 1)).join(''; )
+}
+
+function move(word) {
+	return word.split('').map(x => x.charCodeAt(0) + 1).map(x => String.fromCharCode(x)).join(''); 
+}
+
+function move(word) {
+	return word.split('')
+		.map(x => x.charCodeAt(0) + 1)
+		.map(x => String.fromCharCode(x))
+		.join(''); 
+}
+
+function move(word) {
+	let out = ''; 
+
+	for(let i = 0; i < word.length; i++) {
+		out += String.fromCharCode(word[i].charCodeAt() + 1); 
+	}
+	return out; 
+}
