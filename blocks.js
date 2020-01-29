@@ -9850,3 +9850,32 @@ function isRepdigit(num) {
 	return false
 }
 
+// 905. Create a function, that takes an array as argument and returns the sum of all numbers in this array.
+
+// Yellow - [2, 7, 4] ➞ 13
+// [45, 3, 0] ➞ 48
+// [-2, 84, 23] ➞ 105
+
+function getSumItems(arr) {
+	let sum = 0; 
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i]
+	}
+	return sum
+}
+
+function getSumOfItems(arr) {
+	let sum = 0; 
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i]; 
+	}
+	return sum; 
+}
+function getSumOfItems(arr) {
+	return arr.reduce((sum, v) => sum + v, 0)
+}
+
+function getSumOfItems(arr) {
+	const reducer = (accumulator, currentValue) => accumulator + currentValue
+	return arr.reduce(reducer)
+}
