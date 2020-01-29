@@ -9827,3 +9827,26 @@ function simonSays(arr1, arr2){
 function simonSays(arr1, arr2) {
 	return arr1.slice(0, -1).every((el, i) => el === arr2[i+1]);
 }
+
+// 904. A repdigit is a positive number composed out of the same digit.
+// Create a function that takes an integer and returns whether it's a repdigit or not.
+
+// isRepdigit(66) ➞ true
+// isRepdigit(0) ➞ true
+// isRepdigit(-11) ➞ false
+
+function isRepdigit(num) {
+	return new Set('' + num).size === 1
+}
+
+const isRepdigit = n => [...''+n]
+	.filter((x, i, a) => !i ? true : x !== a[0]).length === 1;
+
+function isRepdigit(num) {
+	if(num < 0) return false;
+	num = num.toString().split("");
+	num = new Set(num);
+	if(num.size === 1) return true
+	return false
+}
+
