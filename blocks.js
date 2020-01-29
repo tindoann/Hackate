@@ -9802,3 +9802,51 @@ function digitDistance(num1, num2) {
 function digitDistance(num1, num2) {
 	return num1.toString().split('').reduce((a, b, i) => a + Math.abs(b - num2.toString().split('')[i]), 0)
 }
+
+// 903. Create a function that takes in two arrays and returns true if the second array follows the first array by one element, and false otherwise. In other words, determine if the second array is the first array shifted to the right by 1.
+
+// simonSays([1, 2], [5, 1]) ➞ true
+// simonSays([1, 2], [5, 5]) ➞ false
+// simonSays([1, 2, 3, 4, 5], [0, 1, 2, 3, 4]) ➞ true
+// simonSays([1, 2, 3, 4, 5], [5, 5, 1, 2, 3]) ➞ false
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(-1) - arr2.slice(-1)  === 1 ? true : false
+}
+
+function simonSays(arr1, arr2){
+	
+	for(let i = 1; i < arr2.length; i++) {
+			if(arr2[i] != arr1[i - 1]) {
+					return false;
+			}
+	}
+	return true;
+}
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(0, -1).every((el, i) => el === arr2[i+1]);
+}
+
+// 904. A repdigit is a positive number composed out of the same digit.
+// Create a function that takes an integer and returns whether it's a repdigit or not.
+
+// isRepdigit(66) ➞ true
+// isRepdigit(0) ➞ true
+// isRepdigit(-11) ➞ false
+
+function isRepdigit(num) {
+	return new Set('' + num).size === 1
+}
+
+const isRepdigit = n => [...''+n]
+	.filter((x, i, a) => !i ? true : x !== a[0]).length === 1;
+
+function isRepdigit(num) {
+	if(num < 0) return false;
+	num = num.toString().split("");
+	num = new Set(num);
+	if(num.size === 1) return true
+	return false
+}
+
