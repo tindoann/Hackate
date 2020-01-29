@@ -9802,3 +9802,28 @@ function digitDistance(num1, num2) {
 function digitDistance(num1, num2) {
 	return num1.toString().split('').reduce((a, b, i) => a + Math.abs(b - num2.toString().split('')[i]), 0)
 }
+
+// 903. Create a function that takes in two arrays and returns true if the second array follows the first array by one element, and false otherwise. In other words, determine if the second array is the first array shifted to the right by 1.
+
+// simonSays([1, 2], [5, 1]) ➞ true
+// simonSays([1, 2], [5, 5]) ➞ false
+// simonSays([1, 2, 3, 4, 5], [0, 1, 2, 3, 4]) ➞ true
+// simonSays([1, 2, 3, 4, 5], [5, 5, 1, 2, 3]) ➞ false
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(-1) - arr2.slice(-1)  === 1 ? true : false
+}
+
+function simonSays(arr1, arr2){
+	
+	for(let i = 1; i < arr2.length; i++) {
+			if(arr2[i] != arr1[i - 1]) {
+					return false;
+			}
+	}
+	return true;
+}
+
+function simonSays(arr1, arr2) {
+	return arr1.slice(0, -1).every((el, i) => el === arr2[i+1]);
+}
