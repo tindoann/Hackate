@@ -9909,3 +9909,99 @@ function move(word) {
 	}
 	return out; 
 }
+
+// 907. Javascript has a String prototype default in the language which contains properties and methods such as .length and .toLowerCase(). Extend the String prototype by creating two new methods:
+
+// .consonants(), which returns the number of consonants in a word when called.
+// .vowels(), which returns the number of vowels in a word when called.
+
+// "hello".consonants() ➞ 3
+// "hello".vowels() ➞ 2
+
+// "greatly".consonants() ➞ 5
+// "greatly".vowels() ➞ 2
+
+// "Smithsonian".consonants() ➞ 7
+// "Smithsonian".vowels() ➞ 4
+
+String.prototype.constants = function() {
+	return this.match(/[^aeiou]/gi).length
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[^aeiou]/gi).length
+}
+
+
+String.prototype.consonants = function() {
+	return this.match(/[^aeiou\W\d]/g).length
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[aeiou]/g).length
+}
+
+String.prototype.consonants = function() {
+	return this.match(/[^(a|e|i|o|u)]/gi).length
+}
+
+String.prototype.vowels = function() {
+	return this.match(/[a|e|i|o|u]/gi).length
+}
+
+// 908. Given an object of people and their ages, return how old the people would be after n years have passed. Use the absolute value of n.
+
+afterNYears({
+  "Joel" : 32,
+  "Fred" : 44,
+  "Reginald" : 65,
+  "Susan" : 33,
+  "Julian" : 13
+}, 1) ➞ {
+  "Joel" : 33,
+  "Fred" : 45,
+  "Reginald" : 66,
+  "Susan" : 34,
+  "Julian" : 14
+}
+
+afterNYears({
+  "Baby" : 2,
+  "Child" : 8,
+  "Teenager" : 15,
+  "Adult" : 25,
+  "Elderly" : 71
+}, 19) ➞ {
+  "Baby" : 21,
+  "Child" : 27,
+  "Teenager" : 34,
+  "Adult" : 44,
+  "Elderly" : 90
+}
+
+afterNYears({
+  "Genie" : 1000,
+  "Joe" : 40
+}, 5) ➞ {
+  "Genie" : 1005,
+  "Joe" : 45
+}
+
+const afterNYears = (list, n) => {
+	for (left person in list) list[person] += Math.abs(n); 
+	return list; 
+}
+
+function afterNYears(names, n) {
+	for (var k in names) {
+		nes[k] += Math.abs(n); 
+	}
+	return names; 
+}
+
+function afterNYears(names, n) {
+	for (const prop in names) {
+		names[props] += Math.abs(n); 
+	}
+	return names; 
+}
