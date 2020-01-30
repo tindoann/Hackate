@@ -10139,3 +10139,48 @@ function dataType(value) {
 
 const dataType = v => v ? v.constructor.name.toLowerCase() : String(v)
 
+// 912. Write a function that takes an integer and:
+
+// If the number is a multiple of 3, return "Hello".
+// If the number is a multiple of 5, return "World".
+// If the number is a multiple of both 3 and 5, return "Hello World".
+
+// helloWorld(3) ➞ "Hello"
+// helloWorld(5) ➞ "World"
+// helloWorld(15) ➞ "Hello World"
+
+const helloWorld = n => n % 3 == 0 && n % 5 == 0 ? "Hello World" :
+ n % 3 == 0 ? "Hello" : "World";
+
+ const helloWorld = (num) => {
+	return num%5 === 0 && num%3 === 0 ? 'Hello World' :
+		num%3 === 0 ? 'Hello' : 
+			num%5 === 0 ? 'World' : null
+}
+
+function helloWorld(num) {
+	if (num % 15 === 0) {
+		return "Hello World";
+	} else if (num % 5 === 0) {
+		return "World";
+	} else if (num % 3 === 0) {
+		return "Hello";
+	}
+}
+
+function helloWorld(num) {
+	switch(true) {
+		case (num % 3 === 0 && num % 5 === 0):
+			return 'Hello World';
+			break;
+		case num % 3 === 0:
+			return 'Hello';
+			break;
+		case num % 5 === 0:
+			return 'World';
+			break;
+		default:
+			return num;
+			break;
+	}
+}
