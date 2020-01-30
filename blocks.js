@@ -10071,3 +10071,37 @@ function convertDate(date) {
 	YY = d.getFullYear()
 	return [MM, DD, YY]
 }
+
+// 910. Create a function that takes an array with numbers and return an array with the elements multiplied by two.
+
+// White - getMultipliedArr([2, 5, 3]) ➞ [4, 10, 3]
+// getMultipliedArr([1, 86, -5]) ➞ [2, 172, -10]
+// getMultipliedArr([5, 382, 0]) ➞ [10, 464, 0]
+
+const getMultipliedArr = arr => arr.map(el => el * 2)
+
+function getMultipliedArr(arr) {
+	for(var i=0;i<arr.length;i++){
+		arr[i]*=2;
+	}
+	return arr;
+}
+
+function getMultipliedArr(arr) {
+	for(let num = 0; num < arr.length; num++)
+	{
+		arr[num] = arr[num]*2;
+	}
+	return arr;
+}
+
+function getMultipliedArr(arr) {
+	for(i = 0; i < arr.length; i++){
+		arr[i] *= 2;
+	}
+	return arr;
+}
+
+function getMultipliedArr(arr) {
+	return arr.map(x => x * 2);
+}
