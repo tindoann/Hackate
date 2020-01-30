@@ -10005,3 +10005,36 @@ function afterNYears(names, n) {
 	}
 	return names; 
 }
+
+// 908. Create a function that returns the number of decimal places a number (given as a string) has. Any zeros after the decimal point count towards the number of decimal places.
+
+// White - getDecimalPlaces("43.20") ➞ 2
+// getDecimalPlaces("400") ➞ 0
+// getDecimalPlaces("3.1") ➞ 1
+
+function getDecimalPlaces(num) {
+	return num.slice(num.indexOf('.')).length - 1; 
+}
+
+function getDecimalPlaces(num) {
+	let arr = num.split('.');
+	if(arr[1] == undefined) {
+		return 0; 
+	  } else {
+		return arr[1].length; 
+	  }
+  }
+}
+
+function getDecimalPlaces(num) {
+	return num.split('.').length === 1 ? 0 : split('.')[1].length; 
+}
+
+function getDecimalPlaces(num) {
+	if (num.indexOf('.') === -1) {
+		return 0; 
+	} else {
+		let nuewNum = num.split('.'); 
+		return newNum[1].length; 
+	}
+}
