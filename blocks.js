@@ -10105,3 +10105,37 @@ function getMultipliedArr(arr) {
 function getMultipliedArr(arr) {
 	return arr.map(x => x * 2);
 }
+
+// 911. Create a function that returns the data type of a given variable. 
+// These are the eight data types this challenge will be testing for:
+
+// Array
+// Object
+// String
+// Number
+// Boolean
+// Null
+// Undefined
+// Date
+
+// Yellow - dataType([1, 2, 3, 4]) ➞ "array"
+// dataType({key: "value"}) ➞ "object"
+// dataType("This is an example string.") ➞ "string"
+// dataType(new Date()) ➞ "date"
+
+function dataType(value) {
+	return Object.prototype.toString.call(value).slice(8, -1).toLowerCase(); 
+}
+
+function dataType(value) {
+  if (value === null)
+    return "null";
+  if (Array.isArray(value))
+    return "array";
+  if (value instanceof Date)
+    return "date";
+  return typeof(value);
+}
+
+const dataType = v => v ? v.constructor.name.toLowerCase() : String(v)
+
