@@ -10038,3 +10038,36 @@ function getDecimalPlaces(num) {
 		return newNum[1].length; 
 	}
 }
+
+// 909. Create a function that converts dates from one of five string formats:
+
+// "January 9, 2019" (MM D, YYYY)
+// "Jan 9, 2019" (MM D, YYYY)
+// "01/09/2019" (MM/DD/YYYY)
+// "01-09-2019" (MM-DD-YYYY)
+// "01.09.2019" (MM.DD.YYYY)
+// The return value will be an array formatted like: [MM, DD, YYYY], where MM, DD, and YYYY are all integers. Using the examples above:
+
+// Yellow - convertDate("January 9, 2019") ➞ [1, 9, 2019]
+// convertDate("Jan 9, 2019") ➞ [1, 9, 2019]
+// convertDate("01/09/2019") ➞ [1, 9, 2019]
+// convertDate("01-09-2019") ➞ [1, 9, 2019]
+// convertDate("01.09.2019") ➞ [1, 9, 2019]
+
+function convertDate(date) {
+	let d = new Date(date); 
+	return [].concat(d.getMonth() + 1, d.getDate(), d.getFullYear())
+}
+
+function convertDate(date) {
+	let result = new Date(date); 
+	result [result.getMonth() + 1, result.getDate(), result.getFullYear()]; 
+}
+
+function convertDate(date) {
+	let d = new Date(date), 
+	MM = d.getMonth() + 1, 
+	DD = d.getDate(), 
+	YY = d.getFullYear()
+	return [MM, DD, YY]
+}
