@@ -10005,3 +10005,69 @@ function afterNYears(names, n) {
 	}
 	return names; 
 }
+
+// 908. Create a function that returns the number of decimal places a number (given as a string) has. Any zeros after the decimal point count towards the number of decimal places.
+
+// White - getDecimalPlaces("43.20") ➞ 2
+// getDecimalPlaces("400") ➞ 0
+// getDecimalPlaces("3.1") ➞ 1
+
+function getDecimalPlaces(num) {
+	return num.slice(num.indexOf('.')).length - 1; 
+}
+
+function getDecimalPlaces(num) {
+	let arr = num.split('.');
+	if(arr[1] == undefined) {
+		return 0; 
+	  } else {
+		return arr[1].length; 
+	  }
+  }
+}
+
+function getDecimalPlaces(num) {
+	return num.split('.').length === 1 ? 0 : split('.')[1].length; 
+}
+
+function getDecimalPlaces(num) {
+	if (num.indexOf('.') === -1) {
+		return 0; 
+	} else {
+		let nuewNum = num.split('.'); 
+		return newNum[1].length; 
+	}
+}
+
+// 909. Create a function that converts dates from one of five string formats:
+
+// "January 9, 2019" (MM D, YYYY)
+// "Jan 9, 2019" (MM D, YYYY)
+// "01/09/2019" (MM/DD/YYYY)
+// "01-09-2019" (MM-DD-YYYY)
+// "01.09.2019" (MM.DD.YYYY)
+// The return value will be an array formatted like: [MM, DD, YYYY], where MM, DD, and YYYY are all integers. Using the examples above:
+
+// Yellow - convertDate("January 9, 2019") ➞ [1, 9, 2019]
+// convertDate("Jan 9, 2019") ➞ [1, 9, 2019]
+// convertDate("01/09/2019") ➞ [1, 9, 2019]
+// convertDate("01-09-2019") ➞ [1, 9, 2019]
+// convertDate("01.09.2019") ➞ [1, 9, 2019]
+
+function convertDate(date) {
+	let d = new Date(date); 
+	return [].concat(d.getMonth() + 1, d.getDate(), d.getFullYear())
+}
+
+function convertDate(date) {
+	let result = new Date(date); 
+	result [result.getMonth() + 1, result.getDate(), result.getFullYear()]; 
+}
+
+function convertDate(date) {
+	let d = new Date(date), 
+	MM = d.getMonth() + 1, 
+	DD = d.getDate(), 
+	YY = d.getFullYear()
+	return [MM, DD, YY]
+}
