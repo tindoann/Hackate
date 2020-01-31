@@ -10145,7 +10145,7 @@ const dataType = v => v ? v.constructor.name.toLowerCase() : String(v)
 // If the number is a multiple of 5, return "World".
 // If the number is a multiple of both 3 and 5, return "Hello World".
 
-// helloWorld(3) ➞ "Hello"
+// White - helloWorld(3) ➞ "Hello"
 // helloWorld(5) ➞ "World"
 // helloWorld(15) ➞ "Hello World"
 
@@ -10184,3 +10184,23 @@ function helloWorld(num) {
 			break;
 	}
 }
+
+// 913. You will be given an array of drinks, with each drink being an object with two properties: 
+// name and price. Create a function that has the drinks array as an argument and return the drinks 
+// object sorted by price in ascending order.
+
+// drinks = [
+// 	{name: 'lemonade', price: 50},
+// 	{name: 'lime', price: 10}
+// ];
+
+// sortDrinkByPrice(drinks) ➞ [{name: 'lime', price: 10}, {name: 'lemonade', price: 50}]
+
+
+function sortDrinkByPrice(drinks) {
+	const sorted = drinks.sort(function(a, b){
+		return a.price - b.price; 
+	}); 
+	return sorted; 
+}
+
