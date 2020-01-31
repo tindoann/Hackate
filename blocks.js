@@ -10189,7 +10189,7 @@ function helloWorld(num) {
 // name and price. Create a function that has the drinks array as an argument and return the drinks 
 // object sorted by price in ascending order.
 
-// drinks = [
+// Yellow - drinks = [
 // 	{name: 'lemonade', price: 50},
 // 	{name: 'lime', price: 10}
 // ];
@@ -10203,4 +10203,88 @@ function sortDrinkByPrice(drinks) {
 	}); 
 	return sorted; 
 }
+
+function sortDrinkByPrice(drinks){
+	return drinks.sort((a, b) => a.price - b.price)
+}
+
+function sortDrinkByPrice(drinks){
+	return drinks.sort((a, b) => (a.price > b.price) ? 1 : -1); 
+}
+
+// 914.  Create a function that outputs the results of a flashcard. 
+// A flashcard is an array of three elements: a number, an operator symbol, and another number. 
+// Return the mathematical result of that expression.
+// There are 4 operators: + (addition), - (subtraction), x (multiplication), and / (division). 
+// If the flashcard displays a number being divided by zero, e.g. [3, "/", 0], then return undefined. 
+// For division, round to the hundredths place. So [10, "/", 3] should return 3.33.
+
+// flash([3, "x", 7]) ➞ 21
+// flash([5, "+", 7]) ➞ 12
+// flash([10, "-", 9]) ➞ 1
+// flash([10, "/", 0]) ➞ undefined
+// flash([10, "/", 3]) ➞ 3.33
+
+function flash([num1, op, num2]) {
+  switch (op) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case 'x':
+      return num1 * num2;
+    case '/':
+      const result = num1 / num2;
+      return Number.isFinite(result) ? Number(result.toFixed(2)) : undefined;
+  }
+
+  return undefined;
+}
+
+function flash([num1, op, num2]) {
+	let fix = 0
+	if(op==="x"){
+		return num1*num2
+	}else if(op==="+"){
+		return num1+num2
+	}else if(op==="-"){
+		return num1-num2
+	}else if(op==="/" && num2!==0){
+		fix = num1/num2
+		return +fix.toFixed(2)
+	}else{
+		return undefined
+	}
+}
+
+function flash([num1, op, num2]) {
+	let res = 0;
+	switch(op) {
+  case '+':
+    res = num1 + num2;
+    break;
+  case '-':
+    res = num1 - num2;
+    break;
+	case 'x':
+    res = num1 * num2;
+    break;
+	case '/':
+    if (num2 === 0) {
+			res = undefined;
+		} else {
+			res = num1 / num2;
+			if (res % 1 !== 0) res = Number(res.toFixed(2));
+		}
+    break;
+	}
+	return res;
+}
+
+function flash([num1, op, num2]) {
+	return op == 'x'? num1 * num2: op == '+'? num1 + num2: op == '-'? num1 - num2: op == '/' && num2 > 0? Number((num1 / num2).toFixed(2)): undefined
+}
+
+
+
 
