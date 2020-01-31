@@ -10285,6 +10285,54 @@ function flash([num1, op, num2]) {
 	return op == 'x'? num1 * num2: op == '+'? num1 + num2: op == '-'? num1 - num2: op == '/' && num2 > 0? Number((num1 / num2).toFixed(2)): undefined
 }
 
+// 915. Create a function that takes a string as the first argument, 
+// and a (string) specification as a second argument. 
+// If the specification is "word", return a string with each word reversed 
+// while maintaining their original order. If the specification is "sentence", 
+// reverse the order of the words in the string, while keeping the words intact.
 
+// yellow - str = "There's never enough time to do all the nothing you want"
+// flip("Hello", "word") ➞ "olleH"
+// flip("Hello", "sentence") ➞ "Hello"
+// flip(str, "word") ➞ "s'erehT reven hguone emit ot od lla eht gnihton uoy tnaw"
+// flip(str, "sentence") ➞ "want you nothing the all do to time enough never There's"
+
+function flip(str, spec) {
+	let arr=str.split(' ')
+	
+	if (spec==="word"){
+		return arr.map(el=>[...el].reverse().join('')).join(' ')
+	}
+	if (spec==="sentence" && arr.length>1){
+		return arr.reverse().join(' ')
+	}
+	else return str
+}
+
+function flip(str, spec) {
+	if (spec == "sentence"){
+		return str.split(" ").reverse().join(" ")
+}
+	if (spec == "word"){
+		return str.split(" ").map(x => x.split("").reverse().join("")).join(" ")
+	}
+}
+
+function flip(str, spec) {
+	return spec === 'word' ? str.split(' ').map(e => [...e].reverse().join('')).join(' ') :
+	str.split(' ').reverse().join(' ');
+}
+
+function flip(str, spec) {
+	switch(spec){
+		case 'word':
+			return /\s/.test(str) ?
+				str.split(' ').map(w => w.split('').reverse().join('')).join(' ')
+				:
+				str.split('').reverse().join('')
+		case 'sentence':
+			return str.split(' ').reverse().join(' ')
+	}
+}
 
 
