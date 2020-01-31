@@ -10071,3 +10071,220 @@ function convertDate(date) {
 	YY = d.getFullYear()
 	return [MM, DD, YY]
 }
+
+// 910. Create a function that takes an array with numbers and return an array with the elements multiplied by two.
+
+// White - getMultipliedArr([2, 5, 3]) ➞ [4, 10, 3]
+// getMultipliedArr([1, 86, -5]) ➞ [2, 172, -10]
+// getMultipliedArr([5, 382, 0]) ➞ [10, 464, 0]
+
+const getMultipliedArr = arr => arr.map(el => el * 2)
+
+function getMultipliedArr(arr) {
+	for(var i=0;i<arr.length;i++){
+		arr[i]*=2;
+	}
+	return arr;
+}
+
+function getMultipliedArr(arr) {
+	for(let num = 0; num < arr.length; num++)
+	{
+		arr[num] = arr[num]*2;
+	}
+	return arr;
+}
+
+function getMultipliedArr(arr) {
+	for(i = 0; i < arr.length; i++){
+		arr[i] *= 2;
+	}
+	return arr;
+}
+
+function getMultipliedArr(arr) {
+	return arr.map(x => x * 2);
+}
+
+// 911. Create a function that returns the data type of a given variable. 
+// These are the eight data types this challenge will be testing for:
+
+// Array
+// Object
+// String
+// Number
+// Boolean
+// Null
+// Undefined
+// Date
+
+// Yellow - dataType([1, 2, 3, 4]) ➞ "array"
+// dataType({key: "value"}) ➞ "object"
+// dataType("This is an example string.") ➞ "string"
+// dataType(new Date()) ➞ "date"
+
+function dataType(value) {
+	return Object.prototype.toString.call(value).slice(8, -1).toLowerCase(); 
+}
+
+function dataType(value) {
+  if (value === null)
+    return "null";
+  if (Array.isArray(value))
+    return "array";
+  if (value instanceof Date)
+    return "date";
+  return typeof(value);
+}
+
+const dataType = v => v ? v.constructor.name.toLowerCase() : String(v)
+
+// 912. Write a function that takes an integer and:
+
+// If the number is a multiple of 3, return "Hello".
+// If the number is a multiple of 5, return "World".
+// If the number is a multiple of both 3 and 5, return "Hello World".
+
+// White - helloWorld(3) ➞ "Hello"
+// helloWorld(5) ➞ "World"
+// helloWorld(15) ➞ "Hello World"
+
+const helloWorld = n => n % 3 == 0 && n % 5 == 0 ? "Hello World" :
+ n % 3 == 0 ? "Hello" : "World";
+
+ const helloWorld = (num) => {
+	return num%5 === 0 && num%3 === 0 ? 'Hello World' :
+		num%3 === 0 ? 'Hello' : 
+			num%5 === 0 ? 'World' : null
+}
+
+function helloWorld(num) {
+	if (num % 15 === 0) {
+		return "Hello World";
+	} else if (num % 5 === 0) {
+		return "World";
+	} else if (num % 3 === 0) {
+		return "Hello";
+	}
+}
+
+function helloWorld(num) {
+	switch(true) {
+		case (num % 3 === 0 && num % 5 === 0):
+			return 'Hello World';
+			break;
+		case num % 3 === 0:
+			return 'Hello';
+			break;
+		case num % 5 === 0:
+			return 'World';
+			break;
+		default:
+			return num;
+			break;
+	}
+}
+
+// 913. You will be given an array of drinks, with each drink being an object with two properties: 
+// name and price. Create a function that has the drinks array as an argument and return the drinks 
+// object sorted by price in ascending order.
+
+// Yellow - drinks = [
+// 	{name: 'lemonade', price: 50},
+// 	{name: 'lime', price: 10}
+// ];
+
+// sortDrinkByPrice(drinks) ➞ [{name: 'lime', price: 10}, {name: 'lemonade', price: 50}]
+
+
+function sortDrinkByPrice(drinks) {
+	const sorted = drinks.sort(function(a, b){
+		return a.price - b.price; 
+	}); 
+	return sorted; 
+}
+
+function sortDrinkByPrice(drinks){
+	return drinks.sort((a, b) => a.price - b.price)
+}
+
+function sortDrinkByPrice(drinks){
+	return drinks.sort((a, b) => (a.price > b.price) ? 1 : -1); 
+}
+
+// 914.  Create a function that outputs the results of a flashcard. 
+// A flashcard is an array of three elements: a number, an operator symbol, and another number. 
+// Return the mathematical result of that expression.
+// There are 4 operators: + (addition), - (subtraction), x (multiplication), and / (division). 
+// If the flashcard displays a number being divided by zero, e.g. [3, "/", 0], then return undefined. 
+// For division, round to the hundredths place. So [10, "/", 3] should return 3.33.
+
+// flash([3, "x", 7]) ➞ 21
+// flash([5, "+", 7]) ➞ 12
+// flash([10, "-", 9]) ➞ 1
+// flash([10, "/", 0]) ➞ undefined
+// flash([10, "/", 3]) ➞ 3.33
+
+function flash([num1, op, num2]) {
+  switch (op) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case 'x':
+      return num1 * num2;
+    case '/':
+      const result = num1 / num2;
+      return Number.isFinite(result) ? Number(result.toFixed(2)) : undefined;
+  }
+
+  return undefined;
+}
+
+function flash([num1, op, num2]) {
+	let fix = 0
+	if(op==="x"){
+		return num1*num2
+	}else if(op==="+"){
+		return num1+num2
+	}else if(op==="-"){
+		return num1-num2
+	}else if(op==="/" && num2!==0){
+		fix = num1/num2
+		return +fix.toFixed(2)
+	}else{
+		return undefined
+	}
+}
+
+function flash([num1, op, num2]) {
+	let res = 0;
+	switch(op) {
+  case '+':
+    res = num1 + num2;
+    break;
+  case '-':
+    res = num1 - num2;
+    break;
+	case 'x':
+    res = num1 * num2;
+    break;
+	case '/':
+    if (num2 === 0) {
+			res = undefined;
+		} else {
+			res = num1 / num2;
+			if (res % 1 !== 0) res = Number(res.toFixed(2));
+		}
+    break;
+	}
+	return res;
+}
+
+function flash([num1, op, num2]) {
+	return op == 'x'? num1 * num2: op == '+'? num1 + num2: op == '-'? num1 - num2: op == '/' && num2 > 0? Number((num1 / num2).toFixed(2)): undefined
+}
+
+
+
+
