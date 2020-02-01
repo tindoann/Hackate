@@ -10338,7 +10338,36 @@ function flip(str, spec) {
 // 916 Given an array of integers, find the pair of adjacent elements that have the largest product and return that product.
 
 // yellow - adjacentProduct([3, 6, -2, -5, 7, 3] ) ➞ 21
-
 // adjacentProduct([5, 6, -4, 2, 3, 2, -23]) ➞ 30
-
 // adjacentProduct([0, -1, 1, 24, 1, -4, 8, 10]) ➞ 80
+
+function adjacentProduct(arr) {
+	return Math.max(...arr.slice(1).map((num,i) => num * arr[i]))
+}
+
+function adjacentProduct(arr) {
+	var a =arr[0]*arr[1];
+	for(var i = 0; i < arr.length-1; i++){
+		if(arr[i]*arr[i+1] > a){
+			a = arr[i]*arr[i+1];
+		}
+	}
+	return a;
+}
+
+function adjacentProduct(arr) {
+	let biggest = arr[0]*arr[1];
+	for(i = 1; i < arr.length; i++){
+		let temp = arr[i-1]*arr[i];
+		if(temp > biggest){
+			biggest = temp;
+		}
+	}
+	return biggest;
+}
+
+function adjacentProduct(arr) {
+	let s = -100
+	arr.map((x,i,a) => (x*a[i+1]) > s ? s = (x*a[i+1]) :x)
+	return s
+}
