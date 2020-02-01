@@ -10371,3 +10371,39 @@ function adjacentProduct(arr) {
 	arr.map((x,i,a) => (x*a[i+1]) > s ? s = (x*a[i+1]) :x)
 	return s
 }
+
+// 917. Create a function that takes two parameters and, if both parameters are strings, add them as if they were integers or if the two parameters are integers, concatenate them.
+
+// Create a function that takes two parameters and, if both parameters are strings,
+// add them as if they were integers or if the two parameters are integers, 
+// concatenate them.
+
+// Yellow - stupidAddition(1, 2) ➞ 12
+// stupidAddition("1", "2") ➞ 3
+// stupidAddition("1", 2) ➞ null
+
+function stupidAddition(a, b) {
+	if (typeof a !== typeof b) {
+		return null;
+	} else {
+		if (typeof a === "string" && typeof b === "string")
+			return parseInt(a) + parseInt(b);
+		else
+			return a.toString() + b.toString();
+	}
+}
+
+const stupidAddition = (a, b) =>
+ typeof a == 'string' && typeof b == 'string' ? +a + +b :
+ typeof a == 'number' && typeof b == 'number' ? '' + a + b : null;
+
+function stupidAddition(a, b) {
+	if (typeof a == 'number' && typeof b == 'number') {
+		return a + '' + b; 
+	} else if (typeof a == 'string' && typeof b == 'string') {
+		return parseInt(a) + parseInt(b); 
+	} else {
+		return null; 
+	}
+}
+
