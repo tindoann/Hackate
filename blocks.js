@@ -10285,6 +10285,156 @@ function flash([num1, op, num2]) {
 	return op == 'x'? num1 * num2: op == '+'? num1 + num2: op == '-'? num1 - num2: op == '/' && num2 > 0? Number((num1 / num2).toFixed(2)): undefined
 }
 
+// 915. Create a function that takes a string as the first argument, 
+// and a (string) specification as a second argument. 
+// If the specification is "word", return a string with each word reversed 
+// while maintaining their original order. If the specification is "sentence", 
+// reverse the order of the words in the string, while keeping the words intact.
+
+// yellow - str = "There's never enough time to do all the nothing you want"
+// flip("Hello", "word") ➞ "olleH"
+// flip("Hello", "sentence") ➞ "Hello"
+// flip(str, "word") ➞ "s'erehT reven hguone emit ot od lla eht gnihton uoy tnaw"
+// flip(str, "sentence") ➞ "want you nothing the all do to time enough never There's"
+
+function flip(str, spec) {
+	let arr=str.split(' ')
+	
+	if (spec==="word"){
+		return arr.map(el=>[...el].reverse().join('')).join(' ')
+	}
+	if (spec==="sentence" && arr.length>1){
+		return arr.reverse().join(' ')
+	}
+	else return str
+}
+
+function flip(str, spec) {
+	if (spec == "sentence"){
+		return str.split(" ").reverse().join(" ")
+}
+	if (spec == "word"){
+		return str.split(" ").map(x => x.split("").reverse().join("")).join(" ")
+	}
+}
+
+function flip(str, spec) {
+	return spec === 'word' ? str.split(' ').map(e => [...e].reverse().join('')).join(' ') :
+	str.split(' ').reverse().join(' ');
+}
+
+function flip(str, spec) {
+	switch(spec){
+		case 'word':
+			return /\s/.test(str) ?
+				str.split(' ').map(w => w.split('').reverse().join('')).join(' ')
+				:
+				str.split('').reverse().join('')
+		case 'sentence':
+			return str.split(' ').reverse().join(' ')
+	}
+}
+
+// 916 Given an array of integers, find the pair of adjacent elements that have the largest product and return that product.
+
+// yellow - adjacentProduct([3, 6, -2, -5, 7, 3] ) ➞ 21
+// adjacentProduct([5, 6, -4, 2, 3, 2, -23]) ➞ 30
+// adjacentProduct([0, -1, 1, 24, 1, -4, 8, 10]) ➞ 80
+
+function adjacentProduct(arr) {
+	return Math.max(...arr.slice(1).map((num,i) => num * arr[i]))
+}
+
+function adjacentProduct(arr) {
+	var a =arr[0]*arr[1];
+	for(var i = 0; i < arr.length-1; i++){
+		if(arr[i]*arr[i+1] > a){
+			a = arr[i]*arr[i+1];
+		}
+	}
+	return a;
+}
+
+function adjacentProduct(arr) {
+	let biggest = arr[0]*arr[1];
+	for(i = 1; i < arr.length; i++){
+		let temp = arr[i-1]*arr[i];
+		if(temp > biggest){
+			biggest = temp;
+		}
+	}
+	return biggest;
+}
+
+function adjacentProduct(arr) {
+	let s = -100
+	arr.map((x,i,a) => (x*a[i+1]) > s ? s = (x*a[i+1]) :x)
+	return s
+}
+
+// 917. Create a function that takes two parameters and, if both parameters are strings, add them as if they were integers or if the two parameters are integers, concatenate them.
+
+// Create a function that takes two parameters and, if both parameters are strings,
+// add them as if they were integers or if the two parameters are integers, 
+// concatenate them.
+
+// Yellow - stupidAddition(1, 2) ➞ 12
+// stupidAddition("1", "2") ➞ 3
+// stupidAddition("1", 2) ➞ null
+
+function stupidAddition(a, b) {
+	if (typeof a !== typeof b) {
+		return null;
+	} else {
+		if (typeof a === "string" && typeof b === "string")
+			return parseInt(a) + parseInt(b);
+		else
+			return a.toString() + b.toString();
+	}
+}
+
+const stupidAddition = (a, b) =>
+ typeof a == 'string' && typeof b == 'string' ? +a + +b :
+ typeof a == 'number' && typeof b == 'number' ? '' + a + b : null;
+
+function stupidAddition(a, b) {
+	if (typeof a == 'number' && typeof b == 'number') {
+		return a + '' + b; 
+	} else if (typeof a == 'string' && typeof b == 'string') {
+		return parseInt(a) + parseInt(b); 
+	} else {
+		return null; 
+	}
+}
 
 
+// 918. Create a function that takes an array of numbers and return its median. If the input array is even length, take the average of the two medians, else, take the single median.
 
+// ywllow - median([2, 5, 6, 2, 6, 3, 4]) ➞ 4
+// median([21.4323, 432.54, 432.3, 542.4567]) ➞ 432.4
+// median([-23, -43, -29, -53, -67]) ➞ -43
+
+function median(arr) {
+  var sorted = arr.sort(function(a, b){ return a - b; });
+  var idx = Math.round(arr.length/2) - 1;
+  return (arr.length % 2 !== 0) ? sorted[idx] : (sorted[idx] + sorted[idx + 1]) / 2;
+}
+
+const median = arr => {
+  arr.sort((a, b) => a - b);
+	return (arr[(arr.length - 1) >> 1] + arr[arr.length >> 1]) / 2
+}
+
+function median(arr) {
+  const sorted = arr.sort((a, b) => a - b);
+  if (sorted.length % 2 === 0) {
+    return sorted.slice(sorted.length / 2 - 1, sorted.length / 2 + 1).reduce((acc, el) => acc + el) / 2;
+  }
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
+function median(arr) {
+  var N = arr.length;
+  arr.sort( (a, b) => a - b)
+  return N % 2 === 0 ? (arr[Math.floor(N/2)] + arr[Math.floor(N/2) - 1]) / 2 : arr[Math.floor(N/2)];
+}
