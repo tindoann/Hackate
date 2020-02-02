@@ -10482,3 +10482,38 @@ function greaterThanOne(frac) {
 	let fraction = frac.split('/')
 	return fraction[0] / fraction[1] > 1
 }
+
+// 921. Create a function that takes an array of numbers and returns an array where each number is the sum of itself + all previous numbers in the array.
+
+// Yellow - cumulativeSum([1, 2, 3]) ➞ [1, 3, 6]
+// cumulativeSum([1, -2, 3]) ➞ [1, -1, 2]
+// cumulativeSum([3, 3, -2, 408, 3, 3]) ➞ [3, 6, 4, 412, 415, 418]
+
+function cumulativeSum(arr) {
+	let sum = 0; 
+	return arr.map(x => (sum += x))
+}
+
+const cumulativeSum = arr => {
+  return arr.map((x, i) => {
+    return arr.reduce((acc, y, j) => i > j ? acc += y : acc, x);
+  });
+}
+
+function cumulativeSum(arr) {
+	for (let i = 1; i < arr.length; i++) {
+    arr[i] += arr[ i - 1]; 
+	}
+	return arr; 
+}
+
+function cumulativeSum(arr) {
+	let newArr = []; 
+	let sum = 0; 
+	for (let i = 0; i < arr.length; i++)
+	  {
+			sum = sum + arr[i]; 
+			newArr.push(sum); 
+		}
+	return newArr; 
+}
