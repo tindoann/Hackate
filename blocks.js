@@ -10466,7 +10466,19 @@ function getDiscounts(nums, d) {
 // 920. Given a fraction as a string, return whether or not it is greater than 1 when evaluated.
 
 // White - greaterThanOne("1/2") ➞ false
-
 // greaterThanOne("7/4") ➞ true
-
 // greaterThanOne("10/10") ➞ false
+
+function greaterThanOne(frac) {
+	return (eval(frac) > 1); 
+}
+
+function greaterThanOne(frac) {
+	let g = frac.split('/').map(v => Number(v)); 
+	return (g[0] > g[1]); 
+}
+
+function greaterThanOne(frac) {
+	let fraction = frac.split('/')
+	return fraction[0] / fraction[1] > 1
+}
