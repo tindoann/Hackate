@@ -10438,3 +10438,47 @@ function median(arr) {
   arr.sort( (a, b) => a - b)
   return N % 2 === 0 ? (arr[Math.floor(N/2)] + arr[Math.floor(N/2) - 1]) / 2 : arr[Math.floor(N/2)];
 }
+
+// 919. Create a function that applies a discount d to every number in the array.
+
+// White - getDiscounts([2, 4, 6, 11], "50%") ➞ [1, 2, 3, 5.5]
+// getDiscounts([10, 20, 40, 80], "75%") ➞ [7.5, 15, 30, 60]
+// getDiscounts([100], "45%") ➞ [45]
+
+function getDiscounts(nums, d) {
+	return nums.map(x => x * (parseInt(d) / 100));
+}
+
+function getDiscounts(arr,val) {
+	let percent = Number(val.replace("%", ""));
+    let ans =[]
+    for(let i=0;i<arr.length;i++){
+        ans.push((percent / 100) * arr[i]);
+    }
+    return ans;
+}
+
+function getDiscounts(nums, d) {
+	const newD = d.slice(0, -1);
+	return nums.map(x => x * newD / 100);
+}
+
+// 920. Given a fraction as a string, return whether or not it is greater than 1 when evaluated.
+
+// White - greaterThanOne("1/2") ➞ false
+// greaterThanOne("7/4") ➞ true
+// greaterThanOne("10/10") ➞ false
+
+function greaterThanOne(frac) {
+	return (eval(frac) > 1); 
+}
+
+function greaterThanOne(frac) {
+	let g = frac.split('/').map(v => Number(v)); 
+	return (g[0] > g[1]); 
+}
+
+function greaterThanOne(frac) {
+	let fraction = frac.split('/')
+	return fraction[0] / fraction[1] > 1
+}
