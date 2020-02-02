@@ -10407,3 +10407,34 @@ function stupidAddition(a, b) {
 	}
 }
 
+
+// 918. Create a function that takes an array of numbers and return its median. If the input array is even length, take the average of the two medians, else, take the single median.
+
+// ywllow - median([2, 5, 6, 2, 6, 3, 4]) ➞ 4
+// median([21.4323, 432.54, 432.3, 542.4567]) ➞ 432.4
+// median([-23, -43, -29, -53, -67]) ➞ -43
+
+function median(arr) {
+  var sorted = arr.sort(function(a, b){ return a - b; });
+  var idx = Math.round(arr.length/2) - 1;
+  return (arr.length % 2 !== 0) ? sorted[idx] : (sorted[idx] + sorted[idx + 1]) / 2;
+}
+
+const median = arr => {
+  arr.sort((a, b) => a - b);
+	return (arr[(arr.length - 1) >> 1] + arr[arr.length >> 1]) / 2
+}
+
+function median(arr) {
+  const sorted = arr.sort((a, b) => a - b);
+  if (sorted.length % 2 === 0) {
+    return sorted.slice(sorted.length / 2 - 1, sorted.length / 2 + 1).reduce((acc, el) => acc + el) / 2;
+  }
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
+function median(arr) {
+  var N = arr.length;
+  arr.sort( (a, b) => a - b)
+  return N % 2 === 0 ? (arr[Math.floor(N/2)] + arr[Math.floor(N/2) - 1]) / 2 : arr[Math.floor(N/2)];
+}
