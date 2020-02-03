@@ -10517,3 +10517,32 @@ function cumulativeSum(arr) {
 		}
 	return newArr; 
 }
+
+// 922. Write a function that takes an array of elements and returns only the integers.
+
+// Yellow - returnOnlyInteger([9, 2, "space", "car", "lion", 16]) ➞  [9, 2, 16]
+// returnOnlyInteger(["hello", 81, "basketball", 123, "fox"]) ➞ [81, 123]
+// returnOnlyInteger([10, "121", 56, 20, "car", 3, "lion"])  ➞ [10, 56, 20, 3]
+// returnOnlyInteger(["String",  true,  3.3,  1]) ➞ [1]
+
+function returnOnlyInteger(arr) {
+	return arr.filter(x => Number.isInteger(x));
+}
+
+function returnOnlyInteger(arr) {
+	return arr.filter(x => typeof x=='number' && Math.floor(x)==x);
+}
+
+function returnOnlyInteger(arr) {
+	let newArr = [];
+	for (let i = 0; i < arr.length; i++) {
+			if (Number.isInteger(arr[i]) === true) {
+					newArr.push(arr[i]);
+			}
+	}
+	return newArr;
+}
+
+
+
+
