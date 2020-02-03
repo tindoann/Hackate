@@ -10582,6 +10582,32 @@ function countAdverbs(sentence) {
 }
 
 
+// 924.  The 2nd of February 2020 is a palindromic date in both dd/mm/yyyy and mm/dd/yyyy format (02/02/2020). Given a date in dd/mm/yyyy format, return true if the date is palindromic in both date formats.
+
+// Yellow - palindromicDate("02/02/2020") ➞ true
+
+// palindromicDate("11/12/2019") ➞ false
+
+// palindromicDate("11/02/2011") ➞ false
+// Although 11/02/2011 is palindromic in dd/mm/yyyy format,
+// it isn't in mm/dd/yyyy format (02/11/2011)
+
+function palindromicDate(date) {
+	const arr = date.split('/')
+	return arr[0] === arr[1] && arr[2].slice(0, 2) === arr[2].slice(2, 4)
+}
+
+function palindromicDate(date) {
+	var newDate = date.split("/")[1] + "/" + date.split("/")[0] + "/" + date.split("/")[2];
+	return date === newDate && date.replace("/","") === date.replace("/","").split("").reverse().join("");
+}
+
+function palindromicDate(date) {
+	return date.slice(0,5) == ([...date.slice(6,8)].reverse().join('') + '/' + [...date.slice(8)].reverse().join('') )
+};
+
+
+
 
 
 
