@@ -10606,7 +10606,31 @@ function palindromicDate(date) {
 	return date.slice(0,5) == ([...date.slice(6,8)].reverse().join('') + '/' + [...date.slice(8)].reverse().join('') )
 };
 
+// 925. Assume a program only reads .js or .jsx files. Write a function that accepts a file path and returns true if it can read the file and false if it can't.
 
+// Yellow - isJS("/users/user.jsx") ➞ true
+// isJS("/users/user.js") ➞ true
+// isJS("/users/user.ts") ➞ false
+
+function isJS(path) {
+	return /jsx?$/.test(path)
+}
+
+const isJS = path => /\.jsx * $/i.test(path); 
+
+function isJS(path) {
+	let ext = path.split('.').pop(); 
+	if(ext == 'jxs' || ext == 'js') {
+		return true; 
+	} else {
+		return false; 
+	}
+}
+
+function isJS(path) {
+	re = /.(js|jsx)/
+	return re.test(path)
+}
 
 
 
