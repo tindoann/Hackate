@@ -10482,3 +10482,67 @@ function greaterThanOne(frac) {
 	let fraction = frac.split('/')
 	return fraction[0] / fraction[1] > 1
 }
+
+// 921. Create a function that takes an array of numbers and returns an array where each number is the sum of itself + all previous numbers in the array.
+
+// Yellow - cumulativeSum([1, 2, 3]) ➞ [1, 3, 6]
+// cumulativeSum([1, -2, 3]) ➞ [1, -1, 2]
+// cumulativeSum([3, 3, -2, 408, 3, 3]) ➞ [3, 6, 4, 412, 415, 418]
+
+function cumulativeSum(arr) {
+	let sum = 0; 
+	return arr.map(x => (sum += x))
+}
+
+const cumulativeSum = arr => {
+  return arr.map((x, i) => {
+    return arr.reduce((acc, y, j) => i > j ? acc += y : acc, x);
+  });
+}
+
+function cumulativeSum(arr) {
+	for (let i = 1; i < arr.length; i++) {
+    arr[i] += arr[ i - 1]; 
+	}
+	return arr; 
+}
+
+function cumulativeSum(arr) {
+	let newArr = []; 
+	let sum = 0; 
+	for (let i = 0; i < arr.length; i++)
+	  {
+			sum = sum + arr[i]; 
+			newArr.push(sum); 
+		}
+	return newArr; 
+}
+
+// 922. Write a function that takes an array of elements and returns only the integers.
+
+// Yellow - returnOnlyInteger([9, 2, "space", "car", "lion", 16]) ➞  [9, 2, 16]
+// returnOnlyInteger(["hello", 81, "basketball", 123, "fox"]) ➞ [81, 123]
+// returnOnlyInteger([10, "121", 56, 20, "car", 3, "lion"])  ➞ [10, 56, 20, 3]
+// returnOnlyInteger(["String",  true,  3.3,  1]) ➞ [1]
+
+function returnOnlyInteger(arr) {
+	return arr.filter(x => Number.isInteger(x));
+}
+
+function returnOnlyInteger(arr) {
+	return arr.filter(x => typeof x=='number' && Math.floor(x)==x);
+}
+
+function returnOnlyInteger(arr) {
+	let newArr = [];
+	for (let i = 0; i < arr.length; i++) {
+			if (Number.isInteger(arr[i]) === true) {
+					newArr.push(arr[i]);
+			}
+	}
+	return newArr;
+}
+
+
+
+
