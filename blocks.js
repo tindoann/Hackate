@@ -10684,6 +10684,27 @@ function acceptedWords(list) {
 	return newList; 
 }
 
+// 928. You can assign variables from arrays like this:
+
+// const arr = [1, 2, 3, 4, 5, 6]
+// let a = arr[0]
+// let b = arr[1]
+
+// console.log(a) // outputs 1
+// console.log(b) // outputs 2
+
+// Yellow - Create variables a and b from the given array using es6 array destructuring,
+// where a === 1 and b === 2
+
+const arr = [1, 2, 3, 4, 5, 6]
+let [a, b] = arr
+
+const arr = [1, 2, 3, 4, 5, 6]
+
+let a = arr[0]
+let b = arr[1]
+
+
 
 
 
