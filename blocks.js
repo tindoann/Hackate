@@ -10733,3 +10733,25 @@ function asterisk(string) {
 		return false;
 	}
 }
+
+// 930. Given an array of 10 numbers, return the maximum possible total made by summing just 5 of the 10 numbers.
+
+// Yellow - maxTotal([1, 1, 0, 1, 3, 10, 10, 10, 10, 1]) ➞ 43
+// maxTotal([0, 0, 0, 0, 0, 0, 0, 0, 0, 100]) ➞ 100
+// maxTotal([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) ➞ 40
+
+const maxTotal = numbers => {
+	return numbers
+    .sort((a, z) => z - a).slice(0, 5).reduce((a, b) => a + b, 0) 
+}
+
+function maxTotal(nums) {
+	let sortmax = nums.sort((a, b) => b - a); 
+	let total = 0; 
+
+	for(let i = 0; i < 5; i++) {
+		total += sortmax[i]; 
+	}
+	return total; 
+}
+
