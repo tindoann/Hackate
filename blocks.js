@@ -10606,7 +10606,83 @@ function palindromicDate(date) {
 	return date.slice(0,5) == ([...date.slice(6,8)].reverse().join('') + '/' + [...date.slice(8)].reverse().join('') )
 };
 
+// 925. Assume a program only reads .js or .jsx files. Write a function that accepts a file path and returns true if it can read the file and false if it can't.
 
+// Yellow - isJS("/users/user.jsx") ➞ true
+// isJS("/users/user.js") ➞ true
+// isJS("/users/user.ts") ➞ false
+
+function isJS(path) {
+	return /jsx?$/.test(path)
+}
+
+const isJS = path => /\.jsx * $/i.test(path); 
+
+function isJS(path) {
+	let ext = path.split('.').pop(); 
+	if(ext == 'jxs' || ext == 'js') {
+		return true; 
+	} else {
+		return false; 
+	}
+}
+
+function isJS(path) {
+	re = /.(js|jsx)/
+	return re.test(path)
+}
+
+// 926. You can assign variables from nested arrays like this:
+
+// let trans1 = arr[0]  
+// let trans2 = arr[1]  
+// let trans3 = arr[2][0]  
+// let trans4 = arr[2][1][0] 
+
+// console.log(trans1) // outputs "cars"
+// console.log(trans2) // outputs "planes"
+// console.log(trans3) // outputs "trains"
+// console.log(trans4) // outputs "motorcycles"
+
+const arr = ["cars", "planes", ["trains", ["motorcycles"]]]
+let [ trans1, trans2, [trans3, [trans4]] ] = arr
+
+const arr = ["cars", "planes", ["trains", ["motorcycles"]]];
+const [trans1, trans2, [trans3, [trans4]]] = arr;
+
+const arr = ["cars", "planes", ["trains", ["motorcycles"]]]
+let trans1 = arr[0]
+let trans2 = arr[1]
+let trans3 = arr[2][0]
+let trans4 = arr[2][1][0]
+
+// 927. You are give an array with random words but your program doesn't accept words that begin with the capital letter "C". Remove the unaccepted words and return the new array.
+
+// Yellow - accepted(["Ducks", "Bears",  "Cats"]) ➞ ["Ducks", "Bears"]
+// accepted(["cars", "trucks", "planes"] ➞ ["cars", trucks", "planes"]
+// accepted(["Cans", "Worms", "Bugs", "Cold", "Beans"]) ➞ ["Worms", "Bugs", "Beans"]
+
+function acceptedWords(list) {
+	return list.filter(x => /^[^C]/.test(x))
+}
+
+function acceptedWords(list) {
+	return list.filter(x => x.charAt(0) !='C'); 
+}
+
+function acceptedWords(list) {
+
+	let newList = []; 
+
+	for(let i = 0; i < list.length; i++) {
+		let char = list[i]; 
+		if(char.charAc(0) != 'C') {
+			newList.push(char); 
+		}
+	}
+
+	return newList; 
+}
 
 
 
