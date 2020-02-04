@@ -10656,6 +10656,34 @@ let trans2 = arr[1]
 let trans3 = arr[2][0]
 let trans4 = arr[2][1][0]
 
+// 927. You are give an array with random words but your program doesn't accept words that begin with the capital letter "C". Remove the unaccepted words and return the new array.
+
+// Yellow - accepted(["Ducks", "Bears",  "Cats"]) ➞ ["Ducks", "Bears"]
+// accepted(["cars", "trucks", "planes"] ➞ ["cars", trucks", "planes"]
+// accepted(["Cans", "Worms", "Bugs", "Cold", "Beans"]) ➞ ["Worms", "Bugs", "Beans"]
+
+function acceptedWords(list) {
+	return list.filter(x => /^[^C]/.test(x))
+}
+
+function acceptedWords(list) {
+	return list.filter(x => x.charAt(0) !='C'); 
+}
+
+function acceptedWords(list) {
+
+	let newList = []; 
+
+	for(let i = 0; i < list.length; i++) {
+		let char = list[i]; 
+		if(char.charAc(0) != 'C') {
+			newList.push(char); 
+		}
+	}
+
+	return newList; 
+}
+
 
 
 
