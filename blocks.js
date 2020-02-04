@@ -10704,8 +10704,32 @@ const arr = [1, 2, 3, 4, 5, 6]
 let a = arr[0]
 let b = arr[1]
 
+// 929. Using the test method in your function, return whether a string contains the characters a and c (in that order) with any number of b characters (including zero) between them.
 
+// Yellow - asterisk("account") ➞ true
+// asterisk("abccount") ➞ true
+// asterisk("abbbccount") ➞ true
+// asterisk("bbbccount") ➞ false
 
+function asterisk(string) {
+	return /ab*c/.test(string)
+}
 
+function asterisk(string) {
+	return /ab*c/i.test(string)
+}
 
+function asterisk(string) {
+	return	/ab*c/gi.test(string)
+}
 
+function asterisk(string) {
+	var desired = /ab*c/;
+	var result = desired.test(string)
+	if (result===true) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
