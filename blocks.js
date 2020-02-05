@@ -10755,3 +10755,87 @@ function maxTotal(nums) {
 	return total; 
 }
 
+// 931. Given an array of numbers and a positive value for n, return the sum of every nth number in the array.
+
+// White - sumEveryNth([4, 8, 6, 6, 7, 9, 3], 1) ➞ 43
+// 4+8+6+6+7+9+3 = 43
+
+// sumEveryNth([7, 3, 10, 4, 5, 8, 4, 9, 6, 9, 10, 1, 4], 4) ➞ 14
+// 4+9+1 = 14
+
+// sumEveryNth([10, 6, 5, 4, 5, 2, 3, 3, 8, 10, 7, 2], 8) ➞ 3
+// 3
+
+// sumEveryNth([6, 8, 9, 4, 6, 4, 7, 1, 5, 6, 10, 2], 13) ➞ 0
+// only 12 numbers in array
+
+function sumEveryNth(numbers, n) {
+	return numbers.map((x,i)=>(i+1)%n?0:x).reduce((a,b)=>a+b,0)
+}
+
+function sumEveryNth(numbers, n) {
+	var m = 0;
+	for (var i = n-1; i < numbers.length; i += n) {
+		m += numbers[i];
+	}
+	return m;
+}
+
+function sumEveryNth(numbers, n) {
+	let result = 0;
+	for(let i = n-1; i < numbers.length; i += n){
+		result += numbers[i];
+	}
+	return result;
+}
+
+function sumEveryNth(numbers, n) {
+	let sum = 0;
+	for (let i = n - 1; i < numbers.length; i += n) sum += numbers[i];
+	return sum;
+}
+
+// 932. 
+
+// The function skipTooMuchSugarDrinks() takes in an array of drinks. Make sure the function only returns an array of drinks with no sugar in it or a little bit of sugar.
+
+// Drinks that contain too much sugar (in this challenge) are:
+
+// Cola
+// Fanta
+
+// y sskipTooMuchSugarDrinks(["fanta", "cola", "water"]) ➞ [water]
+
+// skipTooMuchSugarDrinks(["fanta", "cola"]) ➞ []
+
+// skipTooMuchSugarDrinks(["lemonade", "beer", "water"]) ➞ ["lemonade", "beer", "water"]
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x !== 'cola' && x !=='fanta'); 
+}
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x => !/fanta|cola/.test(x))
+}
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x => !['cola', 'fanta'].includes(x))
+}
+
+function skipTooMuchSugarDrinks(drinks) {
+
+	let newarr= []; 
+
+	for (let i = 0; i < drinks.length; i++) {
+		if ((drinks[i] != 'cola') && (dinks[i] != 'fanta')) {
+			newarr.push(drinks[i]); 
+		}
+	}
+  return newarr; 
+}
+
+function skipTooMuchSugarDinks(drinks) {
+	return drinks.filter((item) => {
+		return item !== 'cola' && item !== 'fanta'; 
+	})
+}
