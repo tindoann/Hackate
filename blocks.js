@@ -10804,7 +10804,7 @@ function sumEveryNth(numbers, n) {
 // Cola
 // Fanta
 
-// y sskipTooMuchSugarDrinks(["fanta", "cola", "water"]) ➞ [water]
+// Yellow - sskipTooMuchSugarDrinks(["fanta", "cola", "water"]) ➞ [water]
 
 // skipTooMuchSugarDrinks(["fanta", "cola"]) ➞ []
 
@@ -10839,3 +10839,24 @@ function skipTooMuchSugarDinks(drinks) {
 		return item !== 'cola' && item !== 'fanta'; 
 	})
 }
+
+// 933. Create a function which takes in a sentence str and a string of characters chars and return the sentence but with all the specified characters removed.
+
+// Yellow - stripSentence("the quick brown fox jumps over the lazy dog", "aeiou") ➞ "th qck brwn fx jmps vr th lzy dg"
+// stripSentence("the hissing snakes sinisterly slither across the rustling leaves", "s") ➞ "the hiing nake initerly lither acro the rutling leave"
+// stripSentence("gone, reduced to atoms", "go, muscat nerd") ➞ ""
+
+function stripSentence(str, chars) {
+	let regex = new RegExp('[' + chars + ']', 'g');
+	return str.replace(regex, '');
+}
+
+function stripSentence(str, chars) {
+	let characters = chars.split('')
+	return str.split('')
+		.filter(x => !characters.includes(x))
+		.join(''); 
+}
+
+const stripSentence = (str, ch) => str.replace(RegExp(`[${ch}]`,`gi`),``)
+
