@@ -11001,6 +11001,38 @@ function  alphabetIndex(str) {
 	return str.toLowerCase().match(/[a-z]/g).map(c => c.charCodeAt(0) - 96).join(' ');
 }
 
+// 938. Write a function that takes a string and calculates the number of letters and digits within it. Return the result as an object.
+
+// Yellow - countAll("Hello World") ➞ { "LETTERS":  10, "DIGITS": 0 }
+// countAll("H3ll0 Wor1d") ➞ { "LETTERS":  7, "DIGITS": 3 }
+// countAll("149990") ➞ { "LETTERS": 0, "DIGITS": 6 }
+
+function countAll(str) {
+	return {
+		'LETTERS': (str.match(/[a-z]/gi) || []).length), 
+		'DIGITS' : (str.match(/\d/gi) ||).length
+	}
+}
+
+function countAll(str) {
+	let strings = 0, numbers = 0;
+	for (let char of str) {
+		if (char != ' ') {
+			if (isNaN(char))
+				strings++;
+			else
+				numbers++;		
+		}
+	}
+	return {"LETTERS": strings, "DIGITS": numbers};
+}
+
+function countAll(str) {
+	let letters = [...str].filter(item => /[a-zA-Z]/.test(item));
+	let digits = [...str].filter(item => /[0-9]/.test(item));
+	return {"LETTERS" : letters.length, "DIGITS" : digits.length}
+}
+
 
 
 
