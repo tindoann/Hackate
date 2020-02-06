@@ -10912,3 +10912,39 @@ function sumDigitals(a, b) {
 	return count; 
 }
 
+// 936. Create a function that takes an array of strings and return the number of smiley faces contained within it. These are the components that make up a valid smiley:
+
+// A smiley has eyes. Eyes can be : or ;.
+// A smiley has a nose but it doesn't have to. A nose can be - or ~.
+// A smiley has a mouth which can be ) or D.
+
+// Yellow - countSmileys([":)", ";(", ";}", ":-D"]) ➞ 2
+// countSmileys([";D", ":-(", ":-)", ";~)"]) ➞ 3
+// countSmileys([";]", ":[", ";*", ":$", ";-D"]) ➞ 1
+
+function countSmileys(arr) {
+	return arr.filter(x => /(\;|\:)(\-|\~){0,1}(\)|D)/.test(x)).length;
+
+} }
+
+function countSmileys(arr) {
+	let count = 0; 
+	let regex = /[:;][-~]?[)D]/i
+	if (arr.length === 0) {
+		return 0; 
+	} else {
+		arr.forEach(e => {
+			if (regex.test(e) === true) {
+				count++; 
+			}
+		})
+		return count; 
+	}
+}
+
+const countSmileys = a => {
+	let x = a.join``.match(/[:;][-~]?[\)D]/g);
+	return x === null ? 0 : x.length;
+}
+
+
