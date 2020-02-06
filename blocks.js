@@ -10755,3 +10755,115 @@ function maxTotal(nums) {
 	return total; 
 }
 
+// 931. Given an array of numbers and a positive value for n, return the sum of every nth number in the array.
+
+// White - sumEveryNth([4, 8, 6, 6, 7, 9, 3], 1) ➞ 43
+// 4+8+6+6+7+9+3 = 43
+
+// sumEveryNth([7, 3, 10, 4, 5, 8, 4, 9, 6, 9, 10, 1, 4], 4) ➞ 14
+// 4+9+1 = 14
+
+// sumEveryNth([10, 6, 5, 4, 5, 2, 3, 3, 8, 10, 7, 2], 8) ➞ 3
+// 3
+
+// sumEveryNth([6, 8, 9, 4, 6, 4, 7, 1, 5, 6, 10, 2], 13) ➞ 0
+// only 12 numbers in array
+
+function sumEveryNth(numbers, n) {
+	return numbers.map((x,i)=>(i+1)%n?0:x).reduce((a,b)=>a+b,0)
+}
+
+function sumEveryNth(numbers, n) {
+	var m = 0;
+	for (var i = n-1; i < numbers.length; i += n) {
+		m += numbers[i];
+	}
+	return m;
+}
+
+function sumEveryNth(numbers, n) {
+	let result = 0;
+	for(let i = n-1; i < numbers.length; i += n){
+		result += numbers[i];
+	}
+	return result;
+}
+
+function sumEveryNth(numbers, n) {
+	let sum = 0;
+	for (let i = n - 1; i < numbers.length; i += n) sum += numbers[i];
+	return sum;
+}
+
+// 932. 
+
+// The function skipTooMuchSugarDrinks() takes in an array of drinks. Make sure the function only returns an array of drinks with no sugar in it or a little bit of sugar.
+
+// Drinks that contain too much sugar (in this challenge) are:
+
+// Cola
+// Fanta
+
+// Yellow - sskipTooMuchSugarDrinks(["fanta", "cola", "water"]) ➞ [water]
+
+// skipTooMuchSugarDrinks(["fanta", "cola"]) ➞ []
+
+// skipTooMuchSugarDrinks(["lemonade", "beer", "water"]) ➞ ["lemonade", "beer", "water"]
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x !== 'cola' && x !=='fanta'); 
+}
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x => !/fanta|cola/.test(x))
+}
+
+function skipTooMuchSugarDrinks(drinks) {
+	return drinks.filter(x => !['cola', 'fanta'].includes(x))
+}
+
+function skipTooMuchSugarDrinks(drinks) {
+
+	let newarr= []; 
+
+	for (let i = 0; i < drinks.length; i++) {
+		if ((drinks[i] != 'cola') && (dinks[i] != 'fanta')) {
+			newarr.push(drinks[i]); 
+		}
+	}
+  return newarr; 
+}
+
+function skipTooMuchSugarDinks(drinks) {
+	return drinks.filter((item) => {
+		return item !== 'cola' && item !== 'fanta'; 
+	})
+}
+
+// 933. Create a function which takes in a sentence str and a string of characters chars and return the sentence but with all the specified characters removed.
+
+// Yellow - stripSentence("the quick brown fox jumps over the lazy dog", "aeiou") ➞ "th qck brwn fx jmps vr th lzy dg"
+// stripSentence("the hissing snakes sinisterly slither across the rustling leaves", "s") ➞ "the hiing nake initerly lither acro the rutling leave"
+// stripSentence("gone, reduced to atoms", "go, muscat nerd") ➞ ""
+
+function stripSentence(str, chars) {
+	let regex = new RegExp('[' + chars + ']', 'g');
+	return str.replace(regex, '');
+}
+
+function stripSentence(str, chars) {
+	let characters = chars.split('')
+	return str.split('')
+		.filter(x => !characters.includes(x))
+		.join(''); 
+}
+
+const stripSentence = (str, ch) => str.replace(RegExp(`[${ch}]`,`gi`),``)
+
+// 934. Given a fraction frac (given in the format "1/2" for example) and n number of decimal places, return a sentence in the following format:
+
+// "{fraction} rounded to {n} decimal places is {answer}"
+
+// Yellow - fracRound("1/3", 5) ➞ "1/3 rounded to 5 decimal places is 0.33333"
+// fracRound("2/8", 4) ➞ "2/8 rounded to 4 decimal places is 0.2500"
+// fracRound("22/7", 2) ➞ "22/7 rounded to 2 decimal places is 3.14"
