@@ -10867,3 +10867,48 @@ const stripSentence = (str, ch) => str.replace(RegExp(`[${ch}]`,`gi`),``)
 // Yellow - fracRound("1/3", 5) ➞ "1/3 rounded to 5 decimal places is 0.33333"
 // fracRound("2/8", 4) ➞ "2/8 rounded to 4 decimal places is 0.2500"
 // fracRound("22/7", 2) ➞ "22/7 rounded to 2 decimal places is 3.14"
+
+function fracRound(frac, n) {
+	return `${frac} rounded to ${n} decimal places is ${eval(frac).toFixed(n)}`;
+}
+
+const fracRound = (frac, n) => {
+	const res = frac.split('/');
+	const round = (res[0] / res[1]).toFixed(n);
+	return `${frac} rounded to ${n} decimal places is ${round}`;
+}
+
+// 935. Create a function that sums the total number of digits between two numbers, inclusive. For example, between the numbers 19 and 22 we have:
+
+// Yellow - sumDigits(7, 8) ➞ 15
+// sumDigits(17, 20) ➞ 29
+// sumDigits(10, 12) ➞ 6
+
+function sumDigitals(a, b) {
+	let arr = []; 
+	for (let i = a; i <= b; i++) {
+		arr.push(i); 
+	}
+	return arr.join('').split('').reduce(function(a, b) {return Number(a) + Number(b)}); 
+}
+
+function sumDigits(a, b) {
+	let res = []; 
+	for(let i = a; i <= b; i++) {
+		res.push(String(i).split('').reduce((x, y) => Number(x) + Number(y))); 
+	}
+	return res.reduce((a, b) => Number(a) + Number(b))
+}
+
+function sumDigitals(a, b) {
+	let count = 0, j = 0; 
+	for(let i = a; i <= b; i++) {
+		j = i; 
+		while(j > 0) {
+			count += j % 10; 
+			j= Math.trunc(j / 10); 
+		}
+	}
+	return count; 
+}
+
