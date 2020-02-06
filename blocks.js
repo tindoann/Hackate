@@ -10947,4 +10947,93 @@ const countSmileys = a => {
 	return x === null ? 0 : x.length;
 }
 
+// 936. Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
+
+// White - addUp(4) ➞ 10
+// addUp(13) ➞ 91
+// addUp(600) ➞ 180300
+
+function addUp(num) {
+  return (num * (num + 1))/2;
+}
+
+function addUp(num) {
+  if (num === 1) return 1;
+  return num + addUp(num - 1);
+}
+
+function addUp(num) {
+  let sum = 0;
+  for (let i = 1; i <= num; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+const addUp = n => Array
+	.from({ length: n + 1 }, (v, i) => i)
+	.reduce((a, b) => a + b);
+
+// 937. Create a function that takes a string and replaces each letter with its appropriate position in the alphabet. "a" is 1, "b" is 2, "c" is 3, etc, etc.
+
+// alphabetIndex("Wow, does that work?")
+// ➞ "23 15 23 4 15 5 19 20 8 1 20 23 15 18 11"
+
+// alphabetIndex("The river stole the gods.")
+// ➞ "20 8 5 18 9 22 5 18 19 20 15 12 5 20 8 5 7 15 4 19"
+
+// alphabetIndex("We have a lot of rain in June.")
+// ➞ "23 5 8 1 22 5 1 12 15 20 15 6 18 1 9 14 9 14 10 21 14 5"
+
+function alphabetIndex(str) {
+	const letters = 'abcdefghijklmnopqrstuvwxyz'; 
+	return [...str.toLowerCase()]
+	.filter(s => letters.includes(s))
+	.map(s => letters.indexOf(s) + 1)
+	.join(' '); 
+}
+
+function alphabetIndex(str) {
+  str.split('').filter( ch => /[a-zA-Z]/.test(ch) ).map( ch => ch.toLowerCase().charCodeAt() - 96 ).join(' ');
+}
+
+function  alphabetIndex(str) {
+	return str.toLowerCase().match(/[a-z]/g).map(c => c.charCodeAt(0) - 96).join(' ');
+}
+
+// 938. Write a function that takes a string and calculates the number of letters and digits within it. Return the result as an object.
+
+// Yellow - countAll("Hello World") ➞ { "LETTERS":  10, "DIGITS": 0 }
+// countAll("H3ll0 Wor1d") ➞ { "LETTERS":  7, "DIGITS": 3 }
+// countAll("149990") ➞ { "LETTERS": 0, "DIGITS": 6 }
+
+function countAll(str) {
+	return {
+		'LETTERS': (str.match(/[a-z]/gi) || []).length), 
+		'DIGITS' : (str.match(/\d/gi) ||).length
+	}
+}
+
+function countAll(str) {
+	let strings = 0, numbers = 0;
+	for (let char of str) {
+		if (char != ' ') {
+			if (isNaN(char))
+				strings++;
+			else
+				numbers++;		
+		}
+	}
+	return {"LETTERS": strings, "DIGITS": numbers};
+}
+
+function countAll(str) {
+	let letters = [...str].filter(item => /[a-zA-Z]/.test(item));
+	let digits = [...str].filter(item => /[0-9]/.test(item));
+	return {"LETTERS" : letters.length, "DIGITS" : digits.length}
+}
+
+
+
+
 
