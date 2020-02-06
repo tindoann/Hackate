@@ -11033,6 +11033,37 @@ function countAll(str) {
 	return {"LETTERS" : letters.length, "DIGITS" : digits.length}
 }
 
+// 939. replace("abcdef", "c-e") ➞ "ab###f"
+
+// replace("rattle", "r-z") ➞ "#a##le"
+// replace("microscopic", "i-i") ➞ "m#croscop#c"
+// replace("", "a-z") ➞ ""
+
+// White - replace("abcdef", "c-e") ➞ "ab###f"
+// replace("rattle", "r-z") ➞ "#a##le"
+// replace("microscopic", "i-i") ➞ "m#croscop#c"
+// replace("", "a-z") ➞ ""
+
+function replace(str, r) {
+	var reg = new RegExp("[" + r + "]", "gi")
+	return str.replace(reg, "#")
+}
+
+function replace(str, r) {
+	return str.replace(new RegExp(`[${r}]`, 'g'), '#')
+}
+
+function replace(str, r) {
+	var replace=r.split('');
+	return str.split('')
+	.map((i,index) => i >= replace[0] && i <= replace[2] ? '#' : i)
+	.join('');
+}
+
+
+
+
+
 
 
 
