@@ -10973,3 +10973,35 @@ function addUp(num) {
 const addUp = n => Array
 	.from({ length: n + 1 }, (v, i) => i)
 	.reduce((a, b) => a + b);
+
+// 937. Create a function that takes a string and replaces each letter with its appropriate position in the alphabet. "a" is 1, "b" is 2, "c" is 3, etc, etc.
+
+// alphabetIndex("Wow, does that work?")
+// ➞ "23 15 23 4 15 5 19 20 8 1 20 23 15 18 11"
+
+// alphabetIndex("The river stole the gods.")
+// ➞ "20 8 5 18 9 22 5 18 19 20 15 12 5 20 8 5 7 15 4 19"
+
+// alphabetIndex("We have a lot of rain in June.")
+// ➞ "23 5 8 1 22 5 1 12 15 20 15 6 18 1 9 14 9 14 10 21 14 5"
+
+function alphabetIndex(str) {
+	const letters = 'abcdefghijklmnopqrstuvwxyz'; 
+	return [...str.toLowerCase()]
+	.filter(s => letters.includes(s))
+	.map(s => letters.indexOf(s) + 1)
+	.join(' '); 
+}
+
+function alphabetIndex(str) {
+  str.split('').filter( ch => /[a-zA-Z]/.test(ch) ).map( ch => ch.toLowerCase().charCodeAt() - 96 ).join(' ');
+}
+
+function  alphabetIndex(str) {
+	return str.toLowerCase().match(/[a-z]/g).map(c => c.charCodeAt(0) - 96).join(' ');
+}
+
+
+
+
+
