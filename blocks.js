@@ -11033,7 +11033,134 @@ function countAll(str) {
 	return {"LETTERS" : letters.length, "DIGITS" : digits.length}
 }
 
+// 939. replace("abcdef", "c-e") ➞ "ab###f"
 
+// replace("rattle", "r-z") ➞ "#a##le"
+// replace("microscopic", "i-i") ➞ "m#croscop#c"
+// replace("", "a-z") ➞ ""
 
+// White - replace("abcdef", "c-e") ➞ "ab###f"
+// replace("rattle", "r-z") ➞ "#a##le"
+// replace("microscopic", "i-i") ➞ "m#croscop#c"
+// replace("", "a-z") ➞ ""
 
+function replace(str, r) {
+	var reg = new RegExp("[" + r + "]", "gi")
+	return str.replace(reg, "#")
+}
 
+function replace(str, r) {
+	return str.replace(new RegExp(`[${r}]`, 'g'), '#')
+}
+
+function replace(str, r) {
+	var replace=r.split('');
+	return str.split('')
+	.map((i,index) => i >= replace[0] && i <= replace[2] ? '#' : i)
+	.join('');
+}
+
+// 940. You are given the length of a video in minutes. The format is mm:ss (Example: '02:54'). Create a function which takes the video length and return it in seconds.
+
+// Yellow - minutesToSeconds('01:00') ➞ 60
+// minutesToSeconds('13:56') ➞ 836
+// minutesToSeconds('10:60') ➞ false
+
+function minutesToSeconds(time) {
+	let mass = time.split(':'); 
+	if (mmss[1] >= 60) return false; 
+	return parseInt(mmss[0] * 60) + parseInt(mmss[1]); 
+}
+
+function minutesToSeconds(time) {
+	let arr = time.split(':'); 
+	return (arr[1] >= 60) ? false : arr[0] * 60 + +arr[i]; 
+}
+
+function minutesToSeconds(time) {
+	const [minutes, seconds] = time.split(':').map(Number);
+	return (seconds >=  60) ? false : seconds + minutes * 60;
+};
+
+// 941. The arrays may be of different lengths, with at least one character / digit.
+// The first array will contain string characters (lowercase, a-z).
+// The second array will contain integers (all positive).
+
+// Yellow - The arrays may be of different lengths, with at least one character / digit.
+// The first array will contain string characters (lowercase, a-z).
+// The second array will contain integers (all positive).
+
+function mergeArrays(a, b) {
+  return a.reduce((arr, c, i) => {
+    return arr.concat(c).concat(b.slice(i, i+1))
+  }, []).concat(b.slice(a.length))
+}
+
+function mergeArrays(a, b) {
+  let result = [];
+  while (a.length + b.length > 0) {
+    if (a.length > 0) result = [...result, a.shift()];
+    if (b.length > 0) result = [...result, b.shift()];
+  }
+  return result;
+}
+
+function mergeArrays(a, b) {
+	return [].concat(...a.map((v,i)=>(b[0])?[v,b.shift()]:v),b)
+}
+
+function mergeArrays(a, b) {
+  var newArray = [];
+  for (i = 0; i < a.length; i++) { 
+    a.push( b[i + 1] );
+	}
+}
+
+// 942. You will be given a number and you will need to return it as a string in Expanded Form.
+
+// Yellow - console.log( expandedForm(12) ); // Should return '10 + 2'
+// console.log( expandedForm(42) ); // Should return '40 + 2'
+// console.log( expandedForm(70304) ); // Should return '70000 + 300 + 4'
+// console.log( expandedForm(9000000) );
+
+function expandedForm(num) {
+	// Convert num to a string array
+	let numStringArray = String(num).split('');
+	// Get length ofstring array
+	let len = numStringArray.length; 
+	let result = '';  
+
+	// For each digit in array
+	numStringArray.map( (n, index) => {
+		// Perform only if n > 0
+		if ( n > 0) {
+			// Add plus sign if result is not empty (for the next digits)
+			if (result) { result += ' + '}
+
+			// Pad zeros the right limited to array length minus current index
+			result += n.padEnd(len - index, '0'); 
+		}
+	}); 
+	return result; 
+}
+
+function expandedForm(num) {
+	return String(num)
+					// split the number
+					.split("")
+					// go over each index and subtract the length by 1 
+					.map((num, index, arr) => num + "0".repeat(arr.length - index -1 ))
+					// filter out the zero 
+					.filter((num) => Number(num) != 0)
+					// last, add the char together
+          .join(" + ")
+}
+
+function expandedForm(num) {
+  var arr = num.toString().split('').reverse();
+  var result = [];
+  for(var i = 0; i < arr.length; i++){
+    arr[i] == 0 ? result.push() : result.push(arr[i] + ('0'.repeat(i)))
+  }
+  return result.reverse().join(' + ')
+}
