@@ -11082,7 +11082,36 @@ function minutesToSeconds(time) {
 	return (seconds >=  60) ? false : seconds + minutes * 60;
 };
 
+// 941. The arrays may be of different lengths, with at least one character / digit.
+// The first array will contain string characters (lowercase, a-z).
+// The second array will contain integers (all positive).
 
+// Yellow - The arrays may be of different lengths, with at least one character / digit.
+// The first array will contain string characters (lowercase, a-z).
+// The second array will contain integers (all positive).
 
+function mergeArrays(a, b) {
+  return a.reduce((arr, c, i) => {
+    return arr.concat(c).concat(b.slice(i, i+1))
+  }, []).concat(b.slice(a.length))
+}
 
+function mergeArrays(a, b) {
+  let result = [];
+  while (a.length + b.length > 0) {
+    if (a.length > 0) result = [...result, a.shift()];
+    if (b.length > 0) result = [...result, b.shift()];
+  }
+  return result;
+}
 
+function mergeArrays(a, b) {
+	return [].concat(...a.map((v,i)=>(b[0])?[v,b.shift()]:v),b)
+}
+
+function mergeArrays(a, b) {
+  var newArray = [];
+  for (i = 0; i < a.length; i++) { 
+    a.push( b[i + 1] );
+	}
+}
