@@ -11060,9 +11060,27 @@ function replace(str, r) {
 	.join('');
 }
 
+// 940. You are given the length of a video in minutes. The format is mm:ss (Example: '02:54'). Create a function which takes the video length and return it in seconds.
 
+// Yellow - minutesToSeconds('01:00') ➞ 60
+// minutesToSeconds('13:56') ➞ 836
+// minutesToSeconds('10:60') ➞ false
 
+function minutesToSeconds(time) {
+	let mass = time.split(':'); 
+	if (mmss[1] >= 60) return false; 
+	return parseInt(mmss[0] * 60) + parseInt(mmss[1]); 
+}
 
+function minutesToSeconds(time) {
+	let arr = time.split(':'); 
+	return (arr[1] >= 60) ? false : arr[0] * 60 + +arr[i]; 
+}
+
+function minutesToSeconds(time) {
+	const [minutes, seconds] = time.split(':').map(Number);
+	return (seconds >=  60) ? false : seconds + minutes * 60;
+};
 
 
 
