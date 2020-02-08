@@ -11181,3 +11181,16 @@ function array_diff(a, b) {
 		}
 	}); 
 }
+
+// 944. Object destructuring and new variable names
+
+// const obj =  { one : 1, two : 2 }
+// var { one, two } = obj
+
+// Yellow - Use es6 object destructuring to assign obj.one to the variable anotherOne.
+// Variable two needs to remain assigned to obj.two
+// Ignore the .toString() function (used for validation)
+
+// let str = `({ one, two } = { one : 1, two : 2}).toString()`
+
+let str = `({ one: anotherOne, two } = { one : 1, two : 2}).toString()`
