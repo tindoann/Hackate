@@ -11195,7 +11195,7 @@ function array_diff(a, b) {
 
 let str = `({ one: anotherOne, two } = { one : 1, two : 2}).toString()`
 
-//945. You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+// 945. You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
 // However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
 // Task: Given an integral number, determine if it's a square number:
 // In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
@@ -11223,3 +11223,17 @@ let isSquare = function(n) {
 	else return false;
 }
 
+// 946. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, except in C, where, to keep the difficulty at the level of the kata, you are given two parameters, the first a buffer with length exactly the same as the second parameter, the original string. You don't have to worry with strings with less than two characters.
+
+// console.log( removeChar('Hello') );
+
+function removeChar(str) {
+	// Convert string to array
+	str_array = str.split(''); 
+	// Remove first letter from array
+	str_array[0] = ''; 
+	// Remove last letter from array
+	str_array[str.length - 1] = ''; 
+
+	return str_array.join(''); 
+}; 
