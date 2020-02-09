@@ -11247,3 +11247,43 @@ function removeChar(str) {
 function descendingOrder(n) {
 	return parseInt(n.toString().split('').sort().reverse().join(''));
 }
+// 948. Given an array of integers your solution should find the smallest integer.
+
+class SmallestIntegerFinder {
+	findSmallestInt(args) {
+		// sort function searches for the smallest integer in decedent order
+		return args.sort(function(a, b) {
+			return a - b})[0]; 
+		}
+	}
+
+	let finder = new SmallestIntegerFinder();
+	console.log( finder.findSmallestInt( [34, 15, 88, 2]) );
+	console.log( finder.findSmallestInt( [34, -345, -1, 100]) );
+
+// 949. You might know some pretty large perfect squares. But what about the NEXT one?
+// Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+// If the parameter is itself not a perfect square, than -1 should be returned. You may assume the parameter is positive.
+
+// Yellow - console.log( findNextSquare(121) );// --> returns 144
+// console.log( findNextSquare(625) );// --> returns 676
+// console.log( findNextSquare(114) );// --> returns -1 since 114 is not a perfect
+
+function findNextSquare(sq) {
+  // Return the next square if sq if a perfect square, -1 otherwise
+  let square = Math.sqrt(sq);
+  // If number is not a decimal
+  if (Number.isInteger(square)) {
+    // Increament square root of input number by 1
+    square+=1;
+    // Return the new number's value raise to 2
+    return Math.pow(square,2);
+  }
+  else {
+    return -1;
+  }
+  return Math.sqrt(sq);
+}
+
+
+
