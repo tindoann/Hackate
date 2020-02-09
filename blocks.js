@@ -11164,3 +11164,152 @@ function expandedForm(num) {
   }
   return result.reverse().join(' + ')
 }
+
+// 943. Your goal in this kata is to implement an difference function, which subtracts one list from another.
+// It should remove all values from list a, which are present in list b.
+// If a value is present in b, all of its occurrences must be removed from the other:
+
+// Yellow - console.log( array_diff([1,2],[1]) ); //== [2]
+// console.log( array_diff([1,2,2,2,3],[2]) ); //== [1,3]
+
+function array_diff(a, b) {
+	// use array filter to check if every num in array a can be found in array b
+	return a.filter(function(num) {
+		// If num is not found in array b, return num
+		if (!b.includes(num)) {
+			return num; 
+		}
+	}); 
+}
+
+// 944. Object destructuring and new variable names
+
+// const obj =  { one : 1, two : 2 }
+// var { one, two } = obj
+
+// Yellow - Use es6 object destructuring to assign obj.one to the variable anotherOne.
+// Variable two needs to remain assigned to obj.two
+// Ignore the .toString() function (used for validation)
+
+// let str = `({ one, two } = { one : 1, two : 2}).toString()`
+
+let str = `({ one: anotherOne, two } = { one : 1, two : 2}).toString()`
+
+// 945. You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+// However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+// Task: Given an integral number, determine if it's a square number:
+// In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+// The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+// console.log(isSquare(-1)); // => false
+// console.log(isSquare( 3)); // => false
+// console.log(isSquare( 4)); // => true
+// console.log(isSquare(25)); // => true
+// console.log(isSquare(26)); // => false
+
+let isSquare = function(n) {
+// Numbers less than 0 are not square
+	if (n < 0) { 
+		return false 
+	}
+	
+	// Get square root of number
+	x = Math.sqrt(n); 
+
+	// Check if sqrt is an integer
+	if (Number.isInteger(x)) {
+		return true; 
+	}
+	else return false;
+}
+
+// 946. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, except in C, where, to keep the difficulty at the level of the kata, you are given two parameters, the first a buffer with length exactly the same as the second parameter, the original string. You don't have to worry with strings with less than two characters.
+
+// console.log( removeChar('Hello') );
+
+function removeChar(str) {
+	// Convert string to array
+	str_array = str.split(''); 
+	// Remove first letter from array
+	str_array[0] = ''; 
+	// Remove last letter from array
+	str_array[str.length - 1] = ''; 
+
+	return str_array.join(''); 
+}; 
+
+// 947. Your task is to make a function that can take any non-negative integer as a argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+// White - console.log( descendingOrder(21445) ); // Output: 54421
+// console.log( descendingOrder(145263) ); // Output: 654321
+// console.log( descendingOrder(1254859723) ); // Output: 9875543221
+
+function descendingOrder(n) {
+	return parseInt(n.toString().split('').sort().reverse().join(''));
+}
+// 948. Given an array of integers your solution should find the smallest integer.
+
+class SmallestIntegerFinder {
+	findSmallestInt(args) {
+		// sort function searches for the smallest integer in decedent order
+		return args.sort(function(a, b) {
+			return a - b})[0]; 
+		}
+	}
+
+	let finder = new SmallestIntegerFinder();
+	console.log( finder.findSmallestInt( [34, 15, 88, 2]) );
+	console.log( finder.findSmallestInt( [34, -345, -1, 100]) );
+
+// 949. You might know some pretty large perfect squares. But what about the NEXT one?
+// Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+// If the parameter is itself not a perfect square, than -1 should be returned. You may assume the parameter is positive.
+
+// Yellow - console.log( findNextSquare(121) );// --> returns 144
+// console.log( findNextSquare(625) );// --> returns 676
+// console.log( findNextSquare(114) );// --> returns -1 since 114 is not a perfect
+
+function findNextSquare(sq) {
+  // Return the next square if sq if a perfect square, -1 otherwise
+  let square = Math.sqrt(sq);
+  // If number is not a decimal
+  if (Number.isInteger(square)) {
+    // Increament square root of input number by 1
+    square+=1;
+    // Return the new number's value raise to 2
+    return Math.pow(square,2);
+  }
+  else {
+    return -1;
+  }
+  return Math.sqrt(sq);
+}
+
+// 950. You will be given a number and you will need to return it as a string in Expanded Form.
+
+// Yellow - console.log( expandedForm(12) ); // Should return '10 + 2'
+// console.log( expandedForm(42) ); // Should return '40 + 2'
+// console.log( expandedForm(70304) ); // Should return '70000 + 300 + 4'
+// console.log( expandedForm(9000000) );
+
+function expandedForm(num) {
+	// Convert num to a string array
+	let numStringArray = String(num).split(''); 
+	// Get length of string array
+	let len = numStringArray.length; 
+	let result = ''; 
+
+	// For each digit in array
+	numStringArray.map( (n, index) => {
+		// Perform only if n > 0
+		if(n > 0) {
+			// Add plus sign if result is not empty (for the next digits)
+			if(result) {result += ' + '}; 
+
+			// Pad zeros the right limited to array length minus current index
+			result += n.padEnd(len - index, '0'); 
+		}
+	}); 
+	return result; 
+}
+
