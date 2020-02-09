@@ -11313,3 +11313,132 @@ function expandedForm(num) {
 	return result; 
 }
 
+// 951. Create a function that accepts dimensions, of Rows x Columns, as parameters in order to create a multiplication table sized according to the given dimensions. **The return value of the function must be an array, and the numbers must be Fixnums, NOT strings.
+
+// console.log(multiplicationTable(2, 2)); // [[1,2],[2,4]])
+// console.log(multiplicationTable(3, 3)); // [[1,2,3],[2,4,6],[3,6,9]])
+// console.log(multiplicationTable(3, 4)); // [[1,2,3,4],[2,4,6,8],[3,6,9,12]])
+// console.log(multiplicationTable(4, 4)); // [[1,2,3,4],[2,4,6,8],[3,6,9,12],[4,8,12,16]])
+// console.log(multiplicationTable(2, 5)); // [[1,2,3,4,5],[2,4,6,8,10]])
+
+function multiplicationTable(row, col) {
+	let rows = []; 
+	// If inputs are less than 1, return empty array
+	if (row < 1 && col < 1) 
+	  return []; 
+	for (let i = 1; i <= row; i++) {
+		// For every row
+		let cols = []; // Reset columns 
+		for (let j = 1; j <= col; j++) {
+			// For every col
+			col.push(j * i); // Multiply j and i, then push a new column
+		}
+		rows.push(cols) // Push columns to row
+	}
+	return rows; 
+}
+
+// 952. 
+
+/* A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+    
+Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+*/
+
+const unique = xs => [...new Set(xs)]; // using ES6 set
+
+function isPangram(string) {
+	// Check if all unique characters are >= the 26 letters of the alphabet
+  return unique(string.toLowerCase()).join('').trim().replace(/\W+/g,'').length>=26;
+}
+
+let string = 'The quick brown fox jumps over the lazy dog.'
+console.log(isPangram(string)); //, true)
+string = 'This is not a pangram.'
+console.log(isPanagram(string)); //, false)
+
+// 953. 
+
+/*
+A man has a rather old car being worth $2000. He saw a secondhand car being worth $8000. He wants to keep his old car until he can buy the secondhand one.
+He thinks he can save $1000 each month but the prices of his old car and of the new one decrease of 1.5 percent per month. Furthermore the percent of loss increases by a fixed 0.5 percent at the end of every two months.
+Can you help him? Our man finds it difficult to make all these calculations.
+How many months will it take him to save up enough money to buy the car he wants, and how much money will he have left over?
+*/
+
+/* 
+console.log( nbMonths(2000, 8000, 1000, 1.5) );// should return [6, 766] or (6, 766)
+console.log( nbMonths(12000, 8000, 1000, 1.5) ); // [0, 4000]
+console.log( nbMonths( 8000, 12000, 500, 1 ) ); //[8, 597]
+*/
+
+function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+	if (startPriceOld > startPriceNew) return [0, startPriceOld-startPriceNew]; // If no need to save 
+
+	let month = 1;
+  let monthlyLoss = percentLossByMonth / 100;
+  let monthlySavings = savingperMonth;
+  let oldCarValue = startPriceOld - (startPriceOld * monthlyLoss);
+  let newCarValue = startPriceNew - (startPriceNew * monthlyLoss);
+  let totalSavings = oldCarValue + monthlySavings;
+	let totalRemaining = newCarValue - totalSavings;
+	
+	while(totalRemaining > 0) {
+		month++; 
+		if (month % 2 == 0) monthlyLoss += 0.005; // At the end of every 2nd month, increase lost by 0.5%; 
+		monthlySavings += savingperMonth; // Earn money every month
+		oldCarValue = oldCarValue - (oldCarValue * monthlyLoss); // Reduce value of old car every month 
+		newCarValue = newCarValue - (newCarValue * monthlyLoss); // Reduce value of old car every month
+		totalSavings = oldCarValue + monthlySavings; 
+		totalRemaining = newCarValue - totalSavings;
+	}
+
+	  // Return number of months saved and rounded absolute value of excess money
+		return [month, Math.round(Math.abs(totalRemaining))]; 
+}
+
+// 954. Return the num in the array with the highest
+
+// Yellow - console.log(solve("gh12cdy695m1")); //,695);
+// console.log(solve("2ti9iei7qhr5")); //,9);
+// console.log(solve("vih61w8oohj5")); //,61);
+// console.log(solve("f7g42g16hcu5")); //,42);
+// console.log(solve("lu1j8qbbb85")); //,85);
+
+function solve(s) {
+	// Remove all non-numbers in the string and convert to array of numbers
+	numbers = s.replace(new RegExp("[^0-9]+", "g"), ' ').split(' '); 
+	// Find the biggest number in the array
+	let biggestNumber = 0; 
+	for (n in numbers) {
+		// Convert number to integer
+		currentNumber = parseInt(numbers[n]); 
+		// If biggest number is lower than current number, overwrite biggest number
+		if (biggestNumber < currentNumber) {
+			biggestNumber = currentNumber; 
+		}
+	}
+	return biggestNumber; 
+}
+
+// 955. Create a function that takes in a number as a string n and returns the number without trailing and leading zeros.
+
+// Trailing Zeros are the zeros after a decimal point which don't affect the value (e.g. the last three zeros in 3.4000 and 3.04000).
+// Leading Zeros are the zeros before a whole number which don't affect the value (e.g. the first three zeros in 000234 and 000230).
+
+// Yellow - removeLeadingTrailing("230.000") ➞ "230"
+// removeLeadingTrailing("00402") ➞ "402"
+// removeLeadingTrailing("03.1400") ➞ "3.14"
+// removeLeadingTrailing("30") ➞ "30"
+
+function removeLeadingTrailing(n) {
+	return Number(n)
+}
+
+function removeLeadingTrailing(n) {
+	return Math.abs(n); 
+}
+
+function removeLeadingTrailing(n) {
+	return parseFloat(n).toString(); 
+}
