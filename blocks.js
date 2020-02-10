@@ -11521,3 +11521,20 @@ function objectInArray(arr) {
   arr.map( a => { if(typeof a==='object') objectFound = true })
   return objectFound
 }
+
+// 958. Write a function that takes an integer i and returns an integer with the integer backwards followed by the original integer.
+
+// White - reverseAndNot(123) ➞ 321123
+// reverseAndNot(123456789) ➞ 987654321123456789
+
+function reverseAndNot(i) {
+	return parseInt(i.toString().split('').reverse().join('') + i); 
+}
+
+function reverseAndNot(i) {
+	return parseInt(i.toString().split('').reverse().join('').concat(i)); 
+}
+
+function reverseAndNot(i) {
+	Number(i.toString().split('').reverse().join('').concat(i.toString()))
+}
