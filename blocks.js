@@ -11538,3 +11538,27 @@ function reverseAndNot(i) {
 function reverseAndNot(i) {
 	Number(i.toString().split('').reverse().join('').concat(i.toString()))
 }
+
+// 959. Create a function that takes an array of words and transforms it into an array of each word's length.
+
+// White - ['hello', 'world'] ➞ [5,5]
+// ['Halloween', 'Thanksgiving', 'Christmas'] ➞ [9,12,9]
+// ['She', 'sells', 'seashells', 'down', 'by', 'the', 'seashore']➞ [3,5,9,4,2,3,8]
+
+function wordLengths(array) {
+	return array.map(x => x.length); 
+}
+
+function wordLengths(array) {
+	let arrayLength = []
+	for (i = 0; i < array.length; i++) {
+		arrayLength.push(array[i].length)
+	}
+	return arrayLength
+}
+
+function wordLength(array) {
+	let result = []; 
+	array.forEach((e => { result.push(e.length)}); 
+	return result; 
+}
