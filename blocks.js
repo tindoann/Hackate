@@ -11538,3 +11538,62 @@ function reverseAndNot(i) {
 function reverseAndNot(i) {
 	Number(i.toString().split('').reverse().join('').concat(i.toString()))
 }
+
+// 959. Create a function that takes an array of words and transforms it into an array of each word's length.
+
+// White - ['hello', 'world'] ➞ [5,5]
+// ['Halloween', 'Thanksgiving', 'Christmas'] ➞ [9,12,9]
+// ['She', 'sells', 'seashells', 'down', 'by', 'the', 'seashore']➞ [3,5,9,4,2,3,8]
+
+function wordLengths(array) {
+	return array.map(x => x.length); 
+}
+
+function wordLengths(array) {
+	let arrayLength = []
+	for (i = 0; i < array.length; i++) {
+		arrayLength.push(array[i].length)
+	}
+	return arrayLength
+}
+
+function wordLength(array) {
+	let result = []; 
+	array.forEach((e) => {result.push(e.length)});
+	return result; 
+}
+
+// 960. 
+
+/* Captain Hook and his crew are currently resting at Origin Shore. They are about to embark on their next adventure to an undisclosed location (x, y) to find treasure.
+Captain Hook's ship can only move exactly north, south, east or west. It takes exactly 1 day for the ship to travel 1 unit in one of the four cardinal directions.
+After every 5 days, the crew will take one day of rest.
+Given the location of the treasure, find out how long it takes for Captain Hook and his crew to find the treasure. The ship is currently at coordinate (0, 0). */
+
+// Yellow - numberOfDays([3, 5]) => 9 days
+// Since: 3 days east + 2 days north (5 days passed) + 1 day of rest + 3 days north
+
+// numberOfDays([-4, -1]) => 5 days
+// Since 4 days west + 1 day south
+
+// Yellow numberOfDays([10, 10]) ➞ 23
+
+// numberOfDays([3, 3]) ➞ 7
+// numberOfDays([-10, -9]) ➞ 22
+// numberOfDays([-1, -2]) ➞ 3
+
+const numberOfDays = ([x, y]) => {
+  const travelDays = Math.abs(x) + Math.abs(y);
+  const restDays = Math.floor((travelDays - 1) / 5);
+  return travelDays + restDays;
+};
+
+function numberOfDays(coordinate) {
+	var go = Math.abs(coordinate.reduce((a, b) => a + b), 0)
+	return go + Math.ceil(go / 5) - 1
+}
+
+function numberOfDays(coordinate) {
+	let t = Math.abs(coordinate[0]) + Math.abs(coordinate[1]);
+	return t + Math.floor((t-1)/5)
+}
