@@ -11597,3 +11597,55 @@ function numberOfDays(coordinate) {
 	let t = Math.abs(coordinate[0]) + Math.abs(coordinate[1]);
 	return t + Math.floor((t-1)/5)
 }
+
+// 961. You've just webscraped a web page and stored it in a string. In the string there is a bullet list of states that voted for President Trump's impeachment:
+
+// const str = `
+// * Texas = no
+// * California = yes
+// * Florida = yes
+// * Michigan = no
+// `
+// Add a positive lookahead assertion so a regex match would output the states that voted yes
+
+const REGEXP = /(\w+)(?=\s\=\syes)/g
+
+const REGEXP = /(\w+)(?= = yes)/g
+
+const REGEXP = /(?<=\* )\w*(?= [\=] yes)/g
+
+// 962. Create a function that replaces "the" in the sentence with "an" or "a". Remember that if the next word begins with a vowel, use "an". In the case of a consonant, use "a".
+
+// Yellow - replaceThe("the dog and the envelope") ➞ "a dog and an envelope"
+// replaceThe("the boy ran at the wall") ➞ "a boy ran at a wall"
+// replaceThe("the egg, the spoon and the espionage") ➞ "an egg, a spoon and an espionage"
+
+function replaceThe(str) {
+	let vowel = /[aeiou]/g; 
+	var col = str.split(' '); 
+
+	return col.map(function(elem, i) {
+		if (elem === 'the')
+		  return col[i + 1][0].match(vowel) ? 'an' : 'a'; 
+		else 
+			return elem; 
+	}).join(' '); 
+}
+
+function replaceThe(str) {
+	const a = [];
+	for (let i = 0; i < str.split(" ").length; i++) {
+		if (str.split(" ")[i] === "the" && /[aeiou]/.test(str.split(" ")[i+1][0])) {
+			a.push("an");
+		} else if (str.split(" ")[i] === "the" && /([b-df-hj-np-tv-z])/.test(str.split(" ")[i+1][0])) {
+			a.push("a");
+		} else a.push(str.split(" ")[i])
+	}
+	return a.join(" ");
+}
+
+function replaceThe(str) {
+	str.replace(/the(?= [^aeiou])/g, 'a')
+	.replace(/the(?= [aeiou])/g, 'an')
+}
+
