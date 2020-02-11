@@ -11649,3 +11649,67 @@ function replaceThe(str) {
 	.replace(/the(?= [aeiou])/g, 'an')
 }
 
+// 963. Write a function that reverses the subarray between the start and end index (inclusive). The rest of the array should be kept the same.
+
+// Yellow - rangedReversal([1, 2, 3, 4, 5, 6], 1, 3) ➞ [1, 4, 3, 2, 5, 6]
+// rangedReversal([1, 2, 3, 4, 5, 6], 0, 4) ➞ [5, 4, 3, 2, 1, 6]
+// rangedReversal([9, 8, 7, 4], 0, 0) ➞ [9, 8, 7, 4]
+
+function rangedReversal(arr, start, end) {
+	return arr.slice(0, start)
+	.concat(arr.slice(start, end + 1).reverse())
+	.conconat(arr.slice(end + 1)); 
+}
+
+function rangedReversal(arr, start, end) {
+	var a = arr.slice(start, end+1).reverse();
+	arr.splice(start, end-start+1, a).reverse();
+	var r = [];
+	for (var i in arr) {
+		if (arr[i] instanceof Array) {
+			for (var j in arr[i]) {
+				r.push(arr[i][j]);
+			}
+		} else {
+			r.push(arr[i]);
+		}
+	}
+	return r;
+}
+
+function rangedReversal(arr, start, end) {
+	const subArr = arr.slice(start, end + 1).reverse(); 
+	return arr.map((x, i) => (i >= start) && (i <= end) ? subArr[i - start] : x); 
+}
+
+// The median of a group of numbers is the middle number when the group is sorted. 
+// If the size of the group is even, the median is the average of the middle two numbers. 
+// Given a sorted array of numbers, return the median (rounded to one decimal place if the median isn't an integer).
+
+// Yellow - median([1, 2, 4, 5, 6, 8, 8, 8, 10]) ➞ 6
+// median([2, 2, 6, 8, 8, 10, 10]) ➞ 8
+// median([1, 2, 2, 4, 7, 8, 9, 10]) ➞ 5.5
+
+function median(nums) {
+	if(nums.length % 2 == 0) {
+		let b = nums.length / 2 - 1
+		return (nums[b] + nums[b + 1]) / 2
+	} else {
+		return nums[Math.floor(nums,length / 2)]
+	}
+}
+
+function median(nums) {
+	let len = nums.length; 
+	let mid = Math.floor(len / 2); 
+	return len % 2 === 1 ? nums[mid] : +(((nums[mid] + nums[mid-1]) / 2).toFixed(1));
+}
+
+function median(nums) {
+	let len = nums.length
+	if(len % 2 === 0) {
+		return (nums[len / 2] + nums[len / 2 - 1]) / 2
+	} else {
+		return nums[Math.floor(len / 2)]
+	}
+}
