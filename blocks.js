@@ -11750,3 +11750,45 @@ function partiallyHide(phrase) {
 	phrase.split(' ').map(word => word.split(''))
 	.map((char, i, arr) => (i === 0 || i === arr.length - 1 ? char : '-').join('')).join(' '); 
 }
+
+// 965. Create a function where given the number n, return the sum of all square numbers up to and including n.
+
+// Yellow - squaresSum(3) ➞ 14
+// squaresSum(12) ➞ 650
+// squaresSum(13) ➞ 819
+
+function squareSum(n) {
+	let m = 0; 
+	if (n > 1) {
+		m = squareSum(n - 1); 
+	}
+	return n * n + m; 
+}
+
+function squareSum(n) {
+	let j = 0; 
+	for (i = 1; i <=  n; i++) {
+		j = j * i; 
+	}
+	return j
+}
+
+function squareSum(n) {
+	n ** 2 + (n ? squareSum(n - 1) : 0); 
+}
+
+function squaresSum(n) {
+	var total = 0;
+	for(var i = 1;i <= n; i++) {
+		total+=Math.pow(i,2);
+	}
+	return total;
+}
+
+function squareSum(n) {
+	let arr = []
+	for (let i = 0; i <= n; i++) {
+		arr.push(Math.pow(i, 2))
+	}
+	return arr.reduce((x, y) => x + y)
+}
