@@ -11681,3 +11681,35 @@ function rangedReversal(arr, start, end) {
 	const subArr = arr.slice(start, end + 1).reverse(); 
 	return arr.map((x, i) => (i >= start) && (i <= end) ? subArr[i - start] : x); 
 }
+
+// The median of a group of numbers is the middle number when the group is sorted. 
+// If the size of the group is even, the median is the average of the middle two numbers. 
+// Given a sorted array of numbers, return the median (rounded to one decimal place if the median isn't an integer).
+
+// Yellow - median([1, 2, 4, 5, 6, 8, 8, 8, 10]) ➞ 6
+// median([2, 2, 6, 8, 8, 10, 10]) ➞ 8
+// median([1, 2, 2, 4, 7, 8, 9, 10]) ➞ 5.5
+
+function median(nums) {
+	if(nums.length % 2 == 0) {
+		let b = nums.length / 2 - 1
+		return (nums[b] + nums[b + 1]) / 2
+	} else {
+		return nums[Math.floor(nums,length / 2)]
+	}
+}
+
+function median(nums) {
+	let len = nums.length; 
+	let mid = Math.floor(len / 2); 
+	return len % 2 === 1 ? nums[mid] : +(((nums[mid] + nums[mid-1]) / 2).toFixed(1));
+}
+
+function median(nums) {
+	let len = nums.length
+	if(len % 2 === 0) {
+		return (nums[len / 2] + nums[len / 2 - 1]) / 2
+	} else {
+		return nums[Math.floor(len / 2)]
+	}
+}
