@@ -11649,3 +11649,35 @@ function replaceThe(str) {
 	.replace(/the(?= [aeiou])/g, 'an')
 }
 
+// 963. Write a function that reverses the subarray between the start and end index (inclusive). The rest of the array should be kept the same.
+
+// Yellow - rangedReversal([1, 2, 3, 4, 5, 6], 1, 3) ➞ [1, 4, 3, 2, 5, 6]
+// rangedReversal([1, 2, 3, 4, 5, 6], 0, 4) ➞ [5, 4, 3, 2, 1, 6]
+// rangedReversal([9, 8, 7, 4], 0, 0) ➞ [9, 8, 7, 4]
+
+function rangedReversal(arr, start, end) {
+	return arr.slice(0, start)
+	.concat(arr.slice(start, end + 1).reverse())
+	.conconat(arr.slice(end + 1)); 
+}
+
+function rangedReversal(arr, start, end) {
+	var a = arr.slice(start, end+1).reverse();
+	arr.splice(start, end-start+1, a).reverse();
+	var r = [];
+	for (var i in arr) {
+		if (arr[i] instanceof Array) {
+			for (var j in arr[i]) {
+				r.push(arr[i][j]);
+			}
+		} else {
+			r.push(arr[i]);
+		}
+	}
+	return r;
+}
+
+function rangedReversal(arr, start, end) {
+	const subArr = arr.slice(start, end + 1).reverse(); 
+	return arr.map((x, i) => (i >= start) && (i <= end) ? subArr[i - start] : x); 
+}
