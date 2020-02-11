@@ -11713,3 +11713,40 @@ function median(nums) {
 		return nums[Math.floor(len / 2)]
 	}
 }
+
+// 964. Create a function that takes a phrase and transforms each word using the following rules:
+
+// Keep first and last character the same.
+// Transform middle characters into a dash -.
+
+// Yellow - partiallyHide("skies were pretty") ➞ "s---s w--e p----y"
+// partiallyHide("red is not my color") ➞ "r-d is n-t my c---r"
+// partiallyHide("She rolled her eyes") ➞ "S-e r----d h-r e--s"
+// partiallyHide("Harry went to fight the basilisk") ➞ "H---y w--t to f---t t-e b------k"
+
+function partiallyHide(phrase) {
+	const pat = /(\B.)(?=\B)/g
+  return phrase.replace(pat, '-')
+}
+
+function partiallyHide(phrase) {
+	return phrase.replace(/\B\w\B/g, "-");
+}
+
+function partiallyHide(phrase) {
+	return phrase.split(' ')
+	.map(word => word.slice(0, 1) + 
+	word.slice(1, -1).replace(/[a-z]/gi, '-')
+	+ word.slice(-1)).join(' '); 
+}
+
+function partiallyHide(phrase) {
+  const words = phrase.split(" ")
+  const coded = words.map(word => word[0] + "-".repeat(word.length - 2) + word[word.length - 1])
+  return coded.join(" ")
+}
+
+function partiallyHide(phrase) {
+	phrase.split(' ').map(word => word.split(''))
+	.map((char, i, arr) => (i === 0 || i === arr.length - 1 ? char : '-').join('')).join(' '); 
+}
