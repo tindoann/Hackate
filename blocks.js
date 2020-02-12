@@ -11823,3 +11823,48 @@ function squareDigits(n) {
 function squareDigits(n) {
 	return Number(String(n).split('').map(x=> Math.pow(x, 2)).join(''));
 }
+
+// 967. The facts are:
+
+// You've just finished dinner.
+// You love spicy food but your friend hates it.
+// Given your friend's unfortunate taste preferences, you decide to split the bill only for non-spicy items. You will pay in full for the spicy dishes.
+// Given two ordered arrays, one classifying the dishes as spicy vs. non-spicy and the other listing their prices, write a function that outputs an array where the first element is how much you pay and the second element is how much your friend pays.
+
+// billSplit(["S", "N", "S", "S"], [13, 18, 15, 4]) ➞ [41, 9]
+
+// Since:
+// You pay: [13, 9, 15, 4] = 41
+// Friend pays: [0, 9, 0, 0] = 9
+
+// billSplit(["N", "S", "N"], [10, 10, 20]) ➞ [25, 15]
+// You pay for half of both "N" dishes (5 + 10) and entirely pay for the "S" dish (10).
+
+// billSplit(["N", "N"], [10, 10]) ➞ [10, 10]
+// billSplit(["S", "N"], [41, 10]) ➞ [46, 5]
+
+function billSpit(spicy, cost) {
+	let s = 0
+	let n = 0
+	spicy.map((x, i) => x == 'S' ? s += cost[i]: n += cost[i])
+  return [s + n / 2, n / 2]
+}
+
+function billSplit(spicy, cost) {
+	return [spicy.map((x,i) => x == 'N'? cost[i]/2: cost[i]).reduce((a,b)=> a+b),
+					spicy.map((x,i) => x == 'N'? cost[i]/2: 0).reduce((a,b)=> a+b)]
+}
+
+function billSplit(spicy, cost) {
+	let you = spicy.map((x,i) => x === 'S'? cost[i]: cost[i]/2).reduce((a,b)=>a+b);
+	let friend = spicy.map((x,i) => x === 'S'? 0: cost[i]/2).reduce((a,b) => a+b);
+	return [you, friend];	
+}
+
+function billSplit(spicy, cost) {
+	let frCst = spicy.map( (el, i) => (el === 'N')? cost[i] / 2 : 0 ).reduce( (t, c) => t + c )
+	let myCst = spicy.map( (el, i) => (el === 'N')? cost[i] / 2 : cost[i] ).reduce( (t, c) => t + c )
+	return [myCst, frCst];
+}
+
+
