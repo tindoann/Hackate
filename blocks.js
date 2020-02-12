@@ -11713,3 +11713,158 @@ function median(nums) {
 		return nums[Math.floor(len / 2)]
 	}
 }
+
+// 964. Create a function that takes a phrase and transforms each word using the following rules:
+
+// Keep first and last character the same.
+// Transform middle characters into a dash -.
+
+// Yellow - partiallyHide("skies were pretty") ➞ "s---s w--e p----y"
+// partiallyHide("red is not my color") ➞ "r-d is n-t my c---r"
+// partiallyHide("She rolled her eyes") ➞ "S-e r----d h-r e--s"
+// partiallyHide("Harry went to fight the basilisk") ➞ "H---y w--t to f---t t-e b------k"
+
+function partiallyHide(phrase) {
+	const pat = /(\B.)(?=\B)/g
+  return phrase.replace(pat, '-')
+}
+
+function partiallyHide(phrase) {
+	return phrase.replace(/\B\w\B/g, "-");
+}
+
+function partiallyHide(phrase) {
+	return phrase.split(' ')
+	.map(word => word.slice(0, 1) + 
+	word.slice(1, -1).replace(/[a-z]/gi, '-')
+	+ word.slice(-1)).join(' '); 
+}
+
+function partiallyHide(phrase) {
+  const words = phrase.split(" ")
+  const coded = words.map(word => word[0] + "-".repeat(word.length - 2) + word[word.length - 1])
+  return coded.join(" ")
+}
+
+function partiallyHide(phrase) {
+	phrase.split(' ').map(word => word.split(''))
+	.map((char, i, arr) => (i === 0 || i === arr.length - 1 ? char : '-').join('')).join(' '); 
+}
+
+// 965. Create a function where given the number n, return the sum of all square numbers up to and including n.
+
+// Yellow - squaresSum(3) ➞ 14
+// squaresSum(12) ➞ 650
+// squaresSum(13) ➞ 819
+
+function squareSum(n) {
+	let m = 0; 
+	if (n > 1) {
+		m = squareSum(n - 1); 
+	}
+	return n * n + m; 
+}
+
+function squareSum(n) {
+	let j = 0; 
+	for (i = 1; i <=  n; i++) {
+		j = j * i; 
+	}
+	return j
+}
+
+function squareSum(n) {
+	n ** 2 + (n ? squareSum(n - 1) : 0); 
+}
+
+function squaresSum(n) {
+	var total = 0;
+	for(var i = 1;i <= n; i++) {
+		total+=Math.pow(i,2);
+	}
+	return total;
+}
+
+function squareSum(n) {
+	let arr = []
+	for (let i = 0; i <= n; i++) {
+		arr.push(Math.pow(i, 2))
+	}
+	return arr.reduce((x, y) => x + y)
+}
+
+// 966. Create a function that squares every digit of a number.
+
+function squareDigits(n) {
+	let arr = []
+	for(let i = 0; i < n.toString().length; i++) {
+		let sqt = Math.pow(Number(n.toString().charAt(i)), 2)
+		arr.push(sqt)
+}
+  return Number(arr.join('')); 
+}
+
+function squareDigits(n) {
+	let str = String(n).split('').map(item => Number(item))
+	return Number(Array.from(str, x => x * x).join(''))
+}
+
+function squareDigits(n) {
+	return + String(n).split('').map(x => x * x).join('')
+}
+
+function squareDigits(n) {
+	res = []
+	n. n.toString().split('')
+	n.forEach(item => res.push(Math.pow(item, 2)))
+	return parseInt(res.join('')); 
+}
+
+function squareDigits(n) {
+	return Number(String(n).split('').map(x=> Math.pow(x, 2)).join(''));
+}
+
+// 967. The facts are:
+
+// You've just finished dinner.
+// You love spicy food but your friend hates it.
+// Given your friend's unfortunate taste preferences, you decide to split the bill only for non-spicy items. You will pay in full for the spicy dishes.
+// Given two ordered arrays, one classifying the dishes as spicy vs. non-spicy and the other listing their prices, write a function that outputs an array where the first element is how much you pay and the second element is how much your friend pays.
+
+// billSplit(["S", "N", "S", "S"], [13, 18, 15, 4]) ➞ [41, 9]
+
+// Since:
+// You pay: [13, 9, 15, 4] = 41
+// Friend pays: [0, 9, 0, 0] = 9
+
+// billSplit(["N", "S", "N"], [10, 10, 20]) ➞ [25, 15]
+// You pay for half of both "N" dishes (5 + 10) and entirely pay for the "S" dish (10).
+
+// billSplit(["N", "N"], [10, 10]) ➞ [10, 10]
+// billSplit(["S", "N"], [41, 10]) ➞ [46, 5]
+
+function billSpit(spicy, cost) {
+	let s = 0
+	let n = 0
+	spicy.map((x, i) => x == 'S' ? s += cost[i]: n += cost[i])
+  return [s + n / 2, n / 2]
+}
+
+function billSplit(spicy, cost) {
+	return [spicy.map((x,i) => x == 'N'? cost[i]/2: cost[i]).reduce((a,b)=> a+b),
+					spicy.map((x,i) => x == 'N'? cost[i]/2: 0).reduce((a,b)=> a+b)]
+}
+
+function billSplit(spicy, cost) {
+	let you = spicy.map((x,i) => x === 'S'? cost[i]: cost[i]/2).reduce((a,b)=>a+b);
+	let friend = spicy.map((x,i) => x === 'S'? 0: cost[i]/2).reduce((a,b) => a+b);
+	return [you, friend];	
+}
+
+function billSplit(spicy, cost) {
+	let frCst = spicy.map( (el, i) => (el === 'N')? cost[i] / 2 : 0 ).reduce( (t, c) => t + c )
+	let myCst = spicy.map( (el, i) => (el === 'N')? cost[i] / 2 : cost[i] ).reduce( (t, c) => t + c )
+	return [myCst, frCst];
+}
+
+
