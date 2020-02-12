@@ -11867,4 +11867,25 @@ function billSplit(spicy, cost) {
 	return [myCst, frCst];
 }
 
+// 968. Given a random number, return the digits of the number in reverse order inside of an array.
 
+// Yellow - 1485979 ➞  [9,7,9,5,8,4,1]
+// 623478 ➞ [8,7,4,3,2,6]
+// 12345 ➞ [5,4,3,2,1]
+
+function reverseArr(num) {
+	return String(num).split('').reverse().map(x => +x); 
+}
+
+function reverseArr(num) {
+	var snum = num.toString();
+	var array = [];
+	for(var i = 0; i<snum.length; i++) {
+		array.push(+snum.charAt(i));
+	}
+	return array.reverse();
+}
+
+function reverseArr(num) {
+	return String(num).split('').reverse().map(Number)
+ }
