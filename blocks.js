@@ -11867,4 +11867,157 @@ function billSplit(spicy, cost) {
 	return [myCst, frCst];
 }
 
+// 968. Given a random number, return the digits of the number in reverse order inside of an array.
 
+// Yellow - 1485979 ➞  [9,7,9,5,8,4,1]
+// 623478 ➞ [8,7,4,3,2,6]
+// 12345 ➞ [5,4,3,2,1]
+
+function reverseArr(num) {
+	return String(num).split('').reverse().map(x => +x); 
+}
+
+function reverseArr(num) {
+	var snum = num.toString();
+	var array = [];
+	for(var i = 0; i<snum.length; i++) {
+		array.push(+snum.charAt(i));
+	}
+	return array.reverse();
+}
+
+function reverseArr(num) {
+	return String(num).split('').reverse().map(Number)
+ }
+
+ // 968. Create two functions: a left-shift function and a right-shift function. Each function will take in an array and a single parameter: the number of shifts.
+
+//  [1, 2, 3, 4, 5]
+
+//  [2, 3, 4, 5, 1]  // left shift of 1
+//  [5, 1, 2, 3, 4]  // left shift of 4
+ 
+//  [5, 1, 2, 3, 4]  // right shift of 1
+//  [3, 4, 5, 1, 2]  // right shift of 3
+
+// leftShift([1, 2, 3, 4], 1) ➞ [2, 3, 4, 1]
+
+// rightShift([1, 2, 3, 4], 1) ➞ [4, 1, 2, 3]
+
+// leftShift([1, 2, 3, 4, 5], 3) ➞ [4, 5, 1, 2, 3]
+
+// leftShift([1, 2, 3, 4, 5], 5) ➞ [1, 2, 3, 4, 5]
+// You have fully shifted the array, you end up back where you began.
+
+// leftShift([1, 2, 3, 4, 5], 6) ➞ [2, 3, 4, 5, 1]
+// You should be able to take in numbers greater than the length.
+// Think of the length of the array as a modulo.
+
+function leftShift(arr, num) {
+	
+}
+
+function rightShift(arr, num) {
+	
+}
+
+function leftShift(arr, num) {
+	if (num <= 0) {
+		return arr;
+	}
+	
+	arr.push(arr.shift());
+	
+	return leftShift(arr, num - 1);
+}
+
+function rightShift(arr, num) {
+	if (num <= 0) {
+		return arr;
+	}
+	
+	arr.unshift(arr.pop());
+	
+	return rightShift(arr, num - 1);
+}
+
+function leftShift(arr, num) {
+	for (let i = 0; i < num; i++) {
+		arr.push(arr[0])
+		arr = arr.splice(1)
+	}
+	
+	return arr
+}
+
+function rightShift(arr, num) {
+	for (let i = 0; i < arr.length - 1; i++) {
+		arr = leftShift(arr, num)
+	}
+	
+	return arr
+}
+
+function leftShift(arr, num) {
+	
+	for (i = 0; i < num; i++){
+		arr.push(arr.shift());
+	}
+	return arr;
+}
+
+function rightShift(arr, num) {
+	for (i = 0; i < num; i++){
+		arr.unshift(arr.pop());
+	}
+	return arr;
+}
+
+function leftShift(arr, num) {
+	var arr1;
+	for(var i = 0; i < num; i++){
+		arr1 = arr.shift(0);
+		arr.push(arr1);
+	}
+	return arr;
+}
+
+function rightShift(arr, num) {
+	for(var i = 0; i < num; i++){
+		arr1 = arr.pop(0);
+		arr.unshift(arr1);
+	}
+
+	return arr;
+} 
+
+// 969. You have an array of integers, and for each index you want to find the product of every integer except the integer at that index.
+// Create a function that takes an array of integers and returns an array of the products.
+
+// Yellow - getProducts([1, 7, 3, 4]) ➞ [84, 12, 28, 21]
+// getProducts([1, 7, 3, 4]) ➞ [84, 12, 28, 21]
+// getProducts([1, 2, 3, 0, 5]) ➞ [0, 0, 0, 30, 0]
+
+function getProducts(arr) {
+  return arr.map((x, i) => arr.reduce((y, z, j) => (i === j ? y : y * z) , 1));
+}
+
+const getProduct = arr => {
+	return arr.map((item, index, arr) => {
+		return arr.reduce((acc, item, i, arr) => {
+			return acc *= (i !== index ? item : 1); 
+		}, 1); 
+	}); 
+}
+
+function getProducts(arr) {
+	arr.map((i,k) => arr.filter((val,key) => key !== k).reduce((a,b) => a * b))
+}
+
+function getProducts(arr) {
+  var res = []
+  for(i=0; i < arr.length; i++){
+    res[i] = arr.filter(item => item != arr[i]).reduce((acc, el) => acc * el);  
+  }
+  return res;
+}
