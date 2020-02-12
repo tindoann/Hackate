@@ -11792,3 +11792,34 @@ function squareSum(n) {
 	}
 	return arr.reduce((x, y) => x + y)
 }
+
+// 966. Create a function that squares every digit of a number.
+
+function squareDigits(n) {
+	let arr = []
+	for(let i = 0; i < n.toString().length; i++) {
+		let sqt = Math.pow(Number(n.toString().charAt(i)), 2)
+		arr.push(sqt)
+}
+  return Number(arr.join('')); 
+}
+
+function squareDigits(n) {
+	let str = String(n).split('').map(item => Number(item))
+	return Number(Array.from(str, x => x * x).join(''))
+}
+
+function squareDigits(n) {
+	return + String(n).split('').map(x => x * x).join('')
+}
+
+function squareDigits(n) {
+	res = []
+	n. n.toString().split('')
+	n.forEach(item => res.push(Math.pow(item, 2)))
+	return parseInt(res.join('')); 
+}
+
+function squareDigits(n) {
+	return Number(String(n).split('').map(x=> Math.pow(x, 2)).join(''));
+}
