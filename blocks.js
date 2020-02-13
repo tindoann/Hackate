@@ -12081,3 +12081,20 @@ function accumulatingArray(arr) {
 	let acc = 0; 
 	return arguments.length === 0 ? [] : arr.map(val => acc += val); 
 }
+
+// 972. Write a regular expression that matches any valid Canadian postal code with any of the following formats:
+
+// A1A 1A1
+// A1A-1A1
+// A1A1B1
+
+// Yellow - "M3M 0A9" ➞ true
+// "m4c-1t1" ➞ true
+// "m45 1t1" ➞ false
+// "M4C-1T1Z" ➞ false
+
+let x = /^[A-Z]\d[A-Z][- ]?\d[A-Z]\d$/i
+
+let x = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/
+
+let x = /[a-zA-Z]\d[a-zA-Z][ |-]?\d[a-zA-Z]\d$/
