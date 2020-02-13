@@ -12021,3 +12021,80 @@ function getProducts(arr) {
   }
   return res;
 }
+
+// 970. Write a function that calculates the GCD (Greatest Common Divisor) of two numbers recursively.
+
+// Yellow - gcd(10, 20) ➞ 10
+// gcd(1, 3) ➞ 1
+// gcd(5, 7) ➞ 1
+// gcd(2, 6) ➞ 2
+
+function gcd(a, b) {
+	!b ? a : gcd(b, a % b);
+}
+
+function gcd(a, b) {
+	for (let i = Math.max(a, b); i > 0; i--) {
+		if (a % i == 0 & b % i == 0) {
+			return i;
+		}
+	}
+}
+
+function gcd(a, b) {
+	if (b == 0) {
+		return a;
+	} else {
+		return gcd(b, (a % b)); 
+	}
+}
+
+// 971. Create a function that takes in an array and returns an array of the accumulating sum.
+
+// accumulatingArray([1, 2, 3, 4]) ➞ [1, 3, 6, 10]
+// [1, 3, 6, 10] can be written as  [1, 1 + 2, 1 + 2 + 3, 1 + 2 + 3 + 4]
+
+// accumulatingArray([1, 5, 7]) ➞ [1, 6, 13]
+// accumulatingArray([1, 0, 1, 0, 1]) ➞ [1, 1, 2, 2, 3]
+// accumulatingArray([]) ➞ []
+
+function accumulatingArray(arr) {
+	let sum = 0; 
+	return arr.map(val => (sum += val)); 
+}
+
+function accumulatingArray(arr) {
+	return arr.map((x, i) => 
+	arr.slice(0, i+1).reduce((acc, val) => acc + val, 0));
+}
+
+function accumlatingArray(arr) {
+	let total = 0; 
+	for (i = 0; i < arr.length; i++) {
+		total += arr[i]
+		arr[i] = total
+	}
+	return(arr)
+}
+
+function accumulatingArray(arr) {
+	let acc = 0; 
+	return arguments.length === 0 ? [] : arr.map(val => acc += val); 
+}
+
+// 972. Write a regular expression that matches any valid Canadian postal code with any of the following formats:
+
+// A1A 1A1
+// A1A-1A1
+// A1A1B1
+
+// Yellow - "M3M 0A9" ➞ true
+// "m4c-1t1" ➞ true
+// "m45 1t1" ➞ false
+// "M4C-1T1Z" ➞ false
+
+let x = /^[A-Z]\d[A-Z][- ]?\d[A-Z]\d$/i
+
+let x = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/
+
+let x = /[a-zA-Z]\d[a-zA-Z][ |-]?\d[a-zA-Z]\d$/
