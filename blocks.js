@@ -12049,3 +12049,35 @@ function gcd(a, b) {
 	}
 }
 
+// 971. Create a function that takes in an array and returns an array of the accumulating sum.
+
+// accumulatingArray([1, 2, 3, 4]) ➞ [1, 3, 6, 10]
+// [1, 3, 6, 10] can be written as  [1, 1 + 2, 1 + 2 + 3, 1 + 2 + 3 + 4]
+
+// accumulatingArray([1, 5, 7]) ➞ [1, 6, 13]
+// accumulatingArray([1, 0, 1, 0, 1]) ➞ [1, 1, 2, 2, 3]
+// accumulatingArray([]) ➞ []
+
+function accumulatingArray(arr) {
+	let sum = 0; 
+	return arr.map(val => (sum += val)); 
+}
+
+function accumulatingArray(arr) {
+	return arr.map((x, i) => 
+	arr.slice(0, i+1).reduce((acc, val) => acc + val, 0));
+}
+
+function accumlatingArray(arr) {
+	let total = 0; 
+	for (i = 0; i < arr.length; i++) {
+		total += arr[i]
+		arr[i] = total
+	}
+	return(arr)
+}
+
+function accumulatingArray(arr) {
+	let acc = 0; 
+	return arguments.length === 0 ? [] : arr.map(val => acc += val); 
+}
