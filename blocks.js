@@ -12021,3 +12021,31 @@ function getProducts(arr) {
   }
   return res;
 }
+
+// 970. Write a function that calculates the GCD (Greatest Common Divisor) of two numbers recursively.
+
+// Yellow - gcd(10, 20) ➞ 10
+// gcd(1, 3) ➞ 1
+// gcd(5, 7) ➞ 1
+// gcd(2, 6) ➞ 2
+
+function gcd(a, b) {
+	!b ? a : gcd(b, a % b);
+}
+
+function gcd(a, b) {
+	for (let i = Math.max(a, b); i > 0; i--) {
+		if (a % i == 0 & b % i == 0) {
+			return i;
+		}
+	}
+}
+
+function gcd(a, b) {
+	if (b == 0) {
+		return a;
+	} else {
+		return gcd(b, (a % b)); 
+	}
+}
+
