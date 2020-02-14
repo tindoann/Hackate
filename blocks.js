@@ -12207,3 +12207,26 @@ Test.assertEquals(moodToday("very happy"), "Today, I am feeling very happy")
 Test.assertEquals(moodToday("rather empty inside"), "Today, I am feeling rather empty inside")
 Test.assertEquals(moodToday("confused"), "Today, I am feeling confused")
 Test.assertEquals(moodToday(), "Today, I am feeling neutral")
+
+// 977. Create a function that turns an array of words into a comma separated list, where the last word is separated by the word "and".
+
+// Yellow - wordsToSentence(["edabit"]) ➞ "edabit"
+// wordsToSentence(["Hello", "", "Bye"]) ➞ "Hello and Bye"
+// wordsToSentence(["Hello", "Bye", "See you soon"]) ➞ "Hello, Bye and See you soon"
+
+const wordsToSentence = words =>
+	!words ? '' : words
+		.filter(word => word)
+		.join(', ')
+		.replace(/,(?= \w+$)/, ' and')
+
+function wordsToSentence(words) {
+	if (words === null) return '';
+	return words.filter((x) => x.trim()).join(', ').replace(/,([^,]*)$/, ' and$1');
+}
+
+function wordsToSentence(words) {
+	let a = [];
+	if (words !== null) a = words.filter(x => x.length > 0);
+	return a.length > 1 ? a.slice(0, -1).join(", ").trim() + " and " +  a.slice(-1): a.length === 1 ? a[0] : "";
+}
