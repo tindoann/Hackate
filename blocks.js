@@ -12098,3 +12098,43 @@ let x = /^[A-Z]\d[A-Z][- ]?\d[A-Z]\d$/i
 let x = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/
 
 let x = /[a-zA-Z]\d[a-zA-Z][ |-]?\d[a-zA-Z]\d$/
+
+// 973. Create a function that, given a number, returns the corresponding Fibonacci number. 
+
+// Yellow - fibonacci(3) ➞ 3
+// fibonacci(7) ➞ 21
+// fibonacci(12) ➞ 233
+// return the index
+
+// if number is less than or equal to 1, return 1
+function fibonacci(num) {
+	if(num <= 1) {
+		return 1
+	} else {
+		return fibonacci(num - 1) + fibonacci(num - 2); 
+	}
+}
+
+function fibonacci(num) {
+	let res=[1,1]
+	for(let i=1;i<num;i++){
+		res.push(res[res.length-1]+(res[res.length-2]))
+	}
+	return res[num]
+}
+
+const fibonacci = num => {
+	let sequence = [0, 1];
+	for (let i = 0; i < num; i++) {
+		sequence.push(sequence[i] + sequence[i+1]);
+	}
+	return sequence[sequence.length - 1];
+}
+
+function fibonacci(num) {
+	let fib = [1,1];
+	for (let i = 2; i <= num; i ++){
+		fib.push(fib[i-1] + fib[i-2]);
+	}
+	return fib[num];
+}
