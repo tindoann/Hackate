@@ -12149,3 +12149,34 @@ function fibonacci(num) {
 function roundNearest(num, nearest) {
 	 Math.round(num / nearest) * nearest
 }
+
+function roundNearest(num, nearest) {
+	if (nearest == undefined) {nearest = 1}
+	return Math.round(num / nearest) * nearest;
+}
+
+function roundNearest(num, nearest) {
+	return nearest && nearest * Math.round(num/nearest) || Math.round(num)
+}
+
+// 975. Write a function that takes an array of 10 integers (between 0 and 9) and returns a string in form of a phone number.
+
+// Yellow - createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ➞ "(123) 456-7890"
+// createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) ➞ "(111) 111-1111"
+// createPhoneNumber([8, 7, 4, 1, 2, 5, 6, 5, 8, 2]) ➞ "(874) 125-6582"
+
+function createPhoneNumber(arr) {
+	return `(xxx) xxx-xxxx`.replace(/x/g, v => arr.shift()); 
+}
+
+function createPhoneNumber(numbers) {
+	let number = '(xxx) xxx-xxxx'; 
+	for(let i = 0; i < numbers.length; i++) {
+		number = number.replace('x', numbers[i]); 
+	}
+	return number; 
+}
+
+function createPhoneNumber(n) {
+	return `(${n[0]}${n[1]}${n[2]}) ${n[3]}${n[4]}${n[5]}-${n[6]}${n[7]}${n[8]}${n[9]}`
+}
