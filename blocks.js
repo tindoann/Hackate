@@ -12180,3 +12180,30 @@ function createPhoneNumber(numbers) {
 function createPhoneNumber(n) {
 	return `(${n[0]}${n[1]}${n[2]}) ${n[3]}${n[4]}${n[5]}-${n[6]}${n[7]}${n[8]}${n[9]}`
 }
+
+// 976. reate a function that takes in a current mood and return a sentence in the following format: "Today, I am feeling {mood}". However, if no argument is passed, return "Today, I am feeling neutral".
+
+// Yellow - moodToday("happy") ➞ "Today, I am feeling happy"
+// moodToday("sad") ➞ "Today, I am feeling sad"
+// moodToday() ➞ "Today, I am feeling neutral"
+
+function moodToday(mood) {
+	return `Today, I am feeling ${mood || 'neutral'}`
+}
+
+function moodToday(mood = 'neutral') {
+	return `Today, I am feeling ${mood}`; 
+}
+
+function moodToday(mood) {
+	if (arguments.length === 0) {
+		return "Today, I am feeling neutral";
+	} else {
+		return `Today, I am feeling ${mood}`;
+	}
+}
+
+Test.assertEquals(moodToday("very happy"), "Today, I am feeling very happy")
+Test.assertEquals(moodToday("rather empty inside"), "Today, I am feeling rather empty inside")
+Test.assertEquals(moodToday("confused"), "Today, I am feeling confused")
+Test.assertEquals(moodToday(), "Today, I am feeling neutral")
