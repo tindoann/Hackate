@@ -12098,3 +12098,112 @@ let x = /^[A-Z]\d[A-Z][- ]?\d[A-Z]\d$/i
 let x = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/
 
 let x = /[a-zA-Z]\d[a-zA-Z][ |-]?\d[a-zA-Z]\d$/
+
+// 973. Create a function that, given a number, returns the corresponding Fibonacci number. 
+
+// Yellow - fibonacci(3) ➞ 3
+// fibonacci(7) ➞ 21
+// fibonacci(12) ➞ 233
+// return the index
+// 1,1,2,3,5,8,13,21
+
+// if number is less than or equal to 1, return 1
+function fibonacci(num) {
+	if(num <= 1) {
+		return 1
+	} else {
+		return fibonacci(num - 1) + fibonacci(num - 2); 
+	}
+}
+
+function fibonacci(num) {
+	let res=[1,1]
+	for(let i=1;i<num;i++){
+		res.push(res[res.length-1]+(res[res.length-2]))
+	}
+	return res[num]
+}
+
+const fibonacci = num => {
+	let sequence = [0, 1];
+	for (let i = 0; i < num; i++) {
+		sequence.push(sequence[i] + sequence[i+1]);
+	}
+	return sequence[sequence.length - 1];
+}
+
+function fibonacci(num) {
+	let fib = [1,1];
+	for (let i = 2; i <= num; i ++){
+		fib.push(fib[i-1] + fib[i-2]);
+	}
+	return fib[num];
+}
+
+// 974. Create a function that takes two numbers as arguments and returns the first number rounded to the nearest number, or a multiple of that number.
+
+// Yellow - roundNearest(17, 10) ➞ 20
+// roundNearest(36.3) ➞ 36
+// roundNearest(123, 5) ➞ 125
+
+function roundNearest(num, nearest) {
+	 Math.round(num / nearest) * nearest
+}
+
+function roundNearest(num, nearest) {
+	if (nearest == undefined) {nearest = 1}
+	return Math.round(num / nearest) * nearest;
+}
+
+function roundNearest(num, nearest) {
+	return nearest && nearest * Math.round(num/nearest) || Math.round(num)
+}
+
+// 975. Write a function that takes an array of 10 integers (between 0 and 9) and returns a string in form of a phone number.
+
+// Yellow - createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ➞ "(123) 456-7890"
+// createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) ➞ "(111) 111-1111"
+// createPhoneNumber([8, 7, 4, 1, 2, 5, 6, 5, 8, 2]) ➞ "(874) 125-6582"
+
+function createPhoneNumber(arr) {
+	return `(xxx) xxx-xxxx`.replace(/x/g, v => arr.shift()); 
+}
+
+function createPhoneNumber(numbers) {
+	let number = '(xxx) xxx-xxxx'; 
+	for(let i = 0; i < numbers.length; i++) {
+		number = number.replace('x', numbers[i]); 
+	}
+	return number; 
+}
+
+function createPhoneNumber(n) {
+	return `(${n[0]}${n[1]}${n[2]}) ${n[3]}${n[4]}${n[5]}-${n[6]}${n[7]}${n[8]}${n[9]}`
+}
+
+// 976. reate a function that takes in a current mood and return a sentence in the following format: "Today, I am feeling {mood}". However, if no argument is passed, return "Today, I am feeling neutral".
+
+// Yellow - moodToday("happy") ➞ "Today, I am feeling happy"
+// moodToday("sad") ➞ "Today, I am feeling sad"
+// moodToday() ➞ "Today, I am feeling neutral"
+
+function moodToday(mood) {
+	return `Today, I am feeling ${mood || 'neutral'}`
+}
+
+function moodToday(mood = 'neutral') {
+	return `Today, I am feeling ${mood}`; 
+}
+
+function moodToday(mood) {
+	if (arguments.length === 0) {
+		return "Today, I am feeling neutral";
+	} else {
+		return `Today, I am feeling ${mood}`;
+	}
+}
+
+Test.assertEquals(moodToday("very happy"), "Today, I am feeling very happy")
+Test.assertEquals(moodToday("rather empty inside"), "Today, I am feeling rather empty inside")
+Test.assertEquals(moodToday("confused"), "Today, I am feeling confused")
+Test.assertEquals(moodToday(), "Today, I am feeling neutral")
