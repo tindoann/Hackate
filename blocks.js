@@ -12105,6 +12105,7 @@ let x = /[a-zA-Z]\d[a-zA-Z][ |-]?\d[a-zA-Z]\d$/
 // fibonacci(7) ➞ 21
 // fibonacci(12) ➞ 233
 // return the index
+// 1,1,2,3,5,8,13,21
 
 // if number is less than or equal to 1, return 1
 function fibonacci(num) {
@@ -12137,4 +12138,14 @@ function fibonacci(num) {
 		fib.push(fib[i-1] + fib[i-2]);
 	}
 	return fib[num];
+}
+
+// 974. Create a function that takes two numbers as arguments and returns the first number rounded to the nearest number, or a multiple of that number.
+
+// Yellow - roundNearest(17, 10) ➞ 20
+// roundNearest(36.3) ➞ 36
+// roundNearest(123, 5) ➞ 125
+
+function roundNearest(num, nearest) {
+	 Math.round(num / nearest) * nearest
 }
