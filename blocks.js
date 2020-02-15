@@ -12207,3 +12207,50 @@ Test.assertEquals(moodToday("very happy"), "Today, I am feeling very happy")
 Test.assertEquals(moodToday("rather empty inside"), "Today, I am feeling rather empty inside")
 Test.assertEquals(moodToday("confused"), "Today, I am feeling confused")
 Test.assertEquals(moodToday(), "Today, I am feeling neutral")
+
+// 977. Create a function that turns an array of words into a comma separated list, where the last word is separated by the word "and".
+
+// Yellow - wordsToSentence(["edabit"]) ➞ "edabit"
+// wordsToSentence(["Hello", "", "Bye"]) ➞ "Hello and Bye"
+// wordsToSentence(["Hello", "Bye", "See you soon"]) ➞ "Hello, Bye and See you soon"
+
+const wordsToSentence = words =>
+	!words ? '' : words
+		.filter(word => word)
+		.join(', ')
+		.replace(/,(?= \w+$)/, ' and')
+
+function wordsToSentence(words) {
+	if (words === null) return '';
+	return words.filter((x) => x.trim()).join(', ').replace(/,([^,]*)$/, ' and$1');
+}
+
+function wordsToSentence(words) {
+	let a = [];
+	if (words !== null) a = words.filter(x => x.length > 0);
+	return a.length > 1 ? a.slice(0, -1).join(", ").trim() + " and " +  a.slice(-1): a.length === 1 ? a[0] : "";
+}
+
+// 978. Suppose that you add all of the page numbers in a book. If the total is 21, the book would have only 6 pages because 1 + 2 + 3 + 4 + 5 + 6 = 21. If I had said the total is 25, that would be impossible because the next number in the series is 28 (21 + 7).
+
+// Create a function that has as it's argument the sum of all the page numbers and returns true if it is a valid number and false if it is not.
+
+function pagesInBook(total) {
+	var sum = 0;
+	for(var i = 0; ; i++){
+		sum +=i;
+	if(sum>=total){break;}
+	}
+	return sum===total;
+	}
+
+
+function pagesInBook(total) {
+	let arr = [1];
+	for(let i = 1; ; i++){
+		arr[i] = arr[i-1] + i + 1;
+		if(arr[i] >= total) break;
+	}
+	return total === arr[arr.length-1];
+}
+
