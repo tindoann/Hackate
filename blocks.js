@@ -12254,3 +12254,46 @@ function pagesInBook(total) {
 	return total === arr[arr.length-1];
 }
 
+// 979. Create a function that returns the number of syllables in a simple string. The string is made up of short repeated words like "Lalalalalalala" (which would have 7 syllables).
+
+// Yellow - countSyllables("Hehehehehehe") ➞ 6
+// countSyllables("bobobobobobobobo") ➞ 8
+// countSyllables("NANANA") ➞ 3
+
+function countSyllables(str) {
+	return str.length / 2;
+}
+
+const countSyllables = str => str.match(/[aeiou]/gi).length
+
+function countSyllables(str) {
+	let count = 0;
+	let string = Array.from(str);
+	
+	string.forEach(i => {
+		count ++;
+	})
+
+	return count / 2;
+}
+
+// 980. Create a function which returns "upper" if all the letters in a word are uppercase, "lower" if lowercase and "mixed" for any mix of the two.
+
+// White - getCase("whisper...") ➞ "lower"
+// getCase("SHOUT!") ➞ "upper"
+// getCase("Indoor Voice") ➞ "mixed"
+
+function getCase(str) {
+	if (str.toUpperCase() === str) {
+		return "upper"
+	} else if (str.toLowerCase() === str) {
+		return "lower"
+	} else {
+		return "mixed"
+	}
+}
+
+const getCase = s => s === s.toUpperCase() ? 'upper' :
+ s === s.toLowerCase() ? 'lower' : 'mixed';
+
+ 
