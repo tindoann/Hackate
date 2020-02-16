@@ -12296,4 +12296,33 @@ function getCase(str) {
 const getCase = s => s === s.toUpperCase() ? 'upper' :
  s === s.toLowerCase() ? 'lower' : 'mixed';
 
- 
+ // 981. Create a function that divides a string into parts of size n.
+
+//  White - partition("chew", 2) ➞ ["ch", "ew"]
+//  partition("thematic", 4) ➞ ["them", "atic"]
+//  partition("c++", 2) ➞ ["c+", "+"]
+
+function divideByN(str, n) {
+	let result = []; 
+	for(let i = 0; i < str.length; i += n) {
+		result.push(str.substring(i, i + n)); 
+	}
+	return result; 
+}
+
+function divideByN(str, n) {
+	if (n === 2) {
+		return a = str.match(/.{1, 2}/g)
+	}
+	if (n == 4) {
+	return a = str.match(/.{1, 4}/g)}
+	}
+
+	function divideByN(str, n) {
+		let newStr = [...str]; 
+		let arr = []; 
+		while(newStr.length > 0) {
+			arr.push(newStr.splice(0, n).join('')); 
+		}
+	return arr; 
+}
