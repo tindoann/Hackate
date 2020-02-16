@@ -12273,6 +12273,27 @@ function countSyllables(str) {
 	string.forEach(i => {
 		count ++;
 	})
-	
+
 	return count / 2;
 }
+
+// 980. Create a function which returns "upper" if all the letters in a word are uppercase, "lower" if lowercase and "mixed" for any mix of the two.
+
+// White - getCase("whisper...") ➞ "lower"
+// getCase("SHOUT!") ➞ "upper"
+// getCase("Indoor Voice") ➞ "mixed"
+
+function getCase(str) {
+	if (str.toUpperCase() === str) {
+		return "upper"
+	} else if (str.toLowerCase() === str) {
+		return "lower"
+	} else {
+		return "mixed"
+	}
+}
+
+const getCase = s => s === s.toUpperCase() ? 'upper' :
+ s === s.toLowerCase() ? 'lower' : 'mixed';
+
+ 
