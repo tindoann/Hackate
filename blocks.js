@@ -12473,3 +12473,41 @@ function splitGroups(str) {
 	return str.match(/([a-z\d&!_])\1*/gi);
 }
 
+// 987. Shift Validator: When each element is translated (added or subtracted) by a constant.
+// Multiple Validator: When each element is multiplied (by a positive or negative number) by a constant.
+
+// isShifted([1, 2, 3], [2, 3, 4]) ➞ true
+// Each element is shifted +1
+
+// isShifted([1, 2, 3], [-9, -8, -7]) ➞ true
+// Each element is shifted -10
+
+// isMultiplied([1, 2, 3], [10, 20, 30]) ➞ true
+// Each element is multiplied by 10
+
+// isMultiplied([1, 2, 3], [-0.5, -1, -1.5]) ➞ true
+// Each element is multiplied by -1/2
+
+// isMultiplied([1, 2, 3], [0, 0, 0]) ➞ true
+// Each element is multiplied by 0
+
+// sol1
+function isShifted(rr1, arr2) {
+	return arr2.every((x, i) => x - arr[i] - arr[0]); 
+}
+
+function isMultiplied(arr1, arr2) {
+	return arr2.every((x, i) => x / arr1[i] == arr2[2] / arr1[0]); 
+}
+
+// sol2
+function isShifted(arr1, arr2) {
+	let a = arr2.map((x, i) => x - arr1[i]); 
+	return a[1] == a[2]
+}
+
+function isMultiplied(arr1, arr2) {
+	let a = arr2.map((x, i) => x / arr[i]); 
+	return a[1] == a[2]
+}
+
