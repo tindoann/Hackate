@@ -12424,3 +12424,52 @@ function split(word) {
 function split(word) {
 	word.replace(/[^aeiou]|[aeiou]+/g, v => `.${v}`).slice(1).split('.');
 }
+
+// 985. Create a function that determines whether elements in an array can be re-arranged to form a consecutive list of numbers where each number appears exactly once.
+
+// cons([5, 1, 4, 3, 2]) ➞ true
+// Can be re-arranged to form [1, 2, 3, 4, 5]
+
+// cons([5, 1, 4, 3, 2, 8]) ➞ false
+
+// cons([5, 6, 7, 8, 9, 9]) ➞ false
+// 9 appears twice
+
+
+
+function cons(arr) {
+	let newArr = arr.sort((a,b)=> a-b)
+	return newArr.slice(1).every((x,i)=> x - newArr[i] === 1)
+}
+
+function cons(arr) {
+	arr = arr.sort(function(a,b){return a-b});
+	for (var i = 1; i < arr.length; i++){
+		if(arr[i-1] + 1 !== arr[i]){
+			return false;
+		}
+	}
+	return true;
+}
+
+function cons(arr) {
+	let sorted = arr.sort( (a, b) => a - b );
+	return new Set(sorted.map( (el, i) => el - i )).size === 1;
+}
+
+// 986. Create a function that splits a string into an array of identical clusters.
+
+Yellow - splitGroups("555") ➞ ["555"]
+
+// splitGroups("5556667788") ➞ ["555", "666", "77", "88"]
+// splitGroups("aaabbbaabbab") ➞ ["aaa", "bbb", "aa", "bb", "a", "b"]
+// splitGroups("abbbcc88999&&!!!_") ➞ ["a", "bbb", "cc", "88", "999", "&&", "!!!", "_"]
+
+function splitGroups(str) {
+	return str.match(/(.)\1*/g)
+}
+
+function splitGroups(str) {
+	return str.match(/([a-z\d&!_])\1*/gi);
+}
+
