@@ -12347,3 +12347,80 @@ function hasHiddenFee(prices, t) {
 	t = +t.slice(1); 
 	return sum < t
 }
+
+// 983. Callbacks are first-class functions. This means they have first-class characteristics, like being able to be passed to other functions. There was a time when callbacks were used to handle async operations, but we needed something better because of a few shortcomings (like problems with nested callbacks).
+
+// Ex cb
+
+function asyncFunc(cb) {
+  let result = ""
+  // After some time the result of an async opertion comes back and is put in the "result" variable.  We'll use a string for this example.   
+  result = "hello"
+  cb(result)
+}
+
+function callback(str) {
+  console.log(str)
+}
+
+asyncFunc(callback)
+console.log("goodbye")
+
+// goodbye
+// hello
+
+// "goodbye" appears before "hello" because the async operation in asyncFunc() is non-blocking, meaning that it is set aside until it finishes but in the meantime we go ahead and call the next function.
+
+// function anotherFunc() {
+// 	let str = "bye"
+// 	setTimeout(() => {
+// 	}, 100)
+// }
+
+// var doc = "hello"
+
+// function callback(str) {
+// 	doc = str
+// }
+
+function anotherFunc(cb) {
+	let str = "bye"
+	setTimeout(() => {
+		cb(str)
+	}, 100)
+}
+
+var doc = "hello"
+
+function callback(str) {
+	doc = str
+}
+
+function anotherFunc() {
+	let str = "bye"
+	setTimeout(() => { callback(str); }, 100)
+}
+
+var doc = "hello"
+
+function callback(str) {
+	doc = str
+}
+
+// 984. Write a function that takes in a word and splits the consonants one by one, but keeps the vowels in a cluster.
+
+// Yellow - split("beautifully") ➞ ["b", "eau", "t", "i", "f", "u", "l", "l", "y"]
+// split("spoonful") ➞ ["s", "p", "oo", "n", "f", "u", "l"]
+// split("swimming") ➞ ["s", "w", "i", "m", "m", "i", "n", "g"]
+
+function split(word) {
+	return word.match(/([^aeiou] | [aeiou]+)/g)
+}
+
+function split(word) {
+	return word.split(/([aeiou]*)/g).filter(x => x !=='')
+}
+
+function split(word) {
+	word.replace(/[^aeiou]|[aeiou]+/g, v => `.${v}`).slice(1).split('.');
+}
