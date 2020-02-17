@@ -12511,3 +12511,41 @@ function isMultiplied(arr1, arr2) {
 	return a[1] == a[2]
 }
 
+// 988. Create a function that takes an array of students and returns an array of their top notes. If student does not have notes then let's assume their top note is equal to 0.
+
+// getStudentTopNotes([
+//   {
+//     id: 1,
+//     name: "Jacek",
+//     notes: [5, 3, 4, 2, 5, 5]
+//   },
+//   {
+//     id: 2,
+//     name: "Ewa",
+//     notes: [2, 3, 3, 3, 2, 5]
+//   },
+//   {
+//     id: 3,
+//     name: "Zygmunt",
+//     notes: [2, 2, 4, 4, 3, 3]
+//   }
+// ]) ➞ [5, 5, 4]
+
+function getStudentTopNotes(students) {
+	return students.map(x => Math.max(...x.notes, 0))
+}
+
+function getStudentTopNotes(students) {
+	return students.map(s => s.notes.length ? Math.max(...s.notes) : 0)
+}
+
+function getStudentTopNotes(students) {
+  let result = students.map(student => student = student.notes);
+	return result.map(function(item) {
+		if (item.length === 0) {
+			return item = 0;
+	} else { 
+		 return Math.max(...item);
+	}
+	});
+}
