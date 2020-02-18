@@ -12618,3 +12618,47 @@ function retrieve(str) {
 	return str.toLowerCase().split(' ').filter(a => /^[aeiou]/i.test(a));
 }
 
+// 991. Create a function which returns the total of all odd numbers up to and including n. n will be given as an odd number.
+
+// Yellow - addOddToN(5) ➞ 9
+// 1 + 3 + 5 = 9
+
+// addOddToN(13) ➞ 49
+// addOddToN(47) ➞ 576
+
+function addOddToN(n) {
+	Math.ceil(n / 2) ** 2; 
+}
+
+function addOddToN(n) {
+	if (n === 1) return 1
+  return n + addOddToN(n - 2)
+}
+
+function addOddToN(n) {
+	let a = 0; 
+	for (let i = i; i <= n; i += 2) {
+		a += i;  
+	}
+	return a; 
+}
+
+// 992. Create a function that takes a string and returns the number of alphanumeric characters that occur more than once.
+
+// Yellow - duplicateCount("abcde") ➞ 0
+// duplicateCount("aabbcde") ➞ 2
+// duplicateCount("Indivisibilities") ➞ 2
+// duplicateCount("Aa") ➞ 0
+// Case sensitive
+
+function duplicateCount(str) {
+  return ([...str].sort().join("").match(/([a-z0-9])\1+/gi)||[]).length
+}
+
+function duplicateCount(str) {
+  return str.toLowerCase().split("")
+    .filter( (x, i, a) => a.indexOf(x) !== i )
+    .filter( (x, i, a) => a.indexOf(x) === i ).length;
+}
+
+const duplicateCount = str => (str.split('').sort().join('').match(/(.)\1+/g) || []).length
