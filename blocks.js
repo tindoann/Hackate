@@ -12588,3 +12588,33 @@ function checkPerfect(num) {
 	}
 	return sum === num
 }
+
+// 990. Write a function that retrieves all words that begin with a vowel.
+
+// retrieve("A simple life is a happy life for me.") ➞ ["a", "is", "a"]
+
+// retrieve("Exercising is a healthy way to burn off energy."
+// ➞ ["exercising", "is", "a", "off", "energy"]
+
+// retrieve("The poor ostrich was ostracized.")
+// ➞ ["ostrich", "ostracized"]
+
+// retrieve("")
+// ➞ []
+
+function retrieve(str) {
+	return str.replace(/[.]/g, '')
+	.toLowerCase()
+	.split(/\s/)
+	.filter(x=>/[aeiou]/.test(x.charAt(0)));
+}
+
+function retrieve(str) {
+	return str ? str.match(/\b[aeiou]\w*/ig).map(e => e.toLowerCase()) : []; 
+}
+
+function retrieve(str) {
+	str = str.slice(0, -1); 
+	return str.toLowerCase().split(' ').filter(a => /^[aeiou]/i.test(a));
+}
+
