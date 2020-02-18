@@ -12618,3 +12618,27 @@ function retrieve(str) {
 	return str.toLowerCase().split(' ').filter(a => /^[aeiou]/i.test(a));
 }
 
+// 991. Create a function which returns the total of all odd numbers up to and including n. n will be given as an odd number.
+
+// Yellow - addOddToN(5) ➞ 9
+// 1 + 3 + 5 = 9
+
+// addOddToN(13) ➞ 49
+// addOddToN(47) ➞ 576
+
+function addOddToN(n) {
+	Math.ceil(n / 2) ** 2; 
+}
+
+function addOddToN(n) {
+	if (n === 1) return 1
+  return n + addOddToN(n - 2)
+}
+
+function addOddToN(n) {
+	let a = 0; 
+	for (let i = i; i <= n; i += 2) {
+		a += i;  
+	}
+	return a; 
+}
