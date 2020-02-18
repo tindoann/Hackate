@@ -12642,3 +12642,23 @@ function addOddToN(n) {
 	}
 	return a; 
 }
+
+// 992. Create a function that takes a string and returns the number of alphanumeric characters that occur more than once.
+
+// Yellow - duplicateCount("abcde") ➞ 0
+// duplicateCount("aabbcde") ➞ 2
+// duplicateCount("Indivisibilities") ➞ 2
+// duplicateCount("Aa") ➞ 0
+// Case sensitive
+
+function duplicateCount(str) {
+  return ([...str].sort().join("").match(/([a-z0-9])\1+/gi)||[]).length
+}
+
+function duplicateCount(str) {
+  return str.toLowerCase().split("")
+    .filter( (x, i, a) => a.indexOf(x) !== i )
+    .filter( (x, i, a) => a.indexOf(x) === i ).length;
+}
+
+const duplicateCount = str => (str.split('').sort().join('').match(/(.)\1+/g) || []).length
