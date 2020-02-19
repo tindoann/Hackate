@@ -12757,3 +12757,45 @@ function overTwentyOne(cards) {
 	.reduce((a,c) => c == 1 && a + 11 < 21 ? a + 11 : a + c,0 )
 > 21;
 }
+
+// 996. Each number in the Perrin sequence is created by summing the numbers two positions and three positions before it. The first three numbers are (3, 0, 2), and the sequence is extended as follows:
+
+// P(0) P(1) P(2) P(3) P(4) P(5) P(6) P(7) ... P(n)
+// 3, 0, 2, 3, 2, 5, 5, 7, ...
+
+// Yellow - perrin(1) ➞ 0
+// perrin(8) ➞ 10
+// perrin(26) ➞ 1497
+
+const perrin = n => !n ? 3 : n==1 ? 0 : n==2 ? 2 : perrin(n-3) + perrin(n-2);
+
+function perrin(n) {
+	var arr = [3, 0, 2];
+	var k = arr.length;
+	while(n >= k){
+		arr[k] = arr[k - 3] + arr[k -2];
+		console.log(arr[k]);
+		k++;
+	}
+	return arr[n];	
+}
+
+function perrin(n) {
+	let arr = [3, 0, 2];
+	if (n > 2) {
+		for (let i = 3; i <= n; i++) {
+			arr.push(arr[i - 3] + arr[i - 2]);
+		}
+	}
+	return arr[n];
+}
+
+function perrin(n) {
+	let arr = [3, 0, 2]; 
+	if ( n > 2) {
+		for (let i = 3; i <= n; i++) {
+			arr.push(arr[i - 3] + arr[i - 2]); 
+		}
+	}
+	return arr[n]; 
+}
