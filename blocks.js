@@ -12662,3 +12662,60 @@ function duplicateCount(str) {
 }
 
 const duplicateCount = str => (str.split('').sort().join('').match(/(.)\1+/g) || []).length
+
+// 993. Create a function that takes an array and returns an array of the accumulating product.
+
+// accumulatingProduct([1, 2, 3, 4]) ➞ [1, 2, 6, 24]
+// // [1, 2, 6, 24] can be written as [1, 1 x 2, 1 x 2 x 3, 1 x 2 x 3 x 4]
+
+// accumulatingProduct([1, 5, 7]) ➞ [1, 5, 35]
+// accumulatingProduct([1, 0, 1, 0]) ➞ [1, 0, 0, 0]
+// accumulatingProduct([]) ➞ []
+
+const accumulatingProduct = arr => {
+  let product = 1;
+  return arr.map(num => (product *= num));
+};
+
+function accumulatingProduct(arr) {
+	return arr.map((n,i)=>arr.slice(0,i+1).reduce((a,b)=>a*b))
+}
+
+function accumulatingProduct(arr) {
+	var r = [];
+	if (arr.length > 0) {
+		r[0] = arr[0];
+  	for (var i = 1; i < arr.length; i++) {
+	  	r[i] = arr[i]*r[i-1];
+	  }
+	}
+	return r;
+}
+
+function accumulatingProduct(arr) {
+	var res = [];
+	for(var i = 0; i < arr.length; i++) {
+   res.push(arr.slice(0,i+1).reduce((a,b) => a * b) )
+  }
+  return res;
+}
+
+// 994. What's the probability of someone making a certain amount of free throws in a row given their free throw success percentage? If Sally makes 50% of her free shot throws. Then Sally's probability of making 5 in a row would be 3%.
+
+// Yellow - freethrows(75%, 5) ➞ 24% 
+// freethrows(25%, 3) ➞ 2% 
+// freethrows(90%, 30) ➞ 4%
+
+const freeThrows = (sucess, rows) => Math.round(
+	100 * (parseInt(success) / 100) ** rows
+) + '%'; 
+
+function freeThrows(success, rows) {
+	return Math.round(Math.pow(+success.slice(0, -1) / 100, rows) * 100) + "%";
+}
+
+function freeThrows(success, throws) {
+	return Math.pow(success.slice(0, -1)/100, throws).toFixed(2) * 100 + '%'
+}
+
+
