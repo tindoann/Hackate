@@ -12854,3 +12854,42 @@ function frames(x, y)  {
 	return x * y * 60; 
 }
 
+// 999. Given a simple math expression as a string, neatly format it as an equation.
+
+// Yellow - formatMath("3 + 4") ➞ "3 + 4 = 7"
+// formatMath("3 - 2") ➞ "3 - 2 = 1"
+// formatMath("4 x 5") ➞ "4 x 5 = 20"
+// formatMath("6 / 3") ➞ "6 / 3 = 2"
+
+function formatMath(expr) {
+	return expr + " = " + eval(expr.replace("x", "*"))
+}
+
+function formatMath(expr) {
+	return expr.includes('+') ? `${expr} = ${eval(expr)}`
+				:expr.includes('-') ? `${expr} = ${eval(expr)}`
+				:expr.includes('/') ? `${expr} = ${eval(expr)}`
+				:`${expr} = ${eval(expr.replace(regex='x','*'))}`
+}
+
+const formatMath = expr => {
+	expr = expr.split(' ')
+	let result
+	switch (expr[1]) {
+		case 'x':
+			result = expr[0] * expr[2]
+			break
+		case '/':
+			result = expr[0] / expr[2]
+			break
+		case '-':
+			result = expr[0] - expr[2]
+			break
+		default:
+			result = +expr[0] + +expr[2]
+			break
+	}
+	return `${expr.join(' ')} = ${result}`
+}
+
+
