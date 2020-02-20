@@ -12835,3 +12835,22 @@ function isMiniSudoku(square) {
 	return arr.sort().every((entry, id, array) => entry === id + 1); 
 }
 
+// 998. Create a function that returns the number of frames shown in a given number of minutes for a certain FPS.
+
+// Yellow - frames(1, 1) ➞ 60
+// frames(10, 1) ➞ 600
+// frames(10, 25) ➞ 15000
+
+function frames(minutes, fps) {
+	const fpsRes = fps * 60; 
+	return minutes * fpsRes; 
+}
+
+function frames(minutes, fps) {
+	return minutes * (fps * 60)
+}
+
+function frames(x, y)  {
+	return x * y * 60; 
+}
+
