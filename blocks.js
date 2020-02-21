@@ -12892,4 +12892,33 @@ const formatMath = expr => {
 	return `${expr.join(' ')} = ${result}`
 }
 
+// 1000. Create a function that transforms sentences ending with multiple question marks ? or exclamation marks ! into a sentence only ending with one.
+
+// Yellow - noYelling("What went wrong?????????") ➞ "What went wrong?"
+
+// noYelling("Oh my goodness!!!") ➞ "Oh my goodness!"
+// noYelling("I just!!! can!!! not!!! believe!!! it!!!") ➞ "I just!!! can!!! not!!! believe!!! it!"
+// // Only change repeating punctuation at the end of the sentence.
+// noYelling("Oh my goodness!") ➞ "Oh my goodness!"
+// // Do not change sentences where there exists only one or zero exclamation marks/question marks.
+// noYelling("I just cannot believe it.") ➞ "I just cannot believe it."
+
+function noYelling(phrase) {
+	return phrase.replace(/([?!])+$/g, '$1')
+}
+
+function noYelling(phrase) {
+	phrase = phrase.replace(/\?{2,}$/g, '?');
+	phrase = phrase.replace(/\!{2,}$/g, '!');
+	return phrase;
+}
+
+function noYelling(phase) {
+	return phrase.replace(/([!?])+$/g, "$1");
+}
+
+function noYelling(phrase) {
+	return String(phrase.match(/\b.+\w+[^a-z]{1}/))
+}
+
 
