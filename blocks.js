@@ -12854,3 +12854,71 @@ function frames(x, y)  {
 	return x * y * 60; 
 }
 
+// 999. Given a simple math expression as a string, neatly format it as an equation.
+
+// Yellow - formatMath("3 + 4") ➞ "3 + 4 = 7"
+// formatMath("3 - 2") ➞ "3 - 2 = 1"
+// formatMath("4 x 5") ➞ "4 x 5 = 20"
+// formatMath("6 / 3") ➞ "6 / 3 = 2"
+
+function formatMath(expr) {
+	return expr + " = " + eval(expr.replace("x", "*"))
+}
+
+function formatMath(expr) {
+	return expr.includes('+') ? `${expr} = ${eval(expr)}`
+				:expr.includes('-') ? `${expr} = ${eval(expr)}`
+				:expr.includes('/') ? `${expr} = ${eval(expr)}`
+				:`${expr} = ${eval(expr.replace(regex='x','*'))}`
+}
+
+const formatMath = expr => {
+	expr = expr.split(' ')
+	let result
+	switch (expr[1]) {
+		case 'x':
+			result = expr[0] * expr[2]
+			break
+		case '/':
+			result = expr[0] / expr[2]
+			break
+		case '-':
+			result = expr[0] - expr[2]
+			break
+		default:
+			result = +expr[0] + +expr[2]
+			break
+	}
+	return `${expr.join(' ')} = ${result}`
+}
+
+// 1000. Create a function that transforms sentences ending with multiple question marks ? or exclamation marks ! into a sentence only ending with one.
+
+// Yellow - noYelling("What went wrong?????????") ➞ "What went wrong?"
+
+// noYelling("Oh my goodness!!!") ➞ "Oh my goodness!"
+// noYelling("I just!!! can!!! not!!! believe!!! it!!!") ➞ "I just!!! can!!! not!!! believe!!! it!"
+// // Only change repeating punctuation at the end of the sentence.
+// noYelling("Oh my goodness!") ➞ "Oh my goodness!"
+// // Do not change sentences where there exists only one or zero exclamation marks/question marks.
+// noYelling("I just cannot believe it.") ➞ "I just cannot believe it."
+
+function noYelling(phrase) {
+	return phrase.replace(/([?!])+$/g, '$1')
+}
+
+function noYelling(phrase) {
+	phrase = phrase.replace(/\?{2,}$/g, '?');
+	phrase = phrase.replace(/\!{2,}$/g, '!');
+	return phrase;
+}
+
+function noYelling(phase) {
+	return phrase.replace(/([!?])+$/g, "$1");
+}
+
+function noYelling(phrase) {
+	return String(phrase.match(/\b.+\w+[^a-z]{1}/))
+}
+
+
