@@ -12921,4 +12921,32 @@ function noYelling(phrase) {
 	return String(phrase.match(/\b.+\w+[^a-z]{1}/))
 }
 
+// 1001. Create a function that takes an array of numbers and return the number that's unique.
+
+// White - unique([3, 3, 3, 7, 3, 3]) ➞ 7
+// unique([0, 0, 0.77, 0, 0]) ➞ 0.77
+// unique([0, 1, 1, 1, 1, 1, 1, 1]) ➞ 0
+
+function unique(arr) {
+	return arr.filter(x => arr.lastIndexOf(x) === arr.indexOf(x))[0];
+}
+
+unique = a => a.find(x => a.indexOf(x) == a.lastIndexOf(x))
+
+function unique(arr) {
+	var unique = arr[0];
+	for(var i = 1; i < arr.length; i++) {
+		if(i == arr.length - 1) {
+			return arr[i];
+		}
+		if(unique != arr[i]) {
+			if(unique != arr[i+1]) {
+				return unique;
+			} else {
+				return arr[i];
+			}
+		}
+	}
+}
+
 
