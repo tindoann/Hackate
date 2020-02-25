@@ -12980,3 +12980,57 @@ class Employee {
 		this.email = (firstname + '.' + lastname + '@company.com').toLowerCase()
 	}
 }
+
+// 1003. This is a reverse coding challenge. Normally you're given explicit directions with how to create a function. Here, you must generate your own function to satisfy the relationship between the inputs and outputs.
+// Your task is to create a function that, when fed the inputs below, produce the sample outputs shown.
+
+// Yellow - "A4B5C2" ➞ "AAAABBBBBCC"
+// "C2F1E5" ➞ "CCFEEEEE"
+// "T4S2V2" ➞ "TTTTSSVV"
+// "A1B2C3D4" ➞ "ABBCCCDDDD"
+
+function mysteryFunc(str) {
+	return str.match(/.{2}/g)
+	.map(x => x[0].repeat(x[1]))
+	.join(''); 
+}
+
+function mysteryFunc(str) {
+	let result = ''
+	for (let i = 0; i < str.length - 1; i += 2) {
+		result += str[i].repeat(str[i + 1])
+	}
+	return result
+}
+
+function mysteryFunc(str) {
+	n=str.match(/\d/g)
+	ret=[]
+	n.forEach((a,b)=>ret=ret.concat(str[b*2].repeat(Number(a))))
+	return ret.join('')
+}
+
+// 1004. Create a function that takes an array and finds the integer which appears an odd number of times.
+
+// Yellow - findOdd([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5]) ➞ -1
+// findOdd([20, 1, 1, 2, 2, 3, 3, 5, 5, 4, 20, 4, 5]) ➞ 5
+// findOdd([10]) ➞ 10
+
+function findOdd(arr) {
+	return arr.find(n => arr.filter(n2 => n == n2).length % 2); 
+}
+
+function findOdd(arr) {
+	arr.reduce((a, b) => a ^ b, 0)
+}
+
+function findOdd(arr) {
+	arr = arr.sort((a, b) => a - b); 
+	for(let i = 0, l = arr.length; i < l; i++) {
+		if(arr[i] === arr[i + 1]) {
+			i++; 
+		} else {
+			return arr[i]; 
+		}
+	}
+}
