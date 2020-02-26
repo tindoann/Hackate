@@ -12980,3 +12980,111 @@ class Employee {
 		this.email = (firstname + '.' + lastname + '@company.com').toLowerCase()
 	}
 }
+
+// 1003. This is a reverse coding challenge. Normally you're given explicit directions with how to create a function. Here, you must generate your own function to satisfy the relationship between the inputs and outputs.
+// Your task is to create a function that, when fed the inputs below, produce the sample outputs shown.
+
+// Yellow - "A4B5C2" ➞ "AAAABBBBBCC"
+// "C2F1E5" ➞ "CCFEEEEE"
+// "T4S2V2" ➞ "TTTTSSVV"
+// "A1B2C3D4" ➞ "ABBCCCDDDD"
+
+function mysteryFunc(str) {
+	return str.match(/.{2}/g)
+	.map(x => x[0].repeat(x[1]))
+	.join(''); 
+}
+
+function mysteryFunc(str) {
+	let result = ''
+	for (let i = 0; i < str.length - 1; i += 2) {
+		result += str[i].repeat(str[i + 1])
+	}
+	return result
+}
+
+function mysteryFunc(str) {
+	n=str.match(/\d/g)
+	ret=[]
+	n.forEach((a,b)=>ret=ret.concat(str[b*2].repeat(Number(a))))
+	return ret.join('')
+}
+
+// 1004. Create a function that takes an array and finds the integer which appears an odd number of times.
+
+// Yellow - findOdd([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5]) ➞ -1
+// findOdd([20, 1, 1, 2, 2, 3, 3, 5, 5, 4, 20, 4, 5]) ➞ 5
+// findOdd([10]) ➞ 10
+
+function findOdd(arr) {
+	return arr.find(n => arr.filter(n2 => n == n2).length % 2); 
+}
+
+function findOdd(arr) {
+	arr.reduce((a, b) => a ^ b, 0)
+}
+
+function findOdd(arr) {
+	arr = arr.sort((a, b) => a - b); 
+	for(let i = 0, l = arr.length; i < l; i++) {
+		if(arr[i] === arr[i + 1]) {
+			i++; 
+		} else {
+			return arr[i]; 
+		}
+	}
+}
+
+// 1005. A man named Thomas Malthus described what is now called a Malthusian Catastrophe. According to him, food production grows by a fixed amount, but population grows by a percentage. So, the food supply would soon be insufficient for the population.
+
+// Your job is to find out when that will occur. For this challenge, assume 1 population needs 1 unit of food production. Food production & population both start at 100. The year starts at 0.
+// The catastrophe happens when the population is larger than food production.
+// The function will pass:
+// foodGrowth ⁠— an integer - Food production increase per year.
+// popMult ⁠— a floating-point number - The population growth multiplier per year.
+
+// Yellow- malthusian(4255, 1.41) ➞ 20
+// { foodProd: 85,200, pop: 96,467.77..., year: 20 }
+
+// malthusian(9433, 1.09) ➞ 107
+// { foodProd: 1,009,431, pop: 1,010,730.28..., year: 107 }
+
+// malthusian(5879, 1.77) ➞ 12
+// { foodProd: 70,648, pop: 94,553.84..., year: 12 }
+
+const malthusian = (f, p, F = 100, P = 100, Y = 0) => (
+	P > F ? Y : malthusian(f, p, f + F, p * P, ++Y)
+);
+
+const malthusian = (f, p) => {
+	let n = 1
+	while (100 + f*n > 100*p**n) n++
+	return n
+}
+
+function malthusian(foodGrowth, popMult) {
+	let year = 0;
+	let food = 100;
+	let pop = 100;
+	
+	while (food >= pop){
+		food += foodGrowth;
+		pop *= popMult;
+		year++;
+	}
+	return year;
+}
+
+function malthusian(foodGrowth, popMult) {
+	let foodProd = 100
+	let population = 100
+	let year = 0
+	
+	for (let i = 0 ; foodProd >= population ; i++){
+		foodProd += foodGrowth
+		population *= popMult
+		year++
+	}
+	
+	return year
+}
