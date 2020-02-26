@@ -13034,3 +13034,57 @@ function findOdd(arr) {
 		}
 	}
 }
+
+// 1005. A man named Thomas Malthus described what is now called a Malthusian Catastrophe. According to him, food production grows by a fixed amount, but population grows by a percentage. So, the food supply would soon be insufficient for the population.
+
+// Your job is to find out when that will occur. For this challenge, assume 1 population needs 1 unit of food production. Food production & population both start at 100. The year starts at 0.
+// The catastrophe happens when the population is larger than food production.
+// The function will pass:
+// foodGrowth ⁠— an integer - Food production increase per year.
+// popMult ⁠— a floating-point number - The population growth multiplier per year.
+
+// Yellow- malthusian(4255, 1.41) ➞ 20
+// { foodProd: 85,200, pop: 96,467.77..., year: 20 }
+
+// malthusian(9433, 1.09) ➞ 107
+// { foodProd: 1,009,431, pop: 1,010,730.28..., year: 107 }
+
+// malthusian(5879, 1.77) ➞ 12
+// { foodProd: 70,648, pop: 94,553.84..., year: 12 }
+
+const malthusian = (f, p, F = 100, P = 100, Y = 0) => (
+	P > F ? Y : malthusian(f, p, f + F, p * P, ++Y)
+);
+
+const malthusian = (f, p) => {
+	let n = 1
+	while (100 + f*n > 100*p**n) n++
+	return n
+}
+
+function malthusian(foodGrowth, popMult) {
+	let year = 0;
+	let food = 100;
+	let pop = 100;
+	
+	while (food >= pop){
+		food += foodGrowth;
+		pop *= popMult;
+		year++;
+	}
+	return year;
+}
+
+function malthusian(foodGrowth, popMult) {
+	let foodProd = 100
+	let population = 100
+	let year = 0
+	
+	for (let i = 0 ; foodProd >= population ; i++){
+		foodProd += foodGrowth
+		population *= popMult
+		year++
+	}
+	
+	return year
+}
