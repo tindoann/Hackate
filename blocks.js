@@ -13065,7 +13065,7 @@ const malthusian = (f, p) => {
 function malthusian(foodGrowth, popMult) {
 	let year = 0;
 	let food = 100;
-	let pop = 100;
+	let pop = 100; 
 	
 	while (food >= pop){
 		food += foodGrowth;
@@ -13087,4 +13087,26 @@ function malthusian(foodGrowth, popMult) {
 	}
 	
 	return year
+}
+
+// 1006. Create a function that takes two numbers as arguments and return their sum.
+
+// White - addition(3, 2) ➞ 5
+// addition(-3, -6) ➞ -9
+// addition(7, 3) ➞ 10
+
+function addition(a, b) {
+	return a + b; 
+}
+
+function addition(a, b) {
+	if (typeof a !== "number" || typeof b !== "number") {
+			return "Sorry but you didn't pass two numbers.";
+	}
+	return a + b;
+}
+
+function addition(a, b) {
+	const addition = a+b
+	return (addition)
 }
