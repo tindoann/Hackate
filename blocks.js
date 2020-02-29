@@ -13110,3 +13110,24 @@ function addition(a, b) {
 	const addition = a+b
 	return (addition)
 }
+
+// 1007. Dividing by 0 is a huge mistake and should be avoided at all costs.
+// Create a function that when given a math expression as a string, return True if at any point, the expression involves dividing by 0.
+
+// Yellow - catchZeroDivision('2 / 0') ➞ true
+// catchZeroDivision('4 / (2 + 3 - 5)') ➞ true
+// catchZeroDivision('2 * 5 - 10') ➞ false
+
+function catchZeroDivision(expr) {
+	return !isFinite(eval(expr));
+}
+
+function catchZeroDivision(expr) {
+	return ! Number.isFinite(eval(expr));
+}
+
+function catchZeroDivision(expr) {
+	if (!expr.includes('/')) return false;
+  const divisor = expr.split('/')[1]
+		return !Number(`${divisor}`)
+}
