@@ -13154,3 +13154,29 @@ function oneOddOneEven(num) {
 	let [a,b] =  [ +(String(num)[0]) , num%10  ]
 	return (a+b) %2 != 0 ;
 }
+
+// 1009. A number can considered slidey if for every digit in the number, the next digit from that has an absolute difference of one. Check the examples below.
+
+// White - isSlidey(123454321) ➞ true
+// isSlidey(54345) ➞ true
+// isSlidey(987654321) ➞ true
+// isSlidey(1123) ➞ false
+// isSlidey(1357) ➞ false
+
+function isSlidey(n) {
+	n = n.toString();
+	return [...n].slice(1).every((x, i) => Math.abs(x - n[i]) === 1);
+}
+
+function isSlidey(n) {
+	let arr = [...n.toString()];
+	return arr.every((x, id) => Math.abs(x - arr[id+1]) == 1 || id == arr.length-1);
+}
+
+function isSlidey(n) {
+	const num = n.toString();
+	for (let i = 1; i < num.length; i++) {
+		if (Math.abs(num[i] - num[i - 1]) !== 1) return false;
+	}
+	return true;
+}
