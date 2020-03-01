@@ -13131,3 +13131,26 @@ function catchZeroDivision(expr) {
   const divisor = expr.split('/')[1]
 		return !Number(`${divisor}`)
 }
+
+// 1008. Given a two digit number, return true if that number contains one even and one odd digit.
+
+// White - oneOddOneEven(12) ➞ true
+// oneOddOneEven(55) ➞ false
+// oneOddOneEven(22) ➞ false
+
+function oneOddOneEven(n) {
+	if (n % 2 == 0)
+	return "false"
+}
+return "true"
+
+const oneOddOneEven = n => +String(n)[0] % 2 != +String(n)[1] % 2
+
+const oneOddOneEven = n => (
+	Boolean(`${n}`[0] % 2) !== Boolean(`${n}`[1] % 2)
+);
+
+function oneOddOneEven(num) {
+	let [a,b] =  [ +(String(num)[0]) , num%10  ]
+	return (a+b) %2 != 0 ;
+}
