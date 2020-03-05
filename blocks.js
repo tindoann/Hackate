@@ -13180,3 +13180,82 @@ function isSlidey(n) {
 	}
 	return true;
 }
+
+// 1010. Create a method in the Person class which returns how another person's age compares. Given the instances p1, p2 and p3, which will be initialised with the attributes name and age, return a sentence in the following format:
+// {other person name} is {older than / younger than / the same age as} me.
+
+// p1 = Person("Samuel", 24)
+// p2 = Person("Joel", 36)
+// p3 = Person("Lily", 24)
+
+// Yellow - p1.compareAge(p2) ➞ "Joel is older than me."
+// p2.compareAge(p1) ➞ "Samuel is younger than me."
+// p1.compareAge(p3) ➞ "Lily is the same age as me."
+
+class Person {
+	constructor(name, age) {
+		this.name = name
+		this.age = age
+	}
+		
+	compareAge(other) {
+		let i = Math.sign(other.age - this.age),
+				x = ["the same age as", "older than"][i] || "younger than";
+		return `${other.name} is ${x} me.`;
+	}
+}
+
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+		
+	compareAge(other) {
+		if (this.age < other.age){
+			return `${other.name} is older than me.`
+		}else if (this.age > other.age){
+			return `${other.name} is younger than me.`
+		}else{
+			return `${other.name} is the same age as me.`
+		}
+	}
+}
+
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+		
+	compareAge(other) {
+		if (this.age > other.age) return `${other.name} is younger than me.`;
+		if (this.age < other.age) return `${other.name} is older than me.`;
+		return `${other.name} is the same age as me.`;
+	}
+}
+
+// 1011. Given an array of numbers, create a function which returns the same array but with each element's index in the array added to itself. This means you add 0 to the number at index 0, add 1 to the number at index 1, etc...
+
+// Yellow - addIndexes([0, 0, 0, 0, 0]) ➞ [0, 1, 2, 3, 4]
+// addIndexes([1, 2, 3, 4, 5]) ➞ [1, 3, 5, 7, 9]
+// addIndexes([5, 4, 3, 2, 1]) ➞ [5, 5, 5, 5, 5]
+
+function addIndexex(arr) {
+	return arr.map((val, i) => val + i); 
+}
+
+function addIndexes(arr) {
+	let result = []; 
+	for(let i = 0; i < arr.length; i++) {
+		result.push(i + arr[i])
+	}
+	return result;
+}
+
+function addIndexes(arr) {
+	for(var i = 0; i < arr.length; i++) {
+		arr[i] += i
+	}
+  return arr
+}
