@@ -13259,3 +13259,73 @@ function addIndexes(arr) {
 	}
   return arr
 }
+
+// 1012. Given a sentence spelling out a word, return true if the spelled letters match the word at the end of the string, or false otherwise.
+
+// Yellow - validateSpelling("C. Y. T. O. P. L. A. S. M. Cytoplasm?") ➞ true
+// validateSpelling("P. H. A. R. A. O. H. Pharaoh!") ➞ true
+// validateSpelling("H. A. N. K. E. R. C. H. E. I. F. Handkerchief.") ➞ false
+
+const validateSpelling = txt => {
+	let arr = txt.toUpperCase().match(/\w+/g);
+	return arr.slice(0, -1).join("") === arr.slice(-1)[0];
+}
+
+function validateSpelling(txt) {
+	let t = txt.toLowerCase().match(/\w+/g);
+	return t.slice(0, -1).join('') === t[t.length - 1];
+}
+
+function validateSpelling(txt) {
+	txt = txt.split('. ').map(el => el.replace(/\W/g, ''));
+	return txt.splice(-1).join('').toUpperCase() === txt.join('');
+}
+
+// 1013. Create a function which simulates the game "rock, paper, scissors". The function takes the input of both players (rock, paper or scissors), first parameter from first player, second from second player. The function returns the result as such:
+
+// "Player 1 wins"
+// "Player 2 wins"
+// "TIE" (if both inputs are the same)
+// The rules of rock, paper, scissors, if not known:
+
+// Both players have to say either "rock", "paper" or "scissors" at the same time.
+// Rock beats scissors, paper beats rock, scissors beat paper.
+
+// Yellow - rps("rock", "paper") ➞ "Player 2 wins"
+
+// rps("paper", "rock") ➞ "Player 1 wins"
+
+// rps("paper", "scissors") ➞ "Player 2 wins"
+
+// rps("scissors", "scissors") ➞ "TIE"
+
+// rps("scissors", "paper") ➞ "Player 1 wins"
+
+const rps = (s1, s2) => {
+	if (s1 === s2) return "TIE";
+	let res = {p: "rock", s: "paper", r: "scissors"};
+	return res[s1[0]] === s2 ? "Player 1 wins" : "Player 2 wins";
+}
+
+function rps(s1, s2) {
+	if(s1 == s2) return 'TIE'
+	else if(s1 == 'rock' && s2 == 'paper' || s1 == 'paper' && s2 =='scissors' || s1 == 'scissors' && s2 == 'rock')	return 'Player 2 wins'
+	else if(s2 == 'rock' && s1 == 'paper' || s2 == 'paper' && s1 =='scissors' || s2 == 'scissors' && s1 == 'rock') return 'Player 1 wins'	
+}
+
+function rps(s1, s2) {
+	const check = val => s2===val? "Player 1 wins": "Player 2 wins"
+	if(s1===s2) return "TIE"
+	if(s1==="rock") return check("scissors")
+	if(s1==="scissors") return check("paper")
+	return check("rock")
+}
+
+function rps(s1, s2) {
+	const res = {
+		rock: {rock:0, paper:-1, scissors:1},
+		paper: {rock:1, paper:0, scissors:-1},
+		scissors: {rock:-1, paper:1, scissors:0},
+	};
+	return ['Player 2 wins','TIE','Player 1 wins'][res[s1][s2] + 1];
+}
