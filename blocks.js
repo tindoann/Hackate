@@ -13259,3 +13259,25 @@ function addIndexes(arr) {
 	}
   return arr
 }
+
+// 1012. Given a sentence spelling out a word, return true if the spelled letters match the word at the end of the string, or false otherwise.
+
+// Yellow - validateSpelling("C. Y. T. O. P. L. A. S. M. Cytoplasm?") ➞ true
+// validateSpelling("P. H. A. R. A. O. H. Pharaoh!") ➞ true
+// validateSpelling("H. A. N. K. E. R. C. H. E. I. F. Handkerchief.") ➞ false
+
+const validateSpelling = txt => {
+	let arr = txt.toUpperCase().match(/\w+/g);
+	return arr.slice(0, -1).join("") === arr.slice(-1)[0];
+}
+
+function validateSpelling(txt) {
+	let t = txt.toLowerCase().match(/\w+/g);
+	return t.slice(0, -1).join('') === t[t.length - 1];
+}
+
+function validateSpelling(txt) {
+	txt = txt.split('. ').map(el => el.replace(/\W/g, ''));
+	return txt.splice(-1).join('').toUpperCase() === txt.join('');
+}
+
