@@ -13329,3 +13329,39 @@ function rps(s1, s2) {
 	};
 	return ['Player 2 wins','TIE','Player 1 wins'][res[s1][s2] + 1];
 }
+
+// 1114. Given a pH value, return whether that value is 'alkaline', 'acidic', or 'neutral'. Return 'invalid' if the value given is less than 0 or greater than 14.
+
+// Yellow - pHName(5) ➞ "acidic"
+// pHName(8.7) ➞ "alkaline"
+// pHName(7) ➞ "neutral"
+
+function phName(ph) {
+	if (ph > 14) return 'invalid'; 
+	if (ph < 7) return 'acidic'; 
+	if (ph > 7) return 'alkaline'; 
+	return 'neutral'; 
+}
+
+function pHName(pH) {
+	if (pH < 0 || pH > 14) {
+		return 'invalid';
+	}
+	return (pH < 7 && pH >= 0) ? 'acidic' : (pH <= 14 && pH > 7) ? 'alkaline' : 'neutral'
+}
+
+function pHName(pH) {
+	if( (pH <0) || (pH> 14)){
+		return 'invalid'
+	} else if (pH <7){
+		return 'acidic'
+	}else if (pH >7){
+		return 'alkaline'
+	}else{
+		return "neutral"
+	}
+}
+
+function phName(ph) {
+	return ph < 0 || ph > 14 ? 'invalid' : ph === 7 ? 'neutral' : ph <= 6 ? 'acidic' : 'alkaline'
+}
