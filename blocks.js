@@ -13414,12 +13414,38 @@ function oddsVsEvens(num) {
 
 // 1016. The time has a format: hours:minutes. Both hours and minutes has two digits, like 09:00.
 
-// Make a regexp to find time in the string: Breakfast at 09:00 in the room 123:456.
+// White - Make a regexp to find time in the string: Breakfast at 09:00 in the room 123:456.
 // In this task there’s no need to check time correctness yet, so 25:99 can also be a valid result.
 // The regexp should not match 123:456.
 
 const REGEXP = /\d\d:\d\d/
-
 const REGEXP = /\b\d\d:\d\d\b/
-
 const REGEXP = /\b\d+:\d+\b/
+
+// 1017. Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word.
+
+// Yellow - sortBWyLast("herb camera dynamic") ➞ "camera herb dynamic"
+// sortByLast("stab traction artist approach") ➞ "stab approach traction artist"
+// sortByLast("sample partner autonomy swallow trend") ➞ "trend sample partner swallow autonomy"
+
+function sortByLast(str) {
+	return str.split(' ').sort(function(a,b){
+		if(a[a.length - 1] > b[b.length - 1]){
+			return true
+		}
+		else return false
+	}).join(' ')
+}
+
+function sortByLast(str) {
+	return str.split(' ').sort((a,b)=>a[a.length-1]>b[b.length-1] ? 1:-1).join(' ')
+}
+
+function sortByLast(str) {
+		return str
+			.split(' ')
+			.map(e => e.split('').reverse())
+			.sort((a,b) => a[0] == b[0] ? 0 : a > b )
+			.map(e => e.reverse().join(''))
+			.join(' ')
+}
