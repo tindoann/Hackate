@@ -13329,3 +13329,85 @@ function rps(s1, s2) {
 	};
 	return ['Player 2 wins','TIE','Player 1 wins'][res[s1][s2] + 1];
 }
+
+// 1114. Given a pH value, return whether that value is 'alkaline', 'acidic', or 'neutral'. Return 'invalid' if the value given is less than 0 or greater than 14.
+
+// Yellow - pHName(5) ➞ "acidic"
+// pHName(8.7) ➞ "alkaline"
+// pHName(7) ➞ "neutral"
+
+function phName(ph) {
+	if (ph > 14) return 'invalid'; 
+	if (ph < 7) return 'acidic'; 
+	if (ph > 7) return 'alkaline'; 
+	return 'neutral'; 
+}
+
+function pHName(pH) {
+	if (pH < 0 || pH > 14) {
+		return 'invalid';
+	}
+	return (pH < 7 && pH >= 0) ? 'acidic' : (pH <= 14 && pH > 7) ? 'alkaline' : 'neutral'
+}
+
+function pHName(pH) {
+	if( (pH <0) || (pH> 14)){
+		return 'invalid'
+	} else if (pH <7){
+		return 'acidic'
+	}else if (pH >7){
+		return 'alkaline'
+	}else{
+		return "neutral"
+	}
+}
+
+function phName(ph) {
+	return ph < 0 || ph > 14 ? 'invalid' : ph === 7 ? 'neutral' : ph <= 6 ? 'acidic' : 'alkaline'
+}
+
+// 1015. Given an integer, return "odd" if the sum of all odd digits is greater than the sum of all even digits. Return "even" if the sum of even digits is greater than the sum of odd digits, and "equal" if both sums are the same.
+
+// White - oddsVsEvens(97428) ➞ "odd"
+// odd = 16 (9+7)
+// even = 14 (4+2+8)
+
+// oddsVsEvens(81961) ➞ "even"
+// odd = 11 (1+9+1)
+// even = 14 (8+6)
+
+// oddsVsEvens(54870) ➞ "equal"
+// odd = 12 (5+7)
+// even = 12 (4+8+0)
+
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+
+const oddsVsEvens = num => {
+  const digits = String(num).split('').map(Number);
+  const evens = sum(digits.filter(digit => digit % 2 === 0));
+	const odds = sum(digits.filter(digit => digit % 2 !== 0));
+	
+	return evens === odds ? 'equal' : evens > odds ? 'even' : 'odd'; 
+}; 
+
+function oddsVsEvens(num) {
+	let even = 0, odd = 0; 
+	num.toString().split('')
+  .map((x) => Number(x) % 2 == 0 ? even += Number(x) : odd += Number(x));
+	return even == odd ? "equal" : even > odd ? "even" : "odd";
+}
+
+function oddsVsEvens(num) {
+  
+  let odd = [0];
+  let even = [0];
+
+  num.toString().split('').map(x => Number(x) % 2 === 0 ? even.push(Number(x)) : odd.push(Number(x)));
+
+  let oddSum = odd.reduce((a, b) => a + b);
+  let evenSum = even.reduce((a, b) => a + b);
+
+  return oddSum > evenSum ? 'odd' :
+    oddSum === evenSum ? 'equal' :
+    'even';
+}
