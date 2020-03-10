@@ -13468,3 +13468,33 @@ function sortByAnswer(arr) {
 
 const sortByAnswer = arr =>
 			arr.sort((a,b) => eval(a.replace('x','*')) - eval(b.replace('x', '*')));
+
+// 1019. Given a number, return the difference between the maximum and minimum numbers that can be formed when the digits are rearranged.
+
+// rearrangedDifference(972882) ➞ 760833
+// 988722 - 227889 = 760833
+
+// rearrangedDifference(3320707) ➞ 7709823
+// 7733200 - 23377 = 7709823
+
+// rearrangedDifference(90010) ➞ 90981
+// 91000 - 19 = 90981
+
+function rearrangedDifference(num) {
+	min = +[...''+num].sort((a,b) => a-b).join('')
+	max = +[...''+num].sort((a,b) => b-a).join('')
+	return max - min
+}
+
+function rearrangedDifference(num) {
+  let min = num.toString().split("").sort((a,b) => a - b).join("")
+  let max = num.toString().split("").sort((a,b) => b - a).join("")
+  return max - min
+}
+
+function rearrangedDifference(num) {
+	num = [...''+num].sort();
+	let min = +num.join('')
+	let max = +num.reverse().join('');
+	return max - min;
+}
