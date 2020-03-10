@@ -13498,3 +13498,31 @@ function rearrangedDifference(num) {
 	let max = +num.reverse().join('');
 	return max - min;
 }
+
+// 1020. Create a function that takes a number as an argument and returns n instances of the Fibonacci sequence as an array.
+// Fibonacci numbers: F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1. So the easy explanation is: The next element is the sum of the two previous elements.
+
+// White - fibSeq(4) ➞ [0, 1, 1, 2]
+// fibSeq(7) ➞ [0, 1, 1, 2, 3, 5, 8]
+// fibSeq(0) ➞ []
+
+function fibSeq(end) {
+	results = []
+	for (i = 0; i < end; i++) {
+		i == 0 ? results.push(0) : i == 1 ? results.push(1) : results(results[i - 2] + results[i - 1])
+	}
+	return end > - 1 ? results : undefined
+}
+
+function fibSeq(end) {
+	if (end == null) { return }
+	return new Array(end).fill(0).map((_,i) => Math.round((Math.pow((1 + Math.sqrt(5))/2, i) - Math.pow((1 - Math.sqrt(5))/2, i))/Math.sqrt(5)));
+}
+
+function fibSeq(end) {
+	let arr = [0,1];
+	for (let i = 2; i < end; i ++){
+		arr.push(arr[i-1] + arr[i-2]);
+	}
+	return end == 0 ? [] : end == 1 ? [0] : !end ? undefined : arr;
+}
