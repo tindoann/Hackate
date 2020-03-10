@@ -13526,3 +13526,16 @@ function fibSeq(end) {
 	}
 	return end == 0 ? [] : end == 1 ? [0] : !end ? undefined : arr;
 }
+
+// 1021. Create a regular expression to find all (opening and closing) HTML tags with their attributes
+// Assume that tag attributes may not contain < and > (inside quotes too)
+
+// Yellow - const REGEXP = /your regexp/g;
+// let str = '<> <a href="/"> <input type="radio" checked> <b>';
+// str.match(REGEXP) ➞  '<a href="/">', '<input type="radio" checked>', '<b>'\
+
+const REGEXP = /<[^>]+>/g
+
+const REGEXP = /<[ \w'"\/=]+>/g
+
+const REGEXP = /<[^<>]+>/g;
