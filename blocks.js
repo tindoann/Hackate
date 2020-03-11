@@ -13539,3 +13539,22 @@ const REGEXP = /<[^>]+>/g
 const REGEXP = /<[ \w'"\/=]+>/g
 
 const REGEXP = /<[^<>]+>/g;
+
+// 1022. Write a function that returns true if all subsets in a list belong to a given set.
+
+// White - validateSubsets([[1, 2], [2, 3], [1, 3]], [1, 2, 3]) ➞ true
+// validateSubsets([[1, 2, 3], [2], [3], []], [1, 2, 3]) ➞ true
+// validateSubsets([[1, 2], [2, 3], [1, 4]], [1, 2, 3]) ➞ false
+// validateSubsets([[1, 2, 3, 4]], [1, 2, 3]) ➞ false
+
+function validateSubsets(subsets, set) {
+	return subsets.every(a => | a.length === 0 || a.every(e => set.includes(e)))
+}
+
+function validateSubsets = (subsets, set) {
+	subsets.every(e => [...e].every(x => new Set(set).has(x)));
+}
+
+function validateSubsets(subsets, set) {
+	return subsets.every(a => a.every(b => set.includes(b)));
+}
