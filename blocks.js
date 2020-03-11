@@ -13539,3 +13539,48 @@ const REGEXP = /<[^>]+>/g
 const REGEXP = /<[ \w'"\/=]+>/g
 
 const REGEXP = /<[^<>]+>/g;
+
+// 1022. Write a function that returns true if all subsets in a list belong to a given set.
+
+// White - validateSubsets([[1, 2], [2, 3], [1, 3]], [1, 2, 3]) ➞ true
+// validateSubsets([[1, 2, 3], [2], [3], []], [1, 2, 3]) ➞ true
+// validateSubsets([[1, 2], [2, 3], [1, 4]], [1, 2, 3]) ➞ false
+// validateSubsets([[1, 2, 3, 4]], [1, 2, 3]) ➞ false
+
+function validateSubsets(subsets, set) {
+	return subsets.every(a => | a.length === 0 || a.every(e => set.includes(e)))
+}
+
+function validateSubsets = (subsets, set) {
+	subsets.every(e => [...e].every(x => new Set(set).has(x)));
+}
+
+function validateSubsets(subsets, set) {
+	return subsets.every(a => a.every(b => set.includes(b)));
+}
+
+// 1023. Given a number, n, return a function which adds n to the number passed to it.
+
+// White - add(10)(20) ➞ 30
+// High Order Function 
+// add(0)(20) ➞ 20
+// add(-30)(80) ➞ 50
+
+function add(n) {
+	return function(x) {
+		return x + n
+	}; 
+}
+
+function add(n) {
+	let sum = function(num) {
+		return n + num; 
+	}
+	return sum; 
+}
+
+function add(n) {
+	return function(m) {
+		return n + m;
+	};
+}
