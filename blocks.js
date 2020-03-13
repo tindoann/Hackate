@@ -13584,3 +13584,55 @@ function add(n) {
 		return n + m;
 	};
 }
+
+// 1024. Create a function that takes in an array of full names and returns the initials.
+
+// White - initialize(["Stephen Hawking"]) ➞ ["S. H."]
+// initialize(["Harry Potter", "Ron Weasley"]) ➞ ["H. P.", "R. W."]
+// initialize(["Sherlock Holmes", "John Watson", "Irene Adler"]) ➞ ["S. H.", "J. W.", "I. A."]
+
+function initialize(names) {
+	return names.map(name => {
+		const split = name.split(' ')
+		return `${split[0][0]}. ${split[1][0]}.`
+	})
+}
+
+function initialize(names) {
+	return names.map(v => v.match(/(^|\s)[A-Z]/g).join('.')+'.'); 
+}
+
+function intialize(names) {
+	fullname 
+		.split(' ')
+		.map(name => `${name[0]}.`)
+		.join(' ')
+	}
+
+function intialize(names) {
+	return names.map(x => x.split(' ').map(k => k.charAt(0) + '.').join(' ')); 
+}
+
+// 1025. Create a function that takes a number steps as an argument and returns the amount of rectangles you can count in a matrix.
+
+// White - rectangle(1) ➞ 1
+// rectangle(2) ➞ 9
+// rectangle(3) ➞ 36
+
+function rectangles(steps) {
+	let formula = ( step * (step + 1)) /2; 
+	return Math.pow(formula, 2); 
+}
+
+
+function rectangles(step) {
+	var res = 0
+	for(let i = 1; i <= step; i++) {
+		res += Math.pow(i, 3)
+	}
+	return res
+}
+
+function rectangles(step){
+	return Math.pow(step*(step+1)/2, 2)
+}
