@@ -13636,3 +13636,73 @@ function rectangles(step) {
 function rectangles(step){
 	return Math.pow(step*(step+1)/2, 2)
 }
+
+// 1026. In this challenge, you have to obtain a sentence from the elements of a given matrix. In the matrix, each word of the sentence follows a columnar order from the top to the bottom, instead of the usual left-to-right order: it's time for transposition!
+// Given a matrix mtx, implement a function that returns the complete sentence as a string, with the words separated by a space between them.
+
+// transposeMatrix([
+//   ["Enter"],
+//   ["the"],
+//   ["Matrix!"]
+// ]) ➞ "Enter the Matrix!"
+
+// transposeMatrix([
+//   ["The", "are"],
+//   ["columns", "rows."]
+// ]) ➞ "The columns are rows."
+
+// transposeMatrix([
+//   ["You", "the"],
+//   ["must", "table"],
+//   ["transpose", "order."]
+// ]) ➞ "You must transpose the table order."
+
+function transposeMatrix(mtx) {
+	return mtx[0].map((c,i) => mtx.map(r => r[i])).flat().join(' ')
+}
+
+function transposeMatrix(mtx) {
+	return mtx[0].map((x, i) => mtx.map(x => x[i]).join(' ')).join(' ');
+}
+
+function transposeMatrix(mtx) {
+	var a = [];
+for(var i = 0; i < mtx[0].length; i++){
+	mtx.reduce((acc,cur)=>{
+		a.push(cur[i]);
+		return acc;
+	},[])
+}
+	return a.join(" ");
+}
+
+// 1027. Create a function that takes a number as an argument and return the a string like square.
+
+// createSquare(-1) ➞ ""
+// createSquare(0) ➞ ""
+// createSquare(1) ➞ "#"
+// createSquare(2) ➞ "##\n##"
+// createSquare(3) ➞ "###\n# #\n###"
+// createSquare(4) ➞ "####\n#  #\n#  #\n####"
+
+function createSquare(length){
+  var squareCharacter = '#';
+  if (length === 1) {
+    return '#';
+  } else if (length > 1) {
+    return squareCharacter.repeat(length) + ('\n' + squareCharacter + ' '.repeat(length - 2) + squareCharacter).repeat(length - 2) + '\n' + squareCharacter.repeat(length)
+  } else {
+    return ''
+  }
+}
+
+function createSquare(length){
+	let res = [];
+	for (let i = 1; i <= length; i++) {
+		if (i == 1 || i == length)
+			res.push("#".repeat(length));
+		else
+			res.push("#" + " ".repeat(length - 2) + "#");
+	}
+	return res.join("\n");
+}
