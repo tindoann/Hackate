@@ -13675,3 +13675,34 @@ for(var i = 0; i < mtx[0].length; i++){
 }
 	return a.join(" ");
 }
+
+// 1027. Create a function that takes a number as an argument and return the a string like square.
+
+// createSquare(-1) ➞ ""
+// createSquare(0) ➞ ""
+// createSquare(1) ➞ "#"
+// createSquare(2) ➞ "##\n##"
+// createSquare(3) ➞ "###\n# #\n###"
+// createSquare(4) ➞ "####\n#  #\n#  #\n####"
+
+function createSquare(length){
+  var squareCharacter = '#';
+  if (length === 1) {
+    return '#';
+  } else if (length > 1) {
+    return squareCharacter.repeat(length) + ('\n' + squareCharacter + ' '.repeat(length - 2) + squareCharacter).repeat(length - 2) + '\n' + squareCharacter.repeat(length)
+  } else {
+    return ''
+  }
+}
+
+function createSquare(length){
+	let res = [];
+	for (let i = 1; i <= length; i++) {
+		if (i == 1 || i == length)
+			res.push("#".repeat(length));
+		else
+			res.push("#" + " ".repeat(length - 2) + "#");
+	}
+	return res.join("\n");
+}
