@@ -13706,3 +13706,32 @@ function createSquare(length){
 	}
 	return res.join("\n");
 }
+
+// 1028. Create a function that takes an array and determines whether it's strictly increasing, strictly decreasing, or neither.
+
+// White - check([1, 2, 3]) ➞ "increasing"
+// check([3, 2, 1]) ➞ "decreasing"
+// check([1, 2, 1]) ➞ "neither"
+// check([1, 1, 2]) ➞ "neither"
+
+function check(arr) {
+	return arr.slice(1).every((x, i) => x > arr[i]) == true? 'increasing': arr.slice(1).every((x, i) => x < arr[i]) == true? 'decreasing':'neither'
+}
+
+function check(arr) {
+	let newArr = arr.slice(1)
+	return	newArr.every((x,i)=> x - arr[i] > 0) ? 'increasing' :
+					newArr.every((x,i)=> x - arr[i] < 0) ? 'decreasing'	: 'neither'
+}
+
+function check(arr) {
+	var c;
+	if (arr[1] - arr[0] > 0) c = true;
+	if (arr[1] - arr[0] < 0) c = false;
+	for (var i = 1; i < arr.length-1; i++) {
+		if (c && arr[i+1] - arr[i] <= 0) return 'neither';
+		if (!c && arr[i+1] - arr[i] >= 0) return 'neither';
+	}
+	return c ? 'increasing' : 'decreasing';
+}
+
