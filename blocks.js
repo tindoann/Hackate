@@ -13706,3 +13706,71 @@ function createSquare(length){
 	}
 	return res.join("\n");
 }
+
+// 1028. Create a function that takes an array and determines whether it's strictly increasing, strictly decreasing, or neither.
+
+// White - check([1, 2, 3]) ➞ "increasing"
+// check([3, 2, 1]) ➞ "decreasing"
+// check([1, 2, 1]) ➞ "neither"
+// check([1, 1, 2]) ➞ "neither"
+
+function check(arr) {
+	return arr.slice(1).every((x, i) => x > arr[i]) == true? 'increasing': arr.slice(1).every((x, i) => x < arr[i]) == true? 'decreasing':'neither'
+}
+
+function check(arr) {
+	let newArr = arr.slice(1)
+	return	newArr.every((x,i)=> x - arr[i] > 0) ? 'increasing' :
+					newArr.every((x,i)=> x - arr[i] < 0) ? 'decreasing'	: 'neither'
+}
+
+function check(arr) {
+	var c;
+	if (arr[1] - arr[0] > 0) c = true;
+	if (arr[1] - arr[0] < 0) c = false;
+	for (var i = 1; i < arr.length-1; i++) {
+		if (c && arr[i+1] - arr[i] <= 0) return 'neither';
+		if (!c && arr[i+1] - arr[i] >= 0) return 'neither';
+	}
+	return c ? 'increasing' : 'decreasing';
+}
+
+// 1029. Create a function that returns the indices of all occurrences of an item in the array.
+
+// White - getIndices(["a", "a", "b", "a", "b", "a"], "a") ➞ [0, 1, 3, 5]
+// getIndices([1, 5, 5, 2, 7], 7) ➞ [4]
+// getIndices([1, 5, 5, 2, 7], 5) ➞ [1, 2]
+// getIndices([1, 5, 5, 2, 7], 8) ➞ []
+
+function getIndices(arr, el) {
+	var indxArr = [];
+ arr.map(function(val,idx,arr){
+		
+		if(val === el){
+			indxArr.push(idx);
+	 
+		}
+ })
+ return indxArr;
+}
+
+const getIndices = (arr, el) => 
+arr.map((x, i) => x === el ? i : '#').filter(x => x !== '#');
+
+function getIndices(arr, el) {
+	return arr.map((e, i) => {
+		return e === el ? i : null
+	}).filter(e => e !== null)
+}
+
+function getIndices(arr, el) {
+  let indices = [];
+  arr.map((x, i) => x == el ? indices.push(i) : false);
+  return indices;
+}
+
+function getIndices(arr, el) {
+	return arr.map((c, i) => c === el ? i : undefined)
+		.filter(x => x === 0 ? true : x);
+}
+
