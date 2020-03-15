@@ -13735,3 +13735,42 @@ function check(arr) {
 	return c ? 'increasing' : 'decreasing';
 }
 
+// 1029. Create a function that returns the indices of all occurrences of an item in the array.
+
+// White - getIndices(["a", "a", "b", "a", "b", "a"], "a") ➞ [0, 1, 3, 5]
+// getIndices([1, 5, 5, 2, 7], 7) ➞ [4]
+// getIndices([1, 5, 5, 2, 7], 5) ➞ [1, 2]
+// getIndices([1, 5, 5, 2, 7], 8) ➞ []
+
+function getIndices(arr, el) {
+	var indxArr = [];
+ arr.map(function(val,idx,arr){
+		
+		if(val === el){
+			indxArr.push(idx);
+	 
+		}
+ })
+ return indxArr;
+}
+
+const getIndices = (arr, el) => 
+arr.map((x, i) => x === el ? i : '#').filter(x => x !== '#');
+
+function getIndices(arr, el) {
+	return arr.map((e, i) => {
+		return e === el ? i : null
+	}).filter(e => e !== null)
+}
+
+function getIndices(arr, el) {
+  let indices = [];
+  arr.map((x, i) => x == el ? indices.push(i) : false);
+  return indices;
+}
+
+function getIndices(arr, el) {
+	return arr.map((c, i) => c === el ? i : undefined)
+		.filter(x => x === 0 ? true : x);
+}
+
