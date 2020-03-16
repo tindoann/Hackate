@@ -13774,3 +13774,35 @@ function getIndices(arr, el) {
 		.filter(x => x === 0 ? true : x);
 }
 
+// 1030. Create two functions toCamelCase() and toSnakeCase() that each take a single string and convert it into either camelCase or snake_case.
+
+// White - toCamelCase("hello_edabit") ➞ "helloEdabit"
+// toSnakeCase("helloEdabit") ➞ "hello_edabit"
+// toCamelCase("is_modal_open") ➞ "isModalOpen"
+// toSnakeCase("getColor") ➞ "get_color"
+
+toSnakeCase = s => s.replace(/[A-Z]/g, x => '_' + x.toLowerCase())
+toCamelCase = s => s.replace(/_\w/g, x => x[1].toUpperCase())
+
+toSnakeCase = s => s.replace(/([A-Z])/g, '_$1').toLowerCase()
+toCamelCase = s => s.replace(/_./g, v => v[1].toUpperCase())
+
+function toSnakeCase(str) {
+	return str.replace(/([A-Z])/g, match => {
+		return '_' + match.toLowerCase();
+	});
+}
+
+function toCamelCase(str) {
+	return str.replace(/(_[a-z])/g, match => {
+		return match.slice(1).toUpperCase();
+	});
+}
+
+function toSnakeCase(str) {
+	return str.replace(/[A-Z]/g, (match) => ("_" + match.toLowerCase()));
+}
+
+function toCamelCase(str) {
+		return str.replace(/(_)([a-z])/g, (match, p1, p2) => p2.toUpperCase());
+}
