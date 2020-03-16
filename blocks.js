@@ -13806,3 +13806,36 @@ function toSnakeCase(str) {
 function toCamelCase(str) {
 		return str.replace(/(_)([a-z])/g, (match, p1, p2) => p2.toUpperCase());
 }
+
+// 1031. Create a function that takes a string str and censors any word from a given array arr. The text removed must be replaced by the given character char.
+
+// White - censorString("Today is a Wednesday!", ["Today", "a"], "-") ➞ "----- is - Wednesday!"
+// censorString("The cow jumped over the moon.", ["cow", "over"], "*"), "The *** jumped **** the moon.")
+// censorString("Why did the chicken cross the road?", ["Did", "chicken", "road"], "*") ➞ "Why *** the ******* cross the ****?"
+
+function censorString(str, arr, char) {
+	arr = arr.map(v => v.toLowerCase());
+	return str.replace(/\S+/gi, s => arr.includes(s.toLowerCase()) ? char.repeat(s.length) : s)
+}
+
+function censorString(str, arr, char) {
+	let re = new RegExp(arr.join('|'), 'gi');
+	return str.replace(re, v => char.repeat(v.length));
+}
+
+function censorString(str, arr, char) {
+	let regex = new RegExp(arr.join('|'), 'g');
+	return str.replace(regex, x => char.repeat(x.length));
+}
+
+function censorString(str, arr, char) {
+	arr.forEach(x => str = str.replace(x, char.repeat(x.length)));
+	return str;
+}
+
+function censorString(str, arr, char) {
+	return str.split(" ")
+					  .map(x => arr.includes(x) ? char.repeat(x.length):x)
+						.join(" ");
+}
+
