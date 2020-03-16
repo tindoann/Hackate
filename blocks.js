@@ -13774,3 +13774,68 @@ function getIndices(arr, el) {
 		.filter(x => x === 0 ? true : x);
 }
 
+// 1030. Create two functions toCamelCase() and toSnakeCase() that each take a single string and convert it into either camelCase or snake_case.
+
+// White - toCamelCase("hello_edabit") ➞ "helloEdabit"
+// toSnakeCase("helloEdabit") ➞ "hello_edabit"
+// toCamelCase("is_modal_open") ➞ "isModalOpen"
+// toSnakeCase("getColor") ➞ "get_color"
+
+toSnakeCase = s => s.replace(/[A-Z]/g, x => '_' + x.toLowerCase())
+toCamelCase = s => s.replace(/_\w/g, x => x[1].toUpperCase())
+
+toSnakeCase = s => s.replace(/([A-Z])/g, '_$1').toLowerCase()
+toCamelCase = s => s.replace(/_./g, v => v[1].toUpperCase())
+
+function toSnakeCase(str) {
+	return str.replace(/([A-Z])/g, match => {
+		return '_' + match.toLowerCase();
+	});
+}
+
+function toCamelCase(str) {
+	return str.replace(/(_[a-z])/g, match => {
+		return match.slice(1).toUpperCase();
+	});
+}
+
+function toSnakeCase(str) {
+	return str.replace(/[A-Z]/g, (match) => ("_" + match.toLowerCase()));
+}
+
+function toCamelCase(str) {
+		return str.replace(/(_)([a-z])/g, (match, p1, p2) => p2.toUpperCase());
+}
+
+// 1031. Create a function that takes a string str and censors any word from a given array arr. The text removed must be replaced by the given character char.
+
+// White - censorString("Today is a Wednesday!", ["Today", "a"], "-") ➞ "----- is - Wednesday!"
+// censorString("The cow jumped over the moon.", ["cow", "over"], "*"), "The *** jumped **** the moon.")
+// censorString("Why did the chicken cross the road?", ["Did", "chicken", "road"], "*") ➞ "Why *** the ******* cross the ****?"
+
+function censorString(str, arr, char) {
+	arr = arr.map(v => v.toLowerCase());
+	return str.replace(/\S+/gi, s => arr.includes(s.toLowerCase()) ? char.repeat(s.length) : s)
+}
+
+function censorString(str, arr, char) {
+	let re = new RegExp(arr.join('|'), 'gi');
+	return str.replace(re, v => char.repeat(v.length));
+}
+
+function censorString(str, arr, char) {
+	let regex = new RegExp(arr.join('|'), 'g');
+	return str.replace(regex, x => char.repeat(x.length));
+}
+
+function censorString(str, arr, char) {
+	arr.forEach(x => str = str.replace(x, char.repeat(x.length)));
+	return str;
+}
+
+function censorString(str, arr, char) {
+	return str.split(" ")
+					  .map(x => arr.includes(x) ? char.repeat(x.length):x)
+						.join(" ");
+}
+
