@@ -13839,3 +13839,32 @@ function censorString(str, arr, char) {
 						.join(" ");
 }
 
+//1032. Create a function that takes a string of 1's and 0's (binary) as an argument and return the equivalent decoded ASCII text. Characters can be in the range of "00000000" to "11111111", which means every eight digits of binary input represents a single character.
+
+// a = 01100001
+// b = 01100010
+// c = 01100011
+// If you were to combine these characters into the string "abc", the corresponding binary would be 011000010110001001100011. Use the resources tab for more info on how to approach this.
+
+// White - binaryConversion("011001010110010001100001011000100110100101110100") ➞ "edabit"
+// binaryConversion("001100010011001000110011") ➞ "123"
+// binaryConversion("010010000110010101101100011011000110111100111111") ➞ "Hello?"
+
+function binaryConversion(str) {
+	return str.replace(/([0-1]{8})/g,x=>String.fromCharCode(parseInt(x,2)));
+}
+
+function binaryConversion(str) {
+  return str.replace(/[01]{8}/g, function(v) { 
+      return String.fromCharCode( parseInt(v,2) ); 
+  });
+}
+
+function binaryConversion(str) {
+  if (str.length === 0) return str;
+  var ret = "";
+  for (var i = 0; i < str.length; i += 8) {
+    ret += String.fromCharCode( parseInt(str.substr(i, 8), 2) ); 
+  }
+  return ret;
+}
