@@ -13868,3 +13868,30 @@ function binaryConversion(str) {
   }
   return ret;
 }
+
+// 1033. If a person traveled up a hill for 18mins at 20mph and then traveled back down the same path at 60mph then their average speed traveled was 30mph.
+
+// Write a function that returns the average speed traveled given an uphill time, uphill rate and a downhill rate
+// Uphill time is given in minutes
+// Return the rate as an integer (mph)
+// No rounding is necessary
+
+// White - aveSpd(18, 20, 60) ➞ 30 
+
+function aveSpd(upTime, upSpd, downSpd) {
+	return (2 * upTime * upSpd)/((upTime * upSpd/downSpd) + upTime);
+}
+
+function aveSpd(upTime, upRate, downRate) {
+  const distance = (upTime / 60) * upRate;
+  const upTimeHrs = upTime / 60;
+  const downTimeHrs = (distance / downRate);
+  return (distance * 2) / (upTimeHrs + downTimeHrs);
+}
+
+function aveSpd(uT, upSpd, dS) {
+	uT /= 60;
+	let tD = uT * upSpd * 2;
+	let tT = (tD/2)/dS + uT;
+	return tD/tT;
+}
