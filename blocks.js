@@ -13895,3 +13895,46 @@ function aveSpd(uT, upSpd, dS) {
 	let tT = (tD/2)/dS + uT;
 	return tD/tT;
 }
+
+// 1034. Create a function that converts color in RGB format to Hex format.
+
+// White - rgbToHex("rgb(0, 128, 192)") ➞ "#0080c0"
+// rgbToHex("rgb(45, 255, 192)") ➞ "#2dffc0"
+// rgbToHex("rgb(0, 0, 0)") ➞ "#000000"
+
+const rgbToHex = color => {
+	return "#" + color
+		.match(/\d+/g)
+		.map(v => (+v).toString(16).padStart(2, "0"))
+		.join("");
+}
+
+const rgbToHex = str => {
+  const hex = str
+    .match(/rgb\((.+)\)/)[1]
+    .split(',')
+    .map(channel =>
+      Number(channel)
+        .toString(16)
+        .padStart(2, '0'),
+    )
+    .join('');
+
+  return `#${hex}`;
+};
+
+function rgbToHex(col) {
+	return '#' + col
+		.slice(4, col.length - 1)
+		.split(', ')
+		.map(item => parseInt(item).toString(16).padStart(2, '0'))
+		.join('')
+}
+
+function rgbToHex(col) {
+	let arr = col.match(/\d+/g).map(x => {
+		let num = (+x).toString(16);
+		return num < 10 ? "0"+num : num;
+	});
+	return "#" + arr.join("");
+}
