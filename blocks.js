@@ -13938,3 +13938,33 @@ function rgbToHex(col) {
 	});
 	return "#" + arr.join("");
 }
+
+// 1035. Create a function that accepts a string as an argument and returns the first non-repeated character.
+
+// White - firstNonRepeatedCharacter("g") ➞ "g"
+// firstNonRepeatedCharacter("it was then the frothy word met the round night") ➞ "a"
+// firstNonRepeatedCharacter("the quick brown fox jumps then quickly blows air") ➞ "f"
+// firstNonRepeatedCharacter("hheelloo") ➞ false
+// firstNonRepeatedCharacter("") ➞ false
+
+function firstNonRepeatedCharacter(str) {
+  var arr = str.split('');
+  for (var i = 0; i < arr.length; i++) {
+    if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])) {
+      return arr[i];
+    }
+  }
+  return false;
+  
+}
+
+function firstNonRepeatedCharacter(str) {
+  str = str.replace(' ', '');
+  
+  for (let i = 0; i < str.length; i++) {
+    let re = new RegExp(str[i], 'g');
+    if (str.match(re).length == 1) return str[i];
+  }
+  
+  return false;
+}
