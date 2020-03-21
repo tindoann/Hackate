@@ -13968,3 +13968,40 @@ function firstNonRepeatedCharacter(str) {
   
   return false;
 }
+
+// 1036. Given an object containing the names and ages of a group of people, return the name of the oldest person.
+
+// White - oldest({
+//   Emma: 71,
+//   Jack: 45,
+//   Amy: 15,
+//   Ben: 29
+// }) ➞ "Emma"
+
+// oldest({
+//   Max: 9,
+//   Josh: 13,
+//   Sam: 48,
+//   Anne: 33
+// }) ➞ "Sam"
+
+function oldest(people) {
+	var result = 0;
+	var name = "";
+	for(var k in people){
+		if(people[k] > result){
+			result = people[k];
+			name = k;
+		}
+	 }
+		return name;
+	}
+
+function oldest(people) {
+	return Object.keys(people)
+		.sort((a,b) => people[b] - people[a])[0]
+}
+
+const oldest = people =>
+  Object.keys(people).reduce((a,b)=> people[a] > people[b] ? a : b);
+
