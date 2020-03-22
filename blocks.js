@@ -14005,3 +14005,37 @@ function oldest(people) {
 const oldest = people =>
   Object.keys(people).reduce((a,b)=> people[a] > people[b] ? a : b);
 
+// 1037. Atticus has been invited to a dinner party, and he decides to purchase a bottle of wine. However, he has little knowledge of how to choose a good bottle. Being a very frugal gentleman (yet disliking looking like a cheapskate), he decides to use a very simple rule. In any selection of two or more wines, he will always buy the second-cheapest.
+// Given an array of wine objects, write a function that returns the name of the wine he will buy for the party. If given an empty array, return null. If given an array of only one, Atticus will buy that wine.
+
+// Yellow - chosenWine([
+//   { name: "Wine A", price: 8.99 },
+//   { name: "Wine 32", price: 13.99 },
+//   { name: "Wine 9", price: 10.99 }
+// ]) ➞ "Wine 9"
+
+// chosenWine([{ name: "Wine A", price: 8.99 }]) ➞ "Wine A"
+
+// chosenWine([]) ➞ null
+
+function chosenWine(wines) {
+	if (wines.length === 0) return null;
+	if (wines.length === 1) return wines.sort((a,b) => a.price - b.price)[0].name;
+	return wines.sort((a,b) => a.price - b.price)[1].name;
+}
+
+function chosenWine(wines) {
+	if (wines.length == 1){ 
+		return wines[0].name
+	} else if (wines.length > 1){
+		var sorted = wines.sort(function(a,b){return a.price-b.price});
+		return sorted[1].name;
+	}
+	return null;
+}
+
+function chosenWine(wines) {
+	if(!wines.length){return null;}
+	let w = wines.sort((a,b) => a.price - b.price);
+	return ([... w, w[w.length-1]])[1].name;
+}
