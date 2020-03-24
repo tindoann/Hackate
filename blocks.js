@@ -14051,3 +14051,50 @@ function chosenWine(wines) {
 // isPrime(primes, 4) -> "no"
 // isPrime(primes, 67) -> "yes"
 // isPrime(primes, 36) -> "no"
+
+function isPrime(primes, num) {
+	//primes.includes(num)? "yes":"no"
+	let half = Math.floor(primes.length/2)+1
+	for(var i=0;i<half;i++){
+		if(primes[i]===num) return "yes"
+		if(primes[i+half]===num)return "yes"
+	}
+	return "no"
+}
+
+function isPrime(primes, num) {
+	for(let i=0;i<primes.length;i++){
+		if(num === primes[i]){
+			return 'yes';
+		}
+	}
+	return 'no';
+}
+
+// 1039. Create a left rotation and a right rotation function that returns all the left rotations and right rotations of a string.
+
+// White - leftRotations("abc") ➞ ["abc", "bca", "cab"]
+
+// rightRotations("abc") ➞ ["abc", "cab", "bca"]
+
+// leftRotations("abcdef") 
+// ➞ ["abcdef", "bcdefa", "cdefab", "defabc", "efabcd", "fabcde"]
+
+// rightRotations("abcdef") 
+// ➞ ["abcdef", "fabcde", "efabcd", "defabc", "cdefab", "bcdefa"]
+
+function leftRotations(str) {
+	return str.split("").map((a,i)=>str.slice(i)+str.slice(0,i))
+}
+
+function rightRotations(str) {
+	return str.split("").map((a,i)=>str.slice(-i)+str.slice(0,-i))
+}
+
+function leftRotations(str) {
+	return [...str].map( (it, i) => (i === 0)? str : it + str.slice(i + 1) + str.slice(0, i) );
+}
+
+function rightRotations(str) {
+	return [...str].map( (it, i) => (i === str.length - 1)? str : str.slice(i + 1) + str.slice(0, i) + it ).reverse();
+}
