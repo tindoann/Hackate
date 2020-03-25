@@ -14098,3 +14098,40 @@ function leftRotations(str) {
 function rightRotations(str) {
 	return [...str].map( (it, i) => (i === str.length - 1)? str : str.slice(i + 1) + str.slice(0, i) + it ).reverse();
 }
+
+// 1040. Carlos is a huge fan of something he calls smooth sentences. A smooth sentence is one where the last letter of each word is identical to the first letter the following word.
+// To illustrate, the following would be a smooth sentence: "Carlos swam masterfully."
+// Since "Carlos" ends with an "s" and swam begins with an "s" and swam ends with an "m" and masterfully begins with an "m"
+
+// White - isSmooth("Marta appreciated deep perpendicular right trapezoids") ➞ true
+// isSmooth("Someone is outside the doorway") ➞ false
+// isSmooth("She eats super righteously") ➞ true
+
+function isSmooth(sentence) {
+	sentence = sentence.split(' ')
+	for (var i = 0; i < sentence.length - 1; i++){
+		lastElement = sentence[i].length-1
+		if(!(sentence[i][lastElement].toLowerCase() == sentence[i+1][0].toLowerCase())){
+			return false
+		}
+	}
+	return true
+}
+
+function isSmooth(sentence) {
+	const words = sentence.split(' ')
+	let smooth = false
+	for (let i = 0; i < words.length - 1; i++) {
+		smooth = words[i].endsWith(words[i + 1][0])
+	}
+	return smooth
+}
+
+function isSmooth(sentence) {
+	sentence = sentence.split(" ")
+	for (i=0;i<sentence.length-1;i++){
+		if (sentence[i][sentence[i].length-1].toLowerCase()!=sentence[i+1][0].toLowerCase()){return false}
+	}
+	return true
+}
+
