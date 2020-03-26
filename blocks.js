@@ -14135,3 +14135,81 @@ function isSmooth(sentence) {
 	return true
 }
 
+// 1041. Abigail and Benson are playing Rock, Paper, Scissors.
+
+// Each game is represented by an array of length 2, where the first element represents what Abigail played and the second element represents what Benson played.
+
+// Given a sequence of games, determine who wins the most number of matches. If they tie, output "Tie".
+
+// R stands for Rock
+// P stands for Paper
+// S stands for Scissors
+
+// calculateScore([["R", "P"], ["R", "S"], ["S", "P"]]) ➞ "Abigail"
+
+// Ben wins the first game (Paper beats Rock).
+// Abigail wins the second game (Rock beats Scissors).
+// Abigail wins the third game (Scissors beats Paper). 
+// Abigail wins 2/3.
+
+// Yellow - calculateScore([["R", "R"], ["S", "S"]]) ➞ "Tie"
+
+// calculateScore([["S", "R"], ["R", "S"], ["R", "R"]]) ➞ "Tie"
+
+function calculateScore(games) {
+	let scores = [0, 0]
+	for (i of games) {
+		if (i[0] === i[1]) continue
+		if (i.includes('R') && i.includes('P')) scores[i.indexOf('P')] += 1
+		if (i.includes('R') && i.includes('S')) scores[i.indexOf('R')] += 1
+		if (i.includes('P') && i.includes('S')) scores[i.indexOf('S')] += 1
+	}
+	if (scores[0] === scores[1]) return 'Tie'
+	return scores[1] > scores[0] ? 'Benson' : 'Abigail'
+}
+
+function calculateScore(games) {
+	let aCount = 0
+	let bCount = 0
+	games.map(arr => arr.reduce((a,v)=>{
+		if( a === "R" && v === "P"){
+			bCount+=1
+		}else if(a === "P" && v === "R"){
+			aCount+=1
+		}else if(a === "S" && v === "P"){
+			aCount+=1
+		}else if(a === "S" && v === "R" ){
+			bCount+=1
+		}else if(a === "P" && v === "S"){
+			bCount+=1
+		}else if(a === "R" && v === "S"){
+			aCount+=1
+		}
+	}))
+	 return aCount > bCount ? "Abigail" : bCount > aCount ? "Benson" : "Tie" 
+}
+
+function calculateScore(games) {
+  const chart = {
+    P: {
+      wins: 'R',
+      loses: 'S'
+    },
+    S: {
+      wins: 'P',
+      loses: 'S'
+    },
+    R: {
+      wins: 'S',
+      loses: 'P'
+    }
+  }
+  
+   
+  const a = games.map(g => g[0] === g[1] ? 'Tie' : chart[g[0]].wins === g[1] ? 'Abigail' : 'Benson').reduce(function(obj, b) {
+  obj[b] = ++obj[b] || 1;
+  return obj;
+}, {});
+  return a.Abigail > a.Benson ? 'Abigail' : a.Benson > a.Abigail ? 'Benson' : 'Tie'
+  
+}
