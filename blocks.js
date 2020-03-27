@@ -14213,3 +14213,24 @@ function calculateScore(games) {
   return a.Abigail > a.Benson ? 'Abigail' : a.Benson > a.Abigail ? 'Benson' : 'Tie'
   
 }
+
+// 1042. Create a function that takes two integers and returns true if a number repeats three times in a row at any place in num1 AND that same number repeats two times in a row in num2.
+
+// Yellow - trouble(451999277, 41177722899) ➞ true
+// trouble(1222345, 12345) ➞ false
+// trouble(666789, 12345667) ➞ true
+// trouble(33789, 12345337) ➞ false
+
+function trouble(num1, num2) {
+  return /(\d)(\1\1|\1).* .*(\1\1)/.test(num1+" "+num2)
+}
+
+function trouble(num1, num2) {
+  return /([0-9])\1{2}([^\1]|$)/.test(num1) && /([0-9])\1([^\1]|$)/.test(num2)
+}
+
+function trouble(num1, num2) {
+  return ((''+num1).match(/(\d)\1\1/g) || [false]).map(x => {
+    return !!(''+num2).match(new RegExp(x[0]+'{2}', 'g'));
+  }).reduce((x, y) => x || y);
+}
