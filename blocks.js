@@ -14248,3 +14248,36 @@ const halfQuarterEighth = (n) => {
 const halfQuarterEighth = n => [n / 2, n / 4, n / 8];
 
 const halfQuarterEighth = n => [n/2, n/4, n/8];
+
+// 111. Write a function that divides an array into chunks of size n, where n is the length of each chunk.
+
+// Yellow - chunkify([2, 3, 4, 5], 2) ➞ [[2, 3], [4, 5]]
+// chunkify([2, 3, 4, 5, 6], 2) ➞ [[2, 3], [4, 5], [6]]
+// chunkify([2, 3, 4, 5, 6, 7], 3) ➞ [[2, 3, 4], [5, 6, 7]]
+// chunkify([2, 3, 4, 5, 6, 7], 1) ➞ [[2], [3], [4], [5], [6], [7]]
+// chunkify([2, 3, 4, 5, 6, 7], 7) ➞ [[2, 3, 4, 5, 6, 7]]
+
+
+
+const chunkify = (arr, size) => {
+  const result = [];
+
+  for (let i = 0; i < arr.length; i += size)
+    result.push(arr.slice(i, i + size));
+
+  return result;
+};
+
+const chunkify = (a, s) => {
+	let r = [];
+	while(a.length){r.push(a.splice(0, s))};
+	return r;
+}
+
+function chunkify(arr, size) {
+	var z=[];
+for(i =0; i< arr.length; i += size){
+	z.push(arr.slice(i,i+size));
+}
+	return z;
+}
