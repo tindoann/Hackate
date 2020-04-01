@@ -14235,7 +14235,7 @@ function trouble(num1, num2) {
   }).reduce((x, y) => x || y);
 }
 
-// 110. Create a function that takes a number and return an array of three numbers: half of the number, quarter of the number and an eighth of the number.
+// 1043. Create a function that takes a number and return an array of three numbers: half of the number, quarter of the number and an eighth of the number.
 
 // White - halfQuarterEighth(6) ➞ [3, 1.5, 0.75]
 // halfQuarterEighth(22) ➞ [11, 5.5, 2.75]
@@ -14249,7 +14249,7 @@ const halfQuarterEighth = n => [n / 2, n / 4, n / 8];
 
 const halfQuarterEighth = n => [n/2, n/4, n/8];
 
-// 111. Write a function that divides an array into chunks of size n, where n is the length of each chunk.
+// 1043. Write a function that divides an array into chunks of size n, where n is the length of each chunk.
 
 // Yellow - chunkify([2, 3, 4, 5], 2) ➞ [[2, 3], [4, 5]]
 // chunkify([2, 3, 4, 5, 6], 2) ➞ [[2, 3], [4, 5], [6]]
@@ -14282,7 +14282,7 @@ for(i =0; i< arr.length; i += size){
 	return z;
 }
 
-// 112. Given an array of users, each defined by an object with the following properties: name, score, reputation create a function that sorts the array to form the correct leaderboard.
+// 1044. Given an array of users, each defined by an object with the following properties: name, score, reputation create a function that sorts the array to form the correct leaderboard.
 // The leaderboard takes into consideration the score of each user of course, but an emphasis is put on their reputation in the community, so to get the trueScore, you should add the reputation multiplied by 2 to the score.
 // Once you know the trueScore of each user, sort the array according to it in descending order.
 
@@ -14312,7 +14312,7 @@ function leaderboards(users) {
 		.sort((a, b) => (b.score + b.reputation * 2) - (a.score + a.reputation * 2))
 }
 
-// 112. Given an array of users, each defined by an object with the following properties: name, score, reputation create a function that sorts the array to form the correct leaderboard.
+// 1045. Given an array of users, each defined by an object with the following properties: name, score, reputation create a function that sorts the array to form the correct leaderboard.
 
 // The leaderboard takes into consideration the score of each user of course, but an emphasis is put on their reputation in the community, so to get the trueScore, you should add the reputation multiplied by 2 to the score.
 // Once you know the trueScore of each user, sort the array according to it in descending order.
@@ -14335,3 +14335,29 @@ function leaderboards(users) {
 	return users.sort((a, b)=>(b.score+b.reputation*2)-(a.score+a.reputation*2))
 }
 
+// 1046. Given a string of letters in the English alphabet, return the letter that's missing from the string. The missing letter will make the string be in alphabetical order (from A to Z).
+// If there are no missing letters in the string, return "No Missing Letter".
+
+// Yellow - missingLetter("abdefg") ➞ "c"
+// missingLetter("mnopqs") ➞ "r"
+// missingLetter("tuvxyz") ➞ "w"
+// missingLetter("ghijklmno") ➞ "No Missing Letter"
+
+function missingLetter(str) {
+	for (let i = 1; i < str.length; i++) {
+		if (str[i].charCodeAt() - str[i - 1].charCodeAt() !== 1) {
+			return String.fromCharCode(str[i - 1].charCodeAt() + 1)
+		}
+	}
+	return 'No Missing Letter'
+}
+
+const missingLetter = str => {
+	const codes = [...str].map(char => char.charCodeAt());
+	const miss = codes.slice(1).find((el, i) => el - 1 !== codes[i]);
+	return !miss? "No Missing Letter" : String.fromCharCode(miss - 1);
+}
+
+function missingLetter(str) {
+	return str.split('').map(e=>e.charCodeAt(0)).filter((e,i,ar)=>e-ar[i+1]==-2).map(e=>String.fromCharCode(e+1))[0]||'No Missing Letter';
+}
