@@ -14361,3 +14361,35 @@ const missingLetter = str => {
 function missingLetter(str) {
 	return str.split('').map(e=>e.charCodeAt(0)).filter((e,i,ar)=>e-ar[i+1]==-2).map(e=>String.fromCharCode(e+1))[0]||'No Missing Letter';
 }
+
+// 1047. When coloring a striped pattern, you may start by coloring each square sequentially, meaning you spend time needing to switch coloring pencils.
+
+// Create a function where given an array of colors cols, return how long it takes to color the whole pattern. Note the following times:
+
+// It takes 1 second to switch between pencils.
+// It takes 2 seconds to color a square.
+// See the example below for clarification.
+
+// color_pattern_times(["Red", "Blue", "Red", "Blue", "Red"]) ➞ 14
+
+// There are 5 colors so it takes 2 seconds to color each one (2 x 5 = 10).
+// You need to switch the pencils 4 times and it takes 1 second to switch (1 x 4 = 4).
+// 10 + 4 = 14
+
+// White - colorPatternTimes(["Blue"]) ➞ 2
+// colorPatternTimes(["Red", "Yellow", "Green", "Blue"]) ➞ 11
+// colorPatternTimes(["Blue", "Blue", "Blue", "Red", "Red", "Red"]) ➞ 13
+
+function colorPatternTimes(cols) {
+	let count = 0;
+	cols.forEach((val, i) => val !== cols[++i] ? count++ : '');
+	return (cols.length * 2) + (count - 1);
+}
+
+function colorPatternTimes(cl) {
+	return cl.length*2 + cl.slice(1).reduce((a,c,i)=>c===cl[i]?a:a+1,0)
+}
+
+function colorPatternTimes(cols) {
+	return cols.slice(1).filter((x,i)=> x!==cols[i]).length +cols.length*2
+}
