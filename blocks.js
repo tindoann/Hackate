@@ -14393,3 +14393,52 @@ function colorPatternTimes(cl) {
 function colorPatternTimes(cols) {
 	return cols.slice(1).filter((x,i)=> x!==cols[i]).length +cols.length*2
 }
+
+// 1048. Your local bank has decided to upgrade its ATM machines by incorporating motion sensor technology. The machines now interpret a series of consecutive dance moves in place of a PIN number.
+// Create a program that converts a customer's PIN number to its dance equivalent. There is one dance move per digit in the PIN number. A list of dance moves is given in the code.
+
+// Yellow - danceConvert("0000") ➞ ["Shimmy", "Shake", "Pirouette", "Slide"]
+// danceConvert("3856") ➞ [ "Slide", "Arabesque", "Pop", "Arabesque" ]
+// danceConvert("9999") ➞ [ "Arabesque", "Shimmy", "Shake", "Pirouette" ]
+// danceConvert("32a1") ➞ "Invalid input."
+
+const MOVES = ["Shimmy", "Shake", "Pirouette", "Slide", "Box Step",  "Headspin", "Dosado", "Pop", "Lock", "Arabesque"];
+
+function danceConvert(pin){
+	if (pin.length !== 4 || typeof(pin) !== "string" || pin.match(/\D/)) return "Invalid input."
+  return pin.split("").map((n, i) => MOVES[((parseInt(n) + parseInt(i)) % 10)])
+}
+
+const MOVES = ["Shimmy", "Shake", "Pirouette", "Slide", "Box Step", "Headspin", "Dosado", "Pop", "Lock", "Arabesque"];
+			 
+function danceConvert(pin){
+  var result = pin.split('').map((x, i) => MOVES[(parseInt(x) + i) % 10]);
+  return result.every(x => !Number.isNaN(x) && x !== undefined) && result.length === 4 ? result : "Invalid input.";
+}
+
+// 1049. Create a function that takes a string as an argument. The function must return a string containing 1s and 0s based on the string argument's words. If any word in the argument is not equal to "zero" or "one" (case insensitive), you should ignore it. The returned string's length should be a multiple of 8, if the string is not a multiple of 8 you should remove the numbers in excess.
+
+// Yellow - textToNumberBinary("zero one zero one zero one zero one") ➞ "01010101"
+// textToNumberBinary("Zero one zero ONE zero one zero one") ➞ "01010101"
+// textToNumberBinary("zero one zero one zero one zero one one two") ➞ "01010101"
+// textToNumberBinary("zero one zero one zero one zero three") ➞ ""
+// textToNumberBinary("one one") ➞ ""
+
+function textToNumberBinary(str) {
+  str = str.replace(/one/gi, '1').replace(/zero/gi,'0').match(/[0-1]/g).join('');
+  return str.substr(0,str.length - str.length % 8); 
+}
+
+function textToNumberBinary(str) {
+  var zoStr = str.replace(/zero/ig, "0").replace(/one/ig, "1").replace(/[^0-1]/g, "");
+  return zoStr.slice(0, 8*(Math.floor(zoStr.length/8))) || "";
+}
+
+const textToNumberBinary = s => {
+	let r = "";
+	for(w of s.toLowerCase().split(" ")){
+		r += w == "one" ? 1 : w == "zero" ? 0 : "";
+	}
+	let l = r.length;
+	return l%8 ? r.slice(0, l-l%8): r;
+}
