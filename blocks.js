@@ -14442,3 +14442,18 @@ const textToNumberBinary = s => {
 	let l = r.length;
 	return l%8 ? r.slice(0, l-l%8): r;
 }
+
+// 1050. You can think of character classes as characters with special meaning. They are recognized as special when you place the \ before the character.
+
+// Here are a list of the characters classes in JavaScript:
+
+// ., \cX, \d, \D, \f, \n, \r, \s, \S, \t, \v, \w, \W, \0, \xhh, \uhhhh, \uhhhhh, [\b]
+
+// White -  const str = "123 Redding Dr. 1560 Knoxville Ave. 3030 Norwalk Dr. 5 South St."
+// ["123 Redding Dr.", "1560 Knoxville Ave", "3030 Norwalk Dr.", "5 South St."]
+
+const REGEXP = /\d+.+?\./g
+
+const REGEXP = /\d+ \w+ \w+\./g
+
+const REGEXP = /\d{1,4} [a-z]+ [a-z]+\./gi
