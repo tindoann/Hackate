@@ -14457,3 +14457,36 @@ const REGEXP = /\d+.+?\./g
 const REGEXP = /\d+ \w+ \w+\./g
 
 const REGEXP = /\d{1,4} [a-z]+ [a-z]+\./gi
+
+// 1051. If today was Monday, in two days, it would be Wednesday.
+// Create a function that takes in an array of days as input and the number of days to increment by. Return an array of days after n number of days has passed.
+
+// White -afterNDays(["Thursday", "Monday"], 4) ➞ ["Monday", "Friday"]
+// afterNDays(["Sunday", "Sunday", "Sunday"], 1) ➞ ["Monday", "Monday", "Monday"]
+// afterNDays(["Monday", "Tuesday", "Friday"], 1) ➞ ["Tuesday", "Wednesday", "Saturday"]
+
+const afterNDays = (days, n) => {
+	let lst = ["Sunday", "Monday", "Tuesday", "Wednesday",
+						 "Thursday", "Friday", "Saturday"];
+	return days.map(v => lst[(lst.indexOf(v) + n) % 7]);
+}
+
+function afterNDays(days, n) {
+	let  d = {"Monday":1,
+					 "Tuesday":2,
+					 "Wednesday":3,
+					 "Thursday":4,
+					 "Friday":5,
+					 "Saturday":6,
+					 "Sunday":0};
+	return days.map(x => Object.keys(d).find(y => d[y]==(d[x]+n) % 7))
+}
+
+function afterNDays(days, n) {
+	var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+	return days.map(function(e){
+		var i = weekdays.indexOf(e);
+		while (n > 7) { n-=7; }
+		return i+n>6 ? weekdays[i+n-7] : weekdays[i+n];
+	});
+}
