@@ -14490,3 +14490,34 @@ function afterNDays(days, n) {
 		return i+n>6 ? weekdays[i+n-7] : weekdays[i+n];
 	});
 }
+
+// 1052. Create a function that takes two numbers as arguments and return the LCM of the two numbers.
+
+// White - lcm(3, 5) ➞ 15
+// lcm(14, 28) ➞ 28
+// lcm(4, 6) ➞ 12
+
+function lcm(a, b) {
+	let num = Math.max(a, b);
+	while (num >= Math.max(a, b)) {
+		if (num % a === 0 && num % b === 0) {
+			return num;
+		}
+		num++;
+	}
+}
+
+function lcm(a, b) {
+	for(var i = 1; i <= a* b;i++){
+		if(i % a == 0 && i % b == 0){
+			return i;
+		}
+	}
+}
+
+function lcm(a, b) {
+	for(i=Math.max(a,b); i>0; i--) {
+		if(!(a % i) && !(b % i))
+			return a / i * b
+	}
+}
