@@ -14583,3 +14583,30 @@ let promise = new Promise( (resolve) => {
   }, 1000)
 })
 
+// 1055. Write a regular expression that checks if a string is a valid initial. Valid initials either look like (ex. for Chandler Muriel Bing):
+
+// C. B.
+// C. M. B.
+// Rules for a valid initial:
+
+// Each letter must be upper case.
+// Each letter must be immediately followed by a period.
+// There must be exactly one space separating each letter-period pair.
+// Leading or trailing whitespaces are valid.
+
+// Yellow -  "C. B." ➞ true
+
+// "    C. B." ➞ true
+// Leading and trailing spaces are OK!
+
+// "C. B. k." ➞ false
+// One of the initials is lower cased 
+
+// "C B" ➞ false
+// Missing a dot to immediately follow. 
+
+// let x = /* Fill in regular expression */
+
+let x = /^ *([A-Z]\.)( [A-Z]\.){1,2} *$/
+
+let x = /^ *[A-Z]\.( [A-Z]\.){1,2} *$/
