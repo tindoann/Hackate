@@ -14610,3 +14610,58 @@ let promise = new Promise( (resolve) => {
 let x = /^ *([A-Z]\.)( [A-Z]\.){1,2} *$/
 
 let x = /^ *[A-Z]\.( [A-Z]\.){1,2} *$/
+
+// 1056. Given a number n, return a sentence which describes the number in the following ways.
+
+// describeNum(13) ➞ "The most brilliant number is 13!"
+// 13 is evenly divisble by 1 only
+
+// describeNum(4) ➞ "The most brilliant exciting virtuous number is 4!"
+// 4 is evenly divisible by 1, 2 and 4
+
+// describeNum(21) ➞ "The most brilliant fantastic beautiful number is 21!"
+// 21 is evenly divisible by 1, 3 and 7
+
+// describeNum(60) ➞ "The most brilliant exciting fantastic virtuous heart-warming tear-jerking inspiring number is 60!"
+// 60 is evenly divisible by 1, 2, 3, 4, 5, 6 and 10
+
+function describeNum(n) {
+	let arr = ["The most"];
+	n % 1 === 0 ? arr.push("brilliant") : null;
+	n % 2 === 0 ? arr.push("exciting") : null;
+	n % 3 === 0 ? arr.push("fantastic") : null;
+	n % 4 === 0 ? arr.push("virtuous") : null;
+	n % 5 === 0 ? arr.push("heart-warming") : null;
+	n % 6 === 0 ? arr.push("tear-jerking") : null;
+	n % 7 === 0 ? arr.push("beautiful") : null;
+	n % 8 === 0 ? arr.push("exhilarating") : null;
+	n % 9 === 0 ? arr.push("emotional") : null;
+	n % 10 === 0 ? arr.push("inspiring") : null;
+	arr === arr.push(`number is ${n}!`);
+	return arr.join(' ');
+}
+
+function describeNum(n) {
+  const map = [
+    "brilliant",
+    "exciting",
+    "fantastic",
+    "virtuous",
+    "heart-warming",
+    "tear-jerking",
+    "beautiful",
+    "exhilarating",
+    "emotional",
+    "inspiring"
+  ];
+	return `The most ${[1,2,3,4,5,6,7,8,9,10].map((v, i) => n % v === 0 ? map[i] : null).filter(f => !!f).join(" ")} number is ${n}!`;
+}
+
+function describeNum(n) {
+	let words= ["no", "brilliant ", "exciting ", "fantastic ", "virtuous ", "heart-warming ", "tear-jerking ", "beautiful ",
+		 "exhilarating ", "emotional ","inspiring "]; 
+	var result= "The most ";
+		for (let i=1; i<words.length; i++) {
+			if (n%i===0) {result= result+ words[i];}
+			} return result+ "number is "+n+"!";
+	}
