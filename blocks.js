@@ -14701,3 +14701,25 @@ function greetingMaker(salutation) {
 }
 
 const greetingMaker = salutation => name => salutation + ", " + name;
+
+// 1058. Create a function that takes an array containing nested arrays as an argument. Each subarray has 2 elements. The first element is the numerator and the second element is the denominator. Return the sum of the fractions rounded to the nearest whole number.
+
+// Yellow - sumFractions([[18, 13], [4, 5]]) ➞ 2
+// sumFractions([[36, 4], [22, 60]]) ➞ 9
+// sumFractions([[11, 2], [3, 4], [5, 4], [21, 11], [12, 6]]) ➞ 11
+
+function sumFractions(list) {
+	return Number(list.reduce((t,[a,b])=> t+a/b, 0).toFixed())
+}
+
+function sumFractions(lst) {
+	return Math.round(lst.map(f => f[0]/f[1]).reduce((a,b) => a+b));
+}
+
+function sumFractions(lst) {
+	let sum=0;
+		for(let i=0;i<lst.length;i++){
+			sum+=lst[i][0]/lst[i][1];
+		}
+		return parseInt(sum)
+	}
