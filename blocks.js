@@ -14723,3 +14723,33 @@ function sumFractions(lst) {
 		}
 		return parseInt(sum)
 	}
+
+// 1059. Write a program to find all the prime factors of a given number. The program must return an array containing all the prime factors, sorted in ascending order. Remember that 1 is neither prime nor composite and should not be included in your output array.
+
+// White - primeFactorize(25) ➞ [5, 5]
+// primeFactorize(19) ➞ [19]
+// primeFactorize(77) ➞ [7, 11]
+
+function primeFactorize(num) {
+  let factors = [];
+  for(let i = 2; i <= num; i++) {
+    while(!(num%i)) {
+      factors.push(i);
+      num /= i;
+    }
+  }
+  return factors;
+}
+
+function primeFactorize(num) {
+  const result = [];
+  let i = 2;
+	for (let i = 2; i <= num; i += 1) {
+  	if (num % i === 0) {
+      result.push(i);
+      num /= i;
+      i -= 1;
+    }
+  }
+  return result;
+}
