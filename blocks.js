@@ -14753,3 +14753,47 @@ function primeFactorize(num) {
   }
   return result;
 }
+
+// 1060. Create a function that converts Celcius to Fahrenheit and vice versa.
+
+// White - convert("35°C") ➞ "95°F"
+// convert("19°F") ➞ "-7°C"
+// convert("33") ➞ "Error"
+
+function convert(deg) {
+	let num = +deg.match(/\-?\d+/).join("");
+	let c = '°C', f = '°F';
+	if (deg.endsWith(c)){
+		num = Math.round(num * 9 / 5 + 32);
+		return num + f;
+	}else if(deg.endsWith(f)){
+		num = Math.round((num - 32) * 5 / 9);
+		return num + c;
+	}
+	return 'Error';
+}
+
+function convert(deg) {
+	if (deg.endsWith('°C')) {
+		return `${Math.round((Number(deg.slice(0, deg.length - 2)) * 9 / 5) + 32)}°F`;
+	} else if (deg.endsWith('°F')) {
+		return `${Math.round((Number(deg.slice(0, deg.length - 2)) - 32) * 5 / 9)}°C`;
+	} else {
+		return 'Error'
+	}
+}
+
+function convert(deg) {
+	var res = 'Error'
+	if (deg.indexOf('F') > 0) {
+		res = Math.round((parseFloat(deg) - 32) / 1.8) + '°C'
+	} else if (deg.indexOf('C') > 0) {
+		res = Math.round(parseFloat(deg) * 1.8 + 32) + '°F'
+	}
+	return res
+}
+
+const convert = d => (a = d.split`°`)[1] == `C` ?
+Math.round(+a[0] * 9 / 5 + 32) + `°F` : a[1] == `F` ?
+Math.round((+a[0] - 32) * 5 / 9) + `°C` : `Error`;
+
