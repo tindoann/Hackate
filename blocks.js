@@ -14818,3 +14818,32 @@ function nearestElement(n, arr) {
 	let value = Math.max(...arr.filter(x=> Math.abs(x-n)==min))
 	return arr.indexOf(value)
 }
+
+// 1062. Create a function that, given a string with at least three characters, returns an array of its:
+
+// Length.
+// First character.
+// Last character.
+// Middle character, if the string has an odd number of characters. Middle TWO characters, if the string has an even number of characters.
+// Index of the second occurrence of the second character in the format "@ index #" and "not found" if the second character doesn't occur again.
+
+// White - allAboutStrings("LASA") ➞ [4, "L", "A", "AS", "@ index 3"]
+// allAboutStrings("Computer") ➞ [8, "C", "r", "pu", "not found"]
+// allAboutStrings("Science") ➞ [7, "S", "e", "e", "@ index 5"]
+
+function allAboutStrings(str) {
+	const size= str.length;
+	const second= str.indexOf(str[1],2);
+	return [size, str[0], 
+					str[size-1], 
+					size%2==0? str[size/2-1]+str[size/2] : str[Math.ceil(size/2-1)],
+					second>-1 ? `@ index ${second}` : "not found"];
+}
+
+function allAboutStrings(str) {
+	return [str.length,
+					str[0],
+					str[str.length-1],
+					(str.length%2 ? '': str[str.length/2-1]) + str[Math.floor(str.length/2)],
+				 	str.indexOf(str[1], 2) == -1 ? `not found` : `@ index ${str.indexOf(str[1], 2)}`];
+}
