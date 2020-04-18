@@ -14847,3 +14847,26 @@ function allAboutStrings(str) {
 					(str.length%2 ? '': str[str.length/2-1]) + str[Math.floor(str.length/2)],
 				 	str.indexOf(str[1], 2) == -1 ? `not found` : `@ index ${str.indexOf(str[1], 2)}`];
 }
+
+// 1063. Write a function that returns true if every consecutive sequence of ones is followed by a consecutive sequence of zeroes of the same length.
+
+// sameLength("110011100010") ➞ true
+// sameLength("101010110") ➞ false
+// sameLength("111100001100") ➞ true
+// sameLength("111") ➞ false
+
+function sameLength(s) {
+	let zeroes = s.match(/0+/g).map(x=>x.length);
+	let ones = s.match(/1+/g).map(x=>x.length);
+	return (zeroes.length === ones.length) ? zeroes.every((v,i)=> v===ones[i]) : false;
+}
+
+function sameLength(s) {
+	return JSON.stringify(s.match(/1+/g)) ===
+				JSON.stringify(s.match(/0+/g).map(el => el = el.replace(/0/g, '1')));
+}
+
+function sameLength(s) {
+	const arr = s.match(/(1+|0+)/g);
+  return arr.every((a, index) => index % 2 !== 0 ? a.length === arr[index - 1].length: true) && arr.length % 2 === 0;
+}
