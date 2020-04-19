@@ -14870,3 +14870,30 @@ function sameLength(s) {
 	const arr = s.match(/(1+|0+)/g);
   return arr.every((a, index) => index % 2 !== 0 ? a.length === arr[index - 1].length: true) && arr.length % 2 === 0;
 }
+
+// 1064. Create a function that takes four arrays as arguments and returns a count of the total number of identical arrays.
+
+// countIdenticalArrays([0, 0, 0], [0, 1, 2], [0, 0, 0], [2, 1, 0]) ➞ 2
+// countIdenticalArrays([0, 1, 0], [0, 1, 2], [0, 2, 0], [2, 1, 0]) ➞ 0
+// countIdenticalArrays([0, 1, 2], [0, 1, 2], [0, 1, 2], [2, 1, 0]) ➞ 3
+
+function countIdenticalArrays(arr1, arr2, arr3, arr4) {
+	var originalArr = [arr1,arr2,arr3,arr4].map(x => x.toString())
+	var compArr = [...new Set(originalArr)]
+	var difference = originalArr.length - compArr.length
+	
+	return difference === 0 ? 0 : difference + 1
+}
+
+function countIdenticalArrays(arr1, arr2, arr3, arr4) {
+	let args = Array.from(arguments).map(x => x.join("")),
+			set = Array.from(new Set(args)),
+			num = set.map(x => args.filter(c => c === x).length),
+			max = Math.max(...num);
+	return max === 1 ? 0 : max;
+}
+
+function countIdenticalArrays(...arr) {
+	const uniq = new Set(arr.map(v => v.toString())).size;
+	return uniq === 4 ? 0 : 5 - uniq;
+}
