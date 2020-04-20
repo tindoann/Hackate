@@ -14897,3 +14897,33 @@ function countIdenticalArrays(...arr) {
 	const uniq = new Set(arr.map(v => v.toString())).size;
 	return uniq === 4 ? 0 : 5 - uniq;
 }
+
+// 1065. Create a function where given the number n to count down from, and some words str, return a countdown sequence as a string leading up to the words at the end.
+// Put a full stop after each number and capitalize and add an exclamation mark to the word. See the examples below for clarification!
+
+// White - countdown(10, "Blast Off") ➞ "10. 9. 8. 7. 6. 5. 4. 3. 2. 1. BLAST OFF!"
+// countdown(3, "go") ➞ "3. 2. 1. GO!"
+// countdown(5, "FIRE") ➞ "5. 4. 3. 2. 1. FIRE!"
+
+function countdown(n, str) {
+	var output = ''
+	for(var i = n; i > 0; i--){
+		output += i + '. '
+	}
+	return output + str.toUpperCase() + '!'
+}
+
+function countdown(n, str) {
+	var output = ''
+	for(var i = n; i > 0; i--){
+		output += i + '. '
+	}
+	return output + str.toUpperCase() + '!'
+}
+
+function countdown(n, str) {
+	var nArr = Array.from({length: n}, (v,i) => i+1)
+		.map(elem => elem + ".").reverse();
+
+	return nArr.join(" ") + ` ${str.toUpperCase()}!`
+}
