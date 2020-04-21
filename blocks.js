@@ -14927,3 +14927,45 @@ function countdown(n, str) {
 
 	return nArr.join(" ") + ` ${str.toUpperCase()}!`
 }
+
+// 1066. A positive number's population is the number of 1s in its binary representation. An evil number has an even numbered population, whereas an odious number has an odd numbered population. Moreover, a number is pernicious if its population is a prime number.
+// Create a function that takes a number as an argument and returns a sorted array of all its descriptors ("Evil", "Odious", or "Pernicious").
+
+// Yellow - howBad(7) ➞ ["Odious", "Pernicious"]
+// binary = 111
+
+// howBad(17) ➞ ["Evil", "Pernicious"]
+// binary = 10001
+
+// howBad(23) ➞ ["Evil"]
+// binary = 10111
+
+function howBad(num) {
+	return pop=[...(num >>> 0).toString(2)].filter(x=>x=='1').length,['Evil,Odious,'.repeat(100).split(',')[pop]].concat(pop>=2?Object.keys([...Array(pop)]).slice(2).some(x=>Number.isInteger(pop/x))?null:['Pernicious']:null).filter(Boolean)
+}
+
+function howBad(num) {
+	const value = num.toString(2).split('')
+									 .reduce((a, c) => a + Number(c), 0)
+	function isPrime(n) {
+		if (n < 2) { return false }
+		for (let i=2;i<n;i++) {
+			if(n%i === 0) { return false }
+		}
+		return true
+	}
+	const result = value % 2 ? ['Odious'] : ['Evil']
+	return isPrime(value) ? [...result, 'Pernicious'] : result
+}
+
+const isPrime = num => {
+  for (let i = 2; i < num; i++) if (num % i === 0) return false;
+  return num > 1;
+};
+
+const howBad = num => {
+  const ones = (num.toString(2).match(/1/g) || []).length;
+  return [ones % 2 === 0 ? 'Evil' : 'Odious'].concat(
+    isPrime(ones) ? 'Pernicious' : []
+  );
+};
