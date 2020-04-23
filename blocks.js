@@ -14970,7 +14970,7 @@ const howBad = num => {
   );
 };
 
-// 1057. Every quadratic curve y = a x² + b x + c has a vertex point: the turning point where the curve stops heading down and starts going up.
+// 1067. Every quadratic curve y = a x² + b x + c has a vertex point: the turning point where the curve stops heading down and starts going up.
 // Given the values a, b and c, you need to return the coordinates of the vertex. Return your answers rounded to 2 decimal places.
 
 // Yellow - findVertex(1, 0, 25)  ➞ [0, 25]
@@ -14992,3 +14992,26 @@ const findVertex = (a, b, c) => {
   const x = -b / (2 * a);
   return [x, a * Math.pow(x, 2) + b * x + c];
 };
+
+// 1067. Create a function that takes an array of numbers and return "Boom!" if the number 7 appears in the array. Otherwise, return "there is no 7 in the array".
+
+// White - sevenBoom([1, 2, 3, 4, 5, 6, 7]) ➞ "Boom!"
+// sevenBoom([8, 6, 33, 100]) ➞ "there is no 7 in the array"
+// sevenBoom([2, 55, 60, 97, 86]) ➞ "Boom!"
+
+function sevenBoom(arr) {
+	return arr.join("").includes("7") ? "Boom!" : "there is no 7 in the array";
+}
+
+function sevenBoom(arr) {
+	return(arr.join().includes(7) ? 'Boom!' : 'there is no 7 in the array')
+}
+
+function sevenBoom(arr) {
+	return arr
+		.join('')
+		.split('')
+		.includes('7') ? "Boom!" : "there is no 7 in the array"
+}
+
+
