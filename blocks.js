@@ -15036,3 +15036,50 @@ const wordToDecimal = str => {
 	let base = str.toLowerCase().split('').sort()[str.length-1].charCodeAt()-96+10;
 	 return parseInt(str, base)
  }
+
+ // 1069. In this challenge, the goal is recomposing scrambled strings made of two or more words.
+// Every string has to be reversed not in its totality, but by vowels or consonants clusters in the order they are found; after splitting the string in groups, and reversing every group with more than a letter, you'll obtain the correct sequence:
+
+// String = "KiKdaola"
+// Separation vowels/consonants = K  i  Kd  ao  l  a
+// Reversing the groups = K  i  dK  oa  l  a
+// New string = KidKoala
+
+// String = "KidKoala"
+
+// Result = "Kid Koala"
+
+recompose("KiKdaola") ➞ "Kid Koala"
+
+recompose("BaosdrOCfanada") ➞ "Boards Of Canada"
+// B  ao  sdr  O  Cf  a  n  a  d  a
+// B  oa  rds  O  fC  a  n  a  d  a
+
+recompose("hCemicarBlohtesr") ➞ "Chemical Brothers"
+// hC  e  m  i  c  a  rBl  o  ht  e  sr
+// Ch  e  m  i  c  a  lBr  o  th  e  rs
+
+function recompose(string) {
+	return string.match(/[aeiou]+|[^aeiou]+/gi)
+	  					.map(letters => letters.split("").reverse().join(""))
+							.join("")
+							.match(/[A-Z][a-z]*/g)
+							.join(" ");
+}
+
+const recompose = string => {
+	return string
+		.match(/[aeiou]+|[^aeiou]+/gi)
+		.map(v => [...v].reverse().join(""))
+		.join("").match(/[A-Z][a-z]+/g).join(" ");
+}
+
+function recompose(string) {
+	return string.match(/([aeiou])+|([^aeiou])+/gi)
+								.map(x=>x.length > 1 ? x.split("").reverse().join(""):x)
+								.map((x,i)=>i !==0 ? x.replace(/([A-Z])/g," $1"):x)
+								.join("");
+}
+
+
+
