@@ -15157,3 +15157,25 @@ function getDays(date1, date2) {
 function getDays(date1, date2) {
 	return Math.round((date1 - date2) / -86400000)
 }
+
+// 1073. Create a function which returns the number of true values there are in an array.
+
+// White - countTrue([true, false, false, true, false]) ➞ 2
+// countTrue([false, false, false, false]) ➞ 0
+// countTrue([]) ➞ 0
+
+function count_true(lst){
+	return lst.filter(function(value){
+    return value === true;
+	}).length    
+}
+
+function count_true(list){
+	return list.filter(x => x === true).length;
+}
+
+function countTrue(arr) {
+	let total = 0;
+	arr.map(x => x === true ? total += 1 : x);
+	return total;
+}
