@@ -15206,3 +15206,20 @@ function reversedBinaryInteger(num) {
 	let str = num.toString(2).split("").reverse().join("");
 	return Number.parseInt(str, 2);
 }
+
+// 1075. Remove enemies from the list of people, even if the enemy shows up twice.
+
+// removeEnemies(["Fred"], []) ➞ ["Fred"]
+
+// removeEnemies(["Adam", "Emmy", "Tanya", "Emmy"], ["Emmy"]) ➞ ["Adam", "Tanya"]
+
+// removeEnemies(["John", "Emily", "Steve", "Sam"], ["Sam", "John"]) ➞ ["Emily", "Steve"]
+
+function removeEnemies(names, enemies) {
+	return names.filter(x => !enemies.includes(x))
+}
+
+function removeEnemies(names, enemies) {
+	return names.filter(name => enemies.indexOf(name) === -1)
+}
+
