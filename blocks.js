@@ -15223,3 +15223,25 @@ function removeEnemies(names, enemies) {
 	return names.filter(name => enemies.indexOf(name) === -1)
 }
 
+// 1076. Create a function that returns the string "Burp" with the amount of "r's" determined by the input parameters of the function.
+
+// longBurp(3) ➞ "Burrrp"
+
+// longBurp(5) ➞ "Burrrrrp"
+
+// longBurp(9) ➞ "Burrrrrrrrrp"
+
+function longBurp(num) {
+	return "Bu" + "r".repeat(num) + "p";
+}
+
+function longBurp(num){
+	var rs = 'r'.repeat(num);
+	return `Bu${rs}p`;
+}
+
+function longBurp(num) {
+	return `Bu${Array(num).fill("r").join("")}p`
+}
+
+
