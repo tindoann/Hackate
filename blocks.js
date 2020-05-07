@@ -15244,4 +15244,24 @@ function longBurp(num) {
 	return `Bu${Array(num).fill("r").join("")}p`
 }
 
+// 1077. Create a function which validates whether a bridge is safe to walk on (i.e. has no gaps in it to fall through).
+
+// isSafeBridge("####") ➞ true
+
+// isSafeBridge("## ####") ➞ false
+
+// isSafeBridge("#") ➞ true
+
+function isSafeBridge(s){
+	return !s.includes(' ')
+}
+
+function isSafeBridge(s){
+	return s.split(' ').length === 1
+}
+
+function isSafeBridge(str) {
+	return str.split(" ").length>1? false: true;
+}
+
 
