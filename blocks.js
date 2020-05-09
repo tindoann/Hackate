@@ -15280,6 +15280,24 @@ function era(er, ip) {
 	return result.length === 4 ? result : result + '.00';
 }
 
+// 1079. Create a function that takes a variable number of groups of items, and returns the number of ways the items can be arranged, with one item from each group. Order does not matter.
+
+// combinations(2, 3) ➞ 6
+// combinations(3, 7, 4) ➞ 84
+// combinations(2, 3, 4, 5) ➞ 120
+
+function combinations(items) {
+	return [...arguments].reduce((acc,v) => v ? acc*v : acc+v, 1)
+}
+
+function combinations(items) {
+	return [...arguments].reduce((acc,item) => item===0 ? acc : acc*item)
+}
+
+function combinations(items) {
+	return  [...arguments].filter(x => x !== 0).reduce((total, val) => total * val)
+	}
+
 
 
 
