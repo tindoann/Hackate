@@ -15298,6 +15298,29 @@ function combinations(items) {
 	return  [...arguments].filter(x => x !== 0).reduce((total, val) => total * val)
 	}
 
+// 1080. Create a function that takes an array of strings and returns an array with only the strings that have numbers in them. If there are no strings containing numbers, return an empty array.
+
+// Yellow - numInStr(["1a", "a", "2b", "b"]) ➞ ["1a", "2b"]
+// numInStr(["abc", "abc10"]) ➞ ["abc10"]
+// numInStr(["abc", "ab10c", "a10bc", "bcd"]) ➞ ["ab10c", "a10bc"]
+// numInStr(["this is a test", "test1"]) ➞ ["test1"]
+
+function numInStr(arr) {
+	return arr.filter(x=>/\d/.test(x));
+}
+
+function numInStr(arr) {
+	return arr.filter(str => str.match(/[0-9]/) !== null);
+}
+
+let numInStr = arr => {
+  return arr.reduce((total, value) => {
+	if(value.match(/[0-9]+/)){
+	  total.push(value);
+	}
+	return total;
+  }, [])
+}
 
 
 
