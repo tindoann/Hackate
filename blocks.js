@@ -15322,6 +15322,27 @@ let numInStr = arr => {
   }, [])
 }
 
+// 1081. Write a function that returns the minimum number of swaps to convert the first binary string into the second.
+
+// minSwaps("1100", "1001") ➞ 1
+
+// minSwaps("110011", "010111") ➞ 1
+
+// minSwaps("10011001", "01100110") ➞ 4
+
+function minSwaps(s1, s2) {
+	return s1 .split('').filter((char,i) => char !=s2[i]).length/2;
+}
+
+function minSwaps(s1, s2) {
+	let str1 = [...s1];
+	let str2 = [...s2];
+	return str1.filter((entry,id,arr) => entry !== str2[id]).length/2;
+}
+
+
+
+
 
 
 
