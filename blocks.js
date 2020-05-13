@@ -15340,9 +15340,28 @@ function minSwaps(s1, s2) {
 	return str1.filter((entry,id,arr) => entry !== str2[id]).length/2;
 }
 
+// 1082. Someone has attempted to censor my strings by replacing every vowel with a *, l*k* th*s. Luckily, I've been able to find the vowels that were removed.
+// Given a censored string and a string of the censored vowels, return the original uncensored string.
 
+// uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo") ➞ "Where did my vowels go?"
+// uncensor("abcd", "") ➞ "abcd"
+// uncensor("*PP*RC*S*", "UEAE") ➞ "UPPERCASE"
 
+const uncensor = (str, vowels) => {
+  const arr = vowels.split('');
+  return str.replace(/\*/g, () => arr.shift());
+};
 
+function uncensor(str, vowels) {
+	for (let i=0;i<vowels.length; i++){
+		str = str.replace('*', vowels[i])
+	}
+ return str
+}
 
+const uncensor=(str, vowels)=> {
+	let v=[...vowels]
+	return [...str].map(e=>e=="*"?v.shift():e).join``
+}
 
 
