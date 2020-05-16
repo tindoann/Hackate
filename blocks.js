@@ -15388,3 +15388,19 @@ function canConcatenate(arr, target) {
 	return [].concat(...arr).sort((a,b) => a - b).join("") ===
 		target.sort((a,b) => a - b).join("");
 }
+
+// 1084. Create a function that takes a number and returns one digit that is the result of summing all the digits of the input number. When the sum of the digits consists of more than one digit, repeat summing until you get one digit.
+
+// rootDigit(123) ➞ 6
+// // 1 +2 + 3 = 6
+// rootDigit(999888777) ➞ 9
+// rootDigit(1238763636555555555555) ➞ 6
+
+const rootDigit = n => (
+	n > 9 ? rootDigit([...`${n}`].reduce((a,b) => a + +b, 0)) : n
+);
+
+function rootDigit(n) {
+	if ([...''+n].length==1) return n
+return rootDigit([...''+n].map(x=>+x).reduce((a,b)=>a+b,0))
+}
