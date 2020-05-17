@@ -15404,3 +15404,17 @@ function rootDigit(n) {
 	if ([...''+n].length==1) return n
 return rootDigit([...''+n].map(x=>+x).reduce((a,b)=>a+b,0))
 }
+
+// 1085. Create a function that takes a string and returns it as an integer.
+
+// stringInt("6") ➞ 6
+// stringInt("1000") ➞ 1000
+// stringInt("12") ➞ 12
+
+function string_int(txt) {
+	return parseInt(txt);
+}
+
+function string_int(txt) {
+	return Number (txt)
+}
